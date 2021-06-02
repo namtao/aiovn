@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1067550012221",
+    "firebase_url": "https://childreneducatio-1559375806185.firebaseio.com",
+    "project_id": "childreneducatio-1559375806185",
+    "storage_bucket": "childreneducatio-1559375806185.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067550012221:android:e3f1e0076350414b",
+        "android_client_info": {
+          "package_name": "com.nvn.mylife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067550012221-b1gclamr6bsb91qqcobtje9vsro7op6o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "childreneducation.nam.childreneducation",
+            "certificate_hash": "70ebc9fd2e20d9773eb16bcb8ddb6217473bcf86"
+          }
+        },
+        {
+          "client_id": "1067550012221-de4sacsjva0ntk2lqnolb59hd5cd77mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrH6EwOvEnGX-BOwaPkqfdoORkwjmNWd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067550012221-de4sacsjva0ntk2lqnolb59hd5cd77mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

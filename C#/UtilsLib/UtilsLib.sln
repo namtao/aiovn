@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilsLib", "UtilsLib.csproj", "{307021AD-9C12-476B-8E73-6E5105F03F1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountFolder", "..\CountFolder\CountFolder\CountFolder.csproj", "{4F10D74A-33CC-416A-80A9-54DC86EB28F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{307021AD-9C12-476B-8E73-6E5105F03F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307021AD-9C12-476B-8E73-6E5105F03F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307021AD-9C12-476B-8E73-6E5105F03F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307021AD-9C12-476B-8E73-6E5105F03F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F10D74A-33CC-416A-80A9-54DC86EB28F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F10D74A-33CC-416A-80A9-54DC86EB28F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F10D74A-33CC-416A-80A9-54DC86EB28F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F10D74A-33CC-416A-80A9-54DC86EB28F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A9877E7-D685-40CD-A088-13F2E520EC35}
+	EndGlobalSection
+EndGlobal

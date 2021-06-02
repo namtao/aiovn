@@ -1,0 +1,11 @@
+D:\Temporary\Hướng cấu phần\lib\Library\Handle\bin\Debug\Handle.dll
+D:\Temporary\Hướng cấu phần\lib\Library\Handle\bin\Debug\Handle.pdb
+D:\Temporary\Hướng cấu phần\lib\Library\Handle\obj\Debug\Handle.csproj.CoreCompileInputs.cache
+D:\Temporary\Hướng cấu phần\lib\Library\Handle\obj\Debug\Handle.dll
+D:\Temporary\Hướng cấu phần\lib\Library\Handle\obj\Debug\Handle.pdb
+D:\Temporary\Hướng cấu phần\lib\Library\Handle\obj\Debug\Handle.csprojAssemblyReference.cache
+D:\COP\cop_main\lib\Library\Handle\bin\Debug\Handle.dll
+D:\COP\cop_main\lib\Library\Handle\bin\Debug\Handle.pdb
+D:\COP\cop_main\lib\Library\Handle\obj\Debug\Handle.csprojResolveAssemblyReference.cache
+D:\COP\cop_main\lib\Library\Handle\obj\Debug\Handle.dll
+D:\COP\cop_main\lib\Library\Handle\obj\Debug\Handle.pdb

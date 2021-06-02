@@ -1,0 +1,11 @@
+C:\Project\C#\DB\bin\Release\DB.exe.config
+C:\Project\C#\DB\bin\Release\DB.exe
+C:\Project\C#\DB\bin\Release\DB.pdb
+C:\Project\C#\DB\obj\Release\DB.Home.resources
+C:\Project\C#\DB\obj\Release\DB.ConnectDB.resources
+C:\Project\C#\DB\obj\Release\DB.Clone.resources
+C:\Project\C#\DB\obj\Release\DB.Properties.Resources.resources
+C:\Project\C#\DB\obj\Release\DB.csproj.GenerateResource.cache
+C:\Project\C#\DB\obj\Release\DB.csproj.CoreCompileInputs.cache
+C:\Project\C#\DB\obj\Release\DB.exe
+C:\Project\C#\DB\obj\Release\DB.pdb

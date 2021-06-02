@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/chucai"
+        android:title="Chữ cái"
+        android:icon="@drawable/ic_abc"></item>
+    <!--<item-->
+        <!--android:id="@+id/chuso"-->
+        <!--android:title="Chữ số"-->
+        <!--android:icon="@drawable/ic_number"></item>-->
+    <item
+        android:id="@+id/tomau"
+        android:title="Tô màu"
+        android:icon="@drawable/ic_paint"></item>
+    <item
+        android:id="@+id/phim"
+        android:title="Truyện hay"
+        android:icon="@drawable/ic_yt"></item>
+    <!--<item-->
+        <!--android:id="@+id/caidat"-->
+        <!--android:title="Cài đặt"-->
+        <!--android:icon="@drawable/ic_setting"></item>-->
+
+    <item
+        android:id="@+id/word"
+        android:title="Từ vựng"
+        android:icon="@drawable/ic_word"></item>
+
+    <item
+        android:id="@+id/game"
+        android:title="Giải trí"
+        android:icon="@drawable/ic_game"></item>
+    <item
+        android:id="@+id/library"
+        android:title="Thư viện"
+        android:icon="@drawable/ic_book"></item>
+    <item
+        android:id="@+id/thongtin"
+        android:title="Thông tin"
+        android:icon="@drawable/ic_about"></item>
+
+    <item
+        android:id="@+id/dangxuat"
+        android:title="Đăng xuất"
+        android:icon="@drawable/ic_logout"></item>
+
+</menu>

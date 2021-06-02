@@ -1,0 +1,12 @@
+C:\Project\C#\ChatRoom\Server\bin\Debug\netcoreapp3.1\Server.exe
+C:\Project\C#\ChatRoom\Server\bin\Debug\netcoreapp3.1\Server.deps.json
+C:\Project\C#\ChatRoom\Server\bin\Debug\netcoreapp3.1\Server.runtimeconfig.json
+C:\Project\C#\ChatRoom\Server\bin\Debug\netcoreapp3.1\Server.runtimeconfig.dev.json
+C:\Project\C#\ChatRoom\Server\bin\Debug\netcoreapp3.1\Server.dll
+C:\Project\C#\ChatRoom\Server\bin\Debug\netcoreapp3.1\Server.pdb
+C:\Project\C#\ChatRoom\Server\obj\Debug\netcoreapp3.1\Server.AssemblyInfoInputs.cache
+C:\Project\C#\ChatRoom\Server\obj\Debug\netcoreapp3.1\Server.AssemblyInfo.cs
+C:\Project\C#\ChatRoom\Server\obj\Debug\netcoreapp3.1\Server.csproj.CoreCompileInputs.cache
+C:\Project\C#\ChatRoom\Server\obj\Debug\netcoreapp3.1\Server.dll
+C:\Project\C#\ChatRoom\Server\obj\Debug\netcoreapp3.1\Server.pdb
+C:\Project\C#\ChatRoom\Server\obj\Debug\netcoreapp3.1\Server.genruntimeconfig.cache

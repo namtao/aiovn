@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quản trị hệ thống</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styleManage.css">
+	<link rel="stylesheet" href="fontawesome/css/all.min.css">
+	<link rel="shortcut icon" href="img/favicon.ico" />
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="ckeditor/ckeditor.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/style.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function js(){
+			var str = $("#title").val();
+			alert(str);
+		}
+	</script>
+	<script type="text/javascript">
+		var editor=""
+		$(document).ready(function(){
+			editor= CKEDITOR.replace('content');
+		});
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-3">
+				<div class="list-group" id="list-tab" role="tablist">
+					<a class="list-group-item list-group-item-action active" id="list-lesson-list" data-toggle="list" href="#list-lesson" role="tab" aria-controls="lesson">Bài viết</a>
+					<a class="list-group-item list-group-item-action" id="list-category-list" data-toggle="list" href="#list-category" role="tab" aria-controls="category">Thể loại</a>
+					<a class="list-group-item list-group-item-action" id="list-account-list" data-toggle="list" href="#list-account" role="tab" aria-controls="account">Tài khoản</a>
+					<a class="list-group-item list-group-item-action" id="list-members-list" data-toggle="list" href="#list-members" role="tab" aria-controls="members">Hình ảnh</a>
+					<a class="list-group-item list-group-item-action" id="list-image-list" data-toggle="list" href="#list-image" role="tab" aria-controls="image">Thành viên</a>
+				</div>
+			</div>
+			<div class="col-9">
+				<div class="tab-content" id="nav-tabContent">
+					<!-- Tab 1 -->
+					<div class="tab-pane fade show active" id="list-lesson" role="dialog" aria-labelledby="list-lesson-list">
+						
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Tên bài</th>
+									<th scope="col">Thể loại</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Mark</td>
+									<td>Otto</td>
+									<th scope="row">
+										<i class="fas fa-edit"></i>
+										<i class="fas fa-trash-alt"></i>
+									</th>
+								</tr>
+							</tbody>
+						</table>
+
+
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+							Thêm
+						</button>
+
+					</div>
+
+					<!-- Tab 2 -->
+					<div class="tab-pane fade" id="list-category" role="tabpanel" aria-labelledby="list-category-list">
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Tiêu đề</th>
+									<th scope="col">Hình ảnh</th>
+									<th scope="col">Nội dung</th>
+									<th scope="col">Nội dung ngắn</th>
+									<th scope="col">Thời gian tạo</th>
+									<th scope="col">Thời gian cập nhật</th>
+									<th scope="col">Người thêm</th>
+									<th scope="col">#</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Jacob</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+							</tbody>
+						</table>
+
+
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+							Thêm
+						</button>
+
+					</div>
+
+					<!-- Tab 3 -->
+					<div class="tab-pane fade" id="list-account" role="tabpanel" aria-labelledby="list-account-list">
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Tiêu đề</th>
+									<th scope="col">Hình ảnh</th>
+									<th scope="col">Nội dung</th>
+									<th scope="col">Nội dung ngắn</th>
+									<th scope="col">Thời gian tạo</th>
+									<th scope="col">Thời gian cập nhật</th>
+									<th scope="col">Người thêm</th>
+									<th scope="col">#</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Jacob</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+							</tbody>
+						</table>
+
+
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+							Thêm
+						</button>
+
+					</div>
+
+					<!-- Tab 4 -->
+					<div class="tab-pane fade" id="list-members" role="tabpanel" aria-labelledby="list-members-list">
+						
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Tiêu đề</th>
+									<th scope="col">Hình ảnh</th>
+									<th scope="col">Nội dung</th>
+									<th scope="col">Nội dung ngắn</th>
+									<th scope="col">Thời gian tạo</th>
+									<th scope="col">Thời gian cập nhật</th>
+									<th scope="col">Người thêm</th>
+									<th scope="col">#</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Jacob</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+							</tbody>
+						</table>
+
+
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+							Thêm
+						</button>
+
+					</div>
+
+					<!-- Tab 5 -->
+					<div class="tab-pane fade" id="list-image" role="tabpanel" aria-labelledby="list-image-list">
+						
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Tiêu đề</th>
+									<th scope="col">Hình ảnh</th>
+									<th scope="col">Nội dung</th>
+									<th scope="col">Nội dung ngắn</th>
+									<th scope="col">Thời gian tạo</th>
+									<th scope="col">Thời gian cập nhật</th>
+									<th scope="col">Người thêm</th>
+									<th scope="col">#</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Jacob</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+								<tr>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<td>@mdo</td>
+									<th scope="row">Sửa|Xóa</th>
+								</tr>
+							</tbody>
+						</table>
+
+
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+							Thêm
+						</button>
+
+					</div>
+				</div>
+
+				<input type="hidden" name="nam" value="nam"/>
+				<!-- <input type="submit" name="Click" onclick="js()" value="Click"/> -->
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade bd-example-modal-lg" id="exampleModalScrollable" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="" id="modal">
+						<div>
+							<label for="title">Tiêu đề</label>
+							<input type="text" name="title" id="title">
+						</div>
+
+						<div>
+							<label for="image">Hình ảnh</label>
+							<input type="text" name="image" id="image">
+						</div>
+
+						<div>
+							<label for="sub">Thể loại</label>
+							<input type="text" name="sub" id="sub">
+						</div>
+
+						<div>
+							<label for="user">UserId</label>
+							<input type="text" name="user" id="user">
+						</div>
+
+						<div>
+							<label for="url">Url</label>
+							<input type="text" name="url" id="url">
+						</div>
+
+						<label for="content">Nội dung</label>
+						<textarea name="content" id="content"></textarea><br/>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Understood</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

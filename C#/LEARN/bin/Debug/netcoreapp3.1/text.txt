@@ -1,0 +1,2 @@
+Hello Nam, the service has started
+Goodbye Nam, the service has stopped

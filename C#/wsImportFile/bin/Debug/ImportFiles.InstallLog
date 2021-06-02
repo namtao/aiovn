@@ -1,0 +1,26 @@
+﻿Installing assembly 'D:\Home\sagis\core\ServiceIndex\wsIndex\ImportFiles\bin\Debug\ImportFiles.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Home\sagis\core\ServiceIndex\wsIndex\ImportFiles\bin\Debug\ImportFiles.exe
+   logfile = D:\Home\sagis\core\ServiceIndex\wsIndex\ImportFiles\bin\Debug\ImportFiles.InstallLog
+Installing service ImportFiles...
+Service ImportFiles has been successfully installed.
+Creating EventLog source ImportFiles in log Application...
+Committing assembly 'D:\Home\sagis\core\ServiceIndex\wsIndex\ImportFiles\bin\Debug\ImportFiles.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Home\sagis\core\ServiceIndex\wsIndex\ImportFiles\bin\Debug\ImportFiles.exe
+   logfile = D:\Home\sagis\core\ServiceIndex\wsIndex\ImportFiles\bin\Debug\ImportFiles.InstallLog
+Installing assembly 'E:\soft\wsImportFile\bin\Debug\ImportFiles.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\soft\wsImportFile\bin\Debug\ImportFiles.exe
+   logfile = E:\soft\wsImportFile\bin\Debug\ImportFiles.InstallLog
+Installing service ImportFiles...
+Service ImportFiles has been successfully installed.
+Creating EventLog source ImportFiles in log Application...
+Committing assembly 'E:\soft\wsImportFile\bin\Debug\ImportFiles.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\soft\wsImportFile\bin\Debug\ImportFiles.exe
+   logfile = E:\soft\wsImportFile\bin\Debug\ImportFiles.InstallLog

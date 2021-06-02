@@ -1,0 +1,67 @@
+C:\Application\Project\C#\DBInteractive\bin\Debug\DBInteractive.exe.config
+C:\Application\Project\C#\DBInteractive\bin\Debug\DBInteractive.exe
+C:\Application\Project\C#\DBInteractive\bin\Debug\DBInteractive.pdb
+C:\Application\Project\C#\DBInteractive\obj\Debug\DBInteractive.Home.resources
+C:\Application\Project\C#\DBInteractive\obj\Debug\DBInteractive.ConnectDB.resources
+C:\Application\Project\C#\DBInteractive\obj\Debug\DBInteractive.Clone.resources
+C:\Application\Project\C#\DBInteractive\obj\Debug\DBInteractive.Properties.Resources.resources
+C:\Application\Project\C#\DBInteractive\obj\Debug\DB.csproj.GenerateResource.cache
+C:\Application\Project\C#\DBInteractive\obj\Debug\DB.csproj.CoreCompileInputs.cache
+C:\Application\Project\C#\DBInteractive\obj\Debug\DBInteractive.exe
+C:\Application\Project\C#\DBInteractive\obj\Debug\DBInteractive.pdb
+C:\Application\Project\C#\DBInteractive\obj\Debug\DB.csprojAssemblyReference.cache
+C:\Ứng dụng\Project\C#\DB\bin\Debug\DBInteractive.exe.config
+C:\Ứng dụng\Project\C#\DB\bin\Debug\DBInteractive.exe
+C:\Ứng dụng\Project\C#\DB\bin\Debug\DBInteractive.pdb
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DB.csprojAssemblyReference.cache
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DBInteractive.Properties.Resources.resources
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DB.csproj.GenerateResource.cache
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DBInteractive.exe
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DBInteractive.pdb
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DB.Home.resources
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DB.ConnectDB.resources
+C:\Ứng dụng\Project\C#\DB\obj\Debug\DB.Clone.resources
+C:\Project\C#\DB\bin\Debug\DB.exe.config
+C:\Project\C#\DB\bin\Debug\DB.exe
+C:\Project\C#\DB\bin\Debug\DB.pdb
+C:\Project\C#\DB\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Project\C#\DB\bin\Debug\Newtonsoft.Json.dll
+C:\Project\C#\DB\bin\Debug\System.Buffers.dll
+C:\Project\C#\DB\bin\Debug\System.Memory.dll
+C:\Project\C#\DB\bin\Debug\System.Numerics.Vectors.dll
+C:\Project\C#\DB\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Project\C#\DB\bin\Debug\System.Text.Encodings.Web.dll
+C:\Project\C#\DB\bin\Debug\System.Text.Json.dll
+C:\Project\C#\DB\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Project\C#\DB\bin\Debug\System.ValueTuple.dll
+C:\Project\C#\DB\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Project\C#\DB\bin\Debug\Newtonsoft.Json.xml
+C:\Project\C#\DB\bin\Debug\System.Buffers.xml
+C:\Project\C#\DB\bin\Debug\System.Memory.xml
+C:\Project\C#\DB\bin\Debug\System.Numerics.Vectors.xml
+C:\Project\C#\DB\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Project\C#\DB\bin\Debug\System.Text.Encodings.Web.xml
+C:\Project\C#\DB\bin\Debug\System.Text.Json.xml
+C:\Project\C#\DB\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Project\C#\DB\bin\Debug\System.ValueTuple.xml
+C:\Project\C#\DB\obj\Debug\DB.Home.resources
+C:\Project\C#\DB\obj\Debug\DB.ConnectDB.resources
+C:\Project\C#\DB\obj\Debug\DB.Clone.resources
+C:\Project\C#\DB\obj\Debug\DB.Properties.Resources.resources
+C:\Project\C#\DB\obj\Debug\DB.QuaTrinhXuLy.resources
+C:\Project\C#\DB\obj\Debug\DB.ThongKeNhanSu.resources
+C:\Project\C#\DB\obj\Debug\DB.csproj.GenerateResource.cache
+C:\Project\C#\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
+C:\Project\C#\DB\obj\Debug\DB.csproj.CopyComplete
+C:\Project\C#\DB\obj\Debug\DB.exe
+C:\Project\C#\DB\obj\Debug\DB.pdb
+C:\Project\C#\DB\obj\Debug\DB.csprojAssemblyReference.cache
+C:\Project\C#\DB\bin\Debug\AdvancedDataGridView.dll
+C:\Project\C#\DB\bin\Debug\AdvancedDataGridView.xml
+C:\Project\C#\DB\bin\Debug\fr\AdvancedDataGridView.resources.dll
+C:\Project\C#\DB\bin\Debug\ru\AdvancedDataGridView.resources.dll
+C:\Project\C#\DB\obj\Debug\DB.PDF.resources
+C:\Project\C#\DB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Project\C#\DB\bin\Debug\itextsharp.dll
+C:\Project\C#\DB\bin\Debug\itextsharp.xml
