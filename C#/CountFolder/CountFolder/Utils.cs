@@ -33,7 +33,7 @@ namespace CountFolder
             int rowStart = 4;
             int columnStart = 1;
             int rowEnd = 1000;
-            int columnEnd = 5;
+            int columnEnd = 4;
 
             //in đậm tiêu đề
             Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range((Microsoft.Office.Interop.Excel.Range)oSheet.Cells[3, columnStart],
@@ -57,42 +57,37 @@ namespace CountFolder
             // Tạo phần đầu nếu muốn
             Microsoft.Office.Interop.Excel.Range head = oSheet.get_Range((Microsoft.Office.Interop.Excel.Range)oSheet.Cells[1, columnStart], (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[1, columnEnd]);
             head.MergeCells = true;
-            head.Value2 = title;
+            head.Value2 ="Thống kê Thái Bình ngày "+ DateTime.Now.ToString("dd/MM/yyyy");
             head.Font.Bold = true;
             head.Font.Name = "Tahoma";
             head.Font.Size = "12";
             head.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-            //title
+            //title 1
             Microsoft.Office.Interop.Excel.Range t0 = oSheet.Cells[3, 1];
-            t0.Value2 = "Tên gói";
+            t0.Value2 = "Tên Phông";
             t0.Font.Name = "Tahoma";
             t0.Font.Size = "12";
             t0.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             Microsoft.Office.Interop.Excel.Range t1 = oSheet.Cells[3, 2];
-            t1.Value2 = "BatchID";
+            t1.Value2 = "Số lượng JPG";
             t1.Font.Name = "Tahoma";
             t1.Font.Size = "12";
             t1.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             Microsoft.Office.Interop.Excel.Range t2 = oSheet.Cells[3, 3];
-            t2.Value2 = "Tên trường";
+            t2.Value2 = "Số trường hợp không mã";
             t2.Font.Name = "Tahoma";
             t2.Font.Size = "12";
             t2.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             Microsoft.Office.Interop.Excel.Range t3 = oSheet.Cells[3, 4];
-            t3.Value2 = "Biên mục lần 1";
+            t3.Value2 = "Số hồ sơ";
             t3.Font.Name = "Tahoma";
             t3.Font.Size = "12";
             t3.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
-            Microsoft.Office.Interop.Excel.Range t4 = oSheet.Cells[3, 5];
-            t4.Value2 = "Biên mục lần 2";
-            t4.Font.Name = "Tahoma";
-            t4.Font.Size = "12";
-            t4.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
@@ -125,5 +120,14 @@ namespace CountFolder
             oSheet.Columns.AutoFit();
         }
 
+        public static bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
     }
 }

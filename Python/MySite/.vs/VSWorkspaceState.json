@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MyApp"
   ],
-  "SelectedNode": "\\PythonDemo.py",
+  "SelectedNode": "\\manage.py",
   "PreviewInSolutionExplorer": false
 }
