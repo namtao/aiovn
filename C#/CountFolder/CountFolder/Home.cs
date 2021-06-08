@@ -188,6 +188,7 @@ namespace CountFolder
             }
         }
 
+        //Thống kê trường + copy k mã
         public void ThongKe(string path)
         {
             string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\nocode.txt";
@@ -198,7 +199,6 @@ namespace CountFolder
             //thống kê ảnh
             foreach (string pathDir in Directory.GetDirectories(path))
             {
-
                 using (StreamWriter writer = File.AppendText(txtPath))
                 {
                     string[] arrPathJpg = Directory.GetFiles(pathDir, "*.jpg", SearchOption.AllDirectories);
@@ -211,49 +211,17 @@ namespace CountFolder
                             && !IsNumber(new DirectoryInfo(str).Parent.Name.Substring(new DirectoryInfo(str).Parent.Name.Length - 3, 3)))
                         {
                             listNoCode.Add(Directory.GetParent(str) + "");
-                            /*if (str.Contains("CĐHH") && str.Contains("dong hung"))
+
+                            string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", @"CĐHH", new DirectoryInfo(pathDir).Name.Trim(), new DirectoryInfo(str).Parent.Name.ToString());
+
+                            if (!Directory.Exists(dst))
+                                Directory.CreateDirectory(dst);
+                            if (!File.Exists(Path.Combine(dst, new DirectoryInfo(str).Name)))
+                                File.Copy(str, Path.Combine(dst, new DirectoryInfo(str).Name));
+                            else
                             {
-                                string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", "CĐHH", "Đông Hưng", new DirectoryInfo(str).Parent.Name.ToString());
-
-                                if (!Directory.Exists(dst))
-                                    Directory.CreateDirectory(dst);
-                                if (!File.Exists(Path.Combine(dst, new DirectoryInfo(str).Name)))
-                                    File.Copy(str, Path.Combine(dst, new DirectoryInfo(str).Name));
-                                else
-                                {
-                                    index++;
-                                    File.Copy(str, Path.Combine(dst, index + new DirectoryInfo(str).Name));
-                                }
-                            }
-
-                            if (str.Contains("CĐHH") && str.Contains("tien hai"))
-                            {
-                                string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", "CĐHH", "Tiền Hải", new DirectoryInfo(str).Parent.Name.ToString());
-
-                                if (!Directory.Exists(dst))
-                                    Directory.CreateDirectory(dst);
-                                if(!File.Exists(Path.Combine(dst, new DirectoryInfo(str).Name)))
-                                    File.Copy(str, Path.Combine(dst, new DirectoryInfo(str).Name));
-                                else
-                                {
-                                    index++;
-                                    File.Copy(str, Path.Combine(dst, index + new DirectoryInfo(str).Name));
-                                }
-                            }*/
-
-                            if (str.Contains("benh binh"))
-                            {
-                                string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", "Bệnh binh", new DirectoryInfo(pathDir).Name.Trim(), new DirectoryInfo(str).Parent.Name.ToString());
-
-                                if (!Directory.Exists(dst))
-                                    Directory.CreateDirectory(dst);
-                                if (!File.Exists(Path.Combine(dst, new DirectoryInfo(str).Name)))
-                                    File.Copy(str, Path.Combine(dst, new DirectoryInfo(str).Name));
-                                else
-                                {
-                                    index++;
-                                    File.Copy(str, Path.Combine(dst, index + new DirectoryInfo(str).Name));
-                                }
+                                index++;
+                                File.Copy(str, Path.Combine(dst, index + new DirectoryInfo(str).Name));
                             }
                         }
                     }
@@ -332,60 +300,73 @@ namespace CountFolder
             Utils.ExportThongKe(arr, "Sheet", "Title");
         }
         
-        public void CopyCĐHH(string path)
+        //Copy 89 23
+        public void CopyCĐHH89(string path)
         {
-            string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\nocode.txt";
-            //File.WriteAllText(txtPath, String.Empty);
-            //thống kê ảnh
             foreach (string pathDir in Directory.GetDirectories(path))
             {
-                using (StreamWriter writer = File.AppendText(txtPath))
+                string[] arrPathJpg = Directory.GetFiles(pathDir, "*.jpg", SearchOption.AllDirectories);
+                //List<string> listNoCode = new List<string>();
+                List<string> listHoSo = new List<string>();
+                foreach (string str in arrPathJpg)
                 {
-                    string[] arrPathJpg = Directory.GetFiles(pathDir, "*.jpg", SearchOption.AllDirectories);
-                    List<string> listNoCode = new List<string>();
-                    List<string> listHoSo = new List<string>();
-                    foreach (string str in arrPathJpg)
+                    //kiểm tra có phải số không
+                    if(str.Split('\\')[9].Contains("54") || str.Split('\\')[9].Contains("26") ||
+                        Utils.IsNumber(str.Split('\\')[9].Substring(0, 1)))
                     {
-                        //kiểm tra có phải số không
+                        //kiểm tra có phải 8 hoặc 9 không
                         if(str.Split('\\')[9].Contains("54") || str.Split('\\')[9].Contains("26") ||
-                            Utils.IsNumber(str.Split('\\')[9].Substring(0, 1)))
+                            Int32.Parse(str.Split('\\')[9].Substring(0, 1)) == 8 || Int32.Parse(str.Split('\\')[9].Substring(0, 1)) == 9)
                         {
-                            //kiểm tra có phải 8 hoặc 9 không
-                            if(str.Split('\\')[9].Contains("54") || str.Split('\\')[9].Contains("26") ||
-                                Int32.Parse(str.Split('\\')[9].Substring(0, 1)) == 8 || Int32.Parse(str.Split('\\')[9].Substring(0, 1)) == 9)
+                            //kiểm tra có ảnh <=3 không
+                            if(Directory.GetFiles(Directory.GetParent(str).ToString(), "*.jpg", SearchOption.AllDirectories).Length <= 3)
                             {
-                                //kiểm tra có ảnh <=3 không
-                                if(Directory.GetFiles(Directory.GetParent(str).ToString(), "*.jpg", SearchOption.AllDirectories).Length <= 3)
+                                string root = "";
+                                for (int i = 7; i< str.Split('\\').Length; i++)
                                 {
-                                    string root = "";
-                                    for (int i = 7; i< str.Split('\\').Length; i++)
-                                    {
-                                        root = Path.Combine(root, str.Split('\\')[i]);
-                                    }
-
-                                    root = Path.Combine(@"\\192.168.31.206\Share\CĐHH 8 9", root);
-
-                                    if (!Directory.Exists(Directory.GetParent(root).ToString()))
-                                        Directory.CreateDirectory(Directory.GetParent(root).ToString());
-
-                                    File.Copy(str, root);
+                                    root = Path.Combine(root, str.Split('\\')[i]);
                                 }
+
+                                root = Path.Combine(@"\\192.168.31.206\Share\CĐHH 8 9", root);
+
+                                if (!Directory.Exists(Directory.GetParent(root).ToString()))
+                                    Directory.CreateDirectory(Directory.GetParent(root).ToString());
+
+                                File.Copy(str, root);
                             }
                         }
-                        /*if (str.Contains("benh binh"))
-                        {
-                            string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", "Bệnh binh", new DirectoryInfo(pathDir).Name.Trim(), new DirectoryInfo(str).Parent.Name.ToString());
+                    }
+                }
+            }
+        }
 
-                            if (!Directory.Exists(dst))
-                                Directory.CreateDirectory(dst);
-                            if (!File.Exists(Path.Combine(dst, new DirectoryInfo(str).Name)))
-                                File.Copy(str, Path.Combine(dst, new DirectoryInfo(str).Name));
-                            else
-                            {
-                                index++;
-                                File.Copy(str, Path.Combine(dst, index + new DirectoryInfo(str).Name));
-                            }
-                        }*/
+        //Copy CĐHH cần import
+        public void CopyCĐHHImport(string path)
+        {
+            foreach (string pathDir in Directory.GetDirectories(path))
+            {
+                string[] arrPathJpg = Directory.GetFiles(pathDir, "*.jpg", SearchOption.AllDirectories);
+                List<string> listCode = new List<string>();
+                foreach (string str in arrPathJpg)
+                {
+                    if (!str.Split('\\')[9].Contains("54") && !str.Split('\\')[9].Contains("26")
+                        && IsNumber(str.Split('\\')[9].Substring(0, 1))
+                        && Int32.Parse(str.Split('\\')[9].Substring(0, 1)) != 8 && Int32.Parse(str.Split('\\')[9].Substring(0, 1)) != 9
+                        && ((new DirectoryInfo(str).Parent.Name.Trim().Length >= 3) && (IsNumber(new DirectoryInfo(str).Parent.Name.Substring(0, 3))
+                            || IsNumber(new DirectoryInfo(str).Parent.Name.Substring(new DirectoryInfo(str).Parent.Name.Length - 3, 3)))))
+                    {
+                        string root = "";
+                        for (int i = 7; i < str.Split('\\').Length; i++)
+                        {
+                            root = Path.Combine(root, str.Split('\\')[i]);
+                        }
+
+                        root = Path.Combine(@"\\192.168.31.206\Share\JPG CĐHH Import", root);
+
+                        if (!Directory.Exists(Directory.GetParent(root).ToString()))
+                            Directory.CreateDirectory(Directory.GetParent(root).ToString());
+
+                        File.Copy(str, root);
                     }
                 }
             }
@@ -437,7 +418,11 @@ namespace CountFolder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CopyCĐHH(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH");
+            string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\tien hai";
+
+            //ThongKe(path);
+            //CopyCĐHH89(path);
+            CopyCĐHHImport(path);
 
             Close();
         }
