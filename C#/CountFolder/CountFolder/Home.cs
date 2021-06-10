@@ -206,13 +206,13 @@ namespace CountFolder
                     List<string> listHoSo = new List<string>();
                     foreach (string str in arrPathJpg)
                     {
-                        listHoSo.Add(Directory.GetParent(str) + "");
+                        //listHoSo.Add(Directory.GetParent(str) + "");
                         if ((new DirectoryInfo(str).Parent.Name.Trim().Length >= 3) && !IsNumber(new DirectoryInfo(str).Parent.Name.Substring(0, 3))
                             && !IsNumber(new DirectoryInfo(str).Parent.Name.Substring(new DirectoryInfo(str).Parent.Name.Length - 3, 3)))
                         {
                             listNoCode.Add(Directory.GetParent(str) + "");
 
-                            string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", @"CĐHH", new DirectoryInfo(pathDir).Name.Trim(), new DirectoryInfo(str).Parent.Name.ToString());
+                            /*string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", @"CĐHH", new DirectoryInfo(pathDir).Name.Trim(), new DirectoryInfo(str).Parent.Name.ToString());
 
                             if (!Directory.Exists(dst))
                                 Directory.CreateDirectory(dst);
@@ -222,7 +222,7 @@ namespace CountFolder
                             {
                                 index++;
                                 File.Copy(str, Path.Combine(dst, index + new DirectoryInfo(str).Name));
-                            }
+                            }*/
                         }
                     }
 
@@ -231,15 +231,15 @@ namespace CountFolder
                         writer.WriteLine(strList);
                     }
 
-                    arr[row, 0] = new DirectoryInfo(pathDir).Name.Trim();
+                    /*arr[row, 0] = new DirectoryInfo(pathDir).Name.Trim();
                     arr[row, 1] = arrPathJpg.Length.ToString();
                     arr[row, 2] = listNoCode.Distinct().ToList().Count.ToString();
                     arr[row, 3] = listHoSo.Distinct().ToList().Count.ToString();
-                    row++;
+                    row++;*/
                 }
             }
 
-            int tongJpg = 0, tongKhongMa = 0, tongHoSo = 0;
+            /*int tongJpg = 0, tongKhongMa = 0, tongHoSo = 0;
 
             for(int i = 0; i < row; i++)
             {
@@ -297,7 +297,7 @@ namespace CountFolder
                 }
             }
 
-            Utils.ExportThongKe(arr, "Sheet", "Title");
+            Utils.ExportThongKe(arr, "Sheet", "Title");*/
         }
         
         //Copy 89 23
@@ -372,6 +372,42 @@ namespace CountFolder
             }
         }
 
+        //Thống kê số lượng hồ sơ 89
+        public void ThongKeCĐHH89(string path)
+        {
+            foreach (string pathDir in Directory.GetDirectories(path))
+            {
+                using (StreamWriter writer = File.AppendText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\CDHH.txt"))
+                {
+                    string[] arrPathJpg = Directory.GetFiles(pathDir, "*.jpg", SearchOption.AllDirectories);
+                    List<string> listHoSo89 = new List<string>();
+                    foreach (string str in arrPathJpg)
+                    {
+                        //kiểm tra có phải số không
+                        if ((new DirectoryInfo(str).Parent.Name.Trim().Length >= 3) && !IsNumber(new DirectoryInfo(str).Parent.Name.Substring(0, 3))
+                            && !IsNumber(new DirectoryInfo(str).Parent.Name.Substring(new DirectoryInfo(str).Parent.Name.Length - 3, 3)))
+                        {
+                            if (str.Split('\\')[9].Contains("54") || str.Split('\\')[9].Contains("26") ||
+                            Utils.IsNumber(str.Split('\\')[9].Substring(0, 1)))
+                            {
+                                //kiểm tra có phải 8 hoặc 9 không
+                                if (str.Split('\\')[9].Contains("54") || str.Split('\\')[9].Contains("26") ||
+                                    Int32.Parse(str.Split('\\')[9].Substring(0, 1)) == 8 || Int32.Parse(str.Split('\\')[9].Substring(0, 1)) == 9)
+                                {
+                                    listHoSo89.Add(Directory.GetParent(str) + "");
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (string strList in listHoSo89.Distinct().ToList())
+                    {
+                        writer.WriteLine(strList);
+                    }
+                }
+            }
+        }
+
         public void getFields()
         {
             //thống kê trường
@@ -418,12 +454,13 @@ namespace CountFolder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\tien hai";
+            string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\CHAT DOC HOA HOC";
 
-            //ThongKe(path);
+            ThongKe(path);
             //CopyCĐHH89(path);
-            CopyCĐHHImport(path);
-
+            //CopyCĐHHImport(path);
+            //ThongKeCĐHH89(path);
+            MessageBox.Show("Xong!!!");
             Close();
         }
 

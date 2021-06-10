@@ -1,16 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
+    <meta charset="utf-8">
     <title>Home</title>
-</head>
-<body>
-    {% for item in path %}
-    {{item}}
-    <br>
-    {% endfor %}
-</body>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="static/favicon_16.ico"/>
+    <link rel="bookmark" href="static/favicon_16.ico"/>
+    <!-- site css -->
+    <link rel="stylesheet" href="static/dist/css/site.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="static/dist/js/site.min.js"></script>
+    <script src="static/jquery.js"></script>
+  </head>
+  <body>
+    {% include "MyApp/body.html" %}
+
+    <footer>
+      <div>
+        <div class="site-footer">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <h3>Talk to us</h3>
+                  <ul>
+                    <li>Tweet us at <a href="https://twitter.com" target="_blank">@YourTwitter</a>&nbsp;&nbsp;&nbsp;&nbsp;Email us at <span class="connect">info@yourdomain.com</span></li>
+                    <li>
+                      <a title="Twitter" href="https://twitter.com" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe121"></i></a>
+                      <a title="Facebook" href="https://www.facebook.com" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe10b"></i></a>
+                      <a title="Google+" href="https://plus.google.com/" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe110"></i></a>
+                      <a title="Github" href="https://github.com/" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe10e"></i></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <!-- Begin MailChimp Signup Form -->
+                  <link href="#" rel="stylesheet" type="text/css">
+                  <div id="mc_embed_signup">
+                  <h3 style="margin-bottom: 15px;">Newsletter</h3>
+                  <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
+                      <input style="margin-bottom: 10px;" type="email" value="" name="EMAIL" class="email form-control" id="mce-EMAIL" placeholder="email address" required>
+                      <span class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary"></span>
+                  </form>
+                  </div>
+                  <!--End mc_embed_signup-->
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="panel-body">
+          <div class="content-row">
+            <h2 class="content-row-title"></h2>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="footer">
+                  <div class="container">
+                    <div class="clearfix">
+                      <div class="footer-logo"><a href="#">Bootflat-Admin</a></div>
+                      <dl class="footer-nav">
+                        <dt class="nav-title">PORTFOLIO</dt>
+                        <dd class="nav-item"><a href="#">Web Design</a></dd>
+                        <dd class="nav-item"><a href="#">Branding &amp; Identity</a></dd>
+                        <dd class="nav-item"><a href="#">Mobile Design</a></dd>
+                        <dd class="nav-item"><a href="#">Print</a></dd>
+                        <dd class="nav-item"><a href="#">User Interface</a></dd>
+                      </dl>
+                      <dl class="footer-nav">
+                        <dt class="nav-title">ABOUT</dt>
+                        <dd class="nav-item"><a href="#">The Company</a></dd>
+                        <dd class="nav-item"><a href="#">History</a></dd>
+                        <dd class="nav-item"><a href="#">Vision</a></dd>
+                      </dl>
+                      <dl class="footer-nav">
+                        <dt class="nav-title">GALLERY</dt>
+                        <dd class="nav-item"><a href="#">Flickr</a></dd>
+                        <dd class="nav-item"><a href="#">Picasa</a></dd>
+                        <dd class="nav-item"><a href="#">iStockPhoto</a></dd>
+                        <dd class="nav-item"><a href="#">PhotoDune</a></dd>
+                      </dl>
+                      <dl class="footer-nav">
+                        <dt class="nav-title">CONTACT</dt>
+                        <dd class="nav-item"><a href="#">Basic Info</a></dd>
+                        <dd class="nav-item"><a href="#">Map</a></dd>
+                        <dd class="nav-item"><a href="#">Conctact Form</a></dd>
+                      </dl>
+                    </div>
+                    <div class="footer-copyright text-center">Copyright &copy; 2021 Nam Nguyen. All rights reserved.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      
+      </div>
+    </footer>
+  </body>
 </html>

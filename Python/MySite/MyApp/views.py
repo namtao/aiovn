@@ -24,5 +24,5 @@ def getFiles (folderPath, fileFormat):
     return list(dict.fromkeys(lst))
 
 def index(request):
-    context  = {"path": getFiles(r"\\192.168.31.206\Share\JPG (chưa kiểm tra)", "jpg")}
+    context  = {"path": "test"}
     return render(request, "MyApp/index.html", context)

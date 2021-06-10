@@ -85,5 +85,5 @@ C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.CoreCompileI
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.CopyComplete
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.exe
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.pdb
-C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csprojAssemblyReference.cache
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.Home.resources
+C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.AssemblyReference.cache
