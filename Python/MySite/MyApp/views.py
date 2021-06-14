@@ -23,6 +23,9 @@ def getFiles (folderPath, fileFormat):
     # Remove Duplicates from list
     return list(dict.fromkeys(lst))
 
-def index(request):
+def home(request):
     context  = {"path": "test"}
-    return render(request, "MyApp/index.html", context)
+    return render(request, "MyApp/home.html", context)
+
+def details(request):
+    return render(request, "MyApp/details.html")
