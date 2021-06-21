@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+{% include "MyApp/head.html" %}
+
+<body>
+
+  {% include "MyApp/header.html" %}
+
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Đọc sách mỗi ngày</h2>
+        <p>Sách đọc mỗi ngày</p>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <br><br><br>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div>
+
+              <div>
+                <div class="testimonial-item">
+                  <!-- <img src="static/assets/img/pic.jpg" class="testimonial-img" alt=""> -->
+                  <h3><a href="#">16/06/2021</a></h3>
+                  <!-- <h4>Nam Nguyen &amp; Founder</h4> -->
+                  <h4>Nam Nguyen</h4>
+                  <p>
+                    <ul>
+                      
+                    </ul>
+                  </p>
+                    <!-- <i class="bx bxs-quote-alt-left quote-icon-left"></i> -->
+                     <!-- <i class="bx bxs-quote-alt-right quote-icon-right"></i> -->
+                  
+                  <div  style="right: 20px; position: absolute; bottom: 5px;">
+                    <a href="" onclick="read()">
+                      <i class='bx bx-book-reader'></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <br><br><br>
+  </main><!-- End #main -->
+
+  {% include "MyApp/footer.html" %}
+
+</body>
+
+</html>
+
+
+<script>
+  function activeFunction(e) {
+    e.preventDefault(); 
+    var elems = document.querySelector(".active");
+    if(elems !==null){
+    elems.classList.remove("active");
+    }
+    e.target.className = "active";
+  }
+
+  function read(){
+    
+  }
+</script>

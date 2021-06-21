@@ -28,7 +28,7 @@ goto :switch-case-N-%N% 2>nul || (
 		ECHO 0: Thanh Pho
 		ECHO 1: Mang noi bo
 
-		::/p cho biet gia tri nhan vao duoc nhap t ban phim
+		::/p cho biet gia tri nhan vao duoc nhap tu ban phim
 		::/a cho biet gia tri nhan vao la 1 bieu thuc
 		set /p Choose=Chon mang: 
 		IF %Choose% == 0 (

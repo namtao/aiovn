@@ -1,6 +1,10 @@
 import pyttsx3
+f = open(r"C:\Projects\Python\tts.txt", "r", encoding="utf-8")
+# print(f.read())
 engine = pyttsx3.init()
+rate = engine.getProperty('rate')
+# engine.setProperty('rate', 180)
 voices = engine.getProperty('voices') 
 engine.setProperty('voice', voices[1].id) 
-engine.say('Xin Chào Các Bạn')
+engine.say(f.read())
 engine.runAndWait()

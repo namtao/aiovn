@@ -440,6 +440,32 @@ namespace CountFolder
             MessageBox.Show(count1 + "");
         }
 
+        //thống kê đường dẫn thư mục
+        public void ThongKePathJpg(string path)
+        {
+            string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\nocode.txt";
+            File.WriteAllText(txtPath, String.Empty);
+            foreach (string pathDir in Directory.GetDirectories(path))
+            {
+                using (StreamWriter writer = File.AppendText(txtPath))
+                {
+                    string[] arrPathJpg = Directory.GetFiles(pathDir, "*.jpg", SearchOption.AllDirectories);
+                    List<string> listNoCode = new List<string>();
+                    List<string> listHoSo = new List<string>();
+                    foreach (string str in arrPathJpg)
+                    {
+                        listNoCode.Add(Directory.GetParent(str) + "");
+                    }
+
+                    foreach (string strList in listNoCode.Distinct().ToList())
+                    {
+                        writer.WriteLine(strList);
+                    }
+                }
+            }
+        }
+
+
         public void getFields()
         {
             //thống kê trường
@@ -488,7 +514,8 @@ namespace CountFolder
         {
             string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH";
 
-            ThongKeCĐHH1(path);
+            ThongKePathJpg(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\CHAT DOC HOA HOC BS");
+            //ThongKeCĐHH1(path);
             //CopyCĐHH89(path);
             //CopyCĐHHImport(path);
             //ThongKeCĐHH89(path);

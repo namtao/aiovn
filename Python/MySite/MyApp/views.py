@@ -3,6 +3,10 @@ from django.http import HttpResponse
 import datetime
 from pathlib import Path
 import os, shutil
+import pyodbc
+import pandas as pd
+import pyttsx3
+import django
 
 # get file in format
 def getFiles (folderPath, fileFormat):
@@ -23,9 +27,42 @@ def getFiles (folderPath, fileFormat):
     # Remove Duplicates from list
     return list(dict.fromkeys(lst))
 
+def connectDB():
+    # create connection string db
+    conn = pyodbc.connect('Driver={SQL Server};'
+                      'Server=.;'
+                      'Database=Public;'
+                      'Trusted_Connection=yes;')
+    cursor = conn.cursor()
+    cursor.execute('select metadata from TblMetadata')
+
+    for row in cursor:
+        pass
+
 def home(request):
     context  = {"path": "test"}
     return render(request, "MyApp/home.html", context)
 
 def details(request):
     return render(request, "MyApp/details.html")
+
+def cmd(request):
+    return render(request, "MyApp/cmd.html")
+
+def plan(request):
+    return render(request, "MyApp/plan.html")
+
+def truyenhay(request):
+    return render(request, "MyApp/truyenhay.html")
+
+def python(request):
+    return render(request, "MyApp/python.html")
+    # return HttpResponse(django.VERSION)
+
+def read(request):
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices') 
+    engine.setProperty('voice', voices[1].id) 
+    engine.say('Xin Chào Các Bạn')
+    engine.say('tối nay là thứ tư')
+    engine.runAndWait()

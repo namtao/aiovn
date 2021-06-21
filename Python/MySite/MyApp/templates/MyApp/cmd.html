@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+{% include "MyApp/head.html" %}
+
+<body>
+
+  {% include "MyApp/header.html" %}
+
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Windows commands</h2>
+        <p>Tìm hiểu về các câu lệnh trong Windows</p>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <br><br><br>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div>
+
+              <div>
+                <div class="testimonial-item">
+                  <!-- <img src="static/assets/img/pic.jpg" class="testimonial-img" alt=""> -->
+                  <h3><a href="details">Google</a></h3>
+                  <h4>Ceo &amp; Founder</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Google cung cấp cho chúng ta nhiều phông chữ khác nhau để sử dụng. Để chọn phông thì đầu tiên bạn hãy truy cập trang chủ của Google Fonts. Ở trang này bạn sẽ thấy danh sách các phông cung cấp bởi Google. Bạn cũng có thể sử dụng ô tìm kiếm ở góc trên ngoài cùng phía trái để tìm kiếm theo tên phông.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  
+                  <div  style="right: 20px; position: absolute; bottom: 5px;">
+                    <a href="">
+                      <i class='bx bxs-eraser'></i> 
+                    </a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <br><br><br>
+  </main><!-- End #main -->
+
+  {% include "MyApp/footer.html" %}
+
+</body>
+
+</html>
+
+
+<script>
+  function activeFunction(e) {
+    e.preventDefault(); 
+    var elems = document.querySelector(".active");
+    if(elems !==null){
+    elems.classList.remove("active");
+    }
+    e.target.className = "active";
+  }
+</script>

@@ -1,9 +1,13 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('', views.home, name="home"),
-    #path('administrator', views.administrator, name="administrator"),
     path('details', views.details, name="details"),
+    path('cmd', views.cmd, name="cmd"),
+    path('plan', views.plan, name="plan"),
+    path('truyenhay', views.truyenhay, name="truyenhay"),
+    path('python', views.python, name="python"),
 ]

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="colorPrimary">#008577</color>
+<color name="colorPrimaryDark">#00574B</color>
+<color name="colorAccent">#D81B60</color>
+
+<color name="maudo">#ff0000</color>
+<color name="vang">#ffff09</color>
+<color name="cam">#f7900a</color>
+<color name="xanhduongdam">#0a0af9</color>
+<color name="xanhduong">#387aec</color>
+<color name="xanhnuocbien">#03f4b8</color>
+<color name="den">#000000</color>
+<color name="hong">#f2178c</color>
+<color name="nau">#810733</color>
+<color name="xanhlacay">#2e6104</color>
+<color name="xanhlama">#09ec0c</color>
+<color name="tim">#320564</color>
+</resources>
