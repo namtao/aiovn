@@ -129,9 +129,10 @@
                   </p>
                   
                   <div  style="right: 20px; position: absolute; bottom: 5px;">
-                    <a href="">
-                      <i class='bx bxs-eraser'></i> 
-                    </a>
+                    <!-- <a href=""> -->
+                      <i class='bx bx-volume-full' onclick="al()"></i>
+                    <!-- </a> -->
+                    
                   </div>
                 </div>
               </div>
@@ -146,18 +147,17 @@
 
   {% include "MyApp/footer.html" %}
 
+  <script>
+    function al() {
+        $.ajax({
+          type: "GET",
+          url: "/read",
+          success: function(data){
+              alert("2");         
+          }
+      });
+    }
+  </script>
 </body>
 
 </html>
-
-
-<script>
-  function activeFunction(e) {
-    e.preventDefault(); 
-    var elems = document.querySelector(".active");
-    if(elems !==null){
-    elems.classList.remove("active");
-    }
-    e.target.className = "active";
-  }
-</script>

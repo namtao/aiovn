@@ -71,119 +71,64 @@ namespace CountFolder
             }
         }
 
-        public void Diff()
+        public void Errors()
         {
-            using (StreamWriter streamWriter = File.AppendText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\empty.txt"))
+            string pathDir = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\errors.txt";
+            File.WriteAllText(pathDir, String.Empty);
+            using (StreamWriter streamWriter = File.AppendText(pathDir))
             {
-
-                SqlConnection sql1 = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True");
-                string[] loai = { "HSLS", "HSHHC" };
-                object[,] arr = null;
-                foreach (string s in loai)
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
                 {
-                    sql1.Open();
-                    int rows = Int32.Parse((new SqlCommand("SELECT COUNT(*) FROM TblMetadata " +
-                    "where BatchID in (select BatchManagementID from TblBatchManagement where ProfileName like '%" + s + "%')", sql1).ExecuteScalar()).ToString());
-                    arr = new object[rows * rows, 10];
-                    int countField = 0;
-                    int row = 0;
-                    int count = 0;
-                    //int bm0 = Int32.Parse((new SqlCommand("select COUNT(*) from TblBatchManagement where BatchManagementID not in (select BatchID from TblDataEntryHistory) and ProfileName like '%"+s+"%'", sql1).ExecuteScalar()).ToString());
-                    //int bm1 = Int32.Parse((new SqlCommand("SELECT COUNT(*) FROM (SELECT COUNT(*) AS SoLuong FROM TblDataEntryHistory group by BatchID having count(*) = 1) a", sql1).ExecuteScalar()).ToString());
-                    //int bm2 = Int32.Parse((new SqlCommand("SELECT COUNT(*) FROM (SELECT COUNT(*) AS SoLuong FROM TblDataEntryHistory group by BatchID having count(*) = 2) a", sql1).ExecuteScalar()).ToString());
-                    //int kt = Int32.Parse((new SqlCommand("SELECT COUNT(*) FROM (SELECT COUNT(*) AS SoLuong FROM TblDataEntryHistory group by BatchID having count(*) > 2) a", sql1).ExecuteScalar()).ToString());
-                    sql1.Close();
-                    using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                    string sql = "use ADDJ_AnGiang; " +
+                    "select m.Metadata,ProfileName, TenDonVi, HoSoSo from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID where Status != 7";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        string sql = "use ADDJ_AnGiang; " +
-                        "SELECT Metadata, BatchID FROM TblMetadata " +
-                        "where BatchID in (select BatchManagementID from TblBatchManagement where ProfileName like '%" + s + "%')";
-                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
                         {
-                            cmd.CommandType = CommandType.Text;
-                            con.Open();
-                            SqlDataReader dr = cmd.ExecuteReader();
-                            while (dr.Read())
+                            if (dr[0].ToString().Trim().Length > 0 && dr[0] != null && !dr[0].ToString().Trim().Equals(""))
                             {
-                                if (dr[0].ToString().Trim().Length > 0 && dr[0] != null && !dr[0].ToString().Trim().Equals(""))
+                                JsonDocument doc = JsonDocument.Parse(dr[0].ToString());
+                                JsonElement root = doc.RootElement;
+                                for (int i = 0; i < root.GetArrayLength(); i++)
                                 {
-                                    JsonDocument doc = JsonDocument.Parse(dr[0].ToString());
-                                    JsonElement root = doc.RootElement;
-                                    for (int i = 0; i < root.GetArrayLength(); i++)
-                                    {
-                                        string indexName = root[i].GetProperty("indexName").ToString().Trim();
-                                        string indexValue = root[i].GetProperty("indexValue").ToString().Trim();
-                                        string indexValue2 = root[i].GetProperty("indexValue2").ToString().Trim();
-                                        string indexValueQC = root[i].GetProperty("indexValueQC").ToString().Trim();
+                                    string indexName = root[i].GetProperty("indexName").ToString().Trim();
+                                    string indexValue = root[i].GetProperty("indexValue").ToString().Trim();
+                                    string indexValue2 = root[i].GetProperty("indexValue2").ToString().Trim();
+                                    string indexValueQC = root[i].GetProperty("indexValueQC").ToString().Trim();
+                                    string err = "";
 
-                                        if ((indexValue == null || indexValue == "") && (indexValue2 == null || indexValue2 == "")
-                                            && (indexValueQC == null || indexValueQC == ""))
+                                    if (indexName.Equals("Ghi chú"))
+                                    {
+                                        if (indexValue != "" && indexValue != null)
                                         {
-                                            streamWriter.WriteLine(dr[1]);
+                                            err = indexValue;
+
+                                            streamWriter.WriteLine(dr[1] + "\t" + dr[2] + "\t" + dr[3] + "\t" + err);
                                         }
 
-                                        if (indexValueQC != null && indexValueQC != "") countField++;
-
-                                        if ((indexValue != null && indexValue != "")
-                                            && (indexValue2 != null && indexValue2 != "") &&
-                                            !indexValue.ToString().Trim().ToUpper().Equals(indexValue2.ToString().Trim().ToUpper()))
+                                        if (indexValue2 != "" && indexValue2 != null)
                                         {
-                                            SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True");
-                                            string str = "use ADDJ_AnGiang; SELECT FullName FROM TblDataEntryHistory d join TblUser u on d.UserID = u.Id where BatchID = " + dr[1].ToString() +
-                                                " order by DateEnd";
-                                            using (SqlCommand cmd2 = new SqlCommand(str, conn))
-                                            {
-                                                conn.Open();
-                                                cmd2.CommandType = CommandType.Text;
-                                                SqlDataReader dataReader = cmd2.ExecuteReader();
-                                                while (dataReader.Read())
-                                                {
-                                                    SqlConnection conStr = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True");
-                                                    string sqlString = "select ProfileName, BatchName from TblBatchManagement where BatchManagementID = " + dr[1].ToString();
-                                                    using (SqlCommand sqlCommand = new SqlCommand(sqlString, conStr))
-                                                    {
-                                                        conStr.Open();
-                                                        sqlCommand.CommandType = CommandType.Text;
-                                                        SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                                                        while (sqlDataReader.Read())
-                                                        {
-                                                            arr[row, 0] = sqlDataReader[0].ToString() + ": " + sqlDataReader[1].ToString();
-                                                        }
-                                                        conStr.Close();
-                                                    }
+                                            err = indexValue2;
+                                            streamWriter.WriteLine(dr[1] + "\t" + dr[2] + "\t" + dr[3] + "\t" + err);
+                                        }
 
-                                                    arr[row, 1] = dr[1].ToString();
-                                                    arr[row, 2] = indexName;
-                                                    if (count == 0) arr[row, 3] = dataReader[0].ToString() + ": " + indexValue;
-                                                    if (count == 1) arr[row, 4] = dataReader[0].ToString() + ": " + indexValue2;
-                                                    count++;
-                                                }
-                                                conn.Close();
-                                                count = 0;
-                                                row++;
-                                            }
+                                        if (indexValueQC != "" && indexValueQC != null)
+                                        {
+                                            err = indexValueQC;
+                                            streamWriter.WriteLine(dr[1] + "\t" + dr[2] + "\t" + dr[3] + "\t" + err);
                                         }
 
                                     }
-
-
                                 }
+
+
                             }
-                            con.Close();
                         }
+                        con.Close();
                     }
-                    MessageBox.Show(s + ": " + countField.ToString() + " trường", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //MessageBox.Show("Chưa biên mục: "+bm0+"\nHoàn thành biên mục 1: " + bm1 + " \nHoàn thành biên mục 2: " + bm2+ "\nHoàn thành kiểm tra: " + kt, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    /*DialogResult res = MessageBox.Show("Bạn có muốn xuất dữ liệu biên mục "+s+" không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (res == DialogResult.Yes)
-                    {
-                        Utils.ExportThongKe(arr, "So sánh", "So sánh giữa các lần biên mục");
-                    }
-                    if (res == DialogResult.No)
-                    {
-
-                    }*/
                 }
             }
         }
@@ -212,7 +157,7 @@ namespace CountFolder
                         {
                             listNoCode.Add(Directory.GetParent(str) + "");
 
-                            string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", @"CĐHH\Bổ sung", new DirectoryInfo(pathDir).Name.Trim(), new DirectoryInfo(str).Parent.Name.ToString());
+                            /*string dst = Path.Combine(@"\\192.168.31.206\Share\JPG không mã", @"CĐHH\Bổ sung", new DirectoryInfo(pathDir).Name.Trim(), new DirectoryInfo(str).Parent.Name.ToString());
 
                             if (!Directory.Exists(dst))
                                 Directory.CreateDirectory(dst);
@@ -222,7 +167,7 @@ namespace CountFolder
                             {
                                 index++;
                                 File.Copy(str, Path.Combine(dst, index + new DirectoryInfo(str).Name));
-                            }
+                            }*/
                         }
                     }
 
@@ -231,17 +176,17 @@ namespace CountFolder
                         writer.WriteLine(strList);
                     }
 
-                    /*arr[row, 0] = new DirectoryInfo(pathDir).Name.Trim();
+                    arr[row, 0] = new DirectoryInfo(pathDir).Name.Trim();
                     arr[row, 1] = arrPathJpg.Length.ToString();
                     arr[row, 2] = listNoCode.Distinct().ToList().Count.ToString();
                     arr[row, 3] = listHoSo.Distinct().ToList().Count.ToString();
-                    row++;*/
+                    row++;
                 }
             }
 
-            /*int tongJpg = 0, tongKhongMa = 0, tongHoSo = 0;
+            int tongJpg = 0, tongKhongMa = 0, tongHoSo = 0;
 
-            for(int i = 0; i < row; i++)
+            for (int i = 0; i < row; i++)
             {
                 tongJpg += Int32.Parse(arr[i, 1].ToString());
                 tongKhongMa += Int32.Parse(arr[i, 2].ToString());
@@ -255,7 +200,7 @@ namespace CountFolder
 
             //thống kê trường
             SqlConnection sql1 = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True");
-            string[] loai = { "HSLS", "HSHHC", "HSTBA", "HSBB", "HSCDHH" };
+            string[] loai = { "HSLS", "HSHHC", "HSTBA", "HSBB", "HSCDHH", "HS62",  };
             foreach (string s in loai)
             {
                 sql1.Open();
@@ -297,7 +242,7 @@ namespace CountFolder
                 }
             }
 
-            Utils.ExportThongKe(arr, "Sheet", "Title");*/
+            Utils.ExportThongKe(arr, "Sheet", "Title");
         }
         
         //Copy 89 23
@@ -510,16 +455,117 @@ namespace CountFolder
             }
         }
 
+        public void TK(string path)
+        {
+            object[,] arr = new object[10 * 10, 10];
+            int row = 0;
+            //thống kê ảnh
+            /*foreach (string pathDir in Directory.GetDirectories(path))
+            {
+                string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\nocode.txt";
+                File.WriteAllText(txtPath, String.Empty);
+
+                using (StreamWriter writer = File.AppendText(txtPath))
+                {
+                    string[] arrPathJpg = Directory.GetFiles(pathDir, "*.jpg", SearchOption.AllDirectories);
+                    List<string> listNoCode = new List<string>();
+                    List<string> listHoSo = new List<string>();
+                    foreach (string str in arrPathJpg)
+                    {
+                        listHoSo.Add(Directory.GetParent(str) + "");
+                        if ((new DirectoryInfo(str).Parent.Name.Trim().Length >= 3) && !IsNumber(new DirectoryInfo(str).Parent.Name.Substring(0, 3))
+                            && !IsNumber(new DirectoryInfo(str).Parent.Name.Substring(new DirectoryInfo(str).Parent.Name.Length - 3, 3)))
+                            listNoCode.Add(Directory.GetParent(str) + "");
+                    }
+
+                    foreach (string strList in listNoCode.Distinct().ToList())
+                    {
+                        writer.WriteLine(strList);
+                    }
+
+                    arr[row, 0] = new DirectoryInfo(pathDir).Name.Trim();
+                    arr[row, 1] = arrPathJpg.Length.ToString();
+                    arr[row, 2] = listNoCode.Distinct().ToList().Count.ToString();
+                    arr[row, 3] = listHoSo.Distinct().ToList().Count.ToString();
+                    row++;
+                }
+            }
+
+            int tongJpg = 0, tongKhongMa = 0, tongHoSo = 0;
+
+            for (int i = 0; i < row; i++)
+            {
+                tongJpg += Int32.Parse(arr[i, 1].ToString());
+                tongKhongMa += Int32.Parse(arr[i, 2].ToString());
+                tongHoSo += Int32.Parse(arr[i, 3].ToString());
+            }
+
+            arr[row, 1] = tongJpg.ToString();
+            arr[row, 2] = tongKhongMa.ToString();
+            arr[row, 3] = tongHoSo.ToString();
+            row = row + 3;*/
+
+            //thống kê trường
+            SqlConnection sql1 = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True");
+            string[] loai = { "HSLS", "HSHHC", "HSTBA", "HSBB", "HSCDHH", "HS62", "HSLTCM", "HSTKN", "HSTNXP1" };
+            foreach (string s in loai)
+            {
+                sql1.Open();
+                int rows = Int32.Parse((new SqlCommand("SELECT COUNT(*) FROM TblMetadata " +
+                "where BatchID in (select BatchManagementID from TblBatchManagement where ProfileName like '%" + s + "%')", sql1).ExecuteScalar()).ToString());
+                int countField = 0;
+                sql1.Close();
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                {
+                    string sql = "use ADDJ_AnGiang; " +
+                    "SELECT Metadata, BatchID FROM TblMetadata " +
+                    "where BatchID in (select BatchManagementID from TblBatchManagement where ProfileName like '%" + s + "%')";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            if (dr[0].ToString().Trim().Length > 0 && dr[0] != null && !dr[0].ToString().Trim().Equals(""))
+                            {
+                                JsonDocument doc = JsonDocument.Parse(dr[0].ToString());
+                                JsonElement root = doc.RootElement;
+                                for (int i = 0; i < root.GetArrayLength(); i++)
+                                {
+                                    string indexName = root[i].GetProperty("indexName").ToString().Trim();
+                                    string indexValueQC = root[i].GetProperty("indexValueQC").ToString().Trim();
+
+                                    if (indexValueQC != null && indexValueQC != "") countField++;
+                                }
+                            }
+                        }
+                        con.Close();
+                    }
+
+                    arr[row, 0] = "Số trường: " + s;
+                    arr[row, 1] = countField.ToString();
+                    row++;
+                }
+            }
+
+            Utils.ExportThongKe(arr, "Sheet", "Title");
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH";
+            //string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH";
 
-            ThongKePathJpg(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\CHAT DOC HOA HOC BS");
+            //ThongKePathJpg(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\CHAT DOC HOA HOC BS");
             //ThongKeCĐHH1(path);
             //CopyCĐHH89(path);
             //CopyCĐHHImport(path);
             //ThongKeCĐHH89(path);
             //MessageBox.Show("Xong!!!");
+
+            //Errors();
+            //MessageBox.Show("Xong!!!");
+            TK(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh");
             Close();
         }
 

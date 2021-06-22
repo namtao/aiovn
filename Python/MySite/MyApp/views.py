@@ -1,3 +1,5 @@
+from typing import NoReturn
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
@@ -55,6 +57,12 @@ def plan(request):
 def truyenhay(request):
     return render(request, "MyApp/truyenhay.html")
 
+def book(request):
+    return render(request, "MyApp/book.html")
+
+def bookdetails(request):
+    return render(request, "MyApp/bookdetails.html")
+
 def python(request):
     return render(request, "MyApp/python.html")
     # return HttpResponse(django.VERSION)
@@ -64,5 +72,6 @@ def read(request):
     voices = engine.getProperty('voices') 
     engine.setProperty('voice', voices[1].id) 
     engine.say('Xin Chào Các Bạn')
-    engine.say('tối nay là thứ tư')
     engine.runAndWait()
+    # return HttpResponseRedirect('.') 
+    return HttpResponse(status=200)

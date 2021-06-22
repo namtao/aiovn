@@ -79,11 +79,10 @@ C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Text.Json.xml
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.ValueTuple.xml
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.ResolveComReference.cache
+C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.Home.resources
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.Properties.Resources.resources
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.GenerateResource.cache
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.CoreCompileInputs.cache
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.CopyComplete
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.exe
 C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.pdb
-C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.Home.resources
-C:\Projects\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csproj.AssemblyReference.cache
