@@ -120,13 +120,26 @@
               <div>
                 <div class="testimonial-item">
                   <!-- <img src="static/assets/img/pic.jpg" class="testimonial-img" alt=""> -->
-                  <h3><a href="details">Google</a></h3>
-                  <h4>Ceo &amp; Founder</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Google cung cấp cho chúng ta nhiều phông chữ khác nhau để sử dụng. Để chọn phông thì đầu tiên bạn hãy truy cập trang chủ của Google Fonts. Ở trang này bạn sẽ thấy danh sách các phông cung cấp bởi Google. Bạn cũng có thể sử dụng ô tìm kiếm ở góc trên ngoài cùng phía trái để tìm kiếm theo tên phông.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
+                  <h3><a href="details">Python</a></h3>
+                  <h4>Nguyễn Văn Nam</h4>
+                  <br>
+                  <section class="about">
+                    <div class="container" data-aos="fade-up">
+
+                      <div class="row">
+                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+                          <ul>
+                            <li><i class="bi bi-check-circle"></i> Django tự động thêm id vào model, ta có thể ghi đè chúng.</li>
+                            <li><i class="bi bi-check-circle"></i> Sử dụng tên của url đã được định nghĩa trong urls.py để thay thế cho đường dẫn phức tạp.</li>
+                            <li><i class="bi bi-check-circle"></i> Tất cả các phương thức post đều sử dung csrf_token.</li>
+                          </ul>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </section>
                   
                   <div  style="right: 20px; position: absolute; bottom: 5px;">
                     <!-- <a href=""> -->
@@ -146,18 +159,6 @@
   </main><!-- End #main -->
 
   {% include "MyApp/footer.html" %}
-
-  <script>
-    function al() {
-        $.ajax({
-          type: "GET",
-          url: "/read",
-          success: function(data){
-              alert("2");         
-          }
-      });
-    }
-  </script>
 </body>
 
 </html>

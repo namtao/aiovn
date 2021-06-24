@@ -48,12 +48,6 @@ def home(request):
 def details(request):
     return render(request, "MyApp/details.html")
 
-def cmd(request):
-    return render(request, "MyApp/cmd.html")
-
-def plan(request):
-    return render(request, "MyApp/plan.html")
-
 def truyenhay(request):
     return render(request, "MyApp/truyenhay.html")
 
@@ -66,6 +60,9 @@ def bookdetails(request):
 def python(request):
     return render(request, "MyApp/python.html")
     # return HttpResponse(django.VERSION)
+
+def personalfinance(request):
+    return render(request, "MyApp/personalfinance.html")
 
 def read(request):
     engine = pyttsx3.init()
