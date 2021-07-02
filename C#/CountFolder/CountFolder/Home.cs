@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -88,10 +89,10 @@ namespace CountFolder
             object[,] arr = new object[10 * 10, 10];
             int row = 0;
             //thống kê ảnh
+            string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\nocode.txt";
+            File.WriteAllText(txtPath, String.Empty);
             foreach (string pathDir in Directory.GetDirectories(path))
             {
-                string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\nocode.txt";
-                File.WriteAllText(txtPath, String.Empty);
 
                 using (StreamWriter writer = File.AppendText(txtPath))
                 {
@@ -232,17 +233,72 @@ namespace CountFolder
             }
         }
 
+        public void HuanHuyChuong()
+        {
+            string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\hhc.txt";
+            File.WriteAllText(txtPath, String.Empty);
+            using (StreamWriter writer = File.AppendText(txtPath))
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                {
+                    string sql = "use ADDJ_AnGiang; " +
+                    "select  m.Metadata, ProfileName, TenDonVi, HoSoSo, m.BatchID, DocID " +
+                    "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID " +
+                    "where ProfileName like N'%HSHHC-ho-so-tang-moi%' and Status not in (7, 2, 8, 9) and StatusOutPut not in (0, 1) and StatusUpload not in (0)  " +
+                    "order by BatchManagementID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader datareader = cmd.ExecuteReader();
+                        while (datareader.Read())
+                        {
+                            using (SqlConnection connect = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                            {
+                                if (datareader[0].ToString().Trim().Length > 0 && datareader[0] != null && !datareader[0].ToString().Trim().Equals(""))
+                                {
+                                    JsonDocument doc = JsonDocument.Parse(datareader[0].ToString());
+                                    JsonElement root = doc.RootElement;
+                                    writer.Write(datareader[4] + "\t" + datareader[5] + "\t" + datareader[1] + "\t" + datareader[2] + "\t" + datareader[3] + "\t");
+                                    for (int i = 0; i < root.GetArrayLength(); i++)
+                                    {
+                                        writer.Write(removeChar(root[i].GetProperty("indexValueQC").ToString().Trim()) + "\t");
+                                    }
+                                    writer.WriteLine();
+                                }
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+            }
+        }
+
+        public void countProfile(string path)
+        {
+            //thống kê ảnh
+            string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\count.txt";
+            File.WriteAllText(txtPath, String.Empty);
+            using (StreamWriter writer = File.AppendText(txtPath))
+            {
+                string[] arrPathJpg = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+                List<string> listHoSo = new List<string>();
+                foreach (string str in arrPathJpg)
+                {
+                    listHoSo.Add(Directory.GetParent(str) + "");
+                }
+
+                foreach (string strList in listHoSo.Distinct().ToList())
+                {
+                    writer.WriteLine(strList);
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*ThongKe(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh");
-            Errors();
-
-            MessageBox.Show("Thống kê không mã :\n \\\\192.168.31.206\\Share\\JPG (đã kiểm tra)\\nocode.txt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            MessageBox.Show("Thống biên mục lỗi :\n \\\\192.168.31.206\\Share\\JPG (đã kiểm tra)\\errors.txt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
-
-            TrungHoSo(); 
-            MessageBox.Show("Thống kê trùng hồ sơ :\n \\\\192.168.31.206\\Share\\JPG (đã kiểm tra)\\trung.txt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            HuanHuyChuong(); 
+            MessageBox.Show("Xong", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
@@ -254,6 +310,13 @@ namespace CountFolder
                     return false;
             }
             return true;
+        }
+
+        public string removeChar(string tst)
+        {
+            var rgx4 = new Regex(@"[\r\n'/\\]");
+            tst = rgx4.Replace(tst, string.Empty);
+            return tst;
         }
 
     }

@@ -11,7 +11,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>Tài chính cá nhân</h2>
+        <h2 onclick="writeUserData(1, 'name', 'a', 'c')">Tài chính cá nhân</h2>
         <p>Quản lý thu chi cá nhân</p>
       </div>
     </div>
@@ -58,6 +58,8 @@
 </script>
 
 <script>
+  var obj = jQuery.parseJSON('{ "name": "Nam" }');
+
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     data: {
@@ -65,7 +67,7 @@
       datasets: [{
         type: 'bar',
         label: '# Thu nhập',
-        data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+        data: [12, 19, 3, 5, 2, 3, 12, 0, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
         backgroundColor: [
           'rgba(153, 102, 255, 0.2)'
         ],
@@ -130,4 +132,40 @@
       }
     }
   });
+</script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBKg5b3Cj1ueurm7FHmroj_0cR1SgOnNqU",
+    authDomain: "finapsyc.firebaseapp.com",
+    databaseURL: "https://finapsyc-default-rtdb.firebaseio.com",
+    projectId: "finapsyc",
+    storageBucket: "finapsyc.appspot.com",
+    messagingSenderId: "889776798288",
+    appId: "1:889776798288:web:de580e47ba0d3e63166f55",
+    measurementId: "G-XLHT820GL5"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+
+
+  function writeUserData(userId, name, email, imageUrl) {
+    firebase.database().ref().set({
+      username: name,
+      email: email,
+      profile_picture : imageUrl
+    });
+  }
+  
 </script>

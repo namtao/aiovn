@@ -4,14 +4,33 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
 from pathlib import Path
-import os, shutil
+import os
+import shutil
 import pyodbc
 import pandas as pd
 import pyttsx3
 import django
+import pyrebase
+
+config = {
+    'apiKey': "AIzaSyBKg5b3Cj1ueurm7FHmroj_0cR1SgOnNqU",
+    'authDomain': "finapsyc.firebaseapp.com",
+    'databaseURL': "https://finapsyc-default-rtdb.firebaseio.com",
+    'projectId': "finapsyc",
+    'storageBucket': "finapsyc.appspot.com",
+    'messagingSenderId': "889776798288",
+    'appId': "1:889776798288:web:de580e47ba0d3e63166f55",
+    'measurementId': "G-XLHT820GL5"
+}
+
+firebase = pyrebase.initialize_app(config)
+authe = firebase.auth()
+database = firebase.database()
 
 # get file in format
-def getFiles (folderPath, fileFormat):
+
+
+def getFiles(folderPath, fileFormat):
     lst = []
     # root: print path folder from file
     # dirs: sub-directories from root
@@ -25,50 +44,62 @@ def getFiles (folderPath, fileFormat):
                 # test folder name
                 if not folderName[:3].isdigit() and not folderName[-3:].isdigit():
                     lst.append(root)
-    
+
     # Remove Duplicates from list
     return list(dict.fromkeys(lst))
+
 
 def connectDB():
     # create connection string db
     conn = pyodbc.connect('Driver={SQL Server};'
-                      'Server=.;'
-                      'Database=Public;'
-                      'Trusted_Connection=yes;')
+                          'Server=.;'
+                          'Database=Public;'
+                          'Trusted_Connection=yes;')
     cursor = conn.cursor()
     cursor.execute('select metadata from TblMetadata')
 
     for row in cursor:
         pass
 
+
 def home(request):
-    context  = {"path": "test"}
+    context = {"path": "test"}
     return render(request, "MyApp/home.html", context)
+
 
 def details(request):
     return render(request, "MyApp/details.html")
 
+
 def truyenhay(request):
     return render(request, "MyApp/truyenhay.html")
+
 
 def book(request):
     return render(request, "MyApp/book.html")
 
+
 def bookdetails(request):
     return render(request, "MyApp/bookdetails.html")
+
 
 def python(request):
     return render(request, "MyApp/python.html")
     # return HttpResponse(django.VERSION)
 
+
 def personalfinance(request):
+    # data = database.child('data').child('name').get().val()
+    # context = {'name': data}
+
     return render(request, "MyApp/personalfinance.html")
+
 
 def read(request):
     engine = pyttsx3.init()
-    voices = engine.getProperty('voices') 
-    engine.setProperty('voice', voices[1].id) 
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[1].id)
     engine.say('Xin Chào Các Bạn')
     engine.runAndWait()
-    # return HttpResponseRedirect('.') 
+    # return HttpResponseRedirect('.')
     return HttpResponse(status=200)
