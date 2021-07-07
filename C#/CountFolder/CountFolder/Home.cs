@@ -24,6 +24,7 @@ namespace CountFolder
 
         public void Errors()
         {
+            int count = 0;
             string pathDir = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\errors.txt";
             File.WriteAllText(pathDir, String.Empty);
             using (StreamWriter streamWriter = File.AppendText(pathDir))
@@ -53,23 +54,11 @@ namespace CountFolder
 
                                     if (indexName.Equals("Ghi chú"))
                                     {
-                                        if (indexValue != "" && indexValue != null)
-                                        {
-                                            err = indexValue;
-
-                                            streamWriter.WriteLine(dr[1] + "\t" + dr[2] + "\t" + dr[3] + "\t" + err);
-                                        }
-
-                                        if (indexValue2 != "" && indexValue2 != null)
-                                        {
-                                            err = indexValue2;
-                                            streamWriter.WriteLine(dr[1] + "\t" + dr[2] + "\t" + dr[3] + "\t" + err);
-                                        }
-
                                         if (indexValueQC != "" && indexValueQC != null)
                                         {
                                             err = indexValueQC;
                                             streamWriter.WriteLine(dr[1] + "\t" + dr[2] + "\t" + dr[3] + "\t" + err);
+                                            count++;
                                         }
 
                                     }
@@ -82,6 +71,8 @@ namespace CountFolder
                     }
                 }
             }
+
+            MessageBox.Show("Có " + count + " trường hợp lỗi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void ThongKe(string path)
@@ -244,7 +235,7 @@ namespace CountFolder
                     string sql = "use ADDJ_AnGiang; " +
                     "select  m.Metadata, ProfileName, TenDonVi, HoSoSo, m.BatchID, DocID " +
                     "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID " +
-                    "where ProfileName like N'%HSHHC-ho-so-tang-moi%' and Status not in (7, 2, 8, 9) and StatusOutPut not in (0, 1) and StatusUpload not in (0)  " +
+                    "where ProfileName like N'%HSHHC_dinh-chinh-thong-tin%' and Status not in (7, 2, 8, 9) and StatusOutPut not in (0, 1) and StatusUpload not in (0)  " +
                     "order by BatchManagementID";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -297,8 +288,7 @@ namespace CountFolder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            HuanHuyChuong(); 
-            MessageBox.Show("Xong", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Errors(); 
             Close();
         }
 
