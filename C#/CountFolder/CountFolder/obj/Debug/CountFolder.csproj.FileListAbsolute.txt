@@ -60,6 +60,8 @@ C:\Knowledge\Project\C#\CountFolder\CountFolder\obj\Debug\CountFolder.csprojAsse
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\CountFolder.exe.config
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\CountFolder.exe
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\CountFolder.pdb
+C:\Projects\C#\CountFolder\CountFolder\bin\Debug\BouncyCastle.Crypto.dll
+C:\Projects\C#\CountFolder\CountFolder\bin\Debug\itextsharp.dll
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Buffers.dll
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Memory.dll
@@ -69,6 +71,7 @@ C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Text.Encodings.Web.dll
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Text.Json.dll
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.ValueTuple.dll
+C:\Projects\C#\CountFolder\CountFolder\bin\Debug\itextsharp.xml
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Buffers.xml
 C:\Projects\C#\CountFolder\CountFolder\bin\Debug\System.Memory.xml

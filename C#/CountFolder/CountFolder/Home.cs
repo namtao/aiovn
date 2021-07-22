@@ -12,6 +12,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
 
 namespace CountFolder
 {
@@ -286,10 +287,213 @@ namespace CountFolder
             }
         }
 
+        public static string convertToUnSign(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
+        public void editCDHH()
+        {
+            File.WriteAllText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\chưa tìm đc mã\Rename.txt", String.Empty);
+            File.WriteAllText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\chưa tìm đc mã\Error.txt", String.Empty);
+            string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\chưa tìm đc mã";
+            //liệt kê hết các huyện
+            List<string> listHuyen = Directory.GetDirectories(path).ToList();
+
+            //liệt kê hết các xã trong 1 huyện
+            foreach (string strHuyen in listHuyen)
+            {
+                List<string> listXa = Directory.GetDirectories(strHuyen).ToList();
+                foreach (string strXa in listXa)
+                {
+                    List<string> listNguoiTrongXa = new List<string>();
+                    string[] arrJpg = Directory.GetFiles(strXa, "*.jpg", SearchOption.AllDirectories);
+                    foreach (string strJpg in arrJpg)
+                    {
+                        listNguoiTrongXa.Add(Directory.GetParent(strJpg) + "");
+                    }
+                    listNguoiTrongXa = listNguoiTrongXa.Distinct().ToList();
+
+                    int i = 1;
+                    foreach (string st in listNguoiTrongXa)
+                    {
+                        //lấy tên huyện + xã trong folderName
+                        string huyenFolderName = new DirectoryInfo(strHuyen + "").Name;
+                        string xaFolderName = new DirectoryInfo(strXa + "").Name;
+
+
+                        //lấy danh sách mã trong db
+                        List<string> listMaHoSo = new List<string>();
+                        using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ThaiBinh;Integrated Security=True"))
+                        {
+                            string sql = "select mahoso from ghep " +
+                                "where (select dbo.non_unicode_convert (huyen)) = (select dbo.non_unicode_convert (N' Huyện ' + N'" + huyenFolderName + "')) " +
+                                "and (select dbo.non_unicode_convert (xa)) = (select dbo.non_unicode_convert (N'" + xaFolderName + "'))";
+                            using (SqlCommand cmd = new SqlCommand(sql, con))
+                            {
+                                cmd.CommandType = CommandType.Text;
+                                con.Open();
+                                SqlDataReader dr = cmd.ExecuteReader();
+                                while (dr.Read())
+                                {
+                                    listMaHoSo.Add(dr[0] + "");
+                                }
+                                con.Close();
+                            }
+
+                            listMaHoSo = listMaHoSo.Distinct().ToList();
+                        }
+
+                        //tìm mã thích hợp và thực hiện đổi mã
+                        try
+                        {
+                            while (true)
+                            {
+                                string nguoiCoMa = i.ToString().PadLeft(3, '0');
+                                if (!listMaHoSo.Contains("A" + nguoiCoMa))
+                                {
+                                    string nguoiKhongMa = new DirectoryInfo(st + "").Name;
+
+                                    //thực hiện đổi tên thư mục
+                                    string tenMoi = Path.Combine(Directory.GetParent(st) + "", "A" + nguoiCoMa + " - " + nguoiKhongMa);
+
+                                    System.IO.Directory.Move(st , tenMoi);
+                                    using (StreamWriter writer = File.AppendText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\chưa tìm đc mã\Rename.txt"))
+                                    {
+                                        writer.WriteLine(Directory.GetParent(st) + ": "+ nguoiKhongMa + " => A" + nguoiCoMa + " - " + nguoiKhongMa);
+                                    }
+                                    break;
+                                }
+                                else i++;
+                            }
+                            i++;
+                        } 
+                        catch (Exception ex)
+                        {
+                            using (StreamWriter writer = File.AppendText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\chưa tìm đc mã\Error.txt"))
+                            {
+                                writer.WriteLine(st);
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+
+        public void chuyendoi()
+        {
+            string[] arrPathJpg = Directory.GetFiles(@"D:\Share\Đông Kinh\TNXP_TCML", "*.pdf",
+                            SearchOption.AllDirectories);
+            int numberOfPages = 0;
+            foreach(string str in arrPathJpg)
+            {
+                PdfReader pdfReader = new PdfReader(str);
+                numberOfPages += pdfReader.NumberOfPages;
+            }
+
+            MessageBox.Show(numberOfPages + "");
+        }
+
+        public void hhcTangMoi()
+        {
+            string[] arrPathJpg = Directory.GetFiles(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\02. huan huy chuong\tang moi co ma tren phan mem", "*.jpg", 
+                SearchOption.AllDirectories);
+            List<string> listHoSo = new List<string>();
+            foreach (string str in arrPathJpg)
+            {
+                listHoSo.Add(Directory.GetParent(str) + "");
+            }
+
+            listHoSo = listHoSo.Distinct().ToList();
+
+            string huyen, xa;
+            foreach (string pathDir in Directory.GetDirectories(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\02. huan huy chuong\tang moi co ma tren phan mem"))
+            {
+                //tìm tên huyện
+                huyen = new DirectoryInfo(pathDir).Name;
+                foreach (string pathDir2 in Directory.GetDirectories(Path.Combine(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\02. huan huy chuong\tang moi co ma tren phan mem", huyen)))
+                {
+                    //tìm tên xã
+                    xa = new DirectoryInfo(pathDir2).Name;
+
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            Errors(); 
+            hhcTangMoi();
+            MessageBox.Show("Xong!!!");
             Close();
+        }
+
+        private void Q10()
+        {
+            object[,] arr = new object[1000, 100];
+            string ndk = "", nam = "", sotruonghop = "", soquyen = "";
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(@"Data Source =.; Initial Catalog = HoTich; Integrated Security = True"))
+            {
+                string sql = "select RIGHT(quyenso, 4), noiDangKy from HT_NHANCHAMECON " +
+                    "where RIGHT(quyenSo, 4) between 2007 and 2015 group by RIGHT(quyenso, 4), noiDangKy order by noiDangKy, RIGHT(quyenso, 4)";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        using (SqlConnection con2 = new SqlConnection(@"Data Source =.; Initial Catalog = HoTich; Integrated Security = True"))
+                        {
+                            string sql2 = "select count(*) as 'Số lượng' " +
+                                "from (select distinct quyenSo from HT_NHANCHAMECON " +
+                                "where noiDangKy = " + dr[1] + " and quyenSo like '%/" + dr[0] + "%') a";
+
+                            using (SqlCommand cmd2 = new SqlCommand(sql2, con2))
+                            {
+                                cmd2.CommandType = CommandType.Text;
+                                con2.Open();
+                                SqlDataReader dr2 = cmd2.ExecuteReader();
+                                while (dr2.Read())
+                                {
+                                    arr[count, 4] = dr2[0];
+                                }
+                                con2.Close();
+                            }
+                        }
+
+                        using (SqlConnection con3 = new SqlConnection(@"Data Source =.; Initial Catalog = HoTich; Integrated Security = True"))
+                        {
+                            string sql3 = "select  TenNoiDangKy, RIGHT(quyenSo, 4) as 'Năm',  count(*) as 'Số lượng' " +
+                                "from HT_NHANCHAMECON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy " +
+                                "where noiDangKy = " + dr[1] + " and quyenSo like '%/" + dr[0] + "%' " +
+                                "group by noiDangKy, TenNoiDangKy, RIGHT(quyenSo, 4) order by TenNoiDangKy, RIGHT(quyenSo, 4)";
+
+                            using (SqlCommand cmd3 = new SqlCommand(sql3, con3))
+                            {
+                                cmd3.CommandType = CommandType.Text;
+                                con3.Open();
+                                SqlDataReader dr3 = cmd3.ExecuteReader();
+                                while (dr3.Read())
+                                {
+                                    arr[count, 1] = dr3[0];
+                                    arr[count, 2] = dr3[1];
+                                    arr[count, 3] = dr3[2];
+                                }
+                                con3.Close();
+                            }
+
+                        }
+
+                        count++;
+                    }
+                    con.Close();
+                }
+            }    
+
+            Utils.ExportQ10(arr, "Q10");
         }
 
         public static bool IsNumber(string pValue)
