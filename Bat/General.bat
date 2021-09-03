@@ -133,3 +133,8 @@ pause
 ::Sleep 1
 ::Add-Type -AssemblyName System.Windows.Forms
 ::[System.Windows.Forms.SendKeys]::SendWait('^{ESC}');
+
+::keylogger
+::netstat –ano
+::tasklist /m bpkhk.dll
+::tasklist /m Ekey.dll

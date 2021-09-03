@@ -225,7 +225,7 @@ namespace CountFolder
             }
         }
 
-        public void HuanHuyChuong()
+        public void KhongMa()
         {
             string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\hhc.txt";
             File.WriteAllText(txtPath, String.Empty);
@@ -235,9 +235,12 @@ namespace CountFolder
                 {
                     string sql = "use ADDJ_AnGiang; " +
                     "select  m.Metadata, ProfileName, TenDonVi, HoSoSo, m.BatchID, DocID " +
-                    "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID " +
-                    "where ProfileName like N'%HSHHC_dinh-chinh-thong-tin%' and Status not in (7, 2, 8, 9) and StatusOutPut not in (0, 1) and StatusUpload not in (0)  " +
-                    "order by BatchManagementID";
+                    "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID" +
+                    " where (ISNUMERIC(left(HoSoSo, 4)) = 0 and left(HoSoSo, 1) not like 'A') " +
+                    "and ProfileName not like '%hhc%' and ProfileName like '%hs%' " +
+                    "and Status not in (7, 9) and StatusOutPut not in (0, 1) " +
+                    "and StatusUpload not in (0) and ProfileName not like '%khong%' " +
+                    "and ProfileName not like '%TBA%' order by TenDonVi, ProfileName, HoSoSo";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.CommandType = CommandType.Text;
@@ -384,7 +387,30 @@ namespace CountFolder
 
         public void chuyendoi()
         {
-            string[] arrPathJpg = Directory.GetFiles(@"D:\Share\Đông Kinh\TNXP_TCML", "*.pdf",
+            using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ThaiBinh;Integrated Security=True"))
+            {
+                string sql = "select mahoso, xa, huyen from ghep order by mahoso";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        string[] arrPathJpg = Directory.GetFiles(@"\\192.168.31.206\Share\Đông Kinh\TNXP_HT", dr[0] + ".pdf",
+                            SearchOption.AllDirectories);
+                        string maso = dr[0].ToString().Substring(dr[0].ToString().Length - 4, 4);
+                        string path = Path.Combine(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\14. Đông Kinh - TNXP_TCHT", dr[2].ToString(), dr[1].ToString(), maso);
+                        if (!System.IO.Directory.Exists(path))
+                            Directory.CreateDirectory(Path.Combine(path));
+
+                        System.IO.File.Copy(arrPathJpg[0], Path.Combine(path, dr[0].ToString() + ".pdf"));
+                    }
+                    con.Close();
+                }
+            }
+
+            /*string[] arrPathJpg = Directory.GetFiles(@"D:\Share\Đông Kinh\TNXP_TCML", "*.pdf",
                             SearchOption.AllDirectories);
             int numberOfPages = 0;
             foreach(string str in arrPathJpg)
@@ -393,7 +419,7 @@ namespace CountFolder
                 numberOfPages += pdfReader.NumberOfPages;
             }
 
-            MessageBox.Show(numberOfPages + "");
+            MessageBox.Show(numberOfPages + "");*/
         }
 
         public void hhcTangMoi()
@@ -422,9 +448,95 @@ namespace CountFolder
             }
         }
 
+        public void hhc()
+        {
+            string pathDir = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\hhc.txt";
+            File.WriteAllText(pathDir, String.Empty);
+            using (StreamWriter streamWriter = File.AppendText(pathDir))
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                {
+                    string sql = "use ADDJ_AnGiang; " +
+                    "select BatchName, m.Metadata, ProfileName from TblBatchManagement b join TblMetadata m " +
+                    "on b.BatchManagementID = m.BatchID where ProfileName like '%hhc%' " +
+                    "and Status not in (7, 9) and StatusOutPut not in (0, 1) and StatusUpload not in (0) and ProfileName not like '%khong%'";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            JsonDocument doc = JsonDocument.Parse(dr[1].ToString());
+                            JsonElement root = doc.RootElement;
+                            streamWriter.Write(dr[0] + "\t" + dr[2] + "\t");
+                            for (int i = 0; i < root.GetArrayLength(); i++)
+                            {
+                                string indexName = root[i].GetProperty("indexName").ToString().Trim();
+                                string indexValue = root[i].GetProperty("indexValue").ToString().Trim();
+                                string indexValue2 = root[i].GetProperty("indexValue2").ToString().Trim();
+                                string indexValueQC = root[i].GetProperty("indexValueQC").ToString().Trim();
+
+                                streamWriter.Write(indexValueQC + "\t");
+                            }
+                            streamWriter.WriteLine();
+                        }
+                        con.Close();
+                    }
+                }
+            }
+        }
+
+        public void countPages()
+        {
+            string[] arrPathJpg = Directory.GetFiles(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\12. Đông Kinh - 62_TCML", "*.pdf",
+                            SearchOption.AllDirectories);
+            int numberOfPages = 0;
+            foreach (string str in arrPathJpg)
+            {
+                PdfReader pdfReader = new PdfReader(str);
+                numberOfPages += pdfReader.NumberOfPages;
+            }
+
+            MessageBox.Show(numberOfPages + "");
+        }
+
+        public void kiemtra()
+        {
+            string txtPath = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\kiemtra.txt";
+            File.WriteAllText(txtPath, String.Empty);
+            string path = @"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\13. Đông Kinh - TNXP_TCML";
+
+            /*foreach (string pathDir in Directory.GetDirectories(path))
+            {
+                foreach (string pathDir2 in Directory.GetDirectories(pathDir))
+                {
+                    foreach (string pathDir3 in Directory.GetDirectories(pathDir2))
+                    {
+                        using (StreamWriter writer = File.AppendText(txtPath))
+                        {
+                            string[] arrPathPdf = Directory.GetFiles(pathDir3, "*.pdf", SearchOption.AllDirectories);
+                            if(arrPathPdf.Length > 1) writer.WriteLine(pathDir3);
+                        }
+                    }
+                }
+            }*/
+            foreach (string pathDir in Directory.GetDirectories(path))
+            {
+                foreach (string pathDir2 in Directory.GetDirectories(pathDir))
+                {
+                    using (StreamWriter writer = File.AppendText(txtPath))
+                    {
+                        string[] arrPathPdf = Directory.GetFiles(pathDir2, "*.pdf", SearchOption.AllDirectories);
+                        writer.WriteLine(pathDir2 + "\t" + arrPathPdf.Length);
+                    }
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            hhcTangMoi();
+            kiemtra();
             MessageBox.Show("Xong!!!");
             Close();
         }

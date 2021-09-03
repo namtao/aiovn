@@ -1,7 +1,7 @@
-reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoControlPanel /t REG_DWORD /d 1
+::reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoControlPanel /t REG_DWORD /d 1
 
 ECHO OFF
-powershell -Command "& {Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6}"
+::powershell -Command "& {Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6}"
 ::regedit.exe /S security.reg
 ::reg import .\security.reg
 ::CMD se khong hien thi lenh nao duoc thu thi phia duoi.
@@ -21,7 +21,8 @@ powershell -Command "& {Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpi
 ::	PAUSE
 ::	exit
 ::)
-set /p Input=INPUT IP: 
-NETSH interface ipv4 set address name="Ethernet" static %Input% 255.255.255.0 192.168.1.98
+::set /p Input=INPUT IP: 
+::NETSH interface ipv4 set address name="Ethernet" static %Input% 255.255.255.0 192.168.1.98
+netsh interface ipv4 set address name="Ethernet" source=dhcp
 PAUSE
 :: Cho phep nguoi dung xem ket qua. Boi vi day la dong lenh cuoi cung nen sau khi nhan phim bat ky, cua so command se duoc dong lai.
