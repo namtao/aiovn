@@ -13,8 +13,6 @@ from googletrans import Translator
 import mechanize
 import urllib3
 import cookiejar
-# python -m pip freeze > C:\Projects\Python\requirements.txt
-# pip install -r requirements.txt
 
 
 def savemp3(text, path):
