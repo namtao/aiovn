@@ -97,7 +97,7 @@ def crawlAudioBook(urlbook):
             savemp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: '+title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Projects\Python\Audio',
                     removespecialcharacters(title), removespecialcharacters(element.text) + '.mp3'))
 
-            convert2mp4(pathmp3, removespecialcharacters(element.text))
+            # convert2mp4(pathmp3, removespecialcharacters(element.text))
 
             lists.append(dicts)
 
@@ -227,4 +227,4 @@ def crawlThaiBinh():
         response.close
 
 if __name__ == "__main__":
-    crawlAudioBook("https://nhasachmienphi.com/dac-nhan-tam.html")
+    crawlAudioBook("https://nhasachmienphi.com/doi-ngan-dung-ngu-dai.html")

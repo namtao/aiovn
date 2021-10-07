@@ -5,7 +5,7 @@ import os
 # import pandas as pd
 # import json
 # from pathlib import Path
-# from openpyxl import Workbook
+from openpyxl import Workbook
 # import numpy as np
 # from openpyxl.utils import get_column_letter
 # import os, shutil
@@ -78,23 +78,23 @@ def getFiles (folderPath, txtPath, fileFormat):
 #     arr = np.array(list(cursor))
 #     writeToExcel(arr)
 
-# def writeToExcel(arr):
+def writeToExcel(arr):
     
-#     filename = r"C:\Projects\Python\test.xlsx"
+    filename = r"C:\Projects\Python\test.xlsx"
 
-#     workbook = Workbook()
-#     sheet = workbook.active
-#     sheet.title = 'data'
-#     for row in range(1, len(arr)+1):
-#         for col in range(1, len(arr[0])+1):
-#             sheet.cell(column=col, row=row, value="{0}".format(arr[row-1][col-1]))
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = 'data'
+    for row in range(1, len(arr)+1):
+        for col in range(1, len(arr[0])+1):
+            sheet.cell(column=col, row=row, value="{0}".format(arr[row-1][col-1]))
 
-#     # for row in range(1,101):
-#     #     for col in range(1,101):
-#     #         sheet.cell(column=col, row=row, value="{0}".format(get_column_letter(col)))
+    # for row in range(1,101):
+    #     for col in range(1,101):
+    #         sheet.cell(column=col, row=row, value="{0}".format(get_column_letter(col)))
 
-#     workbook.save(filename=filename)
-#     workbook.close()
+    workbook.save(filename=filename)
+    workbook.close()
 
 # def copytree(src, dst, symlinks=False, ignore=None):    
 #     if not os.path.exists(dst):  os.mkdir(dst)
