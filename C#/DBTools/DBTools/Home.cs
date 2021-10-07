@@ -736,11 +736,11 @@ namespace DBTools
         public int countAllColumn(string table)
         {
             int count = 0;
+            List<string> lst = new List<string>();
 
             using (SqlConnection con = new SqlConnection(connectString))
             {
                 string sql = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '" + table + "'";
-                List<string> lst = new List<string>();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
@@ -754,18 +754,7 @@ namespace DBTools
                 }
             }
 
-            using (SqlConnection con = new SqlConnection(connectString))
-            {
-                con.Open();
-                foreach (string a in lst1)
-                {
-                    string sql = "select count(*) from " + table + " " +
-                        "where " + a + " is not null and CAST(" + a + " as varchar(max)) != '' and CAST(" + a + " as varchar(max)) != '__/__/____'";
-                    count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
-                }
-                con.Close();
-            }
-            return count;
+            return demTruongTB(table, lst);
         }
 
         private void countFieldExcel()
@@ -777,14 +766,13 @@ namespace DBTools
                 "HS_TT_QuyetDinh62HT", "HS_TT_ThanNhanThuongBinh", "HS_TT_ThuongBinh", "HS_TT_TienKhoiNghia", 
                 "HS_TT_ThanNhanTKN", "HS_TT_TNXPHT", "HS_TT_TNXPML" };
 
-            var a = countAllColumn("HS_NguoiCC");
 
             object[,] arr = new object[100, 100];
 
             for (int i = 0; i < lstTable.Count; i++)
             {
                 arr[i, 0] = lstTable[i];
-                arr[i, 1] = demTruongTB(lstTable[i], lst1);
+                arr[i, 1] = countAllColumn(lstTable[i]);
             }
 
             Utils.ExportThongKe(arr, "Sheet", "Title");
