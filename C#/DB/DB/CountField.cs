@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using System.Configuration;
+using Microsoft.Office.Interop.Excel;
 
 namespace DB
 {
@@ -36,7 +37,7 @@ namespace DB
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
                 {
-                    string sql = "use ADDJ_AnGiang; " +
+                    string sql = "" +
                     "select m.Metadata,ProfileName, TenDonVi, HoSoSo from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID where Status != 7";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -142,7 +143,7 @@ namespace DB
                 sql1.Close();
                 using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
                 {
-                    string sql = "use ADDJ_AnGiang; " +
+                    string sql = "" +
                     "SELECT Metadata, BatchID FROM TblMetadata " +
                     "where BatchID in (select BatchManagementID from TblBatchManagement where ProfileName like '%" + s + "%' and Status != 7)";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -185,7 +186,7 @@ namespace DB
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
                 {
-                    string sql = "use ADDJ_AnGiang; " +
+                    string sql = "" +
                     "select ProfileName, BatchName, count(*) as SoLuong from TblBatchManagement where Status not in (7, 2, 8, 9) and StatusOutPut not in (0, 1) and StatusUpload not in (0) group by ProfileName, BatchName having count(*) > 1 order by ProfileName, BatchName ";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -237,7 +238,7 @@ namespace DB
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
                 {
-                    string sql = "use ADDJ_AnGiang; " +
+                    string sql = "" +
                     "select  m.Metadata, ProfileName, TenDonVi, HoSoSo, m.BatchID, DocID " +
                     "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID" +
                     " where (ISNUMERIC(left(HoSoSo, 4)) = 0 and left(HoSoSo, 1) not like 'A') " +
@@ -299,6 +300,242 @@ namespace DB
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
             string temp = s.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
+        public void ExportData()
+        {
+            List<string> listProfileName = new List<string>();
+
+            //lấy từng phân loại tài liệu
+            using (SqlConnection conStr = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+            {
+                string sql = "" +
+                "select distinct ProfileName from TblBatchManagement " +
+                "where ProfileName not like N'%khong%' and Status = 6 and StatusOutPut = 2 and StatusUpload not in (0) order by ProfileName";
+                using (SqlCommand cmd = new SqlCommand(sql, conStr))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    conStr.Open();
+                    SqlDataReader datareader = cmd.ExecuteReader();
+                    while (datareader.Read())
+                    {
+                        listProfileName.Add(datareader[0].ToString());
+                    }
+                    conStr.Close();
+                }
+            }
+
+            //Xuất từng phân loại
+            for (int index = 0; index < listProfileName.Count; index++)
+            {
+                int count = 0, countCol = 0;
+                //tạo excel
+                //Tạo các đối tượng Excel
+
+                Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+                Workbooks oBooks;
+                Sheets oSheets;
+                Workbook oBook;
+                // tạo mới sheet
+                Worksheet oSheet;
+
+                //Tạo mới một Excel WorkBook 
+                oExcel.Visible = false; //ẩn hiện file excel
+                oExcel.DisplayAlerts = false;
+                oExcel.Application.SheetsInNewWorkbook = 1;
+                oBooks = oExcel.Workbooks;
+                oBook = (Workbook)(oExcel.Workbooks.Add(Type.Missing));
+                oSheets = oBook.Worksheets;
+
+                // Tạo sheet mới
+                oSheet = (Worksheet)oSheets.get_Item(1);
+                oSheet.Name = "Sheet";
+
+                //số dòng
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                {
+                    con.Open();
+                    string sql = "" +
+                    "select count(*)" +
+                    "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID " +
+                    "where ProfileName not like N'%khong%' and Status = 6 and StatusOutPut = 2 and StatusUpload not in (0) and ProfileName = N'" + listProfileName[index] + "' ";
+
+                    count = Int32.Parse((new SqlCommand(sql, con).ExecuteScalar()).ToString());
+
+
+                    con.Close();
+                }
+
+                // số cột
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                {
+                    string sql = "" +
+                    "select top(1) m.Metadata, ProfileName, TenDonVi, HoSoSo " +
+                    "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID " +
+                    "where ProfileName not like N'%khong%' and Status = 6 and StatusOutPut = 2 and StatusUpload not in (0) and ProfileName = N'" + listProfileName[index] + "' " +
+                    "order by BatchManagementID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader datareader = cmd.ExecuteReader();
+                        while (datareader.Read())
+                        {
+                            using (SqlConnection connect = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                            {
+                                if (datareader[0].ToString().Trim().Length > 0 && datareader[0] != null && !datareader[0].ToString().Trim().Equals(""))
+                                {
+                                    JsonDocument doc = JsonDocument.Parse(datareader[0].ToString());
+                                    JsonElement root = doc.RootElement;
+                                    countCol = root.GetArrayLength();
+                                }
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+
+                object[,] arr = new object[count + 2, countCol + 6];
+                int row = 0;
+
+                // tạo tên cột
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                {
+                    string sql = "" +
+                    "select top(1) m.Metadata, ProfileName, TenDonVi, HoSoSo " +
+                    "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID " +
+                    "where ProfileName not like N'%khong%' and Status = 6 and StatusOutPut = 2 and StatusUpload not in (0) and ProfileName = N'" + listProfileName[index] + "' " +
+                    "order by BatchManagementID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader datareader = cmd.ExecuteReader();
+                        while (datareader.Read())
+                        {
+                            using (SqlConnection connect = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                            {
+                                if (datareader[0].ToString().Trim().Length > 0 && datareader[0] != null && !datareader[0].ToString().Trim().Equals(""))
+                                {
+                                    JsonDocument doc = JsonDocument.Parse(datareader[0].ToString());
+                                    JsonElement root = doc.RootElement;
+                                    arr[row, 0] = "Tên đơn vị";
+                                    arr[row, 1] = "Mã hồ sơ";
+                                    arr[row, 2] = "Đường dẫn tệp";
+                                    arr[row, 3] = "Số ảnh";
+                                    for (int i = 0; i < root.GetArrayLength(); i++)
+                                    {
+                                        arr[row, i + 4] = root[i].GetProperty("indexName").ToString().Trim();
+                                    }
+                                }
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+                row++;
+
+                // tạo excel
+                using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                {
+                    string sql = "" +
+                    "select m.Metadata, ProfileName, TenDonVi, HoSoSo, FilePath " +
+                    "from TblBatchManagement b join TblMetadata m on b.BatchManagementID = m.BatchID join TblDocument d on m.DocID = d.ID " +
+                    "where ProfileName not like N'%khong%' and Status = 6 and StatusOutPut = 2 and StatusUpload not in (0) and ProfileName = N'" + listProfileName[index] + "' " +
+                    "order by BatchManagementID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader datareader = cmd.ExecuteReader();
+                        while (datareader.Read())
+                        {
+                            using (SqlConnection connect = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
+                            {
+                                if (datareader[0].ToString().Trim().Length > 0 && datareader[0] != null && !datareader[0].ToString().Trim().Equals(""))
+                                {
+                                    JsonDocument doc = JsonDocument.Parse(datareader[0].ToString());
+                                    JsonElement root = doc.RootElement;
+                                    arr[row, 0] = datareader[2].ToString();
+                                    arr[row, 1] = datareader[3].ToString();
+                                    arr[row, 2] = datareader[4].ToString();
+                                    arr[row, 3] = (new PdfReader(datareader[4].ToString()).NumberOfPages).ToString();
+                                    for (int i = 0; i < root.GetArrayLength(); i++)
+                                    {
+                                        arr[row, i + 4] = root[i].GetProperty("indexValueQC").ToString().Trim();
+                                    }
+                                    row++;
+                                }
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+
+                createSheet(arr, oSheet, count + 2, countCol + 6);
+
+                oBook.SaveAs(@"C:\ADDJ\DA Thái Bình\Excel\" + listProfileName[index] + ".xlsx");
+                oBooks.Close();
+                oExcel.Quit();
+            }
+        }
+
+        public void createSheet(object[,] arr, Worksheet oSheet, int rowEnd, int columnEnd)
+        {
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 1;
+            int columnStart = 1;
+
+            //in đậm tiêu đề
+            Range rowHead = oSheet.get_Range((Range)oSheet.Cells[1, columnStart],
+                (Range)oSheet.Cells[1, columnEnd]);
+            rowHead.Font.Bold = true;
+
+            // Ô bắt đầu điền dữ liệu
+            Range c1 = (Range)oSheet.Cells[rowStart, columnStart];
+
+            // Ô kết thúc điền dữ liệu
+            Range c2 = (Range)oSheet.Cells[rowEnd, columnEnd];
+
+            // Lấy về vùng điền dữ liệu
+            Range range = oSheet.get_Range(c1, c2);
+
+            //định dạng số ngăn cách bằng dấu .
+            //range.NumberFormat = "#,##0";
+
+            //định dạng text
+            range.NumberFormat = "@";
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
+
+            // Kẻ viền
+
+            //range.Borders.LineStyle = Constants.xlSolid;
+
+            // Căn giữa cột STT
+            Range c3 = (Range)oSheet.Cells[rowEnd, columnStart];
+            Range c4 = oSheet.get_Range(c1, c3);
+
+            oSheet.get_Range(c3, c4).HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            range.Columns.AutoFit();
+            range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+
+            //auto width
+            oSheet.Columns.AutoFit();
+        }
+
+        public int countPdf(string path)
+        {
+            string[] arrPathPdf = Directory.GetFiles(path, "*.pdf",
+                            SearchOption.AllDirectories);
+            int numberOfPages = 0;
+            foreach (string str in arrPathPdf)
+            {
+                PdfReader pdfReader = new PdfReader(str);
+                numberOfPages += pdfReader.NumberOfPages;
+            }
+            return numberOfPages;
         }
 
         public void editCDHH()
@@ -460,7 +697,7 @@ namespace DB
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=ADDJ_AnGiang;Integrated Security=True"))
                 {
-                    string sql = "use ADDJ_AnGiang; " +
+                    string sql = "" +
                     "select BatchName, m.Metadata, ProfileName from TblBatchManagement b join TblMetadata m " +
                     "on b.BatchManagementID = m.BatchID where ProfileName like '%hhc%' " +
                     "and Status not in (7, 9) and StatusOutPut not in (0, 1) and StatusUpload not in (0) and ProfileName not like '%khong%'";
@@ -540,7 +777,10 @@ namespace DB
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            countFieldExcel();
+            countFieldExcelSau();
+            //countFieldExcelTruoc();
+            //MessageBox.Show(countAllColumn("V_TK_TienKhoiNghia") + "");
+            this.Close();
         }
 
         private void Q10()
@@ -708,9 +948,12 @@ namespace DB
                 con.Open();
                 foreach (string a in list)
                 {
-                    string sql = "select count(*) from " + table + " " +
-                        "where " + a + " is not null and CAST(" + a + " as varchar(max)) != '' and CAST(" + a + " as varchar(max)) != '__/__/____'";
-                    count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
+                    if (!a.Equals("Id") && !a.Equals("HoSoDangQLTaiSo") && !a.Equals("BanGocBanSao") && !a.Equals("FileName") && !a.Equals("FilePath"))
+                    {
+                        string sql = "select count(*) from " + table + " " +
+                            "where " + a + " is not null and CAST(" + a + " as varchar(max)) != '' and CAST(" + a + " as varchar(max)) != '__/__/____'";
+                        count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
+                    }
                 }
             }
             return count;
@@ -725,8 +968,10 @@ namespace DB
             return DemTruongTB(table, lst);
         }
 
-        private void countFieldExcel()
+        private void countFieldExcelTruoc()
         {
+            // cho 3 loại của DK = 0, tổng người có công + văn bản + thân nhân chia đều cho số đối tượng của từng phông, còn lại để của liệt sỹ
+
             List<string> lstTable = new List<string> { "HS_NguoiCC", "HS_Vanban", "HS_ThanNhan",
                 "HS_TT_LietSy", "HS_TT_ThanNhanLietSi", "HS_TT_BenhBinh", "HS_TT_ThanNhanBenhBinh",
                 "HS_TT_ChatDocHoaHoc", "HS_TT_ThanNhanCDHH", "HS_TT_DichBatTuDay", "HS_TT_ThanNhanTuDay",
@@ -735,7 +980,7 @@ namespace DB
                 "HS_TT_ThanNhanTKN", "HS_TT_TNXPHT", "HS_TT_TNXPML" };
 
 
-            object[,] arr = new object[100, 100];
+            object[,] arr = new object[100, 2];
             arr[0, 0] = "Tên phông";
             arr[0, 1] = "Số trường";
 
@@ -745,8 +990,265 @@ namespace DB
                 arr[i + 1, 1] = countAllColumn(lstTable[i]);
             }
 
-            Utils.ExportExcel(arr, "Sheet", 3, 1, 100, 2);
+            object[,] array = new object[100, 100];
+            double tongdu = Int32.Parse(arr[1, 1].ToString()) + Int32.Parse(arr[2, 1].ToString()) + Int32.Parse(arr[3, 1].ToString());
+
+            double tb = 0;
+
+            List<string> phong = new List<string> { "Liệt Sĩ", "Bệnh binh", "Người HĐCM và con đẻ bị nhiễm CĐHH", 
+                "Người HĐCM hoặc HĐKC bị địch bắt tù, đày", "Lão thành cách mạng", "Người HĐKC được tặng thưởng huân huy chương", 
+                "Người hưởng theo quyết định 62", "Người hưởng theo quyết định 62 hàng tháng", "Thương binh", "Tiền khởi nghĩa", 
+                "Thanh niên xung phong TCHT", "Thanh niên xung phong TCML" };
+            List<int> tbint = new List<int>();
+            for(int index = 0; index < phong.Count; index++)
+            {
+                array[index + 1, 0] = phong[index];
+                using (SqlConnection con = new SqlConnection(connectString))
+                {
+                    con.Open();
+                    string sql = "select count(*) from HS_NguoiCC ncc join DM_NhomDT n on ncc.IdNDT = n.Id where ten = N'" + phong[index] + "'";
+                    tbint.Add(Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+                }
+            }
+
+            array[0, 0] = "Tên phông";
+            array[0, 1] = "Số trường";
+            array[1, 1] = Int32.Parse(arr[4, 1].ToString()) + Int32.Parse(arr[5, 1].ToString());//Liệt Sĩ
+            array[2, 1] = Int32.Parse(arr[6, 1].ToString()) + Int32.Parse(arr[7, 1].ToString()); //Bệnh binh
+            array[3, 1] = Int32.Parse(arr[8, 1].ToString()) + Int32.Parse(arr[9, 1].ToString());//Người HĐCM và con đẻ bị nhiễm CĐHH
+            array[4, 1] = Int32.Parse(arr[10, 1].ToString()) + Int32.Parse(arr[11, 1].ToString());//Người HĐCM hoặc HĐKC bị địch bắt tù, đày
+            array[5, 1] = Int32.Parse(arr[12, 1].ToString()) + Int32.Parse(arr[13, 1].ToString()); //Lão thành cách mạng
+            array[6, 1] = Int32.Parse(arr[14, 1].ToString());//Người HĐKC được tặng thưởng huân huy chương
+            array[7, 1] = Int32.Parse(arr[15, 1].ToString());//Người hưởng theo quyết định 62
+            array[8, 1] = Int32.Parse(arr[16, 1].ToString());//Người hưởng theo quyết định 62 hàng tháng
+            array[9, 1] = Int32.Parse(arr[17, 1].ToString()) + Int32.Parse(arr[18, 1].ToString());//Thương binh
+            array[10, 1] = Int32.Parse(arr[19, 1].ToString()) + Int32.Parse(arr[20, 1].ToString());//Tiền khởi nghĩa
+            array[11, 1] = Int32.Parse(arr[21, 1].ToString());//Thanh niên xung phong TCHT
+            array[12, 1] = Int32.Parse(arr[22, 1].ToString());//Thanh niên xung phong TCML
+
+
+            int tongcu = 0;
+            for (int i = 1; i <= 22; i++)
+            {
+                tongcu += Int32.Parse(arr[i, 1].ToString());
+            }
+
+            int hs62 = 0, hstnxpht = 0, hstnxp1 = 0, ncc = 0;
+
+            //số lượng hồ sơ 62 sau khi update
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC where IdNDT = 75";
+                hs62 = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //số lượng hồ sơ tnxp hàng tháng
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC where IdNDT = 79";
+                hstnxpht = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //số lượng hồ sơ tnxp 1 lần
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC where IdNDT = 80";
+                hstnxp1 = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //số lượng người có công
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC";
+                ncc = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //tổng dư
+            tongdu = tongdu + Int32.Parse(array[7, 1].ToString()) + Int32.Parse(array[11, 1].ToString()) + Int32.Parse(array[12, 1].ToString());
+            
+            //trung bình
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC";
+                tb = tongdu / (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //điền dữ liệu
+            array[7, 1] = 0;
+            array[11, 1] = 0;
+            array[12, 1] = 0;
+
+            // điền dữ liệu còn lại dựa vào tongdu
+            //array[1, 1] = Int32.Parse(arr[4, 1].ToString()) + Int32.Parse(arr[5, 1].ToString()) + tb * tbint[0];
+            array[1, 1] = 0;
+            array[2, 1] = Int32.Parse(arr[6, 1].ToString()) + Int32.Parse(arr[7, 1].ToString()) + Convert.ToInt32(tb * tbint[1]);
+            array[3, 1] = Int32.Parse(arr[8, 1].ToString()) + Int32.Parse(arr[9, 1].ToString()) + Convert.ToInt32(tb * tbint[2]);
+            array[4, 1] = Int32.Parse(arr[10, 1].ToString()) + Int32.Parse(arr[11, 1].ToString()) + Convert.ToInt32(tb * tbint[3]);
+            array[5, 1] = Int32.Parse(arr[12, 1].ToString()) + Int32.Parse(arr[13, 1].ToString()) + Convert.ToInt32(tb * tbint[4]);
+            array[6, 1] = Int32.Parse(arr[14, 1].ToString()) + Convert.ToInt32(tb * tbint[5]);
+            array[8, 1] = Int32.Parse(arr[16, 1].ToString()) + Convert.ToInt32(tb * tbint[7]);
+            array[9, 1] = Int32.Parse(arr[17, 1].ToString()) + Int32.Parse(arr[18, 1].ToString()) + Convert.ToInt32(tb * tbint[8]);
+            array[10, 1] = Int32.Parse(arr[19, 1].ToString()) + Int32.Parse(arr[20, 1].ToString()) + Convert.ToInt32(tb * tbint[9]);
+
+            int tongmoi = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                tongmoi += Int32.Parse(array[i + 1, 1].ToString());
+            }
+
+            array[1, 1] = tongcu - tongmoi;
+            Utils.ExportExcel(array, "Sheet", 3, 1, 100, 2);
         }
+
+        private void countFieldExcelSau()
+        {
+            List<string> lstTable = new List<string> { "HS_NguoiCC", "HS_Vanban", "HS_ThanNhan",
+                "HS_TT_LietSy", "HS_TT_ThanNhanLietSi", "HS_TT_BenhBinh", "HS_TT_ThanNhanBenhBinh",
+                "HS_TT_ChatDocHoaHoc", "HS_TT_ThanNhanCDHH", "HS_TT_DichBatTuDay", "HS_TT_ThanNhanTuDay",
+                "HS_TT_LaoThanhCachMang", "HS_TT_ThanNhanLTCM", "HS_TT_NguoiTangHuanChuong", "HS_TT_QuyetDinh62",
+                "HS_TT_QuyetDinh62HT", "HS_TT_ThanNhanThuongBinh", "HS_TT_ThuongBinh", "HS_TT_TienKhoiNghia",
+                "HS_TT_ThanNhanTKN", "HS_TT_TNXPHT", "HS_TT_TNXPML" };
+
+
+            object[,] arr = new object[100, 2];
+            arr[0, 0] = "Tên phông";
+            arr[0, 1] = "Số trường";
+
+            for (int i = 0; i < lstTable.Count; i++)
+            {
+                arr[i + 1, 0] = lstTable[i];
+                arr[i + 1, 1] = countAllColumn(lstTable[i]);
+            }
+
+            object[,] array = new object[100, 100];
+            double tongdu = Int32.Parse(arr[1, 1].ToString()) + Int32.Parse(arr[2, 1].ToString()) + Int32.Parse(arr[3, 1].ToString());
+
+            double tb = 0;
+
+            List<string> phong = new List<string> { "Liệt Sĩ", "Bệnh binh", "Người HĐCM và con đẻ bị nhiễm CĐHH",
+                            "Người HĐCM hoặc HĐKC bị địch bắt tù, đày", "CÁN BỘ LÃO THÀNH CÁCH MẠNG", "Người HĐKC được tặng thưởng huân huy chương",
+                            "Người hưởng theo quyết định 62", "Người hưởng theo quyết định 62 hàng tháng", "Thương binh", "Tiền khởi nghĩa",
+                            "Thanh niên xung phong TCHT", "Thanh niên xung phong TCML" };
+            List<int> tbint = new List<int>();
+            for (int index = 0; index < phong.Count; index++)
+            {
+                array[index + 1, 0] = phong[index];
+                using (SqlConnection con = new SqlConnection(connectString))
+                {
+                    con.Open();
+                    string sql = "select count(*) from HS_NguoiCC ncc join DM_NhomDT n on ncc.IdNDT = n.Id where ten = N'" + phong[index] + "'";
+                    tbint.Add(Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+                }
+            }
+
+            array[0, 0] = "Tên phông";
+            array[0, 1] = "Số trường";
+            array[1, 1] = Int32.Parse(arr[4, 1].ToString()) + Int32.Parse(arr[5, 1].ToString());//Liệt Sĩ
+            array[2, 1] = Int32.Parse(arr[6, 1].ToString()) + Int32.Parse(arr[7, 1].ToString()); //Bệnh binh
+            array[3, 1] = Int32.Parse(arr[8, 1].ToString()) + Int32.Parse(arr[9, 1].ToString());//Người HĐCM và con đẻ bị nhiễm CĐHH
+            array[4, 1] = Int32.Parse(arr[10, 1].ToString()) + Int32.Parse(arr[11, 1].ToString());//Người HĐCM hoặc HĐKC bị địch bắt tù, đày
+            array[5, 1] = Int32.Parse(arr[12, 1].ToString()) + Int32.Parse(arr[13, 1].ToString()); //Lão thành cách mạng
+            array[6, 1] = Int32.Parse(arr[14, 1].ToString());//Người HĐKC được tặng thưởng huân huy chương
+            array[7, 1] = Int32.Parse(arr[15, 1].ToString());//Người hưởng theo quyết định 62
+            array[8, 1] = Int32.Parse(arr[16, 1].ToString());//Người hưởng theo quyết định 62 hàng tháng
+            array[9, 1] = Int32.Parse(arr[17, 1].ToString()) + Int32.Parse(arr[18, 1].ToString());//Thương binh
+            array[10, 1] = Int32.Parse(arr[19, 1].ToString()) + Int32.Parse(arr[20, 1].ToString());//Tiền khởi nghĩa
+            array[11, 1] = Int32.Parse(arr[21, 1].ToString());//Thanh niên xung phong TCHT
+            array[12, 1] = Int32.Parse(arr[22, 1].ToString());//Thanh niên xung phong TCML
+
+
+            int tongcu = 0;
+            for (int i = 1; i <= 22; i++)
+            {
+                tongcu += Int32.Parse(arr[i, 1].ToString());
+            }
+
+            int hs62 = 0, hstnxpht = 0, hstnxp1 = 0, ncc = 0;
+
+            //số lượng hồ sơ 62 sau khi update
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC where IdNDT = 75";
+                hs62 = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //số lượng hồ sơ tnxp hàng tháng
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC where IdNDT = 79";
+                hstnxpht = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //số lượng hồ sơ tnxp 1 lần
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC where IdNDT = 80";
+                hstnxp1 = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //số lượng người có công
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC";
+                ncc = (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())));
+            }
+
+            //tổng dư
+            tongdu = tongdu + Int32.Parse(array[7, 1].ToString()) + Int32.Parse(array[11, 1].ToString()) + Int32.Parse(array[12, 1].ToString());
+
+            //trung bình
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                string sql = "select count(*) from HS_NguoiCC";
+                tb = tongdu / (Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString())) - 5000);
+            }
+
+            //điền dữ liệu
+            array[7, 1] = hs62 * 5; //+ Convert.ToInt32(tb * tbint[6]);
+            array[11, 1] = hstnxpht * 3; //+ Convert.ToInt32(tb * tbint[10]);
+            array[12, 1] = hstnxp1 * 3; //+ Convert.ToInt32(tb * tbint[11]);
+
+            // điền dữ liệu còn lại dựa vào tongdu
+            //array[1, 1] = Int32.Parse(arr[4, 1].ToString()) + Int32.Parse(arr[5, 1].ToString()) + tb * tbint[0];
+            array[1, 1] = 0;
+            array[2, 1] = Int32.Parse(arr[6, 1].ToString()) + Int32.Parse(arr[7, 1].ToString()) + Convert.ToInt32(tb * tbint[1]);
+            array[3, 1] = Int32.Parse(arr[8, 1].ToString()) + Int32.Parse(arr[9, 1].ToString()) + Convert.ToInt32(tb * tbint[2]);
+            array[4, 1] = Int32.Parse(arr[10, 1].ToString()) + Int32.Parse(arr[11, 1].ToString()) + Convert.ToInt32(tb * tbint[3]);
+            array[5, 1] = Int32.Parse(arr[12, 1].ToString()) + Int32.Parse(arr[13, 1].ToString()) + Convert.ToInt32(tb * tbint[4]);
+            array[6, 1] = Int32.Parse(arr[14, 1].ToString()) + Convert.ToInt32(tb * tbint[5]);
+            array[8, 1] = Int32.Parse(arr[16, 1].ToString()) + Convert.ToInt32(tb * tbint[7]);
+            array[9, 1] = Int32.Parse(arr[17, 1].ToString()) + Int32.Parse(arr[18, 1].ToString()) + Convert.ToInt32(tb * tbint[8]);
+            array[10, 1] = Int32.Parse(arr[19, 1].ToString()) + Int32.Parse(arr[20, 1].ToString()) + Convert.ToInt32(tb * tbint[9]);
+
+            int tongmoi = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                tongmoi += Int32.Parse(array[i + 1, 1].ToString());
+            }
+
+            array[1, 1] = tongcu - tongmoi;
+
+            Utils.ExportExcel(array, "Sheet", 3, 1, 100, 2);
+
+            /*using (StreamWriter streamWriter = File.AppendText(@"C:\Users\ADMIN\Downloads\thongke.txt"))
+            {
+                for (int i = 0; i < 22; i++)
+                {
+                    streamWriter.WriteLine(arr[i + 1, 0] + "\t" + arr[i + 1, 1]); ;
+                }
+            }  */  
+        }
+
 
         private void lb_Click(object sender, EventArgs e)
         {

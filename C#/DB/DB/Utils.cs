@@ -301,6 +301,18 @@ namespace DB
             return str;
         }
 
+        public static object[,] readExcel(string link)
+        {
+            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(link);
+            Microsoft.Office.Interop.Excel.Worksheet xlWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range xlRange = xlWorksheet.UsedRange;
+            object[,] valueArray = (object[,])xlRange.get_Value(Microsoft.Office.Interop.Excel.XlRangeValueDataType.xlRangeValueDefault);
+            xlWorkbook.Close(0);
+            xlApp.Quit();
+            return valueArray;
+        }
+
         public static string QuotationMarks(string str)
         {
             int count = str.Split('\'').Length;

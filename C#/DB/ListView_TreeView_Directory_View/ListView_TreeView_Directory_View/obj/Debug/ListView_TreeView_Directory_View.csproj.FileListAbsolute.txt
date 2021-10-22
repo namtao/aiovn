@@ -16,3 +16,12 @@ C:\Projects\C#\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View
 C:\Projects\C#\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.csproj.AssemblyReference.cache
 C:\Projects\C#\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.LANScanner.resources
 C:\Projects\C#\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.Tree.resources
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\bin\Debug\ListView_TreeView_Directory_View.exe
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\bin\Debug\ListView_TreeView_Directory_View.pdb
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.LANScanner.resources
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.Tree.resources
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.Properties.Resources.resources
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.csproj.GenerateResource.cache
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.csproj.CoreCompileInputs.cache
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.exe
+C:\Projects\C#\DB\ListView_TreeView_Directory_View\ListView_TreeView_Directory_View\obj\Debug\ListView_TreeView_Directory_View.pdb

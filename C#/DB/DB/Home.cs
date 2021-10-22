@@ -12,6 +12,9 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.IO;
+using System.Text;
+using Microsoft.Office.Interop.Excel;
 
 namespace DB
 {
@@ -19,7 +22,7 @@ namespace DB
     {
         public static string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
         public static Home form1;
-        DataTable dt;
+        System.Data.DataTable dt;
 
         public Home()
         {
@@ -33,6 +36,41 @@ namespace DB
         {
             //hide title in form
             //ControlBox = false;
+        }
+
+        public void Kiemtratrungexcel()
+        {
+            var arrPathExcel = Directory.GetFiles(@"\\192.168.31.206\Data_Output", "*.*", SearchOption.AllDirectories).Where(s => s.EndsWith(".xlsx")).ToList();
+            using (StreamWriter streamWriter = File.AppendText(@"C:\Users\ADMIN\Downloads\test.txt"))
+            {
+                foreach (string str in arrPathExcel)
+                {
+                    object[,] valueArray = Utils.readExcel(str);
+                    if (valueArray.GetLength(0) > 3)
+                        streamWriter.WriteLine(str);
+                }
+            }
+        }
+
+        public void getFiles()
+        {
+            var arrPathJpg = Directory.GetFiles(@"\\192.168.31.206\Data_output (không cập nhật được do không có tăng mới)", "*.*",
+                SearchOption.AllDirectories).Where(s => s.EndsWith(".pdf") || s.EndsWith(".xlsx")).ToList();
+
+            using (StreamWriter streamWriter = File.AppendText(@"C:\Users\ADMIN\Downloads\test.txt"))
+            {
+                foreach (string str in arrPathJpg)
+                {
+                    streamWriter.WriteLine(str);
+                }
+            }
+        }
+
+        public void openFile(string path)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            excel.Visible = true;
+            Microsoft.Office.Interop.Excel.Workbook wb = excel.Workbooks.Open(path);
         }
 
         public void FillDgv(string sqlQuery)
@@ -88,7 +126,7 @@ namespace DB
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dt = (DataTable)datagrid.DataSource;
+            dt = (System.Data.DataTable)datagrid.DataSource;
             if (datagrid.Rows.Count != 0 && datagrid.Rows != null)
             {
                 Utils.Export(dt, datagrid, "KIỂM TRA", "KIỂM TRA DỮ LIỆU");
@@ -265,7 +303,7 @@ namespace DB
                             {
                                 SqlConnection conn = new SqlConnection(connectString);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo +
                                     "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" +
@@ -308,7 +346,7 @@ namespace DB
                             {
                                 SqlConnection conn = new SqlConnection(connectString);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -346,7 +384,7 @@ namespace DB
                             {
                                 SqlConnection conn = new SqlConnection(connectString);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -385,7 +423,7 @@ namespace DB
                             {
                                 SqlConnection conn = new SqlConnection(connectString);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -419,7 +457,7 @@ namespace DB
                             {
                                 SqlConnection conn = new SqlConnection(connectString);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -453,7 +491,7 @@ namespace DB
                             {
                                 SqlConnection conn = new SqlConnection(connectString);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +

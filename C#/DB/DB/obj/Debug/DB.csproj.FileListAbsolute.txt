@@ -109,13 +109,6 @@ C:\Projects\C#\DB\obj\Debug\DB.csproj.CopyComplete
 C:\Projects\C#\DB\obj\Debug\DB.exe
 C:\Projects\C#\DB\obj\Debug\DB.pdb
 C:\Projects\C#\DB\obj\Debug\DB.CountField.resources
-C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.AssemblyReference.cache
-C:\Projects\C#\DB\DB\obj\Debug\DB.CountField.resources
-C:\Projects\C#\DB\DB\obj\Debug\DB.Home.resources
-C:\Projects\C#\DB\DB\obj\Debug\DB.Clone.resources
-C:\Projects\C#\DB\DB\obj\Debug\DB.Properties.Resources.resources
-C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.GenerateResource.cache
-C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
 C:\Projects\C#\DB\DB\bin\Debug\DB.exe.config
 C:\Projects\C#\DB\DB\bin\Debug\DB.exe
 C:\Projects\C#\DB\DB\bin\Debug\DB.pdb
@@ -146,6 +139,13 @@ C:\Projects\C#\DB\DB\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Projects\C#\DB\DB\bin\Debug\System.ValueTuple.xml
 C:\Projects\C#\DB\DB\bin\Debug\fr\AdvancedDataGridView.resources.dll
 C:\Projects\C#\DB\DB\bin\Debug\ru\AdvancedDataGridView.resources.dll
+C:\Projects\C#\DB\DB\obj\Debug\DB.CountField.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.Home.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.Clone.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.Properties.Resources.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.GenerateResource.cache
+C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
 C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.CopyComplete
 C:\Projects\C#\DB\DB\obj\Debug\DB.exe
 C:\Projects\C#\DB\DB\obj\Debug\DB.pdb
+C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.AssemblyReference.cache
