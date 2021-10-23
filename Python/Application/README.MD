@@ -1,1 +1,1 @@
-python -m pip freeze > C:\Projects\Python\Application\requirements.txt
+python -m pip freeze > C:\Projects\Python\Application\Output\requirements.txt

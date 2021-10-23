@@ -1,4 +1,4 @@
-def removespecialcharacters(strA):
+def removeSpecialCharacters(strA):
     specialcharacters = ['\\', '/', ':', '*', '?', '"', ',', '<', '>', '|']
     for i in strA:
         if(i in specialcharacters):
