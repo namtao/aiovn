@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
@@ -341,6 +342,15 @@ namespace DB
             da.Fill(ds);
             conn.Close();
             dataGrid.DataSource = ds.Tables[0];
+        }
+
+
+        public static string convertToUnSign(string s)
+        {
+            //remove special characters
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
     }
 }

@@ -122,9 +122,9 @@ namespace DB
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CountField";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Đếm trường";
+            this.Text = "Count Field";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CountField_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.CountField_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
