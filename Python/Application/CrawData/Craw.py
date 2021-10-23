@@ -1,4 +1,4 @@
-import pyttsx3
+
 import eng_to_ipa as ipa
 import requests
 from bs4 import BeautifulSoup
@@ -9,48 +9,10 @@ import requests
 import urllib3
 from datetime import datetime
 import re
-from googletrans import Translator
 import mechanize
 import urllib3
 import cookiejar
-
-def savemp3(text, path):
-    # f = open(r"C:\Projects\Python\tts.txt", "r+", encoding="utf-8")
-    # print(f.read())
-    engine = pyttsx3.init('sapi5')
-    rate = engine.getProperty('rate')
-    # engine.setProperty('rate', 180)
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[1].id)
-    # engine.say(f.read())
-    # engine.say(text)
-    # engine.save_to_file(text, r'C:\Projects\Python\test.mp3')
-    # engine.stop()
-    # os.system('start test.mp3')
-    engine.save_to_file(text, path)
-
-    engine.runAndWait()
-
-def trans():
-    text1 = 'Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.'
-    translator = Translator()
-    # print(translator.detect(text1))
-    print(translator.translate(text1, src='en', dest='vi').text)
-
-def removespecialcharacters(strA):
-    specialcharacters = ['\\', '/', ':', '*', '?', '"', ',', '<', '>', '|']
-    for i in strA:
-        if(i in specialcharacters):
-            strA = strA.replace(i, " ")
-
-    return str(strA)
-
-def convert2mp4(pathmp3, chaper):
-    cmd = 'ffmpeg -loop 1 -framerate 1 -i background.jpg -i '+'\"' + chaper + '.mp3\"' + \
-        ' -map 0:v -map 1:a -r 10 -vf "scale=\'iw-mod(iw,2)\':\'ih-mod(ih,2)\',format=yuv420p" -movflags +faststart -shortest -fflags +shortest -max_interleave_delta 100M ' + \
-        '\"' + chaper + '.mp4\"'
-    os.chdir(pathmp3)
-    os.system(cmd)
+from Utils import StringUltils, TtsUtils
 
 def crawlAudioBook(urlbook):
     response = requests.get(urlbook)
@@ -93,8 +55,8 @@ def crawlAudioBook(urlbook):
 
             pathmp3 = os.path.join(r'C:\Projects\Python\Audio', title)
 
-            savemp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: '+title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Projects\Python\Audio',
-                    removespecialcharacters(title), removespecialcharacters(element.text) + '.mp3'))
+            TtsUtils.TTS.savemp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: '+title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Projects\Python\Audio',
+                    StringUltils.removespecialcharacters(title), StringUltils.removespecialcharacters(element.text) + '.mp3'))
 
             # convert2mp4(pathmp3, removespecialcharacters(element.text))
 
@@ -224,3 +186,27 @@ def crawlThaiBinh():
             j += 1
             
         response.close
+
+def crawEnglishProfile():
+    with open(r"C:\Projects\Python\word.txt", "w+", encoding="utf-8") as fp:
+        x = 7860
+        lists = []
+        while(x  <= 15680):
+                
+            response = requests.get("https://englishprofile.org/wordlists/evp?start=" + str(x))
+            soup = BeautifulSoup(response.content, "html.parser")
+            com = soup.find('div', {"id": "symbolbox"})
+            # get table
+            table = soup.find_all(lambda tag: tag.name == 'table')[0]
+            rows = table.findAll(lambda tag: tag.name == 'td')
+            j = 0;
+            for i in rows:
+                if(j % 6 ==0): lists.append(i.text)
+                j += 1
+                
+            response.close
+            print(x)
+            x +=20
+
+        for a in list(dict.fromkeys(lists)):
+            fp.write(a + '\n')
