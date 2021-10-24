@@ -23,6 +23,7 @@ namespace DB
     {
         string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
         public static string sqlConnect;
+        ThaiBinh tb;
 
         public CountField()
         {
@@ -31,10 +32,9 @@ namespace DB
                 
         private void CountField_Load(object sender, EventArgs e)
         {
-            ThaiBinh tb = new ThaiBinh();
+            tb = new ThaiBinh();
             tb.countFieldExcelSau();
-            //countFieldExcelTruoc();
-            //MessageBox.Show(countAllColumn("V_TK_TienKhoiNghia") + "");
+            //tb.countFieldExcelTruoc();
             this.Close();
         }
 
@@ -128,7 +128,7 @@ namespace DB
             }
         }
 
-        public int DemTruong(string table, List<string> list)
+        /*public int DemTruong(string table, List<string> list)
         {
             int count = 0;
             using (SqlConnection con = new SqlConnection(connectString))
@@ -154,11 +154,11 @@ namespace DB
             List<string> lst = Utils.executeQueryList(con, sql);
 
             return DemTruong(table, lst);
-        }
+        }*/
 
         private void lb_Click(object sender, EventArgs e)
         {
-            lb.Text = "Có " + DemTruong(cbxTable.Text, lst1).ToString() + " trường";
+            lb.Text = "Có " + tb.DemTruong(cbxTable.Text, lst1).ToString() + " trường";
         }
 
         private void CountField_FormClosing(object sender, FormClosingEventArgs e)

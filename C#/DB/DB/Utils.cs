@@ -117,7 +117,6 @@ namespace DB
 
         public static void Export(System.Data.DataTable dt, DataGridView dataGrid, string sheetName, string title)
         {
-
             //Tạo các đối tượng Excel
 
             Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
@@ -343,7 +342,6 @@ namespace DB
             conn.Close();
             dataGrid.DataSource = ds.Tables[0];
         }
-
 
         public static string convertToUnSign(string s)
         {

@@ -5,3 +5,4 @@ def removeSpecialCharacters(strA):
             strA = strA.replace(i, " ")
 
     return str(strA)
+

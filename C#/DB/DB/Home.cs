@@ -36,6 +36,27 @@ namespace DB
         {
             //hide title in form
             //ControlBox = false;
+
+            // xuất số hồ sơ
+            FillDgv("select Ten, count(*) as SoLuong from HS_NguoiCC n join DM_NhomDT d on n.IdNDT = d.Id group by Ten order by Ten");
+            dt = (System.Data.DataTable)datagrid.DataSource;
+            if (datagrid.Rows.Count != 0 && datagrid.Rows != null)
+            {
+                Utils.Export(dt, datagrid, "Hồ sơ", "Thống kê số hồ sơ");
+            }
+            else MessageBox.Show("Không có dữ liệu để lưu vào excel, vui lòng kiểm tra lại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            // xuất số trang            
+            FillDgv("SELECT Ten, sum(SoTrang) as SoTrang FROM[SLDTTBImport].[dbo].[V_ThongKeSoTrangTheoHoSo] group by Ten order by Ten");
+            dt = (System.Data.DataTable)datagrid.DataSource;
+            if (datagrid.Rows.Count != 0 && datagrid.Rows != null)
+            {
+                Utils.Export(dt, datagrid, "Trang tài liệu", "Thống kê số trang");
+            }
+            else MessageBox.Show("Không có dữ liệu để lưu vào excel, vui lòng kiểm tra lại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            // xuất số trường
+            thốngKêToolStripMenuItem_Click(sender, e);
         }
 
         public void Kiemtratrungexcel()
