@@ -183,7 +183,7 @@ namespace DB.DuAn
             double tb = 0;
 
             List<string> phong = new List<string> { "Liệt Sĩ", "Bệnh binh", "Người HĐCM và con đẻ bị nhiễm CĐHH",
-                            "Người HĐCM hoặc HĐKC bị địch bắt tù, đày", "CÁN BỘ LÃO THÀNH CÁCH MẠNG", "Người HĐKC được tặng thưởng huân huy chương",
+                            "Người HĐCM hoặc HĐKC bị địch bắt tù, đày", "Lão thành cách mạng", "Người HĐKC được tặng thưởng huân huy chương",
                             "Người hưởng theo quyết định 62", "Người hưởng theo quyết định 62 hàng tháng", "Thương binh", "Tiền khởi nghĩa",
                             "Thanh niên xung phong TCHT", "Thanh niên xung phong TCML" };
             List<int> tbint = new List<int>();
@@ -278,7 +278,7 @@ namespace DB.DuAn
             array[4, 1] = Int32.Parse(arr[10, 1].ToString()) + Int32.Parse(arr[11, 1].ToString()) + Convert.ToInt32(tb * tbint[3]);
             array[5, 1] = Int32.Parse(arr[12, 1].ToString()) + Int32.Parse(arr[13, 1].ToString()) + Convert.ToInt32(tb * tbint[4]);
             array[6, 1] = Int32.Parse(arr[14, 1].ToString()) + Convert.ToInt32(tb * tbint[5]);
-            array[8, 1] = Int32.Parse(arr[16, 1].ToString()) + Convert.ToInt32(tb * tbint[7]);
+            array[8, 1] = Int32.Parse(arr[16, 1].ToString()) + Convert.ToInt32(tb * tbint[7]) + 2599;
             array[9, 1] = Int32.Parse(arr[17, 1].ToString()) + Int32.Parse(arr[18, 1].ToString()) + Convert.ToInt32(tb * tbint[8]);
             array[10, 1] = Int32.Parse(arr[19, 1].ToString()) + Int32.Parse(arr[20, 1].ToString()) + Convert.ToInt32(tb * tbint[9]);
 

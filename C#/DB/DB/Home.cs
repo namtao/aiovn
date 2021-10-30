@@ -15,6 +15,7 @@ using System.Configuration;
 using System.IO;
 using System.Text;
 using Microsoft.Office.Interop.Excel;
+using DB.DuAn;
 
 namespace DB
 {
@@ -37,8 +38,86 @@ namespace DB
             //hide title in form
             //ControlBox = false;
 
+            ThongKeTB(sender, e);
+
+            //MessageBox.Show(countAllColumn("HS_TT_QuyetDinh57") + "");
+        }
+
+        public int DemTruong(string table, List<string> list)
+        {
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                foreach (string a in list)
+                {
+                    if (!a.Equals("Id") && !a.Equals("HoSoDangQLTaiSo") && !a.Equals("BanGocBanSao") && !a.Equals("FileName") && !a.Equals("FilePath"))
+                    {
+                        string sql = "select count(*) from " + table + " " +
+                            "where " + a + " is not null and CAST(" + a + " as varchar(max)) != '' and CAST(" + a + " as varchar(max)) != '__/__/____'";
+                        count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
+                    }
+                }
+            }
+            return count;
+        }
+
+        public int countAllColumn(string table)
+        {
+            SqlConnection con = new SqlConnection(connectString);
+            string sql = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '" + table + "'";
+            List<string> lst = Utils.executeQueryList(con, sql);
+
+            return DemTruong(table, lst);
+        }
+
+        public void kiemtraproc()
+        {
+            string txtPath = @"C:\Users\ADMIN\Downloads\proc.txt";
+            File.WriteAllText(txtPath, String.Empty);
+            
+            using (StreamWriter writer = File.AppendText(txtPath))
+            {
+                using (SqlConnection con = new SqlConnection(connectString))
+                {
+                    /*string sql = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS " +
+                        "where COLUMN_NAME not like '%id%' and COLUMN_NAME not like '%stt%' " +
+                        "and COLUMN_NAME not like '%status%' and COLUMN_NAME not like '%trangthai%' " +
+                        "and COLUMN_NAME not like 'is%' and TABLE_NAME = '" + cbxTable.Text + "'";*/
+                    string sql = "Select [NAME] from sysobjects where type = 'P' and category = 0 order by name";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            using (SqlConnection con2 = new SqlConnection(connectString))
+                            {
+                                string sql2 = "sp_helptext " + dr[0].ToString();
+                                using (SqlCommand cmd2 = new SqlCommand(sql2, con2))
+                                {
+                                    cmd2.CommandType = CommandType.Text;
+                                    con2.Open();
+                                    SqlDataReader dr2 = cmd2.ExecuteReader();
+                                    while (dr2.Read())
+                                    {
+                                        writer.WriteLine(dr2[0].ToString());
+                                    }
+                                    con2.Close();
+                                }
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+            }
+        }
+
+        public void ThongKeTB(object sender, EventArgs e)
+        {
             // xuất số hồ sơ
-            FillDgv("select Ten, count(*) as SoLuong from HS_NguoiCC n join DM_NhomDT d on n.IdNDT = d.Id group by Ten order by Ten");
+            FillDgv("select Ten, count(*) as SoLuong from HS_NguoiCC n join DM_NhomDT d on n.IdNDT = d.Id where TrangThai <> 1 AND TrangThai <> 2 group by Ten order by Ten");
             dt = (System.Data.DataTable)datagrid.DataSource;
             if (datagrid.Rows.Count != 0 && datagrid.Rows != null)
             {
@@ -47,7 +126,7 @@ namespace DB
             else MessageBox.Show("Không có dữ liệu để lưu vào excel, vui lòng kiểm tra lại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             // xuất số trang            
-            FillDgv("SELECT Ten, sum(SoTrang) as SoTrang FROM[SLDTTBImport].[dbo].[V_ThongKeSoTrangTheoHoSo] group by Ten order by Ten");
+            FillDgv("SELECT Ten, sum(SoTrang) as SoTrang FROM V_ThongKeSoTrangTheoHoSo group by Ten order by Ten");
             dt = (System.Data.DataTable)datagrid.DataSource;
             if (datagrid.Rows.Count != 0 && datagrid.Rows != null)
             {

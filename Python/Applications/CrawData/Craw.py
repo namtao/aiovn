@@ -12,9 +12,12 @@ import re
 import mechanize
 import urllib3
 import cookiejar
-from Utils import StringUltils, TtsUtils
+from Utils.StringUltils import *
+from Utils.TtsUtils import *
+import time
 
-def crawlAudioBook(urlbook):
+
+def crawlAudioBookFpt(urlbook):
     response = requests.get(urlbook)
     soup = BeautifulSoup(response.content, "html.parser")
     # content = soup.find("div", class_="content_p fs-16 content_p_al").text
@@ -27,15 +30,15 @@ def crawlAudioBook(urlbook):
     # print(link.get('href'))
 
     # create path
-    if not os.path.exists(os.path.join(r'C:\Projects\Python\Audio', title)):
-        os.makedirs(os.path.join(r'C:\Projects\Python\Audio', title))
+    if not os.path.exists(os.path.join(r'C:\Audio', title)):
+        os.makedirs(os.path.join(r'C:\Audio', title))
 
     # get image
     imagelink = soup.find_all(
         'div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
     response = requests.get(imagelink)
 
-    file = open(os.path.join(r'C:\Projects\Python\Audio',
+    file = open(os.path.join(r'C:\Audio',
                 title, 'background.jpg'), "wb")
     file.write(response.content)
     file.close()
@@ -53,12 +56,13 @@ def crawlAudioBook(urlbook):
             dicts['link'] = element['href']
             dicts['content'] = content
 
-            pathmp3 = os.path.join(r'C:\Projects\Python\Audio', title)
+            pathmp3 = os.path.join(r'C:\Audio', title)
 
-            TtsUtils.TTS.savemp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: '+title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Projects\Python\Audio',
-                    StringUltils.removespecialcharacters(title), StringUltils.removespecialcharacters(element.text) + '.mp3'))
+            savemp3Fpt('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' +
+                                 title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Audio',
+                                                                                                removeSpecialCharacters(title), removeSpecialCharacters(element.text) + '.mp3'))
 
-            # convert2mp4(pathmp3, removespecialcharacters(element.text))
+            # mp32mp4(pathmp3, removespecialcharacters(element.text))
 
             lists.append(dicts)
 
@@ -69,13 +73,166 @@ def crawlAudioBook(urlbook):
     book['chapter'] = lists
     # print(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
 
-    f = open(os.path.join(r'C:\Projects\Python\Audio', title,'info.txt'), "w+", encoding="utf-8")
+    f = open(os.path.join(r'C:\Audio',
+             title, 'info.txt'), "w+", encoding="utf-8")
+    f.write(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
+
+def crawlAudioBookGoogleTTS(urlbook):
+    # get page via url
+    response = requests.get(urlbook)
+
+    # parse BeautifulSoup
+    soup = BeautifulSoup(response.content, "html.parser")
+    # content = soup.find("div", class_="content_p fs-16 content_p_al").text
+
+    # get  info
+    title = soup.find('h1', class_='tblue fs-20').text
+    # chapters = soup.find('h2', class_='mg-t-10').text
+    author = soup.find_all('div', class_='mg-t-10')[1].text
+    # author = soup.find('div', class_='mg-t-10').text
+    category = soup.find('a', class_='tblue').text
+    # chapters = sop.findAll('a')[0]['href']
+    # print(link.get('href'))u
+
+    # create path
+    if not os.path.exists(os.path.join(r'C:\Audio', title)):
+        os.makedirs(os.path.join(r'C:\Audio', title))
+
+    # get image
+    imagelink = soup.find_all(
+        'div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
+    response = requests.get(imagelink)
+
+    file = open(os.path.join(r'C:\Audio',
+                title, 'background.jpg'), "wb")
+    file.write(response.content)
+    file.close()
+
+    lists = []
+    # get chap
+    for elements in soup.find_all('div', class_='item_ch'):
+        # get link to chap
+        for element in elements.find_all('a'):
+            # create path    
+            if not os.path.exists(os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text))):
+                os.makedirs(os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text)))
+
+            # parse BeautifulSoup chap
+            soupcontent = BeautifulSoup(requests.get(
+                element['href']).content, "html.parser")
+            content = soupcontent.find(
+                'div', class_='content_p fs-16 content_p_al').text
+
+            # save json
+            dicts = {}
+            dicts['name'] = element.text
+            dicts['link'] = element['href']
+            dicts['content'] = content
+
+            # save mp3 title
+            index = 0
+            time.sleep(10)
+            googleTTS('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' +
+                                 title + "\n\n" + element.text + "\n\n\n" , os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text), str(index)))
+            index += 1
+
+            # remove empty element
+            content.split('.')
+            str_list = []
+            for i in content.split('.'):
+                str_list.append(i.strip())
+            
+            str_list = list(filter(None, str_list))
+
+            for i in str_list:
+                time.sleep(10)
+                googleTTS(i + ' ', os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text), str(index)))
+                index += 1
+
+            index = 0
+
+            # cmd = 'ffmpeg -i \"concat:aaa.MP3|aab.MP3|aaa.MP3\" -acodec copy \"'+ removeSpecialCharacters(element.text) + '.mp3\"'
+            # os.system(cmd)
+
+            # mp32mp4(pathmp3, removespecialcharacters(element.text))
+
+            lists.append(dicts)
+
+    book = {}
+    book['title'] = title
+    book['author'] = author
+    book['category'] = category
+    book['chapter'] = lists
+    # print(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
+
+    f = open(os.path.join(r'C:\Audio',
+             title, 'info.txt'), "w+", encoding="utf-8")
+    f.write(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
+
+def crawlAudioBook(urlbook):
+    response = requests.get(urlbook)
+    soup = BeautifulSoup(response.content, "html.parser")
+    # content = soup.find("div", class_="content_p fs-16 content_p_al").text
+    title = soup.find('h1', class_='tblue fs-20').text
+    # chapters = soup.find('h2', class_='mg-t-10').text
+    author = soup.find_all('div', class_='mg-t-10')[1].text
+    # author = soup.find('div', class_='mg-t-10').text
+    category = soup.find('a', class_='tblue').text
+    # chapters = soup.findAll('a')[0]['href']
+    # print(link.get('href'))
+
+    # create path
+    if not os.path.exists(os.path.join(r'C:\Audio', title)):
+        os.makedirs(os.path.join(r'C:\Audio', title))
+
+    # get image
+    imagelink = soup.find_all(
+        'div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
+    response = requests.get(imagelink)
+
+    file = open(os.path.join(r'C:\Audio',
+                title, 'background.jpg'), "wb")
+    file.write(response.content)
+    file.close()
+
+    lists = []
+    for elements in soup.find_all('div', class_='item_ch'):
+        for element in elements.find_all('a'):
+            soupcontent = BeautifulSoup(requests.get(
+                element['href']).content, "html.parser")
+            content = soupcontent.find(
+                'div', class_='content_p fs-16 content_p_al').text
+
+            dicts = {}
+            dicts['name'] = element.text
+            dicts['link'] = element['href']
+            dicts['content'] = content
+
+            pathmp3 = os.path.join(r'C:\Audio', title)
+
+            savemp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' +
+                                 title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Audio',
+                                                                                                removeSpecialCharacters(title), removeSpecialCharacters(element.text) + '.mp3'))
+
+            # mp32mp4(pathmp3, removespecialcharacters(element.text))
+
+            lists.append(dicts)
+
+    book = {}
+    book['title'] = title
+    book['author'] = author
+    book['category'] = category
+    book['chapter'] = lists
+    # print(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
+
+    f = open(os.path.join(r'C:\Audio',
+             title, 'info.txt'), "w+", encoding="utf-8")
     f.write(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
 
 def crawlCoPieu68():
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     # get links
-    f = open(r"C:\Projects\Python\linksCoPhieu68.txt", "w+", encoding="utf-8")
+    f = open(r"C:\linksCoPhieu68.txt", "w+", encoding="utf-8")
     for i in range(1, 17):
         response = requests.get(
             "https://www.cophieu68.vn/companylist.php?currentPage=" + str(i) + "&o=s&ud=a&stcid=1", verify=False)
@@ -110,7 +267,7 @@ def crawlCoPieu68():
                 print()
 
 def crawlCafef():
-    with open(r"C:\Projects\Python\linksCafef.txt", "r") as fp:
+    with open(r"C:\linksCafef.txt", "r") as fp:
         for line in fp:
             com = ""
             while(True):
@@ -130,22 +287,24 @@ def crawlCafef():
 
 def crawlCambridge():
     # https://dictionary.cambridge.org/dictionary/english-vietnamese/hello
-    with open(r"C:\Projects\Python\word.txt", "w+", encoding="utf-8") as fp:
+    with open(r"C:\word.txt", "w+", encoding="utf-8") as fp:
         x = 7860
         lists = []
-        while(x  <= 15680):
-                
-            response = requests.get("https://englishprofile.org/wordlists/evp?start=" + str(x))
+        while(x <= 15680):
+
+            response = requests.get(
+                "https://englishprofile.org/wordlists/evp?start=" + str(x))
             soup = BeautifulSoup(response.content, "html.parser")
             com = soup.find('div', {"id": "symbolbox"})
             # get table
             table = soup.find_all(lambda tag: tag.name == 'table')[0]
             rows = table.findAll(lambda tag: tag.name == 'td')
-            j = 0;
+            j = 0
             for i in rows:
-                if(j % 6 ==0): lists.append(i.text)
+                if(j % 6 == 0):
+                    lists.append(i.text)
                 j += 1
-                
+
             response.close
             print(x)
             x += 20
@@ -155,8 +314,8 @@ def crawlCambridge():
 
 def crawlThaiBinh():
     # https://dictionary.cambridge.org/dictionary/english-vietnamese/hello
-    with open(r"C:\Projects\Python\tb.txt", "w+", encoding="utf-8") as fp:
-        
+    with open(r"C:\tb.txt", "w+", encoding="utf-8") as fp:
+
         cookies = {
             'ASP.NET_SessionId': 'gyyr33x3bozqrqnv5xyf2lpk',
             '__RequestVerificationToken': 'dsv1t43rnh3PRNQPYUlgQSSvkAxqGWP-MuSrlr978IlymAg25d4sJJlsR2m4SN7_b3YB0avK_VtXjHRRKY0gZjYl5WiKwdOgC94JtUsZzHA1',
@@ -174,39 +333,42 @@ def crawlThaiBinh():
             'Accept-Language': 'vi',
         }
 
-        response = requests.get('http://192.168.0.161/search/LietSy', headers=headers, cookies=cookies, verify=False)
+        response = requests.get('http://192.168.0.161/search/LietSy',
+                                headers=headers, cookies=cookies, verify=False)
 
         soup = BeautifulSoup(response.content, "html.parser")
         com = soup.find('div', {"id": "symbolbox"})
         # get table
         table = soup.find_all(lambda tag: tag.name == 'table')[0]
         rows = table.findAll(lambda tag: tag.name == 'td')
-        j = 0;
+        j = 0
         for i in rows:
             j += 1
-            
+
         response.close
 
 def crawEnglishProfile():
-    with open(r"C:\Projects\Python\word.txt", "w+", encoding="utf-8") as fp:
+    with open(r"C:\word.txt", "w+", encoding="utf-8") as fp:
         x = 7860
         lists = []
-        while(x  <= 15680):
-                
-            response = requests.get("https://englishprofile.org/wordlists/evp?start=" + str(x))
+        while(x <= 15680):
+
+            response = requests.get(
+                "https://englishprofile.org/wordlists/evp?start=" + str(x))
             soup = BeautifulSoup(response.content, "html.parser")
             com = soup.find('div', {"id": "symbolbox"})
             # get table
             table = soup.find_all(lambda tag: tag.name == 'table')[0]
             rows = table.findAll(lambda tag: tag.name == 'td')
-            j = 0;
+            j = 0
             for i in rows:
-                if(j % 6 ==0): lists.append(i.text)
+                if(j % 6 == 0):
+                    lists.append(i.text)
                 j += 1
-                
+
             response.close
             print(x)
-            x +=20
+            x += 20
 
         for a in list(dict.fromkeys(lists)):
             fp.write(a + '\n')

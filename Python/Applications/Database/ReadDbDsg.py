@@ -15,7 +15,7 @@ def getDB():
 
     # print console
     cursor = conn.cursor()
-    cursor.execute('select metadata from TblMetadata')
+    cursor.execute('select top(1) metadata from TblMetadata')
     # print((list(cursor)))
 
     i = 0
@@ -39,6 +39,6 @@ def getDB():
 
     # convert cursor to array
     cursor = conn.cursor()
-    cursor.execute('select metadata from TblMetadata')
+    cursor.execute('select top(1) metadata from TblMetadata')
     arr = np.array(list(cursor))
     ExcelUtils.writeToExcel(arr)

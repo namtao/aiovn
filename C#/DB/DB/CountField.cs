@@ -40,7 +40,7 @@ namespace DB
 
         private void cbxTable_DropDown(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=SLDTTBImport;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
             string strCmd = "select distinct TABLE_NAME from INFORMATION_SCHEMA.COLUMNS";
             SqlCommand cmd = new SqlCommand(strCmd, conn);
@@ -64,7 +64,7 @@ namespace DB
             lst1.Clear();
             lst2.Clear();
 
-            using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=SLDTTBImport;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection(connectString))
             {
                 /*string sql = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS " +
                     "where COLUMN_NAME not like '%id%' and COLUMN_NAME not like '%stt%' " +
