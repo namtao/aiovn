@@ -81,7 +81,7 @@ def getLinkm3u8(text):
         "POST", url, data=payload.encode('utf-8'), headers=headers)
     # f = open(r'C:\Users\ADMIN\Downloads\out.txt', "w")
 
-    return response.text
+    return json.loads(response.text)['data']['url']
 
 
 def googleTTS(text, path):

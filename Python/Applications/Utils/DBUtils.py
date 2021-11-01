@@ -15,9 +15,9 @@ def connectDB():
                         'Database='+ config.get('SqlServerDB','db') +';'
                         'Trusted_Connection=yes;')
 
-    cursor = conn.cursor()
-    return cursor
+    return conn
 
 def executeQuery(str):
-    cursor = connectDB()
+    cursor = connectDB().cursor()
     cursor.execute(str)
+    return list(cursor)
