@@ -1,4 +1,4 @@
-def removeSpecialCharacters(strA):
+def formatStr(strA):
     specialcharacters = ['\\', '/', ':', '*', '?', '"', ',', '<', '>', '|']
     for i in strA:
         if(i in specialcharacters):

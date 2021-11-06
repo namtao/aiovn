@@ -16,6 +16,7 @@ from Utils.StringUltils import *
 from Utils.TtsUtils import *
 import time
 
+
 def crawlAudioBookFpt(urlbook):
     response = requests.get(urlbook)
     soup = BeautifulSoup(response.content, "html.parser")
@@ -33,7 +34,8 @@ def crawlAudioBookFpt(urlbook):
         os.makedirs(os.path.join(r'C:\Audio', title))
 
     # get image
-    imagelink = soup.find_all('div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
+    imagelink = soup.find_all(
+        'div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
     response = requests.get(imagelink)
 
     file = open(os.path.join(r'C:\Audio',
@@ -44,8 +46,10 @@ def crawlAudioBookFpt(urlbook):
     lists = []
     for elements in soup.find_all('div', class_='item_ch'):
         for element in elements.find_all('a'):
-            soupcontent = BeautifulSoup(requests.get(element['href']).content, "html.parser")
-            content = soupcontent.find('div', class_='content_p fs-16 content_p_al').text
+            soupcontent = BeautifulSoup(requests.get(
+                element['href']).content, "html.parser")
+            content = soupcontent.find(
+                'div', class_='content_p fs-16 content_p_al').text
 
             dicts = {}
             dicts['name'] = element.text
@@ -55,9 +59,9 @@ def crawlAudioBookFpt(urlbook):
             pathmp3 = os.path.join(r'C:\Audio', title)
 
             savemp3Fpt('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Audio',
-                                                                                      removeSpecialCharacters(title), removeSpecialCharacters(element.text) + '.mp3'))
+                                                                                                                                               formatStr(title), formatStr(element.text) + '.mp3'))
 
-            # mp32mp4(pathmp3, removespecialcharacters(element.text))
+            # mp32mp4(pathmp3, formatStr(element.text))
 
             lists.append(dicts)
 
@@ -94,7 +98,8 @@ def crawlAudioBookGoogleTTS(urlbook):
         os.makedirs(os.path.join(r'C:\Audio', title))
 
     # get image
-    imagelink = soup.find_all('div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
+    imagelink = soup.find_all(
+        'div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
     response = requests.get(imagelink)
 
     file = open(os.path.join(r'C:\Audio',
@@ -108,12 +113,15 @@ def crawlAudioBookGoogleTTS(urlbook):
         # get link to chap
         for element in elements.find_all('a'):
             # create path
-            if not os.path.exists(os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text))):
-                os.makedirs(os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text)))
+            if not os.path.exists(os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text))):
+                os.makedirs(os.path.join(r'C:\Audio', formatStr(
+                    title), formatStr(element.text)))
 
             # parse BeautifulSoup chap
-            soupcontent = BeautifulSoup(requests.get(element['href']).content, "html.parser")
-            content = soupcontent.find('div', class_='content_p fs-16 content_p_al').text
+            soupcontent = BeautifulSoup(requests.get(
+                element['href']).content, "html.parser")
+            content = soupcontent.find(
+                'div', class_='content_p fs-16 content_p_al').text
 
             # save json
             dicts = {}
@@ -124,7 +132,8 @@ def crawlAudioBookGoogleTTS(urlbook):
             # save mp3 title
             index = 0
             time.sleep(10)
-            googleTTS('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n\n" + element.text + "\n\n\n", os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text), str(index)))
+            googleTTS('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n\n" + element.text + "\n\n\n",
+                      os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text), str(index)))
             index += 1
 
             # remove empty element
@@ -137,16 +146,17 @@ def crawlAudioBookGoogleTTS(urlbook):
 
             for i in str_list:
                 time.sleep(10)
-                googleTTS(i + ' ', os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text), str(index)))
+                googleTTS(i + ' ', os.path.join(r'C:\Audio', formatStr(
+                    title), formatStr(element.text), str(index)))
                 index += 1
 
             index = 0
 
             # cmd = 'ffmpeg -i \"concat:aaa.MP3|aab.MP3|aaa.MP3\" -acodec copy
-            # \"'+ removeSpecialCharacters(element.text) + '.mp3\"'
+            # \"'+ formatStr(element.text) + '.mp3\"'
             # os.system(cmd)
 
-            # mp32mp4(pathmp3, removespecialcharacters(element.text))
+            # mp32mp4(pathmp3, formatStr(element.text))
 
             lists.append(dicts)
 
@@ -186,8 +196,7 @@ def crawlAudioBookZaloAI(urlbook):
     imagelink = soup.find_all('div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
     response = requests.get(imagelink)
 
-    file = open(os.path.join(r'C:\Audio',
-                title, 'background.jpg'), "wb")
+    file = open(os.path.join(r'C:\Audio', title, 'background.jpg'), "wb")
     file.write(response.content)
     file.close()
 
@@ -197,9 +206,9 @@ def crawlAudioBookZaloAI(urlbook):
         # get link to chap
         for element in elements.find_all('a'):
             # create path
-            if not os.path.exists(os.path.join(r'C:\Audio', removeSpecialCharacters(title), 
-            removeSpecialCharacters(element.text))):
-                os.makedirs(os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text)))
+            if not os.path.exists(os.path.join(r'C:\Audio', formatStr(title),
+                                               formatStr(element.text))):
+                os.makedirs(os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text)))
 
             # parse BeautifulSoup chap
             soupcontent = BeautifulSoup(requests.get(element['href']).content, "html.parser")
@@ -211,43 +220,63 @@ def crawlAudioBookZaloAI(urlbook):
             dicts['link'] = element['href']
             dicts['content'] = content
 
+            print(element.text)
+
             # save mp3 title
             index = 0
-            m3u82mp3(getLinkm3u8('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + removeSpecialCharacters(title + "\n\n") + removeSpecialCharacters(element.text) + "\n\n\n"), 
-                                 os.path.join(r'C:\Audio', removeSpecialCharacters(title),
-                                  removeSpecialCharacters(element.text), str(index)))
+
+            if not os.path.exists(os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text), str(index) + '.mp3')):
+                txt = 'Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + formatStr(title + "\n\n") + formatStr(element.text) + "\n\n\n"
+                path = os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text), str(index))
+                m3u82mp3(getLinkm3u8(txt), path)
             index += 1
 
-            # remove empty element
-            content.split('.')
-            str_list = []
-            for i in content.split('.'):
-                str_list.append(i.strip())
-
-            str_list = list(filter(None, str_list))
-
             # create txt file save m3u8
-            filem3u8 = open(os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text), 'linksm3u8.txt'), "w", encoding="utf-8")
+            filem3u8 = open(os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text), 'linksm3u8.txt'), "w", encoding="utf-8")
 
-            for i in str_list:
-                # time.sleep(10)
-                # while True:
-                    # try:
-                filem3u8.write(getLinkm3u8(i + ' ') + '\n')
-                m3u82mp3(getLinkm3u8(i + ' '), os.path.join(r'C:\Audio', removeSpecialCharacters(title), removeSpecialCharacters(element.text), str(index)))
-                        # break
-                    # except:
-                        # pass
+            time.sleep(10)
 
-                index += 1
+            try:
+                if not os.path.exists(os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text), str(index) + '.mp3')):
+                    if(len(content) < 2000):
+                        filem3u8.write(getLinkm3u8(content + ' ') + '\n')
+                        m3u82mp3(getLinkm3u8(content + ' '), os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text), str(index)))
+                    else:
+                        # create and remove empty element
+                        content.split('.')
+                        str_list = []
+                        for i in content.split('.'):
+                            str_list.append(i.strip())
+
+                        str_list = list(filter(None, str_list))
+
+
+                        txtDuoi2000 = ''
+                        listTxtDuoi2000 = []
+
+                        # split txt < 2000
+                        for i in str_list:
+                            # time.sleep(10)
+                            if(len(txtDuoi2000) < 2000):
+                                txtDuoi2000 += i
+                            else:
+                                listTxtDuoi2000.append(txtDuoi2000)
+                                txtDuoi2000 = ''
+                        
+                        for j in listTxtDuoi2000:
+                            filem3u8.write(getLinkm3u8(j + ' ') + '\n')
+                            m3u82mp3(getLinkm3u8(j + ' '), os.path.join(r'C:\Audio', formatStr(title), formatStr(element.text), str(index)))
+                            index += 1
+            except:
+                pass
 
             index = 0
 
             # cmd = 'ffmpeg -i \"concat:aaa.MP3|aab.MP3|aaa.MP3\" -acodec copy
-            # \"'+ removeSpecialCharacters(element.text) + '.mp3\"'
+            # \"'+ formatStr(element.text) + '.mp3\"'
             # os.system(cmd)
 
-            # mp32mp4(pathmp3, removespecialcharacters(element.text))
+            # mp32mp4(pathmp3, formatStr(element.text))
 
             lists.append(dicts)
 
@@ -279,7 +308,8 @@ def crawlAudioBook(urlbook):
         os.makedirs(os.path.join(r'C:\Audio', title))
 
     # get image
-    imagelink = soup.find_all('div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
+    imagelink = soup.find_all(
+        'div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
     response = requests.get(imagelink)
 
     file = open(os.path.join(r'C:\Audio',
@@ -290,8 +320,10 @@ def crawlAudioBook(urlbook):
     lists = []
     for elements in soup.find_all('div', class_='item_ch'):
         for element in elements.find_all('a'):
-            soupcontent = BeautifulSoup(requests.get(element['href']).content, "html.parser")
-            content = soupcontent.find('div', class_='content_p fs-16 content_p_al').text
+            soupcontent = BeautifulSoup(requests.get(
+                element['href']).content, "html.parser")
+            content = soupcontent.find(
+                'div', class_='content_p fs-16 content_p_al').text
 
             dicts = {}
             dicts['name'] = element.text
@@ -301,9 +333,9 @@ def crawlAudioBook(urlbook):
             pathmp3 = os.path.join(r'C:\Audio', title)
 
             savemp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Audio',
-                                                                                   removeSpecialCharacters(title), removeSpecialCharacters(element.text) + '.mp3'))
+                                                                                                                                            formatStr(title), formatStr(element.text) + '.mp3'))
 
-            # mp32mp4(pathmp3, removespecialcharacters(element.text))
+            # mp32mp4(pathmp3, formatStr(element.text))
 
             lists.append(dicts)
 
@@ -323,7 +355,8 @@ def crawlCoPieu68():
     # get links
     f = open(r"C:\linksCoPhieu68.txt", "w+", encoding="utf-8")
     for i in range(1, 17):
-        response = requests.get("https://www.cophieu68.vn/companylist.php?currentPage=" + str(i) + "&o=s&ud=a&stcid=1", verify=False)
+        response = requests.get(
+            "https://www.cophieu68.vn/companylist.php?currentPage=" + str(i) + "&o=s&ud=a&stcid=1", verify=False)
         soup = BeautifulSoup(response.content, "html.parser")
 
         links = soup.find_all("a")
@@ -342,12 +375,14 @@ def crawlCoPieu68():
 
                 # get table
                 for x in range(1, 3):
-                    table = soup2.find_all(lambda tag: tag.name == 'table' and tag.has_attr('width') and tag['width'] == "100%")[x]
+                    table = soup2.find_all(lambda tag: tag.name == 'table' and tag.has_attr(
+                        'width') and tag['width'] == "100%")[x]
                     rows = table.findAll(lambda tag: tag.name == 'tr')
                     for i in rows:
                         lists = []
                         for j in i.find_all(lambda tag: tag.name == 'td'):
-                            lists.append(re.sub('  ', '', j.text.replace('\r\n', '').replace('\t', '   ').strip()))
+                            lists.append(re.sub('  ', '', j.text.replace(
+                                '\r\n', '').replace('\t', '   ').strip()))
                         print(': '.join(i for i in lists))
 
                 print()
@@ -378,7 +413,8 @@ def crawlCambridge():
         lists = []
         while(x <= 15680):
 
-            response = requests.get("https://englishprofile.org/wordlists/evp?start=" + str(x))
+            response = requests.get(
+                "https://englishprofile.org/wordlists/evp?start=" + str(x))
             soup = BeautifulSoup(response.content, "html.parser")
             com = soup.find('div', {"id": "symbolbox"})
             # get table
@@ -438,7 +474,8 @@ def crawEnglishProfile():
         lists = []
         while(x <= 15680):
 
-            response = requests.get("https://englishprofile.org/wordlists/evp?start=" + str(x))
+            response = requests.get(
+                "https://englishprofile.org/wordlists/evp?start=" + str(x))
             soup = BeautifulSoup(response.content, "html.parser")
             com = soup.find('div', {"id": "symbolbox"})
             # get table

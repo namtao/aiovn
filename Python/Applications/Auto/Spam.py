@@ -7,7 +7,7 @@ m = float(input("Nhập thời gian delay: "))
 print("Chuẩn bị")
 #Đếm ngược 5 giây
 for i in range(5,0,-1):
-	print(i,end="...",flush='True')
+	print(i ,end="...",flush='True')
 	time.sleep(1)
 print("Bắt đầu")
 

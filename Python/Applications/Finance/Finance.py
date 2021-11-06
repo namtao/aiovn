@@ -18,37 +18,39 @@ annot = ax.annotate("", xy=(0,0), xytext=(-20,20),textcoords="offset points",
                     arrowprops=dict(arrowstyle="->"))
 annot.set_visible(False)
 
-for bar in bars:
-    ax.format_coord = lambda x, y: 'x={:.2f}, y={:.2f}'.format(x, bar.get_y() + bar.get_height())
-# def update_annot(bar):
 
-#     # x = bar.get_x() + bar.get_width()/2.
-#     # y = bar.get_y() + bar.get_height()
+
+def update_annot(bar):
+
+    x = bar.get_x() + bar.get_width()/2.
+    y = bar.get_y() + bar.get_height()
+
+    ax.format_ydata = lambda d: y
     
-#     # thay đổi định dạng format_coord thanh taskbar figure
-#     ax.format_coord = lambda x, y: 'x={:.2f}, y={:.2f}'.format(x, bar.get_y() + bar.get_height())
+    # thay đổi định dạng format_coord thanh taskbar figure
+    # ax.format_coord = lambda x, y: 'x={:.2f}, y={:.2f}'.format(x, y)
 
-#     # annot.xy = (x,y)
-#     # text = "({:.2f}, {:.2f})".format( x,y )
-#     # annot.set_text(text)
-#     # annot.get_bbox_patch().set_alpha(0.4)
+    annot.xy = (x,y)
+    text = "{:.3f}".format( y )
+    annot.set_text(text)
+    annot.get_bbox_patch().set_alpha(0.4)
 
 
-# def hover(event):
-#     vis = annot.get_visible()
-#     if event.inaxes == ax:
-#         for bar in bars:
-#             cont, ind = bar.contains(event)
-#             if cont:
-#                 update_annot(bar)
-#                 annot.set_visible(True)
-#                 fig.canvas.draw_idle()
-#                 return
-#     if vis:
-#         annot.set_visible(False)
-#         fig.canvas.draw_idle()
+def hover(event):
+    vis = annot.get_visible()
+    if event.inaxes == ax:
+        for bar in bars:
+            cont, ind = bar.contains(event)
+            if cont:
+                update_annot(bar)
+                annot.set_visible(True)
+                fig.canvas.draw_idle()
+                return
+    if vis:
+        annot.set_visible(False)
+        fig.canvas.draw_idle()
 
-# fig.canvas.mpl_connect("motion_notify_event", hover)
+fig.canvas.mpl_connect("motion_notify_event", hover)
 
 
 # plt.axis('off')
@@ -56,7 +58,7 @@ for bar in bars:
 plt.bar(xpoints, ypoints)
 
 plt.xticks([])
-plt.yticks([])
+# plt.yticks([])
 
 plt.title('Chi tiêu')
 plt.xlabel('Ngày')
