@@ -64,6 +64,21 @@ def getFiles (folderPath, txtPath, fileFormat):
 
     # print(RenderTree(udo).by_attr())
 
+def case_rename( dir ):
+    # renames all subforders of dir, not including dir itself
+    dir = os.path.dirname(os.path.abspath(__file__))
+    def rename_all( root, items):
+        for name in items:
+            try:
+                os.rename( os.path.join(root, name), os.path.join(root, name.lower()))
+            except OSError:
+                pass # can't rename it, so what
+
+    # starts from the bottom so paths further up remain valid after renaming
+    for root, dirs, files in os.walk( dir, topdown=False ):
+        rename_all( root, dirs )
+        rename_all( root, files)
+
 if __name__ == "__main__":
     # getFiles(os.getcwd(), r'\\192.168.31.206\Share\JPG (chưa kiểm tra)\quét', 'jpg')
     # getFiles(os.path.dirname(__file__), os.path.dirname(__file__) + r'\count.txt', 'jpg')
