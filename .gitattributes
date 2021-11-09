@@ -4,5 +4,6 @@
 *.c linguist-detectable=false
 *.cpp linguist-detectable=false
 *.1 linguist-detectable=false
+*.rst linguist-language=Python
 *.rst linguist-detectable=false
 *.in linguist-detectable=false
