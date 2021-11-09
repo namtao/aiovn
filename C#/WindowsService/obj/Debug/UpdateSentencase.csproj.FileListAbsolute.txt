@@ -1,9 +1,0 @@
-C:\Project\C#\WindowsService\bin\Debug\UpdateSentencase.exe.config
-C:\Project\C#\WindowsService\bin\Debug\UpdateSentencase.exe
-C:\Project\C#\WindowsService\bin\Debug\UpdateSentencase.pdb
-C:\Project\C#\WindowsService\obj\Debug\UpdateSentencase.ProjectInstaller.resources
-C:\Project\C#\WindowsService\obj\Debug\UpdateSentencase.HomService.resources
-C:\Project\C#\WindowsService\obj\Debug\UpdateSentencase.csproj.GenerateResource.cache
-C:\Project\C#\WindowsService\obj\Debug\UpdateSentencase.csproj.CoreCompileInputs.cache
-C:\Project\C#\WindowsService\obj\Debug\UpdateSentencase.exe
-C:\Project\C#\WindowsService\obj\Debug\UpdateSentencase.pdb

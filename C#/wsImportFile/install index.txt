@@ -1,4 +1,0 @@
-cmd vao folder:C:\Windows\Microsoft.NET\Framework64\v4.0.30319
-InstallUtil.exe /u D:\Home\sagis\core\ServiceIndex\wsIndex\wsIndex\bin\Debug\wsIndex.exe
-InstallUtil.exe  E:\soft\wsImportFile\bin\Debug\ImportFiles.exe
-P@ssword
