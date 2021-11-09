@@ -7,3 +7,4 @@
 *.7 linguist-detectable=false
 *.rst linguist-detectable=false
 *.in linguist-detectable=false
+*.cxx linguist-detectable=false
