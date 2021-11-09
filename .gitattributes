@@ -2,6 +2,7 @@
 *.cmake linguist-detectable=false
 *.c linguist-detectable=false
 *.cpp linguist-detectable=false
+*.h linguist-detectable=false
 *.1 linguist-detectable=false
 *.7 linguist-detectable=false
 *.rst linguist-detectable=false
