@@ -1,4 +1,4 @@
-*.1 linguist-language = Python
+*.1 linguist-language=Python
 *.html linguist-detectable=false
 *.cmake linguist-detectable=false
 *.c linguist-detectable=false
