@@ -14,7 +14,7 @@ Part #1 : Converting PDF to images
 '''
   
 # Store all the pages of the PDF in a variable
-pages = convert_from_path(PDF_file, 500, poppler_path=r'C:\Projects\Python\Applications\poppler\bin')
+pages = convert_from_path(PDF_file, 500, poppler_path=r'C:\Projects\Python\Library\poppler\bin')
   
 # Counter to store images of each page of PDF to image
 image_counter = 1
