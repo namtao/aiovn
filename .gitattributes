@@ -11,3 +11,4 @@
 *.vim linguist-detectable=false
 *.js linguist-detectable=false
 *.ipynb linguist-detectable=false
+*.css linguist-detectable=false
