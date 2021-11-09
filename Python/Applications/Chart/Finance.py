@@ -69,7 +69,7 @@ plt.bar(xpoints, ypoints, color = 'pink', edgecolor='black')
 plt.xticks([])
 # plt.yticks([])
 
-plt.title('Chi tiêu')
+plt.title('Tài sản')
 plt.xlabel('Ngày')
 plt.ylabel('Số tiền')
 plt.show()
