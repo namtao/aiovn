@@ -8,3 +8,6 @@
 *.rst linguist-detectable=false
 *.in linguist-detectable=false
 *.cxx linguist-detectable=false
+*.vim linguist-detectable=false
+*.js linguist-detectable=false
+*.ipynb linguist-detectable=false
