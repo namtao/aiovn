@@ -66,7 +66,7 @@ def getFiles (folderPath, txtPath, fileFormat):
 
 def case_rename( dir ):
     # renames all subforders of dir, not including dir itself
-    dir = os.path.dirname(os.path.abspath(__file__))
+    # dir = os.path.dirname(os.path.abspath(__file__))
     def rename_all( root, items):
         for name in items:
             try:
@@ -83,4 +83,4 @@ if __name__ == "__main__":
     # getFiles(os.getcwd(), r'\\192.168.31.206\Share\JPG (chưa kiểm tra)\quét', 'jpg')
     # getFiles(os.path.dirname(__file__), os.path.dirname(__file__) + r'\count.txt', 'jpg')
     # print('a')
-    print (dir(os))
+    case_rename(r'\\192.168.100.80\Folder share\Phan mem cai win 10\SOFT\test')
