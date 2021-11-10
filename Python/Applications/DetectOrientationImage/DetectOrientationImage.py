@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
-from Utils.TtsUtils import *
 import m3u8
 # import PyPDF2
 from PyPDF2  import PdfFileReader
@@ -16,7 +15,7 @@ from pdf2image import convert_from_path
 
 
 def rotatepng():
-    image1 = cv2.imread(r'C:\Projects\Python\Applications\cheo.png')
+    image1 = cv2.imread(r'C:\Projects\Python\Applications\DetectOrientationImage\cheo.png')
     gray=cv2.cvtColor(image1,cv2.COLOR_BGR2GRAY)
 
     edges = cv2.Canny(gray,50,150,apertureSize = 3)
@@ -53,7 +52,7 @@ def rotatepng():
     cv2.destroyAllWindows()
     
 def detectLineHoughTransform():
-    img = cv2.imread(r'C:\Projects\Python\Applications\cheo.png')
+    img = cv2.imread(r'C:\Projects\Python\Applications\DetectOrientationImage\cheo.png')
     
     # Convert the img to grayscale
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -104,7 +103,7 @@ def detectLineHoughTransform():
     cv2.destroyAllWindows()
 
 def rotate2Video():
-    src = 255 - cv2.imread(r"C:\Projects\Python\Applications\nguoc.png", 0)
+    src = 255 - cv2.imread(r"C:\Projects\Python\Applications\DetectOrientationImage\nguoc.png", 0)
     scores = []
 
     h,w = src.shape
@@ -221,9 +220,22 @@ def rotate2Video():
     cv2.waitKey()
     cv2.destroyAllWindows()
 
+def top_bot_margin_ratio(image: np.ndarray) -> float:
+    if len(image.shape) > 2 and image.shape[2] > 1:
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    above = 0
+    below = 0
+    for x in range(image.shape[1]):
+        col = np.argwhere(image[:, x] < 128)
+        if col.shape[0] > 0:
+            above += col[0, 0]
+            below += image.shape[0] - 1 - col[-1, 0]
+    return math.log(above / below)
+
+
 def rotate90():
 
-    img_before = cv2.imread(r"C:\Projects\Python\Applications\nguoc2.png")
+    img_before = cv2.imread(r"C:\Projects\Python\Applications\DetectOrientationImage\nguoc2.png")
 
     cv2.imshow("Before", img_before)    
     key = cv2.waitKey(0)
