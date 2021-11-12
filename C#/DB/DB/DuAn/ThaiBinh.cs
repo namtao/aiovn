@@ -290,7 +290,7 @@ namespace DB.DuAn
 
             array[1, 1] = tongcu - tongmoi;
 
-            Utils.ExportExcel(array, "Sheet", 3, 1, 100, 2);
+            Utils.ExportExcel(arr, "Sheet", 3, 1, 100, 2);
 
             /*using (StreamWriter streamWriter = File.AppendText(@"C:\Users\ADMIN\Downloads\thongke.txt"))
             {

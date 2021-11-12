@@ -13,6 +13,7 @@ def imageHolding():
 
     # add image
     # add = cv2.add(img,img)
+    # cv2.imshow('add',add)
 
     # thresholding image
     # retval, threshold = cv2.threshold(img, 12, 255, cv2.THRESH_BINARY)
@@ -20,9 +21,9 @@ def imageHolding():
     # cv2.imshow('Threshold',threshold)
 
     # Adaptive thresholding
-    th = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
-    cv2.imshow('Original',img)
-    cv2.imshow('Adaptive threshold',th)
+    # th = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
+    # cv2.imshow('Original',img)
+    # cv2.imshow('Adaptive threshold',th)
 
     # Otsu threshold
     # retval2,threshold2 = cv2.threshold(img, 125,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
@@ -104,3 +105,5 @@ def detectHsv():
     cv2.destroyAllWindows()
 
 detectColorFromCamera()
+
+
