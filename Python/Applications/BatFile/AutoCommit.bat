@@ -8,6 +8,6 @@ set BRANCH = "origin"
 :: Tiến hành add toàn bộ file thay đổi
 %GIT_PATH% add -A
 :: Commit lên
-%GIT_PATH% commit -am "Auto-committed on %date%"
+%GIT_PATH% commit -am "Auto-committed on %time /t% - %date /t%"
 :: Push lên
 %GIT_PATH% push %BRANCH%
