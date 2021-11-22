@@ -1,6 +1,8 @@
-import numpy as np
+import os
 
-a = np.arange(10)
 
-s = slice(2,7,2) 
-print (a[s])
+for root, dirs, files in os.walk(r'C:\Projects\Python'):
+    for file in files:
+        if file.endswith(".pyc"):
+            os.remove(root)
+            # print(root)

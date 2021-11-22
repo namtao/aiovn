@@ -1,7 +1,7 @@
 import pyodbc
 import json
 import numpy as np
-from utils import ExcelUtils
+from utils import excel_utils
 import configparser
 
 
@@ -47,4 +47,4 @@ def get_db():
     cursor = conn.cursor()
     cursor.execute('select top(1) metadata from TblMetadata')
     arr = np.array(list(cursor))
-    ExcelUtils.writeToExcel(arr)
+    excel_utils.writeToExcel(arr)
