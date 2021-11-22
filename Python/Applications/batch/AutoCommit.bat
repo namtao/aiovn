@@ -11,3 +11,5 @@ set BRANCH = "origin"
 %GIT_PATH% commit -am "Auto-committed on %time% - %date%"
 :: Push lên
 %GIT_PATH% push %BRANCH%
+
+PAUSE
