@@ -1,12 +1,6 @@
-from CrawData.Craw import *
-from Database.ReadDbDsg import *
-from Utils.TtsUtils import *
+from craw_data.craw import *
+from database.read_db_dsg import *
 import m3u8
 
 if __name__ == "__main__":
-    # crawlAudioBookZaloAPi("https://nhasachmienphi.com/doi-ngan-dung-ngu-dai.html")
-    # getDB()
-
-    crawlAudioBookZaloAI("https://nhasachmienphi.com/doi-ngan-dung-ngu-dai.html")
-
-    # googleTTS('\n' + ' ', r'C:\Audio\Đời Ngắn Đừng Ngủ Dài.mp3')
+    crawl_audio_book_zalo_ai("https://nhasachmienphi.com/doi-ngan-dung-ngu-dai.html")
