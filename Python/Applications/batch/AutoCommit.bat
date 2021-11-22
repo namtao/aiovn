@@ -1,3 +1,4 @@
+ECHO OFF
 :: Di chuyển đến thư mục chứa code của chúng ta
 cd "C:\Projects"
 :: Set các giá trị về file git exe và nhánh cần làm việc
