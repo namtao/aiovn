@@ -1,7 +1,7 @@
 import pyodbc
 import json
 import numpy as np
-from utils import excel_utils
+# from utils import excel_utils
 import configparser
 
 
@@ -47,4 +47,10 @@ def get_db():
     cursor = conn.cursor()
     cursor.execute('select top(1) metadata from TblMetadata')
     arr = np.array(list(cursor))
-    excel_utils.writeToExcel(arr)
+    # excel_utils.writeToExcel(arr)
+
+
+config = configparser.ConfigParser()
+config.read(r'C:\Projects\Python\Applications\database\config.ini')
+
+print(config['SqlServerDB']['host'])
