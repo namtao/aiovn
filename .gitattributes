@@ -1,15 +1,2 @@
 *.* linguist-detectable=false
-*.cmake linguist-detectable=false
-*.c linguist-detectable=false
-*.cpp linguist-detectable=false
-*.h linguist-detectable=false
-*.1 linguist-detectable=false
-*.7 linguist-detectable=false
-*.rst linguist-detectable=false
-*.in linguist-detectable=false
-*.cxx linguist-detectable=false
-*.vim linguist-detectable=false
-*.js linguist-detectable=false
-*.ipynb linguist-detectable=false
-*.css linguist-detectable=false
 *.py linguist-detectable=true
