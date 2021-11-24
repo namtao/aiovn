@@ -12,7 +12,9 @@ from openpyxl import Workbook
 # from anytree import Node, RenderTree
 
 # get file in format
-def get_files (folderPath, txtPath, fileFormat):
+
+
+def get_files(folderPath, txtPath, fileFormat):
     with(open(txtPath, "w", encoding="utf-8")) as f:
         lst = []
         count = 0
@@ -22,14 +24,14 @@ def get_files (folderPath, txtPath, fileFormat):
         for root, dirs, files in os.walk(folderPath):
             for file in files:
                 if file.endswith("." + fileFormat):
-                    count +=1
+                    count += 1
                     # path file
                     # print(os.path.join(root, file))
                     # folderName = Path(os.path.join(root, file)).parent.name
                     # # test folder name
                     # if not folderName[:3].isdigit() and not folderName[-3:].isdigit():
                     #     lst.append(root)
-        
+
         # Remove Duplicates from list
         # for i in list(dict.fromkeys(lst)):
         #     f.write(i + '\n')
@@ -42,7 +44,7 @@ def get_files (folderPath, txtPath, fileFormat):
 #     print(x.strftime("%d/%m/%Y"))
 
 
-# def copytree(src, dst, symlinks=False, ignore=None):    
+# def copytree(src, dst, symlinks=False, ignore=None):
 #     if not os.path.exists(dst):  os.mkdir(dst)
 #     for item in os.listdir(src):
 #         s = os.path.join(src, item)
@@ -64,20 +66,22 @@ def get_files (folderPath, txtPath, fileFormat):
 
     # print(RenderTree(udo).by_attr())
 
-def case_rename( dir ):
+def case_rename(dir):
     # renames all subforders of dir, not including dir itself
     # dir = os.path.dirname(os.path.abspath(__file__))
-    def rename_all( root, items):
+    def rename_all(root, items):
         for name in items:
             try:
-                os.rename( os.path.join(root, name), os.path.join(root, name.lower()))
+                os.rename(os.path.join(root, name),
+                          os.path.join(root, name.lower()))
             except OSError:
-                pass # can't rename it, so what
+                pass  # can't rename it, so what
 
     # starts from the bottom so paths further up remain valid after renaming
-    for root, dirs, files in os.walk( dir, topdown=False ):
-        rename_all( root, dirs )
-        rename_all( root, files)
+    for root, dirs, files in os.walk(dir, topdown=False):
+        rename_all(root, dirs)
+        rename_all(root, files)
+
 
 if __name__ == "__main__":
     # getFiles(os.getcwd(), r'\\192.168.31.206\Share\JPG (chưa kiểm tra)\quét', 'jpg')

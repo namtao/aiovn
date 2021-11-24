@@ -5,4 +5,3 @@ def format_str(strA):
             strA = strA.replace(i, "")
 
     return str(strA)
-

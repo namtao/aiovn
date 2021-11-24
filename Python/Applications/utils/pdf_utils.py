@@ -2,11 +2,15 @@ from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger
 import glob
 import os
 
+
 def get_files():
-    files = glob.glob(os.path.join(r'C:\Users\ADMIN\Downloads\test\185\529', "*.pdf"))  
+    files = glob.glob(os.path.join(
+        r'C:\Users\ADMIN\Downloads\test\185\529', "*.pdf"))
     for file in files:
-        print (file + '\t:\t  ' + str(PdfFileReader(open(file, 'rb')).numPages) + '\t' + str(os.path.getsize(file)))
-    
+        print(file + '\t:\t  ' + str(PdfFileReader(open(file, 'rb')
+                                                   ).numPages) + '\t' + str(os.path.getsize(file)))
+
+
 def spit_pdf():
     inputpdf = PdfFileReader(open("01.pdf", "rb"))
 
@@ -19,11 +23,12 @@ def spit_pdf():
             # get size file
             if(sum < 10000000):
                 sum += os.path.getsize("01-page%s.pdf" % i)
-            else: 
+            else:
                 print(i - 1)
                 sum = 0
         # os.remove("01-page%s.pdf" % i)
-        
+
+
 def merge_pdf():
     pdfs = ['01.pdf', '01.pdf', '01.pdf']
 

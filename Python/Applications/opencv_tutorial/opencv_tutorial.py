@@ -34,29 +34,31 @@ def image_holding():
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+
 def detect_color_from_camera():
     cap = cv2.VideoCapture(0)
 
     while(1):
         _, frame = cap.read()
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        
-        # nhận biết màu đỏ
-        lower_red = np.array([30,150,20])
-        upper_red = np.array([255,255,255])
-        
-        mask = cv2.inRange(hsv, lower_red, upper_red)
-        res = cv2.bitwise_and(frame,frame, mask= mask)
 
-        cv2.imshow('frame',frame)
-        cv2.imshow('mask',mask)
-        cv2.imshow('res',res)
-        
+        # nhận biết màu đỏ
+        lower_red = np.array([30, 150, 20])
+        upper_red = np.array([255, 255, 255])
+
+        mask = cv2.inRange(hsv, lower_red, upper_red)
+        res = cv2.bitwise_and(frame, frame, mask=mask)
+
+        cv2.imshow('frame', frame)
+        cv2.imshow('mask', mask)
+        cv2.imshow('res', res)
+
         k = cv2.waitKey(5) & 0xFF
         if k == 27:
             break
 
     cv2.destroyAllWindows()
+
 
 def detect_hsv():
     cap = cv2.VideoCapture(0)
@@ -67,34 +69,34 @@ def detect_hsv():
     cv2.namedWindow('result')
 
     # Starting with 100's to prevent error while masking
-    h,s,v = 100,100,100
+    h, s, v = 100, 100, 100
 
     # Creating track bar
-    cv2.createTrackbar('h', 'result',0,179,nothing)
-    cv2.createTrackbar('s', 'result',0,255,nothing)
-    cv2.createTrackbar('v', 'result',0,255,nothing)
+    cv2.createTrackbar('h', 'result', 0, 179, nothing)
+    cv2.createTrackbar('s', 'result', 0, 255, nothing)
+    cv2.createTrackbar('v', 'result', 0, 255, nothing)
 
     while(1):
 
         _, frame = cap.read()
 
-        #converting to HSV
-        hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
+        # converting to HSV
+        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
         # get info from track bar and appy to result
-        h = cv2.getTrackbarPos('h','result')
-        s = cv2.getTrackbarPos('s','result')
-        v = cv2.getTrackbarPos('v','result')
+        h = cv2.getTrackbarPos('h', 'result')
+        s = cv2.getTrackbarPos('s', 'result')
+        v = cv2.getTrackbarPos('v', 'result')
 
         # Normal masking algorithm
-        lower_blue = np.array([h,s,v])
-        upper_blue = np.array([180,255,255])
+        lower_blue = np.array([h, s, v])
+        upper_blue = np.array([180, 255, 255])
 
-        mask = cv2.inRange(hsv,lower_blue, upper_blue)
+        mask = cv2.inRange(hsv, lower_blue, upper_blue)
 
-        result = cv2.bitwise_and(frame,frame,mask = mask)
+        result = cv2.bitwise_and(frame, frame, mask=mask)
 
-        cv2.imshow('result',result)
+        cv2.imshow('result', result)
 
         k = cv2.waitKey(5) & 0xFF
         if k == 27:
@@ -103,6 +105,3 @@ def detect_hsv():
     cap.release()
 
     cv2.destroyAllWindows()
-
-
-
