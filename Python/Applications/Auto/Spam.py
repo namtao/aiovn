@@ -6,7 +6,7 @@ import time
 
 print("Tool Spam 1.0")
 msg = input("Nhập nội dung cần spam: ").split(" || ")
-n = int(input("Nhập số lần Spam =)) "))
+n = int(input("Nhập số lần Spam: "))
 m = float(input("Nhập thời gian delay: "))
 
 print("Chuẩn bị")
