@@ -35,12 +35,10 @@ namespace DB
 
         private void Home_Load(object sender, EventArgs e)
         {
-            //hide title in form
-            //ControlBox = false;
+            BinhPhuoc bp = new BinhPhuoc();
+            bp.ThongKeSKHDT();
 
-            ThongKeTB(sender, e);
-
-            //MessageBox.Show(countAllColumn("HS_TT_QuyetDinh57") + "");
+            System.Windows.Forms.Application.Exit();
         }
 
         public int DemTruong(string table, List<string> list)

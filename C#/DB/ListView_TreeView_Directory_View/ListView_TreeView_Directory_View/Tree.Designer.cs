@@ -38,12 +38,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.largeList = new System.Windows.Forms.ImageList(this.components);
+            this.small_list = new System.Windows.Forms.ImageList(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
             this.CName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.largeList = new System.Windows.Forms.ImageList(this.components);
-            this.small_list = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -64,8 +64,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
-            this.splitContainer1.Size = new System.Drawing.Size(1101, 903);
-            this.splitContainer1.SplitterDistance = 357;
+            this.splitContainer1.Size = new System.Drawing.Size(1266, 556);
+            this.splitContainer1.SplitterDistance = 432;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -82,7 +82,7 @@
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(357, 903);
+            this.treeView1.Size = new System.Drawing.Size(432, 556);
             this.treeView1.TabIndex = 0;
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
             // 
@@ -93,6 +93,19 @@
             this.imageList1.Images.SetKeyName(0, "Home.ico");
             this.imageList1.Images.SetKeyName(1, "Folder.ico");
             this.imageList1.Images.SetKeyName(2, "Open.ico");
+            // 
+            // largeList
+            // 
+            this.largeList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("largeList.ImageStream")));
+            this.largeList.TransparentColor = System.Drawing.Color.Transparent;
+            this.largeList.Images.SetKeyName(0, "Done event.ico");
+            // 
+            // small_list
+            // 
+            this.small_list.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("small_list.ImageStream")));
+            this.small_list.TransparentColor = System.Drawing.Color.Transparent;
+            this.small_list.Images.SetKeyName(0, "Feather.ico");
+            this.small_list.Images.SetKeyName(1, "About.ico");
             // 
             // listView1
             // 
@@ -108,7 +121,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(738, 903);
+            this.listView1.Size = new System.Drawing.Size(828, 556);
             this.listView1.SmallImageList = this.largeList;
             this.listView1.StateImageList = this.small_list;
             this.listView1.TabIndex = 0;
@@ -130,24 +143,11 @@
             this.CType.Text = "Type";
             this.CType.Width = 168;
             // 
-            // largeList
-            // 
-            this.largeList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("largeList.ImageStream")));
-            this.largeList.TransparentColor = System.Drawing.Color.Transparent;
-            this.largeList.Images.SetKeyName(0, "Done event.ico");
-            // 
-            // small_list
-            // 
-            this.small_list.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("small_list.ImageStream")));
-            this.small_list.TransparentColor = System.Drawing.Color.Transparent;
-            this.small_list.Images.SetKeyName(0, "Feather.ico");
-            this.small_list.Images.SetKeyName(1, "About.ico");
-            // 
             // Tree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 903);
+            this.ClientSize = new System.Drawing.Size(1266, 556);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

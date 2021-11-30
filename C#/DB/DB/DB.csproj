@@ -102,6 +102,7 @@
       <DependentUpon>CountField.cs</DependentUpon>
     </Compile>
     <Compile Include="Diff.cs" />
+    <Compile Include="DuAn\BinhPhuoc.cs" />
     <Compile Include="DuAn\ThaiBinh.cs" />
     <Compile Include="GetSources.cs" />
     <Compile Include="Home.cs">
