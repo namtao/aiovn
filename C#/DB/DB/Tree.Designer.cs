@@ -79,13 +79,14 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1384, 567);
-            this.splitContainer1.SplitterDistance = 326;
+            this.splitContainer1.Size = new System.Drawing.Size(1384, 783);
+            this.splitContainer1.SplitterDistance = 308;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 0;
             // 
             // treeView1
             // 
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
@@ -97,7 +98,7 @@
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(326, 567);
+            this.treeView1.Size = new System.Drawing.Size(308, 783);
             this.treeView1.TabIndex = 0;
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
             // 
@@ -122,8 +123,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.richTextBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(1052, 567);
-            this.splitContainer2.SplitterDistance = 803;
+            this.splitContainer2.Size = new System.Drawing.Size(1070, 783);
+            this.splitContainer2.SplitterDistance = 830;
             this.splitContainer2.TabIndex = 0;
             // 
             // listView1
@@ -141,7 +142,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(803, 567);
+            this.listView1.Size = new System.Drawing.Size(830, 783);
             this.listView1.SmallImageList = this.largeList;
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.StateImageList = this.small_list;
@@ -165,8 +166,8 @@
             // CSize
             // 
             this.CSize.Text = "Size";
-            this.CSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CSize.Width = 250;
+            this.CSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CSize.Width = 261;
             // 
             // largeList
             // 
@@ -183,12 +184,16 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.Color.White;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.No;
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(245, 567);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(236, 783);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -218,14 +223,14 @@
             // 
             this.thongKeToolStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thongKeToolStripMenuItem.Name = "thongKeToolStripMenuItem";
-            this.thongKeToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
-            this.thongKeToolStripMenuItem.Text = "Thống kê trong thư mục";
+            this.thongKeToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.thongKeToolStripMenuItem.Text = "Thống kê files";
             this.thongKeToolStripMenuItem.Click += new System.EventHandler(this.thongKeToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
             // 
             // toolStripMenuItem2
             // 
@@ -265,7 +270,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 594);
+            this.ClientSize = new System.Drawing.Size(1384, 810);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,6 +281,7 @@
             this.Name = "Tree";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tree";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tree_FormClosing);
             this.Load += new System.EventHandler(this.Tree_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

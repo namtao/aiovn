@@ -150,3 +150,4 @@ C:\Projects\C#\DB\DB\obj\Debug\DB.exe
 C:\Projects\C#\DB\DB\obj\Debug\DB.pdb
 C:\Projects\C#\DB\DB\obj\Debug\DB.Tree.resources
 C:\Projects\C#\DB\DB\obj\Debug\DB.LANScanner.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.AssemblyReference.cache

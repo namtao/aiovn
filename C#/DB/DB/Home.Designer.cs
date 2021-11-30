@@ -30,8 +30,8 @@ namespace DB
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.datagrid = new System.Windows.Forms.DataGridView();
             this.timer = new System.Windows.Forms.Timer(this.components);
@@ -50,6 +50,7 @@ namespace DB
             this.thôngTinPhiênBảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.lbCount = new System.Windows.Forms.Label();
+            this.thongKeThuMucStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -60,21 +61,21 @@ namespace DB
             this.datagrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datagrid.BackgroundColor = System.Drawing.SystemColors.Window;
             this.datagrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagrid.Location = new System.Drawing.Point(26, 187);
             this.datagrid.Margin = new System.Windows.Forms.Padding(20);
             this.datagrid.Name = "datagrid";
             this.datagrid.ReadOnly = true;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datagrid.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datagrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagrid.Size = new System.Drawing.Size(697, 367);
             this.datagrid.TabIndex = 1000000003;
@@ -138,7 +139,8 @@ namespace DB
             this.clonePDFToolStripMenuItem,
             this.toolStripSeparator6,
             this.thốngKêToolStripMenuItem,
-            this.toolStripSeparator7});
+            this.toolStripSeparator7,
+            this.thongKeThuMucStripMenuItem1});
             this.toolsToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(55, 23);
@@ -147,33 +149,33 @@ namespace DB
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(191, 6);
             // 
             // clonePDFToolStripMenuItem
             // 
             this.clonePDFToolStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clonePDFToolStripMenuItem.Name = "clonePDFToolStripMenuItem";
-            this.clonePDFToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
+            this.clonePDFToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
             this.clonePDFToolStripMenuItem.Text = "Nhân bản PDF";
             this.clonePDFToolStripMenuItem.Click += new System.EventHandler(this.clonePDFToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
             // 
             // thốngKêToolStripMenuItem
             // 
             this.thốngKêToolStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.thốngKêToolStripMenuItem.Text = "Thống kê";
+            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.thốngKêToolStripMenuItem.Text = "Thống kê trường";
             this.thốngKêToolStripMenuItem.Click += new System.EventHandler(this.thốngKêToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(191, 6);
             // 
             // aboutToolStripMenuItem
             // 
@@ -214,6 +216,14 @@ namespace DB
             this.lbCount.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbCount.Size = new System.Drawing.Size(0, 19);
             this.lbCount.TabIndex = 1000000034;
+            // 
+            // thongKeThuMucStripMenuItem1
+            // 
+            this.thongKeThuMucStripMenuItem1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongKeThuMucStripMenuItem1.Name = "thongKeThuMucStripMenuItem1";
+            this.thongKeThuMucStripMenuItem1.Size = new System.Drawing.Size(194, 24);
+            this.thongKeThuMucStripMenuItem1.Text = "Thống kê thư mục";
+            this.thongKeThuMucStripMenuItem1.Click += new System.EventHandler(this.thongKeThuMucStripMenuItem1_Click);
             // 
             // Home
             // 
@@ -263,6 +273,7 @@ namespace DB
         private System.Windows.Forms.ToolStripMenuItem thôngTinPhiênBảnToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.Label lbCount;
+        private System.Windows.Forms.ToolStripMenuItem thongKeThuMucStripMenuItem1;
     }
 }
 

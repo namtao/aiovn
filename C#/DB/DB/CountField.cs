@@ -23,7 +23,7 @@ namespace DB
     {
         string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
         public static string sqlConnect;
-        ThaiBinh tb;
+        ThaiBinh tb = new ThaiBinh();
 
         public CountField()
         {
@@ -32,10 +32,7 @@ namespace DB
                 
         private void CountField_Load(object sender, EventArgs e)
         {
-            tb = new ThaiBinh();
-            tb.countFieldExcelSau();
-            //tb.countFieldExcelTruoc();
-            this.Close();
+            
         }
 
         private void cbxTable_DropDown(object sender, EventArgs e)

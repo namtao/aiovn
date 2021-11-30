@@ -18,8 +18,6 @@ namespace DB.DuAn
     class ThaiBinh
     {
         string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
-        public static string sqlConnect;
-
         public void countFieldExcelTruoc()
         {
             // cho 3 loại của DK = 0, tổng người có công + văn bản + thân nhân chia đều cho số đối tượng của từng phông, còn lại để của liệt sỹ
@@ -309,12 +307,9 @@ namespace DB.DuAn
                 con.Open();
                 foreach (string a in list)
                 {
-                    if (!a.Equals("Id") && !a.Equals("HoSoDangQLTaiSo") && !a.Equals("BanGocBanSao") && !a.Equals("FileName") && !a.Equals("FilePath"))
-                    {
-                        string sql = "select count(*) from " + table + " " +
-                            "where " + a + " is not null and CAST(" + a + " as varchar(max)) != '' and CAST(" + a + " as varchar(max)) != '__/__/____'";
-                        count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
-                    }
+                    string sql = "select count(*) from " + table + " " +
+                        "where " + a + " is not null and CAST(" + a + " as varchar(max)) != ''";
+                    count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
                 }
             }
             return count;
@@ -908,7 +903,7 @@ namespace DB.DuAn
                             }
                             i++;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             using (StreamWriter writer = File.AppendText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\chưa tìm đc mã\Error.txt"))
                             {

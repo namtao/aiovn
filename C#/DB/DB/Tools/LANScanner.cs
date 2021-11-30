@@ -45,7 +45,7 @@ namespace DB
                 {
                     return "not found";
                 }
-            } catch(Exception ex)
+            } catch(Exception)
             {
                 return "not found";
             }

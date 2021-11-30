@@ -14,7 +14,12 @@ namespace DB.DuAn
             var arrPathJpg = Directory.GetFiles(@"C:\Users\ADMIN\Downloads\Data so hoa (k xoa)", "*.*",
                 SearchOption.AllDirectories).Where(s => s.EndsWith(".pdf")).ToList();
 
-            object[,] arr = new object[100, 4];
+            int colStart = 1;
+            int colEnd = 4;
+            int rowStart = 3;
+            int rowEnd = 100;
+
+            object[,] arr = new object[rowEnd, colEnd];
             arr[0, 0] = "STT";
             arr[0, 1] = "Mã doanh nghiệp";
             arr[0, 2] = "Số hồ sơ";
@@ -28,7 +33,7 @@ namespace DB.DuAn
                 arr[i + 1, 3] = new System.IO.FileInfo(arrPathJpg[i]).Length;
             }
 
-            Utils.ExportExcel(arr, "Sheet", 3, 1, 100, 4);
+            Utils.ExportExcel(arr, "Sheet", rowStart, colStart, rowEnd, colEnd);
         }
     }
 }
