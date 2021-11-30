@@ -9,7 +9,7 @@ using Microsoft.Office.Interop.Excel;
 
 namespace DB
 {
-    class Utils
+    public class Utils
     {
         public static bool IsNumber(string pValue)
         {

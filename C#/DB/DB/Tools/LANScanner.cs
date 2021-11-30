@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ListView_TreeView_Directory_View
+namespace DB
 {
     public partial class LANScanner : Form
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace ListView_TreeView_Directory_View
+namespace DB
 {
     partial class LANScanner
     {

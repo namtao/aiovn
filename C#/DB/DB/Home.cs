@@ -15,7 +15,6 @@ using System.Configuration;
 using System.IO;
 using System.Text;
 using Microsoft.Office.Interop.Excel;
-using DB.DuAn;
 
 namespace DB
 {
@@ -35,10 +34,7 @@ namespace DB
 
         private void Home_Load(object sender, EventArgs e)
         {
-            BinhPhuoc bp = new BinhPhuoc();
-            bp.ThongKeSKHDT();
 
-            System.Windows.Forms.Application.Exit();
         }
 
         public int DemTruong(string table, List<string> list)
@@ -136,41 +132,6 @@ namespace DB
             thốngKêToolStripMenuItem_Click(sender, e);
         }
 
-        public void Kiemtratrungexcel()
-        {
-            var arrPathExcel = Directory.GetFiles(@"\\192.168.31.206\Data_Output", "*.*", SearchOption.AllDirectories).Where(s => s.EndsWith(".xlsx")).ToList();
-            using (StreamWriter streamWriter = File.AppendText(@"C:\Users\ADMIN\Downloads\test.txt"))
-            {
-                foreach (string str in arrPathExcel)
-                {
-                    object[,] valueArray = Utils.readExcel(str);
-                    if (valueArray.GetLength(0) > 3)
-                        streamWriter.WriteLine(str);
-                }
-            }
-        }
-
-        public void getFiles()
-        {
-            var arrPathJpg = Directory.GetFiles(@"\\192.168.31.206\Data_output (không cập nhật được do không có tăng mới)", "*.*",
-                SearchOption.AllDirectories).Where(s => s.EndsWith(".pdf") || s.EndsWith(".xlsx")).ToList();
-
-            using (StreamWriter streamWriter = File.AppendText(@"C:\Users\ADMIN\Downloads\test.txt"))
-            {
-                foreach (string str in arrPathJpg)
-                {
-                    streamWriter.WriteLine(str);
-                }
-            }
-        }
-
-        public void openFile(string path)
-        {
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            excel.Visible = true;
-            Microsoft.Office.Interop.Excel.Workbook wb = excel.Workbooks.Open(path);
-        }
-
         public void FillDgv(string sqlQuery)
         {
             SqlConnection conn = new SqlConnection(connectString);
@@ -182,39 +143,6 @@ namespace DB
             da.Fill(ds);
             conn.Close();
             datagrid.DataSource = ds.Tables[0];
-        }
-
-        private void btnExe_Click(object sender, EventArgs e)
-        {
-            /*try
-            {
-                if (rdnBM.Checked || rdnKTBM1.Checked || rdnKTBM2.Checked || rdnKetThuc.Checked)
-                {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn cập nhật về trạng thái biên mục không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        if (rdnOther.Checked) strCommandSql = rtbSQL.Text;
-                        datagrid.Visible = true;
-                        lbCount.Visible = true;
-                        FillDgv(strCommandSql);
-                        lbCount.Text = (datagrid.Rows.Count - 1).ToString() + " Rows";
-                    }
-                    else MessageBox.Show("Đã hủy bỏ thao tác cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    //strCommandSql = rtbSQL.Text;
-                    if (rdnOther.Checked) strCommandSql = rtbSQL.Text;
-                    datagrid.Visible = true;
-                    lbCount.Visible = true;
-                    FillDgv(strCommandSql);
-                    lbCount.Text = (datagrid.Rows.Count - 1).ToString() + " Rows";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }*/
         }
 
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
