@@ -814,19 +814,6 @@ namespace DB.DuAn
             oSheet.Columns.AutoFit();
         }
 
-        public int countPdf(string path)
-        {
-            string[] arrPathPdf = Directory.GetFiles(path, "*.pdf",
-                            SearchOption.AllDirectories);
-            int numberOfPages = 0;
-            foreach (string str in arrPathPdf)
-            {
-                PdfReader pdfReader = new PdfReader(str);
-                numberOfPages += pdfReader.NumberOfPages;
-            }
-            return numberOfPages;
-        }
-
         public void editCDHH()
         {
             File.WriteAllText(@"\\192.168.31.206\Share\JPG (đã kiểm tra)\Thai Binh\CĐHH\chưa tìm đc mã\Rename.txt", String.Empty);

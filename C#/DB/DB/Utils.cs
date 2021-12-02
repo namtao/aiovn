@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
 using Microsoft.Office.Interop.Excel;
 
 namespace DB
@@ -19,6 +21,16 @@ namespace DB
                     return false;
             }
             return true;
+        }
+        public static int countPdf(string[] arrPathPdf)
+        {
+            int numberOfPages = 0;
+            foreach (string str in arrPathPdf)
+            {
+                PdfReader pdfReader = new PdfReader(str);
+                numberOfPages += pdfReader.NumberOfPages;
+            }
+            return numberOfPages;
         }
 
         public static void ExportExcel(object[,] arr, string sheetName, int rowStart, int columnStart, int rowEnd, int columnEnd)

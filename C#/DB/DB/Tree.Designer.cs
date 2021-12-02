@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("My Computer");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Computer");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tree));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Name",
             "Create date",
             "Size"}, -1);
@@ -54,6 +54,8 @@
             this.currentDirectory = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.thaoTacDB = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.countPdfStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,10 +95,10 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "My Computer";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "My Computer";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(308, 783);
             this.treeView1.TabIndex = 0;
@@ -137,7 +139,7 @@
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.listView1.LargeImageList = this.largeList;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -186,7 +188,7 @@
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.No;
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -195,7 +197,8 @@
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(236, 783);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.richTextBox1.Text = "Click nếu cần thống kê files";
+            this.richTextBox1.Click += new System.EventHandler(this.richTextBox1_Click);
             // 
             // menuStrip1
             // 
@@ -237,7 +240,9 @@
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.currentDirectory,
             this.toolStripSeparator2,
-            this.thaoTacDB});
+            this.thaoTacDB,
+            this.optionStripMenuItem3,
+            this.countPdfStripMenuItem3});
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(72, 23);
@@ -248,28 +253,44 @@
             this.currentDirectory.CheckOnClick = true;
             this.currentDirectory.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentDirectory.Name = "currentDirectory";
-            this.currentDirectory.Size = new System.Drawing.Size(188, 24);
+            this.currentDirectory.Size = new System.Drawing.Size(198, 24);
             this.currentDirectory.Text = "Thư mục hiện tại";
             this.currentDirectory.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(195, 6);
             // 
             // thaoTacDB
             // 
-            this.thaoTacDB.CheckOnClick = true;
             this.thaoTacDB.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thaoTacDB.Name = "thaoTacDB";
-            this.thaoTacDB.Size = new System.Drawing.Size(188, 24);
+            this.thaoTacDB.Size = new System.Drawing.Size(198, 24);
             this.thaoTacDB.Text = "Thao tác với DB";
             this.thaoTacDB.Click += new System.EventHandler(this.thaoTacDB_Click);
+            // 
+            // optionStripMenuItem3
+            // 
+            this.optionStripMenuItem3.CheckOnClick = true;
+            this.optionStripMenuItem3.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optionStripMenuItem3.Name = "optionStripMenuItem3";
+            this.optionStripMenuItem3.Size = new System.Drawing.Size(198, 24);
+            this.optionStripMenuItem3.Text = "Tùy chọn đuôi files";
+            // 
+            // countPdfStripMenuItem3
+            // 
+            this.countPdfStripMenuItem3.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countPdfStripMenuItem3.Name = "countPdfStripMenuItem3";
+            this.countPdfStripMenuItem3.Size = new System.Drawing.Size(198, 24);
+            this.countPdfStripMenuItem3.Text = "Đếm số trang pdf";
+            this.countPdfStripMenuItem3.Click += new System.EventHandler(this.countPdfStripMenuItem3_Click);
             // 
             // Tree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1384, 810);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
@@ -319,6 +340,8 @@
         private System.Windows.Forms.ToolStripMenuItem currentDirectory;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem thaoTacDB;
+        private System.Windows.Forms.ToolStripMenuItem optionStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem countPdfStripMenuItem3;
     }
 }
 
