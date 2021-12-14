@@ -81,12 +81,3 @@ for i in range(1, filelimit + 1):
 
 # Close the file after writing all the text.
 f.close()
-
-f = open(outfile, "r")
-lines = f.readlines()
-for i in lines:
-    # print(i)
-    if ('â' in i):
-        print("có " + i)
-
-print('không')

@@ -104,6 +104,12 @@
     <Compile Include="Diff.cs" />
     <Compile Include="DuAn\BinhPhuoc.cs" />
     <Compile Include="DuAn\ThaiBinh.cs" />
+    <Compile Include="Rename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rename.Designer.cs">
+      <DependentUpon>Rename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\GetSources.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rename.resx">
+      <DependentUpon>Rename.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\Clone.resx">
       <DependentUpon>Clone.cs</DependentUpon>
