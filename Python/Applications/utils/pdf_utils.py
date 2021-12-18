@@ -43,6 +43,8 @@ def spit_pdf_merge_page(pathPdfInput):
                 if(page == pdfs[-1]):
                     merger.append(page)
                 merger.write(r"%s\%s.%s.pdf" %(parentPath, fileName, index + 1))
+                with open(r"split.txt", "a", encoding="utf-8") as fp:
+                    fp.write(r"%s\%s.%s.pdf" %(parentPath, fileName, index + 1) + '\n')
                 merger = PdfFileMerger()
                 merger.append(page)
                 index += 1
@@ -73,9 +75,11 @@ def detect_size():
     print(im.size)
 
     print(round(2.665))
+
 # get file pdf
-lst = get_files(r'C:\Users\ADMIN\Downloads\skhdt\3700143457-003', 'pdf')
+lst = get_files(r'C:\Users\ADMIN\Downloads\skhdt', 'pdf')
 
 for path in lst:
     spit_pdf_merge_page(path)
-    # os.remove(path)
+    if(os.path.getsize(path) > 10000000):
+        os.remove(path)

@@ -37,7 +37,7 @@ namespace DB
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnChooseFolder = new System.Windows.Forms.Button();
-            this.lbLinks = new System.Windows.Forms.Label();
+            this.lbLinks = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // list2
@@ -62,6 +62,7 @@ namespace DB
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(18, 68);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -71,6 +72,7 @@ namespace DB
             // 
             // textBox2
             // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(406, 68);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -121,20 +123,22 @@ namespace DB
             // lbLinks
             // 
             this.lbLinks.AutoSize = true;
-            this.lbLinks.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLinks.Location = new System.Drawing.Point(152, 22);
+            this.lbLinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLinks.Location = new System.Drawing.Point(161, 24);
             this.lbLinks.Name = "lbLinks";
-            this.lbLinks.Size = new System.Drawing.Size(55, 26);
-            this.lbLinks.TabIndex = 5;
-            this.lbLinks.Text = "Links";
+            this.lbLinks.Size = new System.Drawing.Size(49, 20);
+            this.lbLinks.TabIndex = 11;
+            this.lbLinks.TabStop = true;
+            this.lbLinks.Text = "..........";
+            this.lbLinks.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbLinks_LinkClicked);
             // 
             // Rename
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(743, 576);
+            this.Controls.Add(this.lbLinks);
             this.Controls.Add(this.btnChooseFolder);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -142,7 +146,6 @@ namespace DB
             this.Controls.Add(this.list1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbLinks);
             this.Controls.Add(this.label2);
             this.MinimizeBox = false;
             this.Name = "Rename";
@@ -164,6 +167,6 @@ namespace DB
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnChooseFolder;
-        private System.Windows.Forms.Label lbLinks;
+        private System.Windows.Forms.LinkLabel lbLinks;
     }
 }

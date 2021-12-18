@@ -22,6 +22,7 @@ namespace DB
             }
             return true;
         }
+        
         public static int countPdf(string[] arrPathPdf)
         {
             int numberOfPages = 0;
