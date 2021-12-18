@@ -15,7 +15,7 @@ def get_files(path, extensionFile):
 
 
 def spit_pdf_merge_page(pathPdfInput):
-    if(os.path.getsize(pathPdfInput) > 10000000):
+    if(os.path.getsize(pathPdfInput) > 9000000):
         inputpdf = PdfFileReader(pathPdfInput, "rb")
         fileName = pathlib.Path(pathPdfInput).stem
         parentPath = pathlib.Path(pathPdfInput).parent.absolute()
@@ -77,9 +77,13 @@ def detect_size():
     print(round(2.665))
 
 # get file pdf
-lst = get_files(r'C:\Users\ADMIN\Downloads\skhdt', 'pdf')
+lst = get_files(r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Data so hoa (k xoa)\CN', 'pdf')
 
 for path in lst:
-    spit_pdf_merge_page(path)
-    if(os.path.getsize(path) > 10000000):
-        os.remove(path)
+    # spit_pdf_merge_page(path)
+    # if(os.path.getsize(path) > 9000000):
+    #     os.remove(path)
+        
+    if(os.path.getsize(path) > 9000000):
+        with open(r"split.txt", "a", encoding="utf-8") as fp:
+            fp.write(path + '\n')

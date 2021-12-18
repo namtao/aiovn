@@ -54,13 +54,13 @@
             this.currentDirectory = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.thaoTacDB = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.countPdfStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.optionStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.countPdfStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.renamepdfMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -231,14 +231,14 @@
             // 
             this.thongKeToolStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thongKeToolStripMenuItem.Name = "thongKeToolStripMenuItem";
-            this.thongKeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.thongKeToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
             this.thongKeToolStripMenuItem.Text = "Thống kê files";
             this.thongKeToolStripMenuItem.Click += new System.EventHandler(this.thongKeToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
             // 
             // toolStripMenuItem2
             // 
@@ -280,6 +280,11 @@
             this.thaoTacDB.Text = "Thao tác với DB";
             this.thaoTacDB.Click += new System.EventHandler(this.thaoTacDB_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(195, 6);
+            // 
             // optionStripMenuItem3
             // 
             this.optionStripMenuItem3.CheckOnClick = true;
@@ -287,6 +292,11 @@
             this.optionStripMenuItem3.Name = "optionStripMenuItem3";
             this.optionStripMenuItem3.Size = new System.Drawing.Size(198, 24);
             this.optionStripMenuItem3.Text = "Tùy chọn đuôi files";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(195, 6);
             // 
             // countPdfStripMenuItem3
             // 
@@ -296,25 +306,10 @@
             this.countPdfStripMenuItem3.Text = "Đếm số trang pdf";
             this.countPdfStripMenuItem3.Click += new System.EventHandler(this.countPdfStripMenuItem3_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(195, 6);
-            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(195, 6);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(195, 6);
             // 
             // renamepdfMenuItem3
             // 
@@ -323,6 +318,11 @@
             this.renamepdfMenuItem3.Size = new System.Drawing.Size(198, 24);
             this.renamepdfMenuItem3.Text = "Đổi tên pdf";
             this.renamepdfMenuItem3.Click += new System.EventHandler(this.renamepdfMenuItem3_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(195, 6);
             // 
             // Tree
             // 
