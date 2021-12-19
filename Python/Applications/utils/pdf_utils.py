@@ -14,8 +14,35 @@ def get_files(path, extensionFile):
     return lst
 
 
-def spit_pdf_merge_page(pathPdfInput):
-    if(os.path.getsize(pathPdfInput) > 9000000):
+def split_pdf(pathPdfInput):
+    inputpdf = PdfFileReader(pathPdfInput, "rb")
+    fileName = pathlib.Path(pathPdfInput).stem
+    parentPath = pathlib.Path(pathPdfInput).parent.absolute()
+
+    sum = 0
+    pdfs = []
+
+    for i in range(inputpdf.numPages):
+        output = PdfFileWriter()
+        output.addPage(inputpdf.getPage(i))
+        with open("%s.%s.pdf" % (fileName, i), "wb") as outputStream:
+            output.write(outputStream)
+            pdfs.append("%s.%s.pdf" % (fileName, i))
+            outputStream.close()
+
+
+def merge_pdf(pdfs):
+    pdfs = [r'C:\Users\ADMIN\Downloads\CHUONGV.pdf', r'C:\Users\ADMIN\Downloads\CHUONGV.pdf']
+    merger = PdfFileMerger()
+    index = 0
+    for page in pdfs:
+        merger.append(page)
+    merger.write('merge.pdf')
+
+
+
+def spit_and_merge_pdf(pathPdfInput, bytes = 9000000):
+    if(os.path.getsize(pathPdfInput) > bytes):
         inputpdf = PdfFileReader(pathPdfInput, "rb")
         fileName = pathlib.Path(pathPdfInput).stem
         parentPath = pathlib.Path(pathPdfInput).parent.absolute()
@@ -36,7 +63,7 @@ def spit_pdf_merge_page(pathPdfInput):
         for page in pdfs:
             # get size file
             sum += os.path.getsize(page)
-            if(sum < 10000000 and page != pdfs[-1]):
+            if(sum < bytes and page != pdfs[-1]):
                 merger.append(page)
 
             else:
@@ -77,13 +104,14 @@ def detect_size():
     print(round(2.665))
 
 # get file pdf
-lst = get_files(r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Data so hoa (k xoa)\CN', 'pdf')
-
+lst = get_files(r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Split', 'pdf')
+index = 0
 for path in lst:
-    # spit_pdf_merge_page(path)
+    # spit_and_merge_pdf(path, 9000000)
     # if(os.path.getsize(path) > 9000000):
+    #     index+=1
+    #     print(index)
     #     os.remove(path)
         
-    if(os.path.getsize(path) > 9000000):
-        with open(r"split.txt", "a", encoding="utf-8") as fp:
-            fp.write(path + '\n')
+    if(os.path.getsize(path) >= 10485760):
+        print(path + '\n')

@@ -164,3 +164,5 @@ C:\Projects\C#\DB\DB\obj\Debug\DB.ViewPdf.resources
 C:\Projects\C#\DB\DB\bin\Debug\PdfiumViewer.dll
 C:\Projects\C#\DB\DB\bin\Debug\PdfiumViewer.xml
 C:\Projects\C#\DB\DB\bin\Debug\nl\PdfiumViewer.resources.dll
+C:\Projects\C#\DB\DB\bin\Debug\Aspose.PDF.dll
+C:\Projects\C#\DB\DB\bin\Debug\Aspose.PDF.xml
