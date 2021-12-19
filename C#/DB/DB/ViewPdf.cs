@@ -130,8 +130,6 @@ namespace DB
         {
             if (e.KeyChar == (char)13)
             {
-                int column = 1; // Which column to use
-
                 foreach (ListViewItem item in listView1.Items)
                 {
                     if (item.BackColor == Color.BurlyWood)
