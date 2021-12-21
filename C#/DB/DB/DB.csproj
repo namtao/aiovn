@@ -119,6 +119,12 @@
     <Compile Include="Rename.Designer.cs">
       <DependentUpon>Rename.cs</DependentUpon>
     </Compile>
+    <Compile Include="TKBP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TKBP.Designer.cs">
+      <DependentUpon>TKBP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\GetSources.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rename.resx">
       <DependentUpon>Rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TKBP.resx">
+      <DependentUpon>TKBP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\Clone.resx">
       <DependentUpon>Clone.cs</DependentUpon>

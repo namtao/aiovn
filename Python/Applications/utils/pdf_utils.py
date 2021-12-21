@@ -1,9 +1,10 @@
 from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger, pdf
 import glob
 import os
-import pathlib    
+import pathlib
 from PIL import Image
 from pdf2image import convert_from_path
+
 
 def get_files(path, extensionFile):
     lst = []
@@ -32,7 +33,8 @@ def split_pdf(pathPdfInput):
 
 
 def merge_pdf(pdfs):
-    pdfs = [r'C:\Users\ADMIN\Downloads\CHUONGV.pdf', r'C:\Users\ADMIN\Downloads\CHUONGV.pdf']
+    pdfs = [r'C:\Users\ADMIN\Downloads\CHUONGV.pdf',
+            r'C:\Users\ADMIN\Downloads\CHUONGV.pdf']
     merger = PdfFileMerger()
     index = 0
     for page in pdfs:
@@ -40,9 +42,8 @@ def merge_pdf(pdfs):
     merger.write('merge.pdf')
 
 
-
-def spit_and_merge_pdf(pathPdfInput, bytes = 9000000):
-    if(os.path.getsize(pathPdfInput) > bytes):
+def spit_and_merge_pdf(pathPdfInput, bytes=9000000):
+    if(os.path.getsize(pathPdfInput) >= 10485760):
         inputpdf = PdfFileReader(pathPdfInput, "rb")
         fileName = pathlib.Path(pathPdfInput).stem
         parentPath = pathlib.Path(pathPdfInput).parent.absolute()
@@ -53,9 +54,9 @@ def spit_and_merge_pdf(pathPdfInput, bytes = 9000000):
         for i in range(inputpdf.numPages):
             output = PdfFileWriter()
             output.addPage(inputpdf.getPage(i))
-            with open("%s.%s.pdf" %(fileName, i), "wb") as outputStream:
-                output.write(outputStream) 
-                pdfs.append("%s.%s.pdf" %(fileName, i))
+            with open("%s.%s.pdf" % (fileName, i), "wb") as outputStream:
+                output.write(outputStream)
+                pdfs.append("%s.%s.pdf" % (fileName, i))
                 outputStream.close()
 
         merger = PdfFileMerger()
@@ -69,9 +70,11 @@ def spit_and_merge_pdf(pathPdfInput, bytes = 9000000):
             else:
                 if(page == pdfs[-1]):
                     merger.append(page)
-                merger.write(r"%s\%s.%s.pdf" %(parentPath, fileName, index + 1))
+                merger.write(r"%s\%s.%s.pdf" %
+                             (parentPath, fileName, index + 1))
                 with open(r"split.txt", "a", encoding="utf-8") as fp:
-                    fp.write(r"%s\%s.%s.pdf" %(parentPath, fileName, index + 1) + '\n')
+                    fp.write(r"%s\%s.%s.pdf" %
+                             (parentPath, fileName, index + 1) + '\n')
                 merger = PdfFileMerger()
                 merger.append(page)
                 index += 1
@@ -103,15 +106,19 @@ def detect_size():
 
     print(round(2.665))
 
+
 # get file pdf
-lst = get_files(r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Split', 'pdf')
+lst = get_files(
+    r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Split\CN', 'pdf')
 index = 0
 for path in lst:
     # spit_and_merge_pdf(path, 9000000)
     # if(os.path.getsize(path) > 9000000):
-    #     index+=1
+    #     index += 1
     #     print(index)
-    #     os.remove(path)
-        
+        # os.remove(path)
+
     if(os.path.getsize(path) >= 10485760):
         print(path + '\n')
+        # index+=1
+        # print(index)
