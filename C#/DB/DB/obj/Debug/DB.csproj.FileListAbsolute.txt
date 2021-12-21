@@ -164,3 +164,8 @@ C:\Projects\C#\DB\DB\bin\Debug\PdfiumViewer.dll
 C:\Projects\C#\DB\DB\bin\Debug\PdfiumViewer.xml
 C:\Projects\C#\DB\DB\bin\Debug\nl\PdfiumViewer.resources.dll
 C:\Projects\C#\DB\DB\obj\Debug\DB.TKBP.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.csproj.AssemblyReference.cache
+C:\Projects\C#\DB\DB\obj\Debug\DB.ConnectDB.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.HoTich.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.QuaTrinhXuLy.resources
+C:\Projects\C#\DB\DB\obj\Debug\DB.ThongKeNhanSu.resources

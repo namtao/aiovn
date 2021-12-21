@@ -104,6 +104,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectDB.Designer.cs">
+      <DependentUpon>ConnectDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="CountField.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,11 +119,33 @@
     <Compile Include="Diff.cs" />
     <Compile Include="DuAn\BinhPhuoc.cs" />
     <Compile Include="DuAn\ThaiBinh.cs" />
+    <Compile Include="HoTich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich.Designer.cs">
+      <DependentUpon>HoTich.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HT_KETHON.cs" />
+    <Compile Include="HT_KHAISINH.cs" />
+    <Compile Include="HT_KHAITU.cs" />
+    <Compile Include="HT_NHANCHAMECON.cs" />
+    <Compile Include="QuaTrinhXuLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuaTrinhXuLy.Designer.cs">
+      <DependentUpon>QuaTrinhXuLy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rename.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Rename.Designer.cs">
       <DependentUpon>Rename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKeNhanSu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeNhanSu.Designer.cs">
+      <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
     </Compile>
     <Compile Include="TKBP.cs">
       <SubType>Form</SubType>
@@ -161,14 +189,27 @@
     <Compile Include="ViewPdf.Designer.cs">
       <DependentUpon>ViewPdf.cs</DependentUpon>
     </Compile>
+    <Compile Include="XuLy.cs" />
+    <EmbeddedResource Include="ConnectDB.resx">
+      <DependentUpon>ConnectDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CountField.resx">
       <DependentUpon>CountField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HoTich.resx">
+      <DependentUpon>HoTich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuaTrinhXuLy.resx">
+      <DependentUpon>QuaTrinhXuLy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Rename.resx">
       <DependentUpon>Rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeNhanSu.resx">
+      <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TKBP.resx">
       <DependentUpon>TKBP.cs</DependentUpon>

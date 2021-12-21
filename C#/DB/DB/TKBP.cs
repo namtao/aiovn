@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DB.DuAn;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 
 namespace DB
@@ -23,7 +24,16 @@ namespace DB
 
         private void TKBP_Load(object sender, EventArgs e)
         {
+            int i = 10;
+            new Thread(() =>
+            {
+                while (i >= 0) Console.WriteLine(i--);
+            }).Start();
 
+            new Thread(() =>
+            {
+                while(i >= 0) Console.WriteLine(i--);
+            }).Start();
         }
 
         public void ThongKeSKHDT(string path)
