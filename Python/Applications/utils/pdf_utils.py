@@ -108,17 +108,12 @@ def detect_size():
 
 
 # get file pdf
-lst = get_files(
-    r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Split\CN', 'pdf')
+pathPdf = r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Split\CTCP'
+lst = get_files(pathPdf, 'pdf')
+           
 index = 0
 for path in lst:
-    # spit_and_merge_pdf(path, 9000000)
-    # if(os.path.getsize(path) > 9000000):
-    #     index += 1
-    #     print(index)
-        # os.remove(path)
-
     if(os.path.getsize(path) >= 10485760):
-        print(path + '\n')
+        print(path)
         # index+=1
         # print(index)
