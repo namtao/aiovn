@@ -110,7 +110,18 @@ def detect_size():
 # get file pdf
 pathPdf = r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Split\CTCP'
 lst = get_files(pathPdf, 'pdf')
-           
+        
+# lst = get_files(pathPdf, 'pdf')
+
+# lstNotSplit = []
+
+# for index in os.listdir(pathPdf):
+#     for i in os.listdir(os.path.join(pathPdf, index)):
+#         if not os.path.isdir(os.path.join(pathPdf, index, i)):
+#             lstNotSplit.append(os.path.join(pathPdf, index, i))
+            
+# lstDiff = set(lst) ^ set(lstNotSplit)
+   
 index = 0
 for path in lst:
     if(os.path.getsize(path) >= 10485760):
