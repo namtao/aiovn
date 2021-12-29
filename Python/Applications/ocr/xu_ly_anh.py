@@ -16,7 +16,8 @@ class OCR:
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
     # hinh nguyen ban
-    img = cv2.imread('tv.jpg')
+    img = cv2.imread(r'ocr\tv.jpg')
+    # img = Image.open(r'ocr\tv.jpg')
 
     # get grayscale image
     def get_grayscale(image):
@@ -73,7 +74,7 @@ class OCR:
 
         return cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
 
-    def basicocr(image):
+    def basic_ocr(image):
         # OCR
         custom_config = r'-l vni --oem 3 --psm 6'
         custom_config = r'-l eng --psm 6'
@@ -109,7 +110,7 @@ class OCR:
     def orc_tv(image):
         # Đọc file ảnh và chuyển về ảnh xám
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        filename = "tv.pdf".format(os.getpid())
+        # filename = "tv.pdf".format(os.getpid())
         # Load ảnh và apply nhận dạng bằng Tesseract OCR
         #text = pytesseract.image_to_string(Image.open(filename),lang='vie')
         text = pytesseract.image_to_string(image, config='--psm 4', lang='vie')
@@ -119,6 +120,7 @@ class OCR:
 
         # Hiển thị các ảnh chúng ta đã xử lý.
         cv2.imshow("Image", image)
+        cv2.waitKey(0)
 
     # crop and show image
     refPt = []
@@ -205,9 +207,9 @@ class OCR:
         TESSDATA_PREFIX = r'C:\Program Files\Tesseract-OCR'
         tessdata_dir_config = '--tessdata-dir "C://Program Files//Tesseract-OCR//tessdata"'
 
-        #input_dir = "‪a.tiff"
+        # input_dir = "‪a.tiff"
 
-        #img = cv2.imread(input_dir, 1)
+        # img = cv2.imread(input_dir, 1)
 
         pdf = pytesseract.image_to_pdf_or_hocr(
             'a.tiff', lang='vie', extension='pdf')
@@ -293,7 +295,7 @@ def main():
     # getting_boxes(img)
 
     # ocr tieng viet
-    # OCR.orc_tv(OCR.img)
+    OCR.orc_tv(OCR.img)
 
     # crop(img)
     #inpath = "tv2.pdf"
@@ -303,10 +305,10 @@ def main():
     # OCR.image_convert()
 
     # cac che do cua hinh anh
-    gray = OCR.get_grayscale(OCR.img)
-    thresh = OCR.thresholding(gray)
-    opening = OCR.opening(gray)
-    canny = OCR.canny(gray)
+    # gray = OCR.get_grayscale(OCR.img)
+    # thresh = OCR.thresholding(gray)
+    # opening = OCR.opening(gray)
+    # canny = OCR.canny(gray)
 
     # show image on windows
     #cv2.imshow('Image OCR', ChinhSua.image_resize(opening, height = 1000))
@@ -321,9 +323,9 @@ def main():
     #cv2.imshow('test', image_resize(transformed_high, height = 800))
 
     # man hinh cho
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
 
 
 if __name__ == '__main__':
-    main()
-    #print (__name__)
+    OCR.orc_tv(OCR.img)
+    cv2.waitKey(0)

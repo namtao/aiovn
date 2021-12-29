@@ -16,5 +16,10 @@
             "password": "P@ssword"
         }
     ],
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+
+    "files.exclude": {
+        "**/*.pyc": {"when": "$(basename).py"},
+        // "**/__pycache__": true
+   }
 }

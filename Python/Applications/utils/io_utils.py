@@ -13,6 +13,7 @@ def get_files(folderPath, fileFormat):
     return lst
 
 
+# rename file
 def replace(folderPath, before, after):
     with open(r"error.txt", "a", encoding="utf-8") as f:
         for root, dirs, files in os.walk(folderPath):

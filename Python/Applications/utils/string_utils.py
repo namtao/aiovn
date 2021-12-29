@@ -1,3 +1,9 @@
+import os
+import sys
+import collections
+import string
+
+
 def format_str(strA):
     specialcharacters = ['\\', '/', ':', '*', '?', '"', ',', '<', '>', '|']
     for i in strA:
@@ -5,6 +11,7 @@ def format_str(strA):
             strA = strA.replace(i, "")
 
     return str(strA)
+
 
 def compound_unicode(unicode_str):
     """
@@ -132,3 +139,67 @@ def compound_unicode(unicode_str):
     unicode_str = unicode_str.replace("\u00C2\u0303", "\u1EAA")    # Ẫ
     return unicode_str
 
+
+text = input("input text : ")
+
+path = input("path : ")
+
+# os.chdir(path)
+
+
+def string_search_from_multiple_files(path):
+    f = 0
+    os.chdir(path)
+    files = os.listdir()
+    # print(files)
+    for file_name in files:
+        abs_path = os.path.abspath(file_name)
+        if os.path.isdir(abs_path):
+            string_search_from_multiple_files(abs_path)
+        if os.path.isfile(abs_path):
+            f = open(file_name, "r")
+            if text in f.read():
+                f = 1
+                print(text + " found in ")
+                final_path = os.path.abspath(file_name)
+                print(final_path)
+                return True
+
+    if f == 1:
+        print(text + " not found! ")
+        return False
+
+
+def textfile_analysis():
+    script_name = sys.argv[0]
+
+    res = {
+        "total_lines": "",
+        "total_characters": "",
+        "total_words": "",
+        "unique_words": "",
+        "special_characters": ""
+    }
+
+    try:
+        textfile = sys.argv[1]
+        with open(textfile, "r", encoding="utf_8") as f:
+
+            data = f.read()
+            res["total_lines"] = data.count(os.linesep)
+            res["total_characters"] = len(
+                data.replace(" ", "")) - res["total_lines"]
+            counter = collections.Counter(data.split())
+            d = counter.most_common()
+            res["total_words"] = sum([i[1] for i in d])
+            res["unique_words"] = len([i[0] for i in d])
+            special_chars = string.punctuation
+            res["special_characters"] = sum(
+                v for k, v in collections.Counter(data).items() if k in special_chars)
+
+    except IndexError:
+        print('Usage: %s TEXTFILE' % script_name)
+    except IOError:
+        print('"%s" cannot be opened.' % textfile)
+
+    print(res)
