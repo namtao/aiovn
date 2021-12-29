@@ -45,24 +45,6 @@ def reduce_mem_usage(df):
     return df
 
 
-def change_column():
-    # df = pd.read_sql('select top(1) id from hs_nguoicc', connectDB())
-    df = pd.read_excel(r"C:\Users\ADMIN\Downloads\BOOK1.XLSX")
-
-    # print(tabulate(df[0:4:2], headers = 'keys', tablefmt = 'psql'))
-    # print(df.info())
-    df[''] = df['Tên trường']
-    df['Tên trường'] = df['Link 1']
-    df['Link 1'] = df['Tên trường']
-    del df['']
-
-    df = df.rename(
-        columns={'Tên trường': 'Tên trường mới', 'Link 1': 'Link 1 mới'})
-    # index = false: không hiện cột stt
-    df.to_excel(r"C:\Users\ADMIN\Downloads\BOOK1.xlsx", index=False)
-    # print(df.loc[0:1])
-
-
 # Create a Dictionary of series
 d = {'Name': pd.Series(['Tom', 'James', 'Ricky', 'Vin', 'Steve', 'Smith', 'Jack',
                         'Lee', 'David', 'Gasper', 'Betina', 'Andres']),
