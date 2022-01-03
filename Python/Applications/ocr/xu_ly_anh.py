@@ -9,6 +9,7 @@ from PIL import Image
 from pdf2image import convert_from_path, convert_from_bytes
 import re
 from pytesseract.pytesseract import Output
+import numpy
 
 
 class OCR:
@@ -16,8 +17,14 @@ class OCR:
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
     # hinh nguyen ban
-    img = cv2.imread(r'ocr\tv.jpg')
-    # img = Image.open(r'ocr\tv.jpg')
+    # img = cv2.imread(r'C:\ADDJ\DA Nghệ An\danh muc scan\page_11.jpg')
+    # img = Image.open(r'C:\ADDJ\DA Nghệ An\danh muc scan\page_11.jpg')
+
+    # unicode img
+    stream = open(r'C:\ADDJ\DA Nghệ An\danh muc scan\page_11.jpg', "rb")
+    bytes = bytearray(stream.read())
+    numpyarray = numpy.asarray(bytes, dtype=numpy.uint8)
+    img = cv2.imdecode(numpyarray, cv2.IMREAD_UNCHANGED)
 
     # get grayscale image
     def get_grayscale(image):

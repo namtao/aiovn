@@ -15,9 +15,9 @@ def pdf2jpg(pdfPath, jpgPath):
         page.save(os.path.join(jpgPath, filename), 'JPEG')
         image_counter = image_counter + 1
 
-if __name__ == "__main__":
-    pdfPath = sys.argv[1]
-    jpgPath = sys.argv[2]
-    pdf2jpg(pdfPath, jpgPath)
+# if __name__ == "__main__":
+    # pdfPath = sys.argv[1]
+    # jpgPath = sys.argv[2]
+pdf2jpg(r'C:\Users\ADMIN\Downloads\0001.pdf', r'C:\Users\ADMIN\Downloads\Nghe An\danh muc scan')
     
     
