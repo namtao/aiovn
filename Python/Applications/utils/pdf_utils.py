@@ -3,7 +3,9 @@ import glob
 import os
 import pathlib
 from PIL import Image
+from PyPDF2.generic import NullObject
 from pdf2image import convert_from_path
+import time
 
 
 def get_files(path, extensionFile):
@@ -80,6 +82,14 @@ def spit_and_merge_pdf(pathPdfInput, bytes=9000000):
                 index += 1
                 sum = 0
 
+        try:
+            listPdf = glob.glob("*pdf")
+            for page in listPdf:
+                os.remove(page)
+                # page.unlink()
+        except:
+            pass
+
 
 def detect_size():
 
@@ -108,7 +118,7 @@ def detect_size():
 
 
 # get file pdf
-pathPdf = r'\\192.168.100.80\Folder share\Data so hoa (k xoa)\Split\CTCP'
+pathPdf = r'C:\Users\ADMIN\Downloads\New folder'
 lst = get_files(pathPdf, 'pdf')
         
 # lst = get_files(pathPdf, 'pdf')
@@ -119,12 +129,18 @@ lst = get_files(pathPdf, 'pdf')
 #     for i in os.listdir(os.path.join(pathPdf, index)):
 #         if not os.path.isdir(os.path.join(pathPdf, index, i)):
 #             lstNotSplit.append(os.path.join(pathPdf, index, i))
-            
+
+'''
+lọc danh sách khác nhau giữa 2 list
+'''          
+
 # lstDiff = set(lst) ^ set(lstNotSplit)
    
-index = 0
+# index = 0
 for path in lst:
-    if(os.path.getsize(path) >= 10485760):
-        print(path)
+#     if(os.path.getsize(path) >= 10485760):
+#         print(path)
         # index+=1
         # print(index)
+        
+    spit_and_merge_pdf(path)
