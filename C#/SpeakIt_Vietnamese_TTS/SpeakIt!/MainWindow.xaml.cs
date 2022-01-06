@@ -345,7 +345,7 @@ public class XuLyAmThanh
         outputTexts = text.Split(new[] { "." }, StringSplitOptions.None).OfType<string>().ToList();
 
 
-        string doanDuoi2000rollback = "";
+        // string doanDuoi2000rollback = "";
         string doanDuoi2000 = "";
         while (index < outputTexts.Count)
         {
@@ -463,7 +463,7 @@ public class XuLyAmThanh
         File.WriteAllText(path + "\\zalo_tts\\output.txt", "");
         File.WriteAllText(path + "\\zalo_tts\\text.txt", _text);
         File.WriteAllText(path + "\\zalo_tts\\setting.txt", gender + "|" + speed);
-        //var process = Process.Start(path + "\\zalo_tts\\zalo_tts.exe");
+        // var process = Process.Start(path + "\\zalo_tts\\zalo_tts.exe");
         string appPath = path + "\\zalo_tts\\zalo_tts.exe";
         Process ffmpeg = new Process
         {
