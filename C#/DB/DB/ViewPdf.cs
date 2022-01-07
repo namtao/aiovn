@@ -27,7 +27,7 @@ namespace DB
             pathPdf = @"C:\Users\ADMIN\Downloads\CHUONGV.pdf";
             runCmd(@"python C:\Projects\Python\Applications\utils\pdf2jpg.py " + pathPdf + " " + pathJpg);
             //long length = new System.IO.FileInfo(pathPdf).Length;
-            MessageBox.Show(output);
+            //MessageBox.Show("Đã xong");
 
 
             lstImage = new List<string>();
@@ -148,8 +148,10 @@ namespace DB
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = "cmd.exe";
             startInfo.Arguments = "/k " + cmd;
+            // process.EnableRaisingEvents = true;
             process.StartInfo = startInfo;
             process.Start();
+            // process.WaitForExit();
         }
 
     }

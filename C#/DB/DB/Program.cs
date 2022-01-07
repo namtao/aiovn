@@ -13,7 +13,7 @@ namespace DB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HoTich());
+            Application.Run(new ViewPdf());
         }
     }
 }
