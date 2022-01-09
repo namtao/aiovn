@@ -142,10 +142,10 @@
     <Compile Include="HoTich.Designer.cs">
       <DependentUpon>HoTich.cs</DependentUpon>
     </Compile>
-    <Compile Include="HT_KETHON.cs" />
-    <Compile Include="HT_KHAISINH.cs" />
-    <Compile Include="HT_KHAITU.cs" />
-    <Compile Include="HT_NHANCHAMECON.cs" />
+    <Compile Include="Model\HT_KETHON.cs" />
+    <Compile Include="Model\HT_KHAISINH.cs" />
+    <Compile Include="Model\HT_KHAITU.cs" />
+    <Compile Include="Model\HT_NHANCHAMECON.cs" />
     <Compile Include="QuaTrinhXuLy.cs">
       <SubType>Form</SubType>
     </Compile>
