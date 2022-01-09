@@ -27,7 +27,7 @@ namespace DB
             pathPdf = @"C:\Users\ADMIN\Downloads\CHUONGV.pdf";
             runCmd(@"python C:\Projects\Python\Applications\utils\pdf2jpg.py " + pathPdf + " " + pathJpg);
             //long length = new System.IO.FileInfo(pathPdf).Length;
-            //MessageBox.Show("Đã xong");
+            MessageBox.Show("Đã xong");
 
 
             lstImage = new List<string>();
@@ -147,11 +147,15 @@ namespace DB
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/k " + cmd;
-            // process.EnableRaisingEvents = true;
+            // Chạy lệnh và sau đó quay lại dấu nhắc CMD . Đây là hữu ích cho kiểm tra , xem xét các biến
+            //startInfo.Arguments = "/k " + cmd;
+
+            // Chạy lệnh và sau đó kết thúc
+            startInfo.Arguments = "/c " + cmd;
+            process.EnableRaisingEvents = true;
             process.StartInfo = startInfo;
             process.Start();
-            // process.WaitForExit();
+            process.WaitForExit();
         }
 
     }
