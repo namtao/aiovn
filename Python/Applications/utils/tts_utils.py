@@ -26,9 +26,8 @@ def save_mp3(text, path):
 
     engine.runAndWait()
 
+
 # coding=utf-8
-
-
 def save_mp3_fpt(text, path):
     url = 'https://api.fpt.ai/hmi/tts/v5'
 

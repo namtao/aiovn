@@ -77,4 +77,22 @@ def after_rename(dir, str):
         rename_all(root, files)
 
 
-# before_rename(r'\\192.168.31.182\so hoa nghe an\da tach\so KHDT-000.00.52.H41\da tach\G05-KD03', '000.00.52.H41.' + 'G05-KD03.')
+def rename(dir, strA):
+    # renames all subforders of dir, not including dir itself
+    # dir = os.path.dirname(os.path.abspath(__file__))
+    def rename_all(root, items, index):
+        for name in items:
+            try:
+                index += 1
+                os.rename(os.path.join(root, name),
+                          os.path.join(root, strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1])))
+            except OSError:
+                pass  # can't rename it, so what
+
+    index = 0
+    for root, dirs, files in os.walk(dir, topdown=False):
+        # rename_all(root, dirs)
+        rename_all(root, files, index)
+        
+
+# rename(r'\\192.168.31.182\so hoa nghe an\da tach - da doi ten\so ldtbxh-000.00.38.H41\da tach\G07-LD11(vl)\anh nguyen', '000.00.38.H41.' + 'G07-LD11.')
