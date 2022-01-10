@@ -35,7 +35,7 @@ namespace Company
 
         private void Home_Load(object sender, EventArgs e)
         {
-            
+            // MessageBox.Show(Environment.CurrentDirectory);
         }
 
         public int DemTruong(string table, List<string> list)

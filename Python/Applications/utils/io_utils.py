@@ -12,6 +12,7 @@ def get_files(folderPath, fileFormat):
 
     return lst
 
+
 # rename file
 def replace(folderPath, before, after):
     with open(r"error.txt", "a", encoding="utf-8") as f:
@@ -57,7 +58,7 @@ def before_rename(dir, str):
     for root, dirs, files in os.walk(dir, topdown=False):
         # rename_all(root, dirs)
         rename_all(root, files)
-        
+
 
 def after_rename(dir, str):
     # renames all subforders of dir, not including dir itself

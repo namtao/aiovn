@@ -339,7 +339,7 @@
             this.MaximizeBox = false;
             this.Name = "Tree";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tree";
+            this.Text = "Explorer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tree_FormClosing);
             this.Load += new System.EventHandler(this.Tree_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
