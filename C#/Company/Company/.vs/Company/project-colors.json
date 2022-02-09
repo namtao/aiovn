@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b4ded93b-15ac-4d7a-9266-94a2e791aacf": {
+      "ProjectGuid": "b4ded93b-15ac-4d7a-9266-94a2e791aacf",
+      "DisplayName": "Company",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
