@@ -58,3 +58,4 @@ C:\Projects\C#\Company\Company\obj\Debug\Company.Clone.resources
 C:\Projects\C#\Company\Company\obj\Debug\Company.LANScanner.resources
 C:\Projects\C#\Company\Company\obj\Debug\Company.Tree.resources
 C:\Projects\C#\Company\Company\obj\Debug\Company.ViewPdf.resources
+C:\Projects\C#\Company\Company\obj\Debug\Company.csproj.SuggestedBindingRedirects.cache

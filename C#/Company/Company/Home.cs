@@ -33,6 +33,8 @@ namespace Company
             timer.Start();
         }
 
+
+
         private void Home_Load(object sender, EventArgs e)
         {
             // MessageBox.Show(Environment.CurrentDirectory);

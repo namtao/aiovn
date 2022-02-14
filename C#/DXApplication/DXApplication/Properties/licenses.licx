@@ -1,0 +1,4 @@
+DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+Telerik.WinControls.UI.Docking.RadDock, Telerik.WinControls.RadDock, Version=2021.3.1109.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Telerik.WinControls.Themes.AquaTheme, Telerik.WinControls.Themes.Aqua, Version=2021.3.1109.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
