@@ -1,4 +1,5 @@
 absl-py==1.0.0
+algorithms==0.1.4
 altgraph==0.17.2
 alyn==0.1.1
 argon2-cffi==21.1.0
@@ -20,7 +21,7 @@ certifi==2021.10.8
 cffi==1.14.6
 chardet==3.0.4
 charset-normalizer==2.0.9
-click==8.0.1
+click==7.1.2
 colorama==0.4.4
 comtypes==1.1.10
 cookiecutter==1.7.3
@@ -43,6 +44,7 @@ evernote==1.19
 ffmpeg==1.4
 ffmpeg-python==0.2.0
 filelock==3.3.2
+find==2020.12.3
 flashtext==2.7
 flatbuffers==2.0
 future==0.18.2
@@ -160,9 +162,12 @@ PyPDF2==1.26.0
 pypdfocr==0.9.1
 pyperclip==1.8.2
 pypiwin32==223
-PyQt5==5.15.6
+PyQt5==5.15.4
+pyqt5-plugins==5.15.4.2.2
 PyQt5-Qt5==5.15.2
 PyQt5-sip==12.9.0
+pyqt5-tools==5.15.4.3.2
+PyQt5Designer==5.14.1
 Pyrebase4==4.5.0
 PyRect==0.1.4
 pyrsistent==0.18.0
@@ -171,6 +176,7 @@ PySocks==1.7.1
 pytesseract==0.3.8
 python-dateutil==2.8.2
 python-docx==0.8.11
+python-dotenv==0.19.2
 python-jwt==3.3.0
 python-slugify==5.0.2
 pyttsx3==2.90
@@ -182,6 +188,8 @@ pywin32-ctypes==0.2.0
 pywinpty==1.1.5
 pyworld3==1.1
 pyzmq==22.3.0
+qt5-applications==5.15.2.2.2
+qt5-tools==5.15.2.1.2
 qtconsole==5.1.1
 QtPy==1.11.2
 regex==2021.10.23
