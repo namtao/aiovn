@@ -19,12 +19,11 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import include, url
+from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^admin/', admin.site.urls),
-    url(r'^tutorial/', include('tutorial.urls')), # đường dẫn bao gồm tên webapp
-    url(r'^$', include('tutorial.urls')), # đường dẫn trắng
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^tutorial/', include('tutorial.urls')), # đường dẫn bao gồm tên webapp
+    re_path(r'^$', include('tutorial.urls')), # đường dẫn trắng
 ]
