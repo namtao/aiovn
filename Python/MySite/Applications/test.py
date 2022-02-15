@@ -1,7 +1,7 @@
 import sys
 import pypdfocr 
 
-x = 300
+x = 2500
 y = 35500
 
 # result = (44144000 + x*y + (x*y)/1000)/(1000+x)
