@@ -1,5 +1,4 @@
 import sys
-import pypdfocr 
 
 x = 2500
 y = 35500
