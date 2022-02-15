@@ -6,3 +6,4 @@ pyuic5 -x gui/demo.ui -o gui/demo.py
 django-admin startproject mysite
 python manage.py startapp <Tên APP>
 python manage.py migrate
+python manage.py runserver
