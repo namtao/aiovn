@@ -1,9 +1,16 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+	
+from django.template import loader
  
 def index(request):
-    response = HttpResponse()
-    response.write("<h1>Welcome</h1>")
-    response.write("This is the polls app")
-    return response
+    return render(request, 'index.html')
+
+def hello(request):
+    text = """<h1>welcome to my app !</h1>"""
+    return HttpResponse(text)
+
+def viewArticle(request, articleId):
+    text = "Displaying article Number : %s"%articleId
+    return HttpResponse(text)

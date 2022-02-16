@@ -22,10 +22,14 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.urls import include
 from django.urls import path, include, re_path
+from django.views.generic.base import RedirectView
+
+from tutorial.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^tutorial/', include('tutorial.urls')), # đường dẫn bao gồm tên webapp
+    re_path(r'^index/$', RedirectView.as_view(pattern_name='index', permanent=False)),
     re_path(r'^$', include('tutorial.urls')), # đường dẫn trắng
 ]
