@@ -6,8 +6,8 @@ def get_files(folderPath, fileFormat):
     for root, dirs, files in os.walk(folderPath):
         for file in files:
             if file.endswith("." + fileFormat):
-                # lst.append(os.path.join(root, file))
-                print(os.path.join(root, file))
+                lst.append(os.path.join(file))
+                # print(os.path.join(root, file))
 
     return lst
 
@@ -83,10 +83,17 @@ def rename(dir, strA):
     index = 0
 
     def rename_all(root, items):
+        lst = get_files(r'D:\New folder (2)\Files', 'pdf')
         for name in items:
             try:
                 global index
                 index += 1
+                tenmoi = os.path.join(strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+                # kierm tra trùng tên
+                while (tenmoi in lst):
+                    index += 1
+                    tenmoi = os.path.join(strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+                    
                 os.rename(os.path.join(root, name),
                           os.path.join(root, strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower())))
             except OSError:
