@@ -3,13 +3,13 @@ import sys
 # stop Python from making .pyc files
 sys.dont_write_bytecode = True
 
-x = 800
-y = 36800
+x = 2200
+y = 34000
 
 # result = (44144000 + x*y + (x*y)/1000)/(1000+x)
 # result = (54506400 + x*y + (x*y)/1300)/(1300+x)
 # result = (41933000 + x*y + (x*y)/1000)/(1000+x)
-result = (20966500 + x*y + (x*y)/500)/(500+x)
+result = (50436100 + x*y + (x*y)/1300)/(1300+x)
 print(result)
 print(x*y)
 
