@@ -3,8 +3,8 @@ import sys
 # stop Python from making .pyc files
 sys.dont_write_bytecode = True
 
-x = 3000
-y = 34650
+x = 800
+y = 36800
 
 # result = (44144000 + x*y + (x*y)/1000)/(1000+x)
 # result = (54506400 + x*y + (x*y)/1300)/(1300+x)
@@ -12,3 +12,6 @@ y = 34650
 result = (20966500 + x*y + (x*y)/500)/(500+x)
 print(result)
 print(x*y)
+
+# import subprocess
+# subprocess.call([r'D:\Nam\Projects\Python\MySite\Applications\batch\a.bat'])
