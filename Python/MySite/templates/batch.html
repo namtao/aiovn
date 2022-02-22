@@ -15,9 +15,11 @@
               </div>
             </div>
             <div class="col-3">
-              <div class="icon icon-box-success "  style="cursor: pointer">
-                <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
-              </div>
+              <a href="#">
+                <div class="icon icon-box-success ">
+                  <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
+                </div>
+              </a>
             </div>
           </div>
           <h6 class="text-muted font-weight-normal">Potential growth</h6>
@@ -35,9 +37,11 @@
               </div>
             </div>
             <div class="col-3">
-              <div class="icon icon-box-success"  style="cursor: pointer">
-                <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
-              </div>
+              <a href="#">
+                <div class="icon icon-box-success">
+                  <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
+                </div>
+              </a>
             </div>
           </div>
           <h6 class="text-muted font-weight-normal">Revenue current</h6>
@@ -55,9 +59,11 @@
               </div>
             </div>
             <div class="col-3">
-              <div class="icon icon-box-danger"  style="cursor: pointer">
-                <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
-              </div>
+              <a href="#">
+                <div class="icon icon-box-danger">
+                  <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
+                </div>
+              </a>
             </div>
           </div>
           <h6 class="text-muted font-weight-normal">Daily Income</h6>
@@ -75,9 +81,11 @@
               </div>
             </div>
             <div class="col-3">
-              <div class="icon icon-box-success" style="cursor: pointer" onclick="abc()">
-                <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
-              </div>
+              <a href="{% url '' %}">
+                <div class="icon icon-box-success">
+                  <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
+                </div>
+              </a>
             </div>
           </div>
           <h6 class="text-muted font-weight-normal">Expense current</h6>
@@ -88,7 +96,7 @@
 </div>
 
 <script>
-  function abc(){
+  function abc() {
     alert('alert')
     var wshShell = new ActiveXObject("WScript.Shell");
     wshShell.run("D:\\Nam\\Projects\\Python\\MySite\\Applications\\batch\\a.bat", 1, false);
