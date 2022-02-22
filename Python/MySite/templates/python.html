@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% load static %}
+{% block title %}Infinity{% endblock %}
+{% block content %}
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Upload files</h4>
+          <form class="form-sample">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Đường dẫn tệp</label>
+                  <div class="col-sm-9">
+                    <!-- <input type="text" class="form-control" /> -->
+                    <div class="template-demo">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="inputUpload"
+                          aria-describedby="btnUpload" aria-label="Upload">
+                        <button
+                          class="btn btn-outline-secondary btn btn-danger btn-icon-text file-upload-browse mdi mdi-upload btn-icon-prepend"
+                          type="button" id="btnUpload">Upload</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
