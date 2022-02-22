@@ -4,7 +4,7 @@ import sys
 sys.dont_write_bytecode = True
 
 x = 2200
-y = 36000
+y = 35700
 
 # result = (44144000 + x*y + (x*y)/1000)/(1000+x)
 # result = (54506400 + x*y + (x*y)/1300)/(1300+x)

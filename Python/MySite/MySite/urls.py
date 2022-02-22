@@ -24,14 +24,13 @@ from django.urls import include
 from django.urls import path, include, re_path
 from django.views.generic.base import RedirectView
 
-from tutorial.views import index
 # nếu thêm $ thì url là chính xác, các ký tự thêm vào không đúng định dạng sẽ không chạy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^admin/', admin.site.urls),
-    re_path(r'^tutorial/', include('tutorial.urls')), # đường dẫn bao gồm tên webapp
     re_path(r'^batch/', include('AppBatchScript.urls')), # đường dẫn bao gồm tên webapp
     re_path(r'^index/$', RedirectView.as_view(pattern_name='index', permanent=False)),
-    re_path(r'', include('tutorial.urls')), # đường dẫn trắng
+    re_path(r'^datatranfer/', include('AppDataTranfer.urls')),
+    re_path(r'', include('AppBatchScript.urls')), 
 ]
