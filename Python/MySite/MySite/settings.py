@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'AppBatchScript',
     'AppDataTranfer',
     'AppPython',
+    'AppCrawl',
+    'AppMain',
 ]
 
 MIDDLEWARE = [
