@@ -707,6 +707,7 @@ namespace Company
             this.cậpNhậtDanhSáchSoSánhToolStripMenuItem1.Name = "cậpNhậtDanhSáchSoSánhToolStripMenuItem1";
             this.cậpNhậtDanhSáchSoSánhToolStripMenuItem1.Size = new System.Drawing.Size(256, 24);
             this.cậpNhậtDanhSáchSoSánhToolStripMenuItem1.Text = "Cập nhật danh sách so sánh";
+            this.cậpNhậtDanhSáchSoSánhToolStripMenuItem1.Click += new System.EventHandler(this.cậpNhậtDanhSáchSoSánhToolStripMenuItem1_Click);
             // 
             // thốngKêToolStripMenuItem1
             // 

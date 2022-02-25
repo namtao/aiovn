@@ -158,6 +158,12 @@
     <Compile Include="Rename.Designer.cs">
       <DependentUpon>Rename.cs</DependentUpon>
     </Compile>
+    <Compile Include="SoSanhBP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoSanhBP.Designer.cs">
+      <DependentUpon>SoSanhBP.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThongKeNhanSu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rename.resx">
       <DependentUpon>Rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoSanhBP.resx">
+      <DependentUpon>SoSanhBP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThongKeNhanSu.resx">
       <DependentUpon>ThongKeNhanSu.cs</DependentUpon>

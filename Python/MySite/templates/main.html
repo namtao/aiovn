@@ -115,7 +115,8 @@
                             <li class="nav-item"> <a class="nav-link" href="{%url 'batch'%}">Batch Script</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{%url 'crawl'%}">Crawl data</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{%url 'datatranfer'%}">Truyền dữ liệu</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{%url 'datatranfer'%}">Truyền dữ liệu</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -275,12 +276,14 @@
             <div class="main-panel">
                 <!-- partial -->
                 <!-- main content -->
-                {% block content %}
-                Body content
-                {% endblock %}
+                <div class="content-wrapper">
+                    {% block content %}
+                    Body content
+                    {% endblock %}
+                </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
-                <footer class="footer">
+                <footer class="footer d-flex flex-row-reverse">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Edit by Nam
                             Nguyen</span>

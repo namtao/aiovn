@@ -2,64 +2,47 @@
 {% load static %}
 {% block title %}Infinity Admin{% endblock %}
 {% block content %}
-<div class="content-wrapper">
-  <div class="row">
+<div class="row">
 
-    <div class="col-12 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Crawl Data</h4>
-          <form class="form-sample">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Link website</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Folder Path</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" />
-                  </div>
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Crawl Data</h4>
+        <form class="form-sample">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Link website</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" />
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group row">
-                  <div class="col-sm-12 d-flex flex-row-reverse">
-                    <a href="{%url 'crawl' %}"><button
-                        class="btn btn-outline-secondary btn btn-danger btn-icon-text file-upload-browse mdi mdi-download btn-icon-prepend"
-                        type="button" id="btnCrawl">Crawl</button></a>
-                  </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Folder Path</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" />
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <div class="col-sm-12 d-flex flex-row-reverse">
+                  <a href="{%url 'crawl' %}"><button
+                      class="btn btn-outline-secondary btn btn-danger btn-icon-text file-upload-browse mdi mdi-download btn-icon-prepend"
+                      type="button" id="btnCrawl">Crawl</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-
   </div>
-</div>
 
-<script>
-  (function ($) {
-    'use strict';
-    $(function () {
-      $('.file-upload-browse').on('click', function () {
-        var file = $(this).parent().parent().parent().find('.file-upload-default');
-        file.trigger('click');
-      });
-      $('.file-upload-default').on('change', function () {
-        $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
-      });
-    });
-  })(jQuery);
-</script>
+</div>
 
 {% endblock %}
