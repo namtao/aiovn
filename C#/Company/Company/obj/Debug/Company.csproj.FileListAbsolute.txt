@@ -116,3 +116,4 @@ D:\Nam\Projects\C#\Company\Company\obj\Debug\Company.csproj.CoreCompileInputs.ca
 D:\Nam\Projects\C#\Company\Company\obj\Debug\Company.csproj.CopyComplete
 D:\Nam\Projects\C#\Company\Company\obj\Debug\Company.exe
 D:\Nam\Projects\C#\Company\Company\obj\Debug\Company.pdb
+D:\Nam\Projects\C#\Company\Company\obj\Debug\Company.csproj.AssemblyReference.cache

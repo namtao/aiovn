@@ -21,7 +21,7 @@ namespace Company
             InitializeComponent();
         }
 
-        private void SoSanhBP_Load(object sender, EventArgs e)
+        public void SoSanh()
         {
             string pathDir = Path.Combine(System.IO.Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).ToString(), "sosanh.txt");
             if (!File.Exists(pathDir))
@@ -32,12 +32,12 @@ namespace Company
 
             List<string> listTitle = new List<string>();
             List<string> listID = new List<string>();
-            List<string> listDiff, listUser;
+            List<string> listDiff, listUser, listNgay;
             List<string> lst = new List<string>();
 
             //cấu hình excel
             int colStart = 1;
-            int colEnd = 6;
+            int colEnd = 7;
             int rowStart = 3;
             int rowEnd = 100000;
 
@@ -47,7 +47,8 @@ namespace Company
             arr[0, 2] = "Tên cột lỗi";
             arr[0, 3] = "Lần 1";
             arr[0, 4] = "Lần 2";
-            arr[0, 5] = "Người sửa";
+            arr[0, 5] = "Người cập nhật";
+            arr[0, 6] = "Ngày cập nhật";
 
             int dong = 1;
 
@@ -122,7 +123,10 @@ namespace Company
             // lấy thông tin bản ghi đủ 2 trạng thái
             using (SqlConnection con = new SqlConnection(sqlConnect))
             {
-                string str = "select id from ThongTinBienMuc2 group by id having count(*) > 1";
+                string str = "select id from ThongTinBienMuc2 " +
+                    "where id in (select id from ThongTinBienMuc2  group by id having count(*) > 1) " +
+                    "and CONVERT(varchar(10),NgayCapNhat,103) between '"+dateTimePicker1.Value.ToString("dd/MM/yyyy")+"'" +" " +
+                    "and '"+ dateTimePicker2.Value.ToString("dd/MM/yyyy")+ "'";
 
                 using (SqlCommand cmd = new SqlCommand(str, con))
                 {
@@ -139,17 +143,20 @@ namespace Company
             }
 
             //so sánh
-            foreach(string id in listID)
+            foreach (string id in listID)
             {
-                foreach(string title in listTitle)
+                foreach (string title in listTitle)
                 {
                     using (SqlConnection con = new SqlConnection(sqlConnect))
                     {
                         listDiff = new List<string>();
                         listUser = new List<string>();
+                        listNgay = new List<string>();
 
 
-                        string str = "select bm."+title+ ", TenDangNhap FROM ThongTinBienMuc2 bm left join NguoiDung nd on bm.IdNguoiDung = nd.ID where bm.id = " + id;
+                        string str = "select bm." + title + ", TenDayDu, bm.NgayCapNhat " +
+                            "FROM ThongTinBienMuc2 bm left join NguoiDung nd on bm.IdNguoiDung = nd.ID " +
+                            "where bm.id = " + id + "order by bm.NgayCapNhat asc";
 
                         using (SqlCommand cmd = new SqlCommand(str, con))
                         {
@@ -161,6 +168,7 @@ namespace Company
                             {
                                 listDiff.Add(dr[0].ToString());
                                 listUser.Add(dr[1].ToString());
+                                listNgay.Add(dr[2].ToString());
                             }
                             con.Close();
                         }
@@ -188,6 +196,7 @@ namespace Company
                         arr[dong, 3] = listDiff[0].Replace("\n", "").Replace("\r", "").Replace("\t", "");
                         arr[dong, 4] = listDiff[1].Replace("\n", "").Replace("\r", "").Replace("\t", "");
                         arr[dong, 5] = listUser[0] + "\t" + listUser[1];
+                        arr[dong, 6] = listNgay[1];
                         dong++;
                     }
                 }
@@ -201,8 +210,16 @@ namespace Company
             // Thông báo lỗi
             MessageBox.Show("Có " + lst.Count + " số lỗi, " + lst.Distinct().ToList().Count + " số bản ghi lỗi.",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-            Application.Exit();
+        private void SoSanhBP_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SoSanh();
         }
     }
 }
