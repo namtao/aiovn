@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'AppPython',
     'AppCrawl',
     'AppMain',
+    'AppTools',
 ]
 
 MIDDLEWARE = [

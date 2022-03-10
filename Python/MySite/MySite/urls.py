@@ -33,4 +33,5 @@ urlpatterns = [
     re_path(r'^datatranfer/', include('AppDataTranfer.urls')),
     re_path(r'^python/', include('AppPython.urls')), 
     re_path(r'^crawl/', include('AppCrawl.urls')), 
+    re_path(r'^rename/', include('AppTools.urls')), 
 ]

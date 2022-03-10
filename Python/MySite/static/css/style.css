@@ -8761,7 +8761,7 @@ pre {
   border-color: #454d55; }
 
 .table .thead-light th, .jsgrid .jsgrid-table .thead-light th {
-  color: #495057;
+  ;
   background-color: #e9ecef;
   border-color: #2c2e33; }
 
@@ -8835,7 +8835,7 @@ pre {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1;
-  color: #495057;
+  ;
   background-color: #2A3038;
   background-clip: padding-box;
   border: 1px solid #2c2e33;
@@ -8863,7 +8863,7 @@ pre {
   .jsgrid .jsgrid-table .jsgrid-filter-row select:focus, .jsgrid .jsgrid-table .jsgrid-filter-row input:focus[type=number], .select2-container--default .select2-selection--single:focus, .select2-container--default .select2-selection--single .select2-search__field:focus, .typeahead:focus,
   .tt-query:focus,
   .tt-hint:focus {
-    color: #495057;
+    ;
     background-color: #fff;
     border-color: #80bdff;
     outline: 0;
@@ -8920,7 +8920,7 @@ select.form-control:focus::-ms-value, select.asColorPicker-input:focus::-ms-valu
 .jsgrid .jsgrid-table .jsgrid-filter-row select:focus::-ms-value, .select2-container--default select.select2-selection--single:focus::-ms-value, .select2-container--default .select2-selection--single select.select2-search__field:focus::-ms-value, select.typeahead:focus::-ms-value,
 select.tt-query:focus::-ms-value,
 select.tt-hint:focus::-ms-value {
-  color: #495057;
+  ;
   background-color: #2A3038; }
 
 .form-control-file,
@@ -10611,7 +10611,7 @@ input[type="button"].btn-block {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1;
-  color: #495057;
+  ;
   text-align: center;
   white-space: nowrap;
   background-color: #e9ecef;
@@ -10864,7 +10864,7 @@ input[type="button"].btn-block {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  ;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
   border: 1px solid #ced4da;
@@ -10875,7 +10875,7 @@ input[type="button"].btn-block {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
     .custom-select:focus::-ms-value {
-      color: #495057;
+      ;
       background-color: #2A3038; }
   .custom-select[multiple], .custom-select[size]:not([size="1"]) {
     height: auto;
@@ -10939,7 +10939,7 @@ input[type="button"].btn-block {
   padding: 0.375rem 0.75rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  ;
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: 0.25rem; }
@@ -10953,7 +10953,7 @@ input[type="button"].btn-block {
     height: calc(1.5em + 0.75rem);
     padding: 0.375rem 0.75rem;
     line-height: 1.5;
-    color: #495057;
+    ;
     content: "Browse";
     background-color: #e9ecef;
     border-left: inherit;
@@ -11592,7 +11592,7 @@ input[type="button"].btn-block {
   .breadcrumb-item + .breadcrumb-item:hover::before {
     text-decoration: none; }
   .breadcrumb-item.active {
-    color: #495057; }
+    ; }
 
 .pagination, .jsgrid .jsgrid-pager {
   display: flex;
@@ -11961,11 +11961,11 @@ input[type="button"].btn-block {
 
 .list-group-item-action {
   width: 100%;
-  color: #495057;
+  ;
   text-align: inherit; }
   .list-group-item-action:hover, .list-group-item-action:focus {
     z-index: 1;
-    color: #495057;
+    ;
     text-decoration: none;
     background-color: #f8f9fa; }
   .list-group-item-action:active {
