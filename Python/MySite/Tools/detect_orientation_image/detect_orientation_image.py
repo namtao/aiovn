@@ -16,7 +16,7 @@ from pdf2image import convert_from_path
 
 def rotatepng():
     image1 = cv2.imread(
-        r'C:\Projects\Python\Applications\DetectOrientationImage\cheo.png')
+        r'C:\Projects\Python\Tools\DetectOrientationImage\cheo.png')
     gray = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
 
     edges = cv2.Canny(gray, 50, 150, apertureSize=3)
@@ -55,7 +55,7 @@ def rotatepng():
 
 def detect_line_hough_transform():
     img = cv2.imread(
-        r'C:\Projects\Python\Applications\DetectOrientationImage\cheo.png')
+        r'C:\Projects\Python\Tools\DetectOrientationImage\cheo.png')
 
     # Convert the img to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -109,14 +109,14 @@ def detect_line_hough_transform():
 def rotate_video():
     src = 255 - \
         cv2.imread(
-            r"C:\Projects\Python\Applications\DetectOrientationImage\nguoc.png", 0)
+            r"C:\Projects\Python\Tools\DetectOrientationImage\nguoc.png", 0)
     scores = []
 
     h, w = src.shape
     small_dimention = min(h, w)
     src = src[:small_dimention, :small_dimention]
 
-    out = cv2.VideoWriter(r'C:\Projects\Python\Applications\rotate.avi',
+    out = cv2.VideoWriter(r'C:\Projects\Python\Tools\rotate.avi',
                           cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'),
                           15, (320, 320))
 
@@ -247,7 +247,7 @@ def top_bot_margin_ratio(image: np.ndarray) -> float:
 def rotate_90():
 
     img_before = cv2.imread(
-        r"C:\Projects\Python\Applications\DetectOrientationImage\nguoc2.png")
+        r"C:\Projects\Python\Tools\DetectOrientationImage\nguoc2.png")
 
     cv2.imshow("Before", img_before)
     key = cv2.waitKey(0)

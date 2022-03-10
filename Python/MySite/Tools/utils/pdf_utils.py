@@ -97,7 +97,7 @@ def detect_size():
     pil_max_px = Image.MAX_IMAGE_PIXELS
     Image.MAX_IMAGE_PIXELS = None
     im = Image.open(
-        r'C:\Projects\Python\Applications\page_1.jpg')
+        r'C:\Projects\Python\Tools\page_1.jpg')
     Image.MAX_IMAGE_PIXELS = pil_max_px
 
     # pages = convert_from_path(r'\\192.168.100.10\Binh Phuoc\2. KHO LON A0 CHUA OCR\VP UBND TINH (TTLT)\HOP D65.114\15.pdf',

@@ -13,6 +13,6 @@ def index(request):
 
 
 def autocommit(request):
-    subprocess.call([os.path.join(BASE_DIR, r'Applications\batch\AutoCommit.bat')])
+    subprocess.call([os.path.join(BASE_DIR, r'Tools\batch\AutoCommit.bat')])
     return HttpResponseRedirect("/batch/")
     

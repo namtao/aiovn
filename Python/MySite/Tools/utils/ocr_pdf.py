@@ -36,7 +36,7 @@ Part #2 - Recognizing text from the images using OCR
 filelimit = image_counter-1
 
 # Creating a text file to write the output
-outfile = r"C:\Projects\Python\Applications\out_text.txt"
+outfile = r"C:\Projects\Python\Tools\out_text.txt"
 
 # Open the file in append mode so that
 # All contents of all images are added to the same file
