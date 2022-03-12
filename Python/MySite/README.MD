@@ -1,4 +1,4 @@
-# thiết lập file lấy thư viện
+# Các câu lệnh quan trọng
 
 python -m pip freeze > C:\Projects\Python\Tools\requirements.txt
 python -m pip install -r requirements.txt

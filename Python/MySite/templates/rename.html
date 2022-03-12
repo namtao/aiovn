@@ -4,43 +4,47 @@
 {% block content %}
 <div class="row">
   <div class="col-12 grid-margin">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Đổi tên tệp</h4>
-        <form class="form-sample">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Loại files</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" value=".pdf" />
+    <form action="change_name" method="POST" name="form_rename">
+      {% csrf_token %}
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Đổi tên tệp</h4>
+          <hr color="white">
+          <form class="form-sample">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Loại files</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" value="pdf" name="file_type" id="file_type" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Đường dẫn files</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" value="" />
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Đường dẫn files</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" value="" name="root_path" id="root_path" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Đường dẫn kết quả</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" value="" />
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Đường dẫn kết quả</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" value="" name="target_path" id="target_path" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-3 d-flex align-items-center justify-content-end">
-              <a href="{%url 'getfiles'%}"><button
-                class="btn btn-outline-secondary btn btn-danger btn-icon-text file-upload-browse mdi mdi-upload btn-icon-prepend"
-                type="button" id="btnUpload">Đổi tên</button></a> 
-            </div>
-        </form>
+              <div class="col-md-12 d-flex align-items-center justify-content-end">
+                <input
+                  class="btn btn-outline-secondary btn btn-danger btn-icon-text file-upload-browse mdi mdi-upload btn-icon-prepend"
+                  type="submit" value="Thực hiện">
+              </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 
