@@ -1,6 +1,6 @@
 import time
-from tools2.utils.tts_utils import *
-from tools2.utils.string_utils import *
+from tools.utils.tts_utils import *
+from tools.utils.string_utils import *
 import cookiejar
 import mechanize
 import re
@@ -33,7 +33,7 @@ def batch_index(request):
 
 
 def autocommit(request):
-    subprocess.call([os.path.join(BASE_DIR, r'tools2\batch\AutoCommit.bat')])
+    subprocess.call([os.path.join(BASE_DIR, r'tools\batch\AutoCommit.bat')])
     return HttpResponseRedirect("/batch/")
 
 
