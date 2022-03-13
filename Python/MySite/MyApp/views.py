@@ -34,7 +34,7 @@ def batch_index(request):
 
 def autocommit(request):
     subprocess.call([os.path.join(BASE_DIR, r'tools\batch\AutoCommit.bat')])
-    return HttpResponseRedirect("/batch/")
+    return render(request, 'batch.html')
 
 
 def crawl_index(request):
