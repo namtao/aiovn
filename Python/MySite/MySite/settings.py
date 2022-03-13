@@ -39,12 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'AppBatchScript',
-    'AppDataTranfer',
-    'AppPython',
-    'AppCrawl',
-    'AppMain',
-    'AppTools',
+    'MyApp',
 ]
 
 MIDDLEWARE = [

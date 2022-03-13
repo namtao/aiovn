@@ -27,11 +27,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'', include('AppMain.urls')), 
-    re_path(r'^batch/', include('AppBatchScript.urls')), # đường dẫn bao gồm tên webapp
+    re_path(r'', include('MyApp.urls')), 
+    # re_path(r'^batch/', include('AppBatchScript.urls')), # đường dẫn bao gồm tên webapp
     re_path(r'^index/', RedirectView.as_view(pattern_name='index', permanent=False)),
-    re_path(r'^datatranfer/', include('AppDataTranfer.urls')),
-    re_path(r'^python/', include('AppPython.urls')), 
-    re_path(r'^crawl/', include('AppCrawl.urls')), 
-    re_path(r'^rename/', include('AppTools.urls')), 
 ]

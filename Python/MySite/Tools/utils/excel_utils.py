@@ -1,12 +1,9 @@
-from numpy.lib import utils
 from openpyxl import Workbook
 import openpyxl
-import numpy as np
 from string_utils import compound_unicode
 import pandas as pd
 import os
 import glob
-from IPython.display import display
 import xlsxwriter
 
 
@@ -55,7 +52,7 @@ def read_from_excel(path):
 def change_column():
     # use glob to get all the csv files
     # in the folder
-    path = r'C:\Users\ADMIN\Downloads\New folder'
+    path = r'C:\Users\ADMIN\Downloads\New folder (2)'
     csv_files = glob.glob(os.path.join(path, "*.xlsx"))
 
     # loop over the list of excel files
@@ -108,5 +105,5 @@ def change_column():
         worksheet.set_row(0, 30, format_header)
 
         writer.save()
-        
 
+change_column()
