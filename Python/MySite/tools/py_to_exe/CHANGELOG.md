@@ -1,5 +1,56 @@
 # Changelog
 
+## 2.18.0
+
+🚀 Enhancements
+
+- [#247](https://github.com/brentvollebregt/auto-py-to-exe/pull/247): Added Thai translations
+
+🏆 Contributors
+
+- [Teerut Srithongdee](https://github.com/Teerut26)
+
+## 2.17.0
+
+🚀 Enhancements
+
+- [#241](https://github.com/brentvollebregt/auto-py-to-exe/pull/241): Added Turkish translations
+
+🏆 Contributors
+
+- [mcagriaksoy](https://github.com/mcagriaksoy)
+
+## 2.16.0
+
+🚀 Enhancements
+
+- [#237](https://github.com/brentvollebregt/auto-py-to-exe/pull/237): Added Spanish translations
+
+🏆 Contributors
+
+- [enriiquee](https://github.com/enriiquee)
+
+## 2.15.0
+
+- [#228](https://github.com/brentvollebregt/auto-py-to-exe/pull/228): Added German translations
+- [#231](https://github.com/brentvollebregt/auto-py-to-exe/issues/231 ): Added Brazilian Portuguese translations
+
+## 2.14.1
+
+- [#230](https://github.com/brentvollebregt/auto-py-to-exe/pull/230): Fixed application failing to launch
+
+### 2.14.0
+
+- [#215](https://github.com/brentvollebregt/auto-py-to-exe/issues/215): Added warning when using Python 3.10.0
+
+### 2.13.0
+- Added Russian (Русский) translations
+
+### 2.12.0
+- [#211](https://github.com/brentvollebregt/auto-py-to-exe/pull/211): Added Traditional Chinese translations
+- [#218](https://github.com/brentvollebregt/auto-py-to-exe/issues/218): Added build directory override argument (`--build-directory-override`)
+- [#221](https://github.com/brentvollebregt/auto-py-to-exe/issues/221): Added an overlay spinner to hide content until the UI is initialised
+
 ### 2.11.0
 - [#205](https://github.com/brentvollebregt/auto-py-to-exe/issues/205): Added support for PyInstaller 4.6 and its new options
 - Dropped support for Python 3.5

@@ -1,5 +1,5 @@
 <h1 align="center">Auto PY to EXE</h1>
-<p align="center">A .py to .exe converter using a simple graphical interface and <a href="https://www.pyinstaller.org/">PyInstaller</a> in Python.</p>
+<p align="center">A .py to .exe converter using a simple graphical interface and <a href="https://pyinstaller.readthedocs.io/en/stable/index.html">PyInstaller</a> in Python.</p>
 
 <p align="center">
     <img src="https://nitratine.net/posts/auto-py-to-exe/feature.png" alt="Empty interface">
@@ -11,9 +11,16 @@
     <a href="https://pypi.org/project/auto-py-to-exe/"><img src="https://img.shields.io/pypi/l/auto-py-to-exe.svg" alt="License"></a>
     <a href="https://pepy.tech/project/auto-py-to-exe"><img src="https://static.pepy.tech/badge/auto-py-to-exe/month" alt="Downloads Per Month"></a>
     <a href="https://pyinstaller.readthedocs.io/en/stable/requirements.html"><img src="https://img.shields.io/badge/platform-windows%20%7C%20linux%20%7C%20macos-lightgrey" alt="Supported Platforms"></a>
+    <a href="https://www.buymeacoffee.com/brentvollebregt"><img src="https://img.shields.io/badge/-buy_me_a%C2%A0beer-gray?logo=buy-me-a-coffee" alt="Donate"></a>
 </p>
 
 阅读中文版的README ，点击 [这里](./README-Chinese.md)
+
+## Demo
+
+<p align="center">
+    <img src="https://nitratine.net/posts/auto-py-to-exe/auto-py-to-exe-demo.gif" alt="auto-py-to-exe Demo">
+</p>
 
 ## Getting Started
 
@@ -68,13 +75,15 @@ Now to run the application, execute ```python -m auto_py_to_exe```. A Chrome win
 ### Arguments
 Usage: `auto-py-to-exe [-nc] [-c [CONFIG]] [-o [PATH]] [filename]`
 
-| Argument                       | Type       | Description                                                                                                     |
-|--------------------------------|------------|-----------------------------------------------------------------------------------------------------------------|
-| filename                       | positional | Pre-fill the "Script Location" field in the UI.                                                                 |
-| -nc, --no-chrome               | optional   | Open the UI using the default browser (which may be Chrome). Will not try to find Chrome.                       |
-| -nu, --no-ui                   | optional   | Don't try to open the UI in a browser and simply print out the address that the application can be accessed at. |
-| -c [CONFIG], --config [CONFIG] | optional   | Provide a configuration file (json) to pre-fill the UI. These can be generated in the settings tab.             |
-| -o [PATH], --output-dir [PATH] | optional   | Set the default output directory. This can still be changed in the ui.                                          |
+| Argument                                                     | Type                | Description                                                                                                                |
+| ------------------------------------------------------------ | ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| filename                                                     | positional/optional | Pre-fill the "Script Location" field in the UI.                                                                            |
+| -nc, --no-chrome                                             | optional            | Open the UI using the default browser (which may be Chrome). Will not try to find Chrome.                                  |
+| -nu, --no-ui                                                 | optional            | Don't try to open the UI in a browser and simply print out the address that the application can be accessed at.            |
+| -c [CONFIG], --config [CONFIG]                               | optional            | Provide a configuration file (json) to pre-fill the UI. These can be generated in the settings tab.                        |
+| -o [PATH], --output-dir [PATH]                               | optional            | Set the default output directory. This can still be changed in the ui.                                                     |
+| -bdo [FOLDER_PATH], --build-directory-override [FOLDER_PATH] | optional            | Override the default build directory. Useful if you need to whitelist a folder to stop your antivirus from removing files. |
+
 
 > If you are running this package locally, you will need to call ```python -m auto_py_to_exe``` instead of ```auto-py-to-exe```
 
@@ -88,6 +97,22 @@ If you need something visual to help you get started, [I made a video for the or
 
 ## Issues Using the Tool
 If you're having issues with the packaged executable or using this tool in general, I recommend you read [my blog post on common issues when using auto-py-to-exe](https://nitratine.net/blog/post/issues-when-using-auto-py-to-exe/?utm_source=auto_py_to_exe&utm_medium=readme_link&utm_campaign=auto_py_to_exe_help). This post covers things you should know about packaging Python scripts and fixes for things that commonly go wrong.
+
+## Translations
+
+| Language                                    | Translator                                    | Translated                           |
+| ------------------------------------------- | --------------------------------------------- | ------------------------------------ |
+| Brazilian Portuguese (Português Brasileiro) | [marleyas](https://github.com/marleyas)       | UI (partial)                         |
+| Chinese Simplified (简体中文)               | [jiangzhe11](https://github.com/jiangzhe11)   | UI and [README](./README-Chinese.md) |
+| Chinese Traditional (繁體中文)              | [startgo](https://github.com/ystartgo)        | UI                                   |
+| English                                     | -                                             | UI and README                        |
+| German (Deutsch)                            | [hebens](https://github.com/hebens)           | UI (partial)                         |
+| Russian (Русский)                           | Oleg                                          | UI                                   |
+| Spanish (Español)                           | [enriiquee](https://github.com/enriiquee)     | UI                                   |
+| Thai (ภาษาไทย)                              | [teerut26](https://github.com/teerut26)       | UI (partial)                         |
+| Turkish (Türkçe)                            | [mcagriaksoy](https://github.com/mcagriaksoy) | UI                                   |
+
+> Want to add a translation for another language? Update [i18n.js](https://github.com/brentvollebregt/auto-py-to-exe/blob/master/auto_py_to_exe/web/js/i18n.js) and submit a PR or attach it in an issue.
 
 ## Python 2.7 Support
 As of [PyInstaller v4.0](https://github.com/pyinstaller/pyinstaller/releases/tag/v4.0) released on Aug 9 2020, Python 2.7 is no longer supported; although you can still use this tool with Python 2.7 by installing an older version of PyInstaller. [PyInstaller v3.6](https://github.com/pyinstaller/pyinstaller/releases/tag/v3.6) was the last version that supported Python 2.7; to install this, first uninstall any existing versions of PyInstaller and then execute `python -m pip install pyinstaller==3.6`.

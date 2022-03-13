@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Auto Py To Exe</title>
+        <title>Auto Bat To Exe</title>
         <script>
             // Provided for type checking
             window.eel = {
@@ -46,22 +46,8 @@
         <div class="mid">
             <div id="header">
                 <div class="title">
-                    <a href="https://github.com/brentvollebregt/auto-py-to-exe" target="_blank"><img src="/favicon.ico" /></a>
-                    <a href="https://github.com/brentvollebregt/auto-py-to-exe" target="_blank"><h1>Auto Py to Exe</h1></a>
-                </div>
-                <div class="extra-links">
-                    <a href="https://github.com/brentvollebregt/auto-py-to-exe" target="_blank">
-                        GitHub
-                        <img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub favicon" />
-                    </a>
-                    <a href="https://nitratine.net/blog/post/issues-when-using-auto-py-to-exe/?utm_source=auto_py_to_exe&utm_medium=application_link&utm_campaign=auto_py_to_exe_help&utm_content=top" target="_blank">
-                        <span data-i18n="ui.links.helpPost">Help Post</span>
-                        <img src="https://nitratine.net/static/img/favicon-384x384.png" alt="Nitratine favicon" />
-                    </a>
-                    <span>
-                        <label for="language-selection"><small>Language: </small></label>
-                        <select id="language-selection"></select>
-                    </span>
+                    <a href="#" target="_blank"><img src="/favicon.ico" /></a>
+                    <a href="#" target="_blank"><h1>Auto Bat To Exe</h1></a>
                 </div>
             </div>
 
@@ -75,7 +61,7 @@
                 </div>
             </div>
 
-            <div>
+            <div style="display:none">
                 <h2>
                     <span data-i18n="ui.title.oneFile">Onefile</span>
                     <small>(--onedir / --onefile)</small>
@@ -90,7 +76,7 @@
                 </div>
             </div>
 
-            <div>
+            <div style="display:none">
                 <h2>
                     <span data-i18n="ui.title.consoleWindow">Console Window</span>
                     <small>(--console / --windowed)</small>
@@ -105,7 +91,7 @@
                 </div>
             </div>
 
-            <div id="section-icon">
+            <div id="section-icon" style="display:none">
                 <div class="header noselect" onclick="expandSection('icon')">
                     <img src="img/chevron-square-up.svg" alt="Icon Section Chevron"/>
                     <h2>
@@ -121,7 +107,7 @@
                 </div>
             </div>
 
-            <div id="section-additional-files">
+            <div id="section-additional-files" style="display:none">
                 <div class="header noselect" onclick="expandSection('additional-files')">
                     <img src="img/chevron-square-up.svg" alt="Additional Files Section Chevron"/>
                     <h2>
@@ -153,7 +139,7 @@
                 </div>
             </div>
 
-            <div id="section-advanced">
+            <div id="section-advanced" style="display:none">
                 <div class="header noselect" onclick="expandSection('advanced')">
                     <img src="img/chevron-square-up.svg" alt="Advanced Section Chevron"/>
                     <h2 data-i18n="ui.title.advanced">Advanced</h2>
@@ -161,7 +147,7 @@
                 <div class="content"></div>
             </div>
 
-            <div id="section-settings">
+            <div id="section-settings" style="display:none">
                 <div class="header noselect" onclick="expandSection('settings')">
                     <img src="img/chevron-square-up.svg" alt="Advanced Section Chevron"/>
                     <h2 data-i18n="ui.title.settings">Settings</h2>
@@ -225,21 +211,13 @@
 
             <div id="package-button-wrapper">
                 <button id="package-button" data-i18n="ui.button.convert">
-                    Convert .py to .exe
+                    Convert .bat to .exe
                 </button>
                 <button id="open-output-folder-button" data-i18n="ui.button.openOutputFolder">
                     Open Output Folder
                 </button>
             </div>
         </div>
-
         <div id="modal-area" class="modal-coverage modal-coverage-hidden"></div>
-
-        <div id="spinner-root" class="loading-spinner-wrapper">
-            <div>
-                <div class="loading-spinner"></div>
-                <span class="loading-label">Initializing...</span>
-            </div>
-        </div>
     </body>
 </html>

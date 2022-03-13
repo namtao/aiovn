@@ -37,6 +37,18 @@ def autocommit(request):
     return HttpResponseRedirect("/batch")
 
 
+def py2exe(request):
+    subprocess.call('python ' + os.path.join(BASE_DIR,
+                    r'tools\py_to_exe\run.py'))
+    return HttpResponseRedirect("/batch")
+
+
+def bat2exe(request):
+    subprocess.call('python ' + os.path.join(BASE_DIR,
+                    r'tools\batch\Bat2Exe.bat'))
+    return HttpResponseRedirect("/batch")
+
+
 def crawl_index(request):
     return render(request, 'crawl.html')
 
