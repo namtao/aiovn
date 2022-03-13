@@ -1,3 +1,16 @@
+import time
+from tools.utils.tts_utils import *
+from tools.utils.string_utils import *
+import cookiejar
+import mechanize
+import re
+from datetime import datetime
+import urllib3
+from gtts import gTTS
+import json
+from bs4 import BeautifulSoup
+import requests
+import eng_to_ipa as ipa
 from django.core.mail import send_mail
 from .form import form_rename
 from django.shortcuts import render
@@ -90,10 +103,8 @@ def rename(request):
             # ...
             # redirect to a new URL:
             return HttpResponseRedirect('/rename/')
-
     # if a GET (or any other method) we'll create a blank form
     return HttpResponseRedirect('/rename/')
-
     # print(getfiles(request.POST['root_path'], request.POST['file_type']))
     # return render(request, 'rename.html')
 

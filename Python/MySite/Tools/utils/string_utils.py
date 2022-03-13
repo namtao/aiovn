@@ -140,14 +140,11 @@ def compound_unicode(unicode_str):
     return unicode_str
 
 
-text = input("input text : ")
-
-path = input("path : ")
-
-# os.chdir(path)
-
 
 def string_search_from_multiple_files(path):
+    text = input("input text : ")
+
+    path = input("path : ")
     f = 0
     os.chdir(path)
     files = os.listdir()

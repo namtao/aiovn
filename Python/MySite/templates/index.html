@@ -1,6 +1,17 @@
 {% extends "main.html" %}
 {% load static %}
 {% block title %}Infinity{% endblock %}
+{% block active %}
+<li class="nav-item menu-items active">
+  <a class="nav-link" href="{% url 'index' %}">
+      <span class="menu-icon">
+          <i class="mdi mdi-speedometer"></i>
+      </span>
+      <span class="menu-title">Trang chủ</span>
+  </a>
+</li>
+{% endblock %}
+
 {% block content %}
 <div class="row">
   <div class="col-xl-3 col-sm-6 grid-margin stretch-card">

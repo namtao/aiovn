@@ -1,6 +1,6 @@
 from openpyxl import Workbook
 import openpyxl
-from string_utils import compound_unicode
+import string_utils
 import pandas as pd
 import os
 import glob
@@ -40,7 +40,7 @@ def read_from_excel(path):
             cell_obj = sheet_obj.cell(row = i, column = j)     
             if(cell_obj.value is not None):
                 print(cell_obj.value)   
-                arr.append(compound_unicode(str(cell_obj.value)))
+                arr.append(string_utils.compound_unicode(str(cell_obj.value)))
             else:
                 arr.append('')
                 
