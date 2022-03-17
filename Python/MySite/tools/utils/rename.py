@@ -1,0 +1,49 @@
+import os
+
+index = 0
+
+
+def get_files(folderPath, fileFormat):
+    lst = []
+    for root, dirs, files in os.walk(folderPath):
+        for file in files:
+            if file.endswith("." + fileFormat):
+                lst.append(os.path.join(file))
+                # print(os.path.join(root, file))
+
+    return lst
+
+
+def rename(dir, strA):
+    # renames all subforders of dir, not including dir itself
+    # dir = os.path.dirname(os.path.abspath(__file__))
+    lst = get_files(r'\\192.168.31.127\New folder (2)\Files', 'pdf')
+
+    def rename_all(root, items):
+        for name in items:
+            global index
+            index += 1
+            tenmoi = os.path.join(
+                strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+            # kierm tra trùng tên
+            while (tenmoi in lst):
+                index += 1
+                tenmoi = os.path.join(
+                    strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+
+            # thực hiện đổi tên
+            os.rename(os.path.join(root, name),
+                      os.path.join(root, strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower())))
+
+    # chạy thư mục để đổi tên
+    for root, dirs, files in os.walk(dir, topdown=False):
+        # rename_all(root, dirs)
+        rename_all(root, files)
+
+
+thumuccandoiten = r'\\192.168.31.127\so hoa nghe an\Da OCR\so hoa nghe an\16.03.2022\17.03\Sở Y Tế (ok)\000.00.48.H41.G18-YT08'
+
+madinhdanh = '000.00.48.H41.G18-YT08.'
+
+rename(thumuccandoiten, madinhdanh)
+

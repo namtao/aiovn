@@ -1,3 +1,4 @@
+from PyPDF2 import PdfFileReader
 from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger, pdf
 import glob
 import os
@@ -120,7 +121,7 @@ def detect_size():
 # # get file pdf
 # pathPdf = r'C:\Users\ADMIN\Downloads\New folder'
 # lst = get_files(pathPdf, 'pdf')
-        
+
 # # lst = get_files(pathPdf, 'pdf')
 
 # # lstNotSplit = []
@@ -132,17 +133,17 @@ def detect_size():
 
 # '''
 # lọc danh sách khác nhau giữa 2 list
-# '''          
+# '''
 
 # # lstDiff = set(lst) ^ set(lstNotSplit)
-   
+
 # # index = 0
 # for path in lst:
 # #     if(os.path.getsize(path) >= 10485760):
 # #         print(path)
 #         # index+=1
 #         # print(index)
-        
+
 #     spit_and_merge_pdf(path)
 
 from PyPDF2 import PdfFileReader
@@ -150,15 +151,9 @@ from PyPDF2 import PdfFileReader
 # D:\New folder (2)\
 count = 0
 index = 0
-try:
-    print(0)
-except print(0):
-    pass
 with open(r'D:\New folder (2)\aaa.txt', "r", encoding="utf-8") as file:
     for line in file:
         index+=1
         print(str(index))
         count += PdfFileReader(open(line.strip(),'rb')).getNumPages()
 print(str(count))
-
-
