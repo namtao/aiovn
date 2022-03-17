@@ -1,6 +1,6 @@
 {% extends "main.html" %}
 {% load static %}
-{% block title %}Infinity{% endblock %}
+{% block title %}Batch{% endblock %}
 {% block content %}
 <div class="row">
   <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="col-3">
-            <a href="{% url 'autocommit' %}">
+            <a href="javascript:auto_commit()">
               <div class="icon icon-box-success">
                 <span class="mdi mdi mdi-arrow-right-drop-circle icon-item"></span>
               </div>
@@ -50,4 +50,21 @@
   </div>
 
 </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  function auto_commit() {
+    $.ajax({
+      url: 'autocommit',
+      error: function () {
+        alert('Error')
+      },
+      success: function (data) {
+        alert('Success')
+      },
+      type: 'GET'
+    });
+  }
+</script>
 {% endblock %}

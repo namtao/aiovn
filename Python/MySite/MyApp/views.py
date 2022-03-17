@@ -93,63 +93,9 @@ def crawl_data(urlbook):
     Args:
         urlbook (_type_): đường dẫn website
     """
-    response = requests.get(urlbook)
-    soup = BeautifulSoup(response.content, "html.parser")
-    # content = soup.find("div", class_="content_p fs-16 content_p_al").text
-    title = soup.find('h1', class_='tblue fs-20').text
-    # chapters = soup.find('h2', class_='mg-t-10').text
-    author = soup.find_all('div', class_='mg-t-10')[1].text
-    # author = soup.find('div', class_='mg-t-10').text
-    category = soup.find('a', class_='tblue').text
-    # chapters = soup.findAll('a')[0]['href']
-    # print(link.get('href'))
-
-    # create path
-    if not os.path.exists(os.path.join(r'C:\Audio', title)):
-        os.makedirs(os.path.join(r'C:\Audio', title))
-
-    # get image
-    imagelink = soup.find_all(
-        'div', class_='col-xs-12 col-sm-4 col-md-4 col-lg-4')[0].contents[1].attrs['src']
-    response = requests.get(imagelink)
-
-    file = open(os.path.join(r'C:\Audio',
-                title, 'background.jpg'), "wb")
-    file.write(response.content)
-    file.close()
-
-    lists = []
-    for elements in soup.find_all('div', class_='item_ch'):
-        for element in elements.find_all('a'):
-            soupcontent = BeautifulSoup(requests.get(
-                element['href']).content, "html.parser")
-            content = soupcontent.find(
-                'div', class_='content_p fs-16 content_p_al').text
-
-            dicts = {}
-            dicts['name'] = element.text
-            dicts['link'] = element['href']
-            dicts['content'] = content
-
-            pathmp3 = os.path.join(r'C:\Audio', title)
-
-            save_mp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Audio',
-                                                                                                                                             format_str(title), format_str(element.text) + '.mp3'))
-
-            # mp32mp4(pathmp3, format_str(element.text))
-
-            lists.append(dicts)
-
-    book = {}
-    book['title'] = title
-    book['author'] = author
-    book['category'] = category
-    book['chapter'] = lists
-    # print(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
-
-    f = open(os.path.join(r'C:\Audio',
-             title, 'info.txt'), "w+", encoding="utf-8")
-    f.write(json.dumps(book, ensure_ascii=False).encode('utf8').decode())
+    
+    
+    return HttpResponseRedirect("/hello")
 
 
 def datatranfer_index(request):
