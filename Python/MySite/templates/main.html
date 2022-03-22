@@ -93,12 +93,12 @@
                 <!-- trang chủ -->
                 {% block active %}
                 <li class="nav-item menu-items">
-                  <a class="nav-link" href="{% url 'index' %}">
-                      <span class="menu-icon">
-                          <i class="mdi mdi-speedometer"></i>
-                      </span>
-                      <span class="menu-title">Trang chủ</span>
-                  </a>
+                    <a class="nav-link" href="{% url 'index' %}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-speedometer"></i>
+                        </span>
+                        <span class="menu-title">Trang chủ</span>
+                    </a>
                 </li>
                 {% endblock %}
 
@@ -117,7 +117,7 @@
                             <li class="nav-item"> <a class="nav-link" href="{%url 'batch'%}">Batch Script</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{%url 'crawl'%}">Crawl data</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{%url 'datatranfer'%}">Truyền dữ liệu</a>
+                            <li class="nav-item"> <a class="nav-link" href="{%url 'data-tranfer'%}">Truyền dữ liệu</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{%url 'rename'%}">Đổi tên tệp</a>
                             </li>
@@ -343,4 +343,5 @@
 
 </html>
 
-{% block script %}script{% endblock %}
+{% block script %}
+{% endblock %}

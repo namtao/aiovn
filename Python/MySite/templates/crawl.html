@@ -3,18 +3,18 @@
 {% block title %}Crawl data{% endblock %}
 {% block content %}
 <div class="row">
-
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Crawl Data</h4>
-        <form class="form-sample">
+        <hr color="white">
+        <form class="form-sample" method="POST">
           <div class="row">
             <div class="col-md-12">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Link website</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" id="linkweb" />
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="col-md-12">
               <div class="form-group row">
                 <div class="col-sm-12 d-flex flex-row-reverse">
-                  <a href="{%url 'crawl_data' %}"><button
+                  <a href="javascript:crawl_data()"><button
                       class="btn btn-outline-secondary btn btn-danger btn-icon-text file-upload-browse mdi mdi-download btn-icon-prepend"
                       type="button" id="btnCrawl">Thăm dò</button></a>
                 </div>
@@ -36,5 +36,26 @@
   </div>
 
 </div>
+{% endblock %}
 
+
+{% block script %}
+<script type="text/javascript">
+  function getLink() {
+    alert($('#linkweb').val())
+  }
+
+  function crawl_data() {
+    $.get({
+      url: 'crawl_data',
+      error: function () {
+        alert('Error')
+      },
+      success: function (data) {
+        alert('Success')
+      }
+    });
+  }
+
+</script>
 {% endblock %}

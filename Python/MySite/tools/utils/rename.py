@@ -41,9 +41,9 @@ def rename(dir, strA):
         rename_all(root, files)
 
 
-thumuccandoiten = r'\\192.168.31.127\so hoa nghe an\Da OCR\so hoa nghe an\16.03.2022\17.03\Sở Y Tế (ok)\000.00.48.H41.G18-YT08'
+thumuccandoiten = r'\\192.168.31.127\so hoa nghe an\Da OCR\19.03.2022\So Lao dong'
 
-madinhdanh = '000.00.48.H41.G18-YT08.'
+madinhdanh = '000.00.38.H41.G07-LĐ07.'
 
 rename(thumuccandoiten, madinhdanh)
 

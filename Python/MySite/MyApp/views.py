@@ -20,6 +20,7 @@ import datetime
 import subprocess
 from pathlib import Path
 import os
+from django.contrib.auth.models import User
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -87,15 +88,14 @@ def crawl_index(request):
     return render(request, 'crawl.html')
 
 
-def crawl_data(urlbook):
+def crawl_data(request):
     """thực hiện thu thập dữ liệu từ url
 
     Args:
         urlbook (_type_): đường dẫn website
     """
-    
-    
-    return HttpResponseRedirect("/hello")
+
+    return HttpResponseRedirect("/crawl")
 
 
 def datatranfer_index(request):
@@ -180,7 +180,7 @@ def rename(request):
     # if a GET (or any other method) we'll create a blank form
     # print(getfiles(request.POST['root_path'], request.POST['file_type']))
     # return render(request, 'rename.html')
-    return HttpResponseRedirect('/rename/')
+    return HttpResponseRedirect('/rename')
 
 
 def getfiles(folderPath, fileFormat):
