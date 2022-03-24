@@ -1,4 +1,4 @@
-cimport pyautogui
+import pyautogui
 import pyperclip
 import random
 import time

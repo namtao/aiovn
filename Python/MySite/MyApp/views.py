@@ -88,14 +88,19 @@ def crawl_index(request):
     return render(request, 'crawl.html')
 
 
-def crawl_data(request):
+def beautiful_soup(request):
     """thực hiện thu thập dữ liệu từ url
 
     Args:
         urlbook (_type_): đường dẫn website
     """
+    response = requests.get('https://www.youtube.com')
+    soup = BeautifulSoup(response.content, 'html.parser')
+    lstTag = [tag.name for tag in soup.find_all()]
+    # print(soup.prettify)
+    # return HttpResponse(list(set(a)))
 
-    return HttpResponseRedirect("/crawl")
+    return render(request, 'beautiful-soup.html', {'lstTag': list(set(lstTag))})
 
 
 def datatranfer_index(request):
