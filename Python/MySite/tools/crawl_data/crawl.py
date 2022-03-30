@@ -1,5 +1,4 @@
 
-import eng_to_ipa as ipa
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -9,9 +8,7 @@ import requests
 import urllib3
 from datetime import datetime
 import re
-import mechanize
 import urllib3
-import cookiejar
 from utils.string_utils import *
 from utils.tts_utils import *
 import time

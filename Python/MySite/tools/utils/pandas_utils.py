@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from db_utils import *
-from IPython.display import display, HTML
 from tabulate import tabulate
 
 

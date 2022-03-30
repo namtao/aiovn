@@ -1,16 +1,12 @@
 import time
 from tools.utils.tts_utils import *
 from tools.utils.string_utils import *
-import cookiejar
-import mechanize
 import re
 from datetime import datetime
-import urllib3
 from gtts import gTTS
 import json
 from bs4 import BeautifulSoup
 import requests
-import eng_to_ipa as ipa
 from django.core.mail import send_mail
 from .form import form_rename
 from django.shortcuts import render
