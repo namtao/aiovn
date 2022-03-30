@@ -59,10 +59,10 @@ namespace Company
                     "INSERT INTO ThongTinBienMuc2(ID, SoVaKyHieu, NgayBanHanh, " +
                     "TrichYeuND, TacGiaVB, ToSo, GhiChu, STT, HopSo, HoSoSo, TieuDeHS, " +
                     "SoLuongTo, ThoiHanBaoQuan, Nam, Phong, MaDinhDanh, TenLoaiVB, " +
-                    "MucLucSo, SuDung, TrangThai, ThoiGianBDKT, NgayTao, NgayCapNhat, IdNguoiDung) " +
+                    "MucLucSo, SuDung, TrangThai, ThoiGianBDKT, NgayTao, NgayCapNhat, IdNguoiDung, KhoiTaoPDF) " +
                     "select ID, SoVaKyHieu, NgayBanHanh, TrichYeuND, TacGiaVB, ToSo, GhiChu, " +
                     "STT, HopSo, HoSoSo, TieuDeHS, SoLuongTo, ThoiHanBaoQuan, Nam, Phong, " +
-                    "MaDinhDanh, TenLoaiVB, MucLucSo, SuDung, TrangThai, ThoiGianBDKT, NgayTao, NgayCapNhat, IdNguoiDung " +
+                    "MaDinhDanh, TenLoaiVB, MucLucSo, SuDung, TrangThai, ThoiGianBDKT, NgayTao, NgayCapNhat, IdNguoiDung, KhoiTaoPDF " +
                     "from ThongTinBienMuc where id not in (select id from ThongTinBienMuc2) and TrangThai = 1; " +
                     "SET IDENTITY_INSERT ThongTinBienMuc2 OFF; ";
 
@@ -83,11 +83,11 @@ namespace Company
                     "TrichYeuND, TacGiaVB, ToSo, GhiChu, STT, HopSo, HoSoSo, " +
                     "TieuDeHS, SoLuongTo, ThoiHanBaoQuan, Nam, Phong, MaDinhDanh, " +
                     "TenLoaiVB, MucLucSo, SuDung, TrangThai, ThoiGianBDKT, NgayTao, " +
-                    "NgayCapNhat, IdNguoiDung) select ID, SoVaKyHieu, NgayBanHanh, " +
+                    "NgayCapNhat, IdNguoiDung,KhoiTaoPDF) select ID, SoVaKyHieu, NgayBanHanh, " +
                     "TrichYeuND, TacGiaVB, ToSo, GhiChu, STT, HopSo, HoSoSo, TieuDeHS, " +
                     "SoLuongTo, ThoiHanBaoQuan, Nam, Phong, MaDinhDanh, TenLoaiVB, " +
                     "MucLucSo, SuDung, TrangThai, ThoiGianBDKT, NgayTao, NgayCapNhat, " +
-                    "IdNguoiDung from ThongTinBienMuc " +
+                    "IdNguoiDung, KhoiTaoPDF from ThongTinBienMuc " +
                     "where id in (select id from ThongTinBienMuc2) and TrangThai = 2 " +
                     "and id not in (select id from ThongTinBienMuc2 group by id having count(*) > 1); " +
                     "SET IDENTITY_INSERT ThongTinBienMuc2 OFF;";
