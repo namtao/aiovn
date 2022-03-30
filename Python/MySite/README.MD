@@ -1,5 +1,7 @@
 # Các câu lệnh quan trọng
 
+find . -name "*.pyc" -exec rm -f {} \;
+
 python -m venv Website-Django
 Website-Django\Scripts\activate
 pip install --upgrade pip setuptools wheel

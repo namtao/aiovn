@@ -5,7 +5,7 @@ cd "C:\Projects"
 set GIT_PATH="C:\Program Files\Git\bin\git.exe"
 set BRANCH = "origin"
 :: Tiến hành pull toàn bộ code về
-%GIT_PATH% pull %BRANCH%
+::%GIT_PATH% pull %BRANCH%
 :: Tiến hành add toàn bộ file thay đổi
 %GIT_PATH% add -A
 :: Commit lên

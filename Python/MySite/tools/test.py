@@ -1,7 +1,7 @@
 import sys
  
 # stop Python from making .pyc files
-sys.dont_write_bytecode = True
+# sys.dont_write_bytecode = True
 
 x = 2000
 y = 36450
