@@ -17,8 +17,19 @@ import subprocess
 from pathlib import Path
 import os
 from django.contrib.auth.models import User
+from django.views import generic
+from .models import Thongtinbienmuc2
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return  
 
 
 def index(request):
@@ -205,7 +216,8 @@ def getfiles(folderPath, fileFormat):
 def hello(request):
     today = datetime.datetime.now().date()
     daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    return render(request, "hello.html", {"today": today, "days_of_week": daysOfWeek})
+    all_entries = Thongtinbienmuc2.objects.all()
+    return render(request, "hello.html", {"today": today, "days_of_week": all_entries})
 
 
 def python_index(request):
