@@ -2,9 +2,10 @@
 {% load static %}
 {% block title %}Rename{% endblock %}
 {% block content %}
+
 <div class="row">
   <div class="col-12 grid-margin">
-    <form action="change_name" method="POST" name="form_rename">
+    <form action="change_name" method="POST" name="RenameForm">
       {% csrf_token %}
       <div class="card">
         <div class="card-body">
@@ -48,5 +49,12 @@
     </form>
   </div>
 </div>
+
+
+<form action = "" method = "post">
+  {% csrf_token %}
+  {{ renameform.as_p }} 
+  <input type="submit" value=Submit">
+</form>
 
 {% endblock %}

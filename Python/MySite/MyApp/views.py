@@ -8,7 +8,7 @@ import json
 from bs4 import BeautifulSoup
 import requests
 from django.core.mail import send_mail
-from .form import form_rename
+from .form import RenameForm
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
@@ -131,7 +131,9 @@ def rename_index(request):
     Returns:
         _type_: _description_
     """
-    return render(request, 'rename.html')
+    context ={}
+    context['renameform']= RenameForm()
+    return render(request, 'rename.html', context)
 
 
 def change_name(dir, strA):
@@ -182,7 +184,7 @@ def rename(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = form_rename(request.POST)
+        form = RenameForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required

@@ -1,21 +1,5 @@
 {
-    "sqltools.connections": [
-        {
-            "mssqlOptions": {
-                "appName": "SQLTools",
-                "useUTC": true,
-                "encrypt": true
-            },
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 1433,
-            "driver": "MSSQL",
-            "name": "ADDJ_AnGiang",
-            "database": "ADDJ_AnGiang",
-            "username": "sa",
-            "password": "P@ssword"
-        }
-    ],
+    "sqltools.connections": [],
     "cmake.configureOnOpen": false,
 
     "files.exclude": {

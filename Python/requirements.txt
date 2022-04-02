@@ -35,6 +35,7 @@ kiwisolver==1.4.2
 m3u8==1.0.0
 matplotlib==3.5.1
 MouseInfo==0.1.3
+mssql-django==1.1.2
 numpy==1.22.3
 opencv-python==4.5.5.64
 openpyxl==3.0.9
