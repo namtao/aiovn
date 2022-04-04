@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-12 grid-margin">
-    <form action="change_name" method="POST" name="RenameForm">
+    <form action="{% url 'change-name' %}" method="POST" name="RenameForm">
       {% csrf_token %}
       <div class="card">
         <div class="card-body">
@@ -15,7 +15,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Loại files</label>
+                  <label class="col-sm-3 col-form-label">Kiểu files</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" value="pdf" name="file_type" id="file_type" />
                   </div>
@@ -26,6 +26,14 @@
                   <label class="col-sm-3 col-form-label">Đường dẫn files</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" value="" name="root_path" id="root_path" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Định dạnh tên files</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" value="" name="filename" id="filename" />
                   </div>
                 </div>
               </div>
@@ -45,16 +53,44 @@
             </div>
           </form>
         </div>
+
+        <div class="col-md-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Trước khi đổi tên tệp</h4>
+              </p>
+              <blockquote class="blockquote">
+                {% for o in lst %}
+                <p>{{o}}</p>
+                {% endfor %}
+                </p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Sau khi đổi tên tệp</h4>
+              </p>
+              <blockquote class="blockquote">
+                {% for o in lst %}
+                <p>{{o}}</p>
+                {% endfor %}
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
       </div>
     </form>
   </div>
 </div>
 
 
-<form action = "" method = "post">
+<!-- <form action = "" method = "post">
   {% csrf_token %}
   {{ renameform.as_p }} 
-  <input type="submit" value=Submit">
-</form>
+  <input type="submit" value="Submit">
+</form> -->
 
 {% endblock %}

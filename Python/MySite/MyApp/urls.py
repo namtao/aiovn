@@ -3,7 +3,6 @@ from django.urls import path, include, re_path
 
 from . import views
 
-
 urlpatterns = [
     re_path('^api/', include('rest_framework.urls')),
     re_path(r'$', views.index, name='index'),
@@ -15,6 +14,6 @@ urlpatterns = [
     re_path(r'^data-tranfer$', views.datatranfer_index, name='data-tranfer'),
     re_path(r'^python$', views.python_index, name='python'),
     re_path(r'^rename$', views.rename_index, name='rename'),
-    re_path(r'^change-name$', views.rename, name='change-name'),
+    re_path(r'^change-name$', views.change_name, name='change-name'),
     re_path(r'^hello$', views.hello, name='hello'),
 ]

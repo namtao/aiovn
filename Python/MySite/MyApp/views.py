@@ -19,9 +19,11 @@ import os
 from django.contrib.auth.models import User
 from django.views import generic
 from .models import Thongtinbienmuc2
+import logging
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -29,7 +31,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return  
+        return
 
 
 def index(request):
@@ -122,81 +124,6 @@ def datatranfer_index(request):
     return render(request, 'datatranfer.html')
 
 
-def rename_index(request):
-    """ trang đổi tên file
-
-    Args:
-        request (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
-    context ={}
-    context['renameform']= RenameForm()
-    return render(request, 'rename.html', context)
-
-
-def change_name(dir, strA):
-    """ thực hiện đổi tên file
-
-    Args:
-        dir (_type_): _description_
-        strA (_type_): _description_
-    """
-    # renames all subforders of dir, not including dir itself
-    # dir = os.path.dirname(os.path.abspath(__file__))
-    lst = getfiles(r'D:\New folder (2)\Files', 'pdf')
-
-    def rename_all(root, items):
-        for name in items:
-            global index
-            index += 1
-            tenmoi = os.path.join(
-                strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
-            # kierm tra trùng tên
-            while (tenmoi in lst):
-                index += 1
-                tenmoi = os.path.join(
-                    strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
-
-            # thực hiện đổi tên
-            os.rename(os.path.join(root, name),
-                      os.path.join(root, strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower())))
-
-    # chạy thư mục để đổi tên
-    for root, dirs, files in os.walk(dir, topdown=False):
-        # rename_all(root, dirs)
-        rename_all(root, files)
-
-
-def rename(request):
-    """ thực hiện đổi tên file
-
-    Args:
-        request (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
-    print(getfiles(request.POST['root_path'], request.POST['file_type']))
-    # print(request.POST['file_type'])
-    # print(request.POST)
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = RenameForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/rename/')
-    # if a GET (or any other method) we'll create a blank form
-    # print(getfiles(request.POST['root_path'], request.POST['file_type']))
-    # return render(request, 'rename.html')
-    return HttpResponseRedirect('/rename')
-
-
 def getfiles(folderPath, fileFormat):
     """ lấy tất cả đường dẫn file theo đường dẫn cho trước
 
@@ -232,3 +159,65 @@ def python_index(request):
         _type_: _description_
     """
     return render(request, 'python.html')
+
+
+def rename_index(request):
+    """ trang đổi tên file
+
+    Args:
+        request (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    
+    lst = getfiles(
+        r'C:\Users\ADMIN\Downloads\New folder (2)\New folder (2)', 'pdf')
+    # lst.sort()
+    context = {'lst': lst}
+    # context['renameform'] = RenameForm()
+    return render(request, 'rename.html', context)
+
+
+def change_name(request):
+    """ thực hiện đổi tên file
+
+    Args:
+        dir (_type_): _description_
+        strA (_type_): _description_
+    """
+    # renames all subforders of dir, not including dir itself
+    # dir = os.path.dirname(os.path.abspath(__file__))
+
+    dir = request.POST['root_path']
+    strA = request.POST['filename']
+
+    rename(dir, strA)
+
+    return HttpResponseRedirect('/rename')
+
+
+def rename(dir, strA):
+    # renames all subforders of dir, not including dir itself
+    # dir = os.path.dirname(os.path.abspath(__file__))
+    lst = getfiles(
+        r'C:\Users\ADMIN\Downloads\New folder (2)\New folder', 'pdf')
+
+    def rename_all(root, items, number):
+        for name in items:
+            tenmoi = os.path.join(
+                strA + str(number) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+            # kierm tra trùng tên
+            while (tenmoi in lst):
+                number += 1
+                tenmoi = os.path.join(
+                    strA + str(number) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+
+            # thực hiện đổi tên
+            os.rename(os.path.join(root, name), os.path.join(root, tenmoi))
+            lst.append(tenmoi)
+
+    # chạy thư mục để đổi tên
+    for root, dirs, files in os.walk(dir, topdown=False):
+        # rename_all(root, dirs)
+        rename_all(root, files, 1)

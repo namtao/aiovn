@@ -17,7 +17,7 @@ def get_files(folderPath, fileFormat):
 def rename(dir, strA):
     # renames all subforders of dir, not including dir itself
     # dir = os.path.dirname(os.path.abspath(__file__))
-    lst = get_files(r'\\192.168.31.127\New folder (2)\Files', 'pdf')
+    lst = get_files(r'C:\Users\ADMIN\Downloads\New folder (2)\New folder', 'pdf')
 
     def rename_all(root, items):
         for name in items:
@@ -41,7 +41,7 @@ def rename(dir, strA):
         rename_all(root, files)
 
 
-thumuccandoiten = r'\\192.168.31.127\so hoa nghe an\Da OCR\19.03.2022\So Lao dong'
+thumuccandoiten = r'C:\Users\ADMIN\Downloads\New folder (2)\New folder (2)'
 
 madinhdanh = '000.00.38.H41.G07-LĐ07.'
 
