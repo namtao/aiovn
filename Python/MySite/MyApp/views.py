@@ -10,7 +10,7 @@ import requests
 from django.core.mail import send_mail
 from .form import RenameForm
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 import datetime
 import subprocess
@@ -18,20 +18,13 @@ from pathlib import Path
 import os
 from django.contrib.auth.models import User
 from django.views import generic
-from .models import Thongtinbienmuc2
+from .models import *
 import logging
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-class IndexView(generic.ListView):
-    template_name = 'polls/index.html'
-    context_object_name = 'latest_question_list'
-
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return
 
 
 def index(request):
@@ -145,8 +138,8 @@ def getfiles(folderPath, fileFormat):
 def hello(request):
     today = datetime.datetime.now().date()
     daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    all_entries = Thongtinbienmuc2.objects.all()
-    return render(request, "hello.html", {"today": today, "days_of_week": all_entries})
+    # all_entries = Thongtinbienmucna.objects.all()
+    return render(request, "hello.html", {"today": today, "days_of_week": daysOfWeek})
 
 
 def python_index(request):
@@ -170,7 +163,7 @@ def rename_index(request):
     Returns:
         _type_: _description_
     """
-    
+
     lst = getfiles(
         r'C:\Users\ADMIN\Downloads\New folder (2)\New folder (2)', 'pdf')
     # lst.sort()
@@ -221,3 +214,4 @@ def rename(dir, strA):
     for root, dirs, files in os.walk(dir, topdown=False):
         # rename_all(root, dirs)
         rename_all(root, files, 1)
+
