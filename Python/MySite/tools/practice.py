@@ -1,10 +1,12 @@
-from bs4 import BeautifulSoup
-import requests
+from skimage.filters import threshold_yen
+from skimage.exposure import rescale_intensity
+from skimage.io import imread, imsave
+import cv2
 
-response = requests.get('https://www.w3schools.com/html/default.asp')
-soup = BeautifulSoup(response.content, 'html.parser')
-# print([tag.name for tag in soup.find_all()])
-# print([str(tag) for tag in soup.find_all()])
-# print(soup.prettify)
+img = imread(r'C:\Users\Administrator\Downloads\0001.jpg')
 
-    # return render(request, 'beautiful-soup.html')
+# Bilateral Blur
+bilateral = cv2.bilateralFilter(img, 9, 75, 75)
+cv2.imwrite('Bilateral.jpg', bilateral)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

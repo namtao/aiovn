@@ -1,6 +1,8 @@
+import cv2 as cv
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+from PIL import Image
 
 
 def image_holding():
@@ -107,38 +109,33 @@ def detect_hsv():
     cv2.destroyAllWindows()
 
 
-import numpy as np
-import cv2 as cv
-drawing = False # true if mouse is pressed
-mode = True # if True, draw rectangle. Press 'm' to toggle to curve
-ix,iy = -1,-1
-# mouse callback function
-def draw_circle(event,x,y,flags,param):
-    global ix,iy,drawing,mode
-    if event == cv.EVENT_LBUTTONDOWN:
-        drawing = True
-        ix,iy = x,y
-    elif event == cv.EVENT_MOUSEMOVE:
-        if drawing == True:
-            if mode == True:
-                cv.rectangle(img,(ix,iy),(x,y),(0,255,0),-1)
-            else:
-                cv.circle(img,(x,y),5,(0,0,255),-1)
-    elif event == cv.EVENT_LBUTTONUP:
-        drawing = False
-        if mode == True:
-            cv.rectangle(img,(ix,iy),(x,y),(0,255,0),-1)
-        else:
-            cv.circle(img,(x,y),5,(0,0,255),-1)
-            
-img = np.zeros((512,512,3), np.uint8)
-cv.namedWindow('image')
-cv.setMouseCallback('image',draw_circle)
-while(1):
-    cv.imshow('image',img)
-    k = cv.waitKey(0) & 0xFF
-    if k == ord('q'):
-        break
-    
-cv.waitKey(0)
-cv.destroyAllWindows()
+def npf32u8(np_arr):
+    # intensity conversion
+    if str(np_arr.dtype) != 'uint8':
+        np_arr = np_arr.astype(np.float32)
+        np_arr -= np.min(np_arr)
+        np_arr /= np.max(np_arr) # normalize the data to 0 - 1
+        np_arr = 255 * np_arr # Now scale by 255
+        np_arr = np_arr.astype(np.uint8)
+    return np_arr
+
+
+img = cv2.imread(r'D:\Nam\Projects\Python\MySite\out\page_1.jpg')
+# opencv_image_rgb  = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+# # opencv_image_rgb = npf32u8(opencv_image_rgb )
+# pil_image = Image.fromarray(opencv_image_rgb)
+
+# pil_image.save('opencv_image_rgb.jpg')
+
+# img[i, j, k]:
+# i: chỉ số dòng.
+# j: chỉ số cột.
+# k: 0: B, 1: G, 2: R
+# img[:,:,0] = 0
+# img[:,:,1] = 0
+# img[:,:,2] = 0
+cv2.imshow('result', img)
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
