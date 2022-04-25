@@ -170,6 +170,12 @@
     <Compile Include="ThongKeNhanSu.Designer.cs">
       <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongKeThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeThietBi.Designer.cs">
+      <DependentUpon>ThongKeThietBi.cs</DependentUpon>
+    </Compile>
     <Compile Include="TKBP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ThongKeNhanSu.resx">
       <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeThietBi.resx">
+      <DependentUpon>ThongKeThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TKBP.resx">
       <DependentUpon>TKBP.cs</DependentUpon>

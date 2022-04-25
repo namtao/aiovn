@@ -46,11 +46,13 @@ namespace Company
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.thongKeThuMucStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinPhiênBảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.lbCount = new System.Windows.Forms.Label();
-            this.thongKeThuMucStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.thongKeThietBiStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -123,14 +125,14 @@ namespace Company
             // 
             this.saveToolStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.saveToolStripMenuItem.Text = "Lưu vào Excel";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // toolsToolStripMenuItem
             // 
@@ -140,7 +142,9 @@ namespace Company
             this.toolStripSeparator6,
             this.thốngKêToolStripMenuItem,
             this.toolStripSeparator7,
-            this.thongKeThuMucStripMenuItem1});
+            this.thongKeThuMucStripMenuItem1,
+            this.toolStripSeparator2,
+            this.thongKeThietBiStripMenuItem1});
             this.toolsToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(55, 23);
@@ -176,6 +180,14 @@ namespace Company
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(191, 6);
+            // 
+            // thongKeThuMucStripMenuItem1
+            // 
+            this.thongKeThuMucStripMenuItem1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongKeThuMucStripMenuItem1.Name = "thongKeThuMucStripMenuItem1";
+            this.thongKeThuMucStripMenuItem1.Size = new System.Drawing.Size(194, 24);
+            this.thongKeThuMucStripMenuItem1.Text = "Thống kê thư mục";
+            this.thongKeThuMucStripMenuItem1.Click += new System.EventHandler(this.thongKeThuMucStripMenuItem1_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -217,13 +229,18 @@ namespace Company
             this.lbCount.Size = new System.Drawing.Size(0, 19);
             this.lbCount.TabIndex = 1000000034;
             // 
-            // thongKeThuMucStripMenuItem1
+            // toolStripSeparator2
             // 
-            this.thongKeThuMucStripMenuItem1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thongKeThuMucStripMenuItem1.Name = "thongKeThuMucStripMenuItem1";
-            this.thongKeThuMucStripMenuItem1.Size = new System.Drawing.Size(194, 24);
-            this.thongKeThuMucStripMenuItem1.Text = "Thống kê thư mục";
-            this.thongKeThuMucStripMenuItem1.Click += new System.EventHandler(this.thongKeThuMucStripMenuItem1_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
+            // 
+            // thongKeThietBiStripMenuItem1
+            // 
+            this.thongKeThietBiStripMenuItem1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongKeThietBiStripMenuItem1.Name = "thongKeThietBiStripMenuItem1";
+            this.thongKeThietBiStripMenuItem1.Size = new System.Drawing.Size(194, 24);
+            this.thongKeThietBiStripMenuItem1.Text = "Thống kê thiết bị";
+            this.thongKeThietBiStripMenuItem1.Click += new System.EventHandler(this.thongKeThietBiStripMenuItem1_Click);
             // 
             // Home
             // 
@@ -274,6 +291,8 @@ namespace Company
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.Label lbCount;
         private System.Windows.Forms.ToolStripMenuItem thongKeThuMucStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem thongKeThietBiStripMenuItem1;
     }
 }
 

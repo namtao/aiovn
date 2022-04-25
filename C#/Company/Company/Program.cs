@@ -13,7 +13,7 @@ namespace Company
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SoSanhBP());
+            Application.Run(new Home());
         }
     }
 }

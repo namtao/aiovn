@@ -117,3 +117,5 @@ C:\Projects\C#\Company\Company\obj\Debug\Company.csproj.CoreCompileInputs.cache
 C:\Projects\C#\Company\Company\obj\Debug\Company.csproj.CopyComplete
 C:\Projects\C#\Company\Company\obj\Debug\Company.exe
 C:\Projects\C#\Company\Company\obj\Debug\Company.pdb
+C:\Projects\C#\Company\Company\obj\Debug\Company.csproj.AssemblyReference.cache
+C:\Projects\C#\Company\Company\obj\Debug\Company.ThongKeThietBi.resources

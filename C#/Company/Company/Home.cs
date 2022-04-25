@@ -183,5 +183,12 @@ namespace Company
             this.Hide();
             tree.Show();
         }
+
+        private void thongKeThietBiStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ThongKeThietBi thongKeThietBi= new ThongKeThietBi();
+            thongKeThietBi.Show();
+        }
     }
 }
