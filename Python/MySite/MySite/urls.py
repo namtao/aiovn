@@ -28,7 +28,7 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^', include('MyApp.urls')), 
-    re_path(r'^api/', include('Api.urls')), 
+    re_path(r'^api/', include('API.urls')), 
     # re_path(r'^batch/', include('AppBatchScript.urls')), # đường dẫn bao gồm tên webapp
     re_path(r'^index/', RedirectView.as_view(pattern_name='index', permanent=False)),
 ]
