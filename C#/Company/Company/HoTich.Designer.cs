@@ -462,6 +462,7 @@ namespace Company
             this.dataGrid1.TabIndex = 1000000044;
             this.dataGrid1.TabStop = false;
             this.dataGrid1.Visible = false;
+            this.dataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid1_CellContentClick);
             // 
             // tabPage2
             // 
@@ -903,6 +904,7 @@ namespace Company
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.btnExe);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "HoTich";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

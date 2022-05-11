@@ -3,6 +3,7 @@
 {% block title %}Batch{% endblock %}
 {% block content %}
 <div class="row">
+  <!-- Auto Commit -->
   <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -25,7 +26,7 @@
       </div>
     </div>
   </div>
-
+  <!-- Py to Exe -->
   <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -45,6 +46,40 @@
           </div>
         </div>
         <h6 class="text-muted font-weight-normal">Chuyển đổi file .py sang file .exe</h6>
+      </div>
+    </div>
+  </div>
+  <!-- Pdf to Jpg -->
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"># Pdf to Jpg</h4>
+        <hr color="white">
+        <form class="form-sample">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Đường dẫn file Pdf</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" value="" name="file_type" id="file_type" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Đường dẫn file Jpg</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" value="" name="root_path" id="root_path" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 d-flex align-items-center justify-content-end">
+              <input
+                class="btn btn-outline-secondary btn btn-danger btn-icon-text file-upload-browse mdi mdi-upload btn-icon-prepend"
+                type="submit" value="Thực hiện">
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

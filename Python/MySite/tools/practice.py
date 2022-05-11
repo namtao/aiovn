@@ -1,9 +1,6 @@
-from skimage.filters import threshold_yen
-from skimage.exposure import rescale_intensity
-from skimage.io import imread, imsave
 import cv2
 
-img = imread(r'C:\Users\Administrator\Downloads\0001.jpg')
+img = cv2.imread(r'C:\Users\Administrator\Downloads\0001.jpg')
 
 # Bilateral Blur
 bilateral = cv2.bilateralFilter(img, 9, 75, 75)

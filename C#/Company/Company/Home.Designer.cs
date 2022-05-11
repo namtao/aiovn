@@ -47,12 +47,12 @@ namespace Company
             this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.thongKeThuMucStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.thongKeThietBiStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinPhiênBảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.lbCount = new System.Windows.Forms.Label();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.thongKeThietBiStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -125,14 +125,14 @@ namespace Company
             // 
             this.saveToolStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.saveToolStripMenuItem.Text = "Lưu vào Excel";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // toolsToolStripMenuItem
             // 
@@ -189,6 +189,19 @@ namespace Company
             this.thongKeThuMucStripMenuItem1.Text = "Thống kê thư mục";
             this.thongKeThuMucStripMenuItem1.Click += new System.EventHandler(this.thongKeThuMucStripMenuItem1_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
+            // 
+            // thongKeThietBiStripMenuItem1
+            // 
+            this.thongKeThietBiStripMenuItem1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongKeThietBiStripMenuItem1.Name = "thongKeThietBiStripMenuItem1";
+            this.thongKeThietBiStripMenuItem1.Size = new System.Drawing.Size(194, 24);
+            this.thongKeThietBiStripMenuItem1.Text = "Thống kê thiết bị";
+            this.thongKeThietBiStripMenuItem1.Click += new System.EventHandler(this.thongKeThietBiStripMenuItem1_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -228,19 +241,6 @@ namespace Company
             this.lbCount.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbCount.Size = new System.Drawing.Size(0, 19);
             this.lbCount.TabIndex = 1000000034;
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
-            // 
-            // thongKeThietBiStripMenuItem1
-            // 
-            this.thongKeThietBiStripMenuItem1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thongKeThietBiStripMenuItem1.Name = "thongKeThietBiStripMenuItem1";
-            this.thongKeThietBiStripMenuItem1.Size = new System.Drawing.Size(194, 24);
-            this.thongKeThietBiStripMenuItem1.Text = "Thống kê thiết bị";
-            this.thongKeThietBiStripMenuItem1.Click += new System.EventHandler(this.thongKeThietBiStripMenuItem1_Click);
             // 
             // Home
             // 
