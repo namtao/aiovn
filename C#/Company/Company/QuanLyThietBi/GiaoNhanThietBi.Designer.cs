@@ -51,6 +51,14 @@ namespace ADDJ
             this.btnExe = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBPQL = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtNgQL = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtNQL = new System.Windows.Forms.TextBox();
+            this.txtDonVi = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label4
@@ -114,7 +122,7 @@ namespace ADDJ
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 309);
+            this.label3.Location = new System.Drawing.Point(23, 425);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 19);
             this.label3.TabIndex = 1000000066;
@@ -123,7 +131,7 @@ namespace ADDJ
             // txtNoiDung
             // 
             this.txtNoiDung.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoiDung.Location = new System.Drawing.Point(202, 300);
+            this.txtNoiDung.Location = new System.Drawing.Point(202, 416);
             this.txtNoiDung.Multiline = true;
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.Size = new System.Drawing.Size(762, 109);
@@ -155,7 +163,7 @@ namespace ADDJ
             this.txtNguoiNhan.Location = new System.Drawing.Point(705, 79);
             this.txtNguoiNhan.Multiline = true;
             this.txtNguoiNhan.Name = "txtNguoiNhan";
-            this.txtNguoiNhan.Size = new System.Drawing.Size(198, 28);
+            this.txtNguoiNhan.Size = new System.Drawing.Size(259, 28);
             this.txtNguoiNhan.TabIndex = 1000000069;
             // 
             // label7
@@ -174,7 +182,7 @@ namespace ADDJ
             this.txtNoiNhan.Location = new System.Drawing.Point(705, 23);
             this.txtNoiNhan.Multiline = true;
             this.txtNoiNhan.Name = "txtNoiNhan";
-            this.txtNoiNhan.Size = new System.Drawing.Size(198, 28);
+            this.txtNoiNhan.Size = new System.Drawing.Size(259, 28);
             this.txtNoiNhan.TabIndex = 1000000067;
             // 
             // txtTTNguoiNhan
@@ -190,7 +198,7 @@ namespace ADDJ
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(23, 541);
+            this.label8.Location = new System.Drawing.Point(23, 657);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 19);
             this.label8.TabIndex = 1000000077;
@@ -199,17 +207,17 @@ namespace ADDJ
             // txtTinhTrang
             // 
             this.txtTinhTrang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTinhTrang.Location = new System.Drawing.Point(202, 532);
+            this.txtTinhTrang.Location = new System.Drawing.Point(202, 648);
             this.txtTinhTrang.Multiline = true;
             this.txtTinhTrang.Name = "txtTinhTrang";
-            this.txtTinhTrang.Size = new System.Drawing.Size(198, 28);
+            this.txtTinhTrang.Size = new System.Drawing.Size(259, 28);
             this.txtTinhTrang.TabIndex = 1000000076;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(526, 541);
+            this.label9.Location = new System.Drawing.Point(526, 657);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(74, 19);
             this.label9.TabIndex = 1000000075;
@@ -218,10 +226,10 @@ namespace ADDJ
             // txtTrangThai
             // 
             this.txtTrangThai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrangThai.Location = new System.Drawing.Point(705, 532);
+            this.txtTrangThai.Location = new System.Drawing.Point(705, 648);
             this.txtTrangThai.Multiline = true;
             this.txtTrangThai.Name = "txtTrangThai";
-            this.txtTrangThai.Size = new System.Drawing.Size(198, 28);
+            this.txtTrangThai.Size = new System.Drawing.Size(259, 28);
             this.txtTrangThai.TabIndex = 1000000074;
             // 
             // btnExe
@@ -231,7 +239,7 @@ namespace ADDJ
             this.btnExe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExe.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExe.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExe.Location = new System.Drawing.Point(875, 599);
+            this.btnExe.Location = new System.Drawing.Point(875, 715);
             this.btnExe.Margin = new System.Windows.Forms.Padding(10);
             this.btnExe.Name = "btnExe";
             this.btnExe.Size = new System.Drawing.Size(89, 28);
@@ -245,7 +253,7 @@ namespace ADDJ
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(23, 441);
+            this.label10.Location = new System.Drawing.Point(23, 557);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 19);
             this.label10.TabIndex = 1000000080;
@@ -254,11 +262,87 @@ namespace ADDJ
             // txtGhiChu
             // 
             this.txtGhiChu.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGhiChu.Location = new System.Drawing.Point(202, 432);
+            this.txtGhiChu.Location = new System.Drawing.Point(202, 548);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(762, 64);
             this.txtGhiChu.TabIndex = 1000000079;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(526, 311);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(113, 19);
+            this.label11.TabIndex = 1000000084;
+            this.label11.Text = "Bộ phận quản lý";
+            // 
+            // txtBPQL
+            // 
+            this.txtBPQL.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBPQL.Location = new System.Drawing.Point(705, 308);
+            this.txtBPQL.Multiline = true;
+            this.txtBPQL.Name = "txtBPQL";
+            this.txtBPQL.Size = new System.Drawing.Size(259, 28);
+            this.txtBPQL.TabIndex = 1000000083;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(23, 311);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 19);
+            this.label12.TabIndex = 1000000082;
+            this.label12.Text = "Đơn vị";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(23, 370);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(101, 19);
+            this.label13.TabIndex = 1000000086;
+            this.label13.Text = "Người quản lý";
+            // 
+            // txtNgQL
+            // 
+            this.txtNgQL.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNgQL.Location = new System.Drawing.Point(202, 367);
+            this.txtNgQL.Multiline = true;
+            this.txtNgQL.Name = "txtNgQL";
+            this.txtNgQL.Size = new System.Drawing.Size(259, 28);
+            this.txtNgQL.TabIndex = 1000000085;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(526, 373);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(101, 19);
+            this.label14.TabIndex = 1000000088;
+            this.label14.Text = "Người quản lý";
+            // 
+            // txtNQL
+            // 
+            this.txtNQL.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNQL.Location = new System.Drawing.Point(705, 370);
+            this.txtNQL.Multiline = true;
+            this.txtNQL.Name = "txtNQL";
+            this.txtNQL.Size = new System.Drawing.Size(259, 28);
+            this.txtNQL.TabIndex = 1000000087;
+            // 
+            // txtDonVi
+            // 
+            this.txtDonVi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDonVi.Location = new System.Drawing.Point(202, 308);
+            this.txtDonVi.Multiline = true;
+            this.txtDonVi.Name = "txtDonVi";
+            this.txtDonVi.Size = new System.Drawing.Size(259, 28);
+            this.txtDonVi.TabIndex = 1000000081;
             // 
             // GiaoNhanThietBi
             // 
@@ -267,7 +351,15 @@ namespace ADDJ
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(995, 659);
+            this.ClientSize = new System.Drawing.Size(995, 752);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtNQL);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.txtNgQL);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtBPQL);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtDonVi);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.btnExe);
@@ -323,5 +415,13 @@ namespace ADDJ
         private System.Windows.Forms.Button btnExe;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtBPQL;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtNgQL;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtNQL;
+        private System.Windows.Forms.TextBox txtDonVi;
     }
 }

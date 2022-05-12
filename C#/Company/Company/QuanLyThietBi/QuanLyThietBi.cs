@@ -27,9 +27,11 @@ namespace Company
 
         private void Report_Load(object sender, EventArgs e)
         {
-            FillDgv("select tb.id, MaThietBi,DonVi, NoiQuanLy, BoPhanQuanLy, NguoiQuanLy, LoaiThietBi, TenThietBi, tt1.TinhTrang, tt2.TrangThai " +
+            FillDgv("select tb.id as 'ID', MaThietBi as 'Mã thiết bị', DonVi as 'Đơn vị', NoiQuanLy as 'Nơi quản lý', " +
+                "BoPhanQuanLy as 'Bộ phận quản lý', NguoiQuanLy as 'Người quản lý', LoaiThietBi 'Loại thiết bị', TenThietBi as 'Tên thiết bị', " +
+                "tt1.TinhTrang as 'Tình trạng', tt2.TrangThai as 'Trạng thái'" +
                 "from ThietBi tb join TinhTrang tt1 " +
-                "on tb.TinhTrang = tt1.id join TrangThai tt2 on tb.TrangThai = tt2.ID");
+                "on tb.TinhTrang = tt1.id join TrangThai tt2 on tb.TrangThai = tt2.ID order by DonVi, MaThietBi");
         }
 
         public void FillDgv(string sqlQuery)
@@ -43,21 +45,6 @@ namespace Company
             da.Fill(ds);
             conn.Close();
             datagrid.DataSource = ds.Tables[0];
-        }
-
-        private void datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                txtMaTB.Text = datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtNoiQuanLy.Text = datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtBoPhanQuanLy.Text = datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtNguoiQuanLy.Text = datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                txtLoaiTB.Text = datagrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                txtTenTB.Text = datagrid.Rows[e.RowIndex].Cells[6].Value.ToString();
-                txtTinhTrang.Text = datagrid.Rows[e.RowIndex].Cells[7].Value.ToString();
-                txtTrangThai.Text = datagrid.Rows[e.RowIndex].Cells[8].Value.ToString();
-            }
         }
 
         private void datagrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -110,15 +97,15 @@ namespace Company
                         con.Close();
                     }
 
-                    tentb.Text = txtTenTB.Text;
-                    matb.Text = txtMaTB.Text;
+                    tentb.Text = datagrid.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    matb.Text = datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
 
 
                     //Lịch sử thiết bị
-                    string strSql = "select * from ThietBi where id = " + id;
+                    string strSql = "select * from LichSuThietBi where idThietBi = " + id + " order by NgayThang";
                     SqlDataAdapter adapter = new SqlDataAdapter(strSql, connectString);
                     DataSet dataReport = new DataSet();
-                    adapter.Fill(dataReport, "ThietBi");
+                    adapter.Fill(dataReport, "LichSuThietBi");
 
                     ReportViewer reportViewer = new ReportViewer();
                     crystal.SetDataSource(dataReport);
