@@ -320,11 +320,11 @@ namespace ADDJ
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(526, 373);
+            this.label14.Location = new System.Drawing.Point(529, 373);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(101, 19);
+            this.label14.Size = new System.Drawing.Size(83, 19);
             this.label14.TabIndex = 1000000088;
-            this.label14.Text = "Người quản lý";
+            this.label14.Text = "Nơi quản lý";
             // 
             // txtNQL
             // 

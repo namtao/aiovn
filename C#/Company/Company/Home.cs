@@ -29,7 +29,7 @@ namespace Company
         {
             InitializeComponent();
             form1 = this;
-            timer.Interval = 60000;
+            timer.Interval = 1000;
             timer.Start();
         }
 
@@ -136,7 +136,24 @@ namespace Company
         //10 phút sẽ cập nhật các trạng thái mới 1 lần
         private void timer_Tick(object sender, EventArgs e)
         {
-            
+            Console.WriteLine("Finish");
+            using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=HoTich;Integrated Security=True"))
+            {
+                using (SqlCommand cmd = new SqlCommand("if (select count(*)  from HT_KHAISINH where SUBSTRING (URLTapTinDinhKem, 1, 1) = '/') > 0 " +
+                    "update HT_KHAISINH set URLTapTinDinhKem = SUBSTRING(trim(URLTapTinDinhKem), 2, LEN(trim(URLTapTinDinhKem)));" +
+                    "if (select count(*)  from HT_KHAITU where SUBSTRING(URLTapTinDinhKem, 1, 1) = '/') > 0 " +
+                    "update HT_KHAITU set URLTapTinDinhKem = SUBSTRING(trim(URLTapTinDinhKem), 2, LEN(trim(URLTapTinDinhKem)));" +
+                    "if (select count(*)  from HT_KETHON where SUBSTRING(URLTapTinDinhKem, 1, 1) = '/') > 0 " +
+                    "update HT_KETHON set URLTapTinDinhKem = SUBSTRING(trim(URLTapTinDinhKem), 2, LEN(trim(URLTapTinDinhKem)));" +
+                    "if (select count(*)  from HT_NHANCHAMECON where SUBSTRING(URLTapTinDinhKem, 1, 1) = '/') > 0 " +
+                    "update HT_NHANCHAMECON set URLTapTinDinhKem = SUBSTRING(trim(URLTapTinDinhKem), 2, LEN(trim(URLTapTinDinhKem))); ", con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
         }
 
         private void Home_SizeChanged(object sender, EventArgs e)

@@ -7,8 +7,8 @@ os.system('cmd /c "cls"')
 # stop Python from making .pyc files
 # sys.dont_write_bytecode = True
 
-x = 20000
-y = 5000
+x = 5000
+y = 18000
 
 result = (123400800 + x*y + (x*y)*0.01)/(3600+x)
 

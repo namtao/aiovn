@@ -105,18 +105,6 @@ def beautiful_soup(request):
     return render(request, 'beautiful-soup.html', {'lstTag': list(set(lstTag))})
 
 
-def datatranfer_index(request):
-    """ trang truyền dữ liệu
-
-    Args:
-        request (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
-    return render(request, 'datatranfer.html')
-
-
 def getfiles(folderPath, fileFormat):
     """ lấy tất cả đường dẫn file theo đường dẫn cho trước
 

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ADDJ.Model.DB;
 
+
 namespace ADDJ
 {
     public partial class GiaoNhanThietBi : Form
@@ -25,13 +26,13 @@ namespace ADDJ
         private void btnExe_Click(object sender, EventArgs e)
         {
             insert(connectString, "insert into LichSuThietBi " +
-                "values(idThietBi, CONVERT(nvarchar(10), GETDATE(), 103), N'" + txtNoiGui.Text + "', N'" + txtNguoiGui.Text + "', " +
+                "values("+idThietBi+", CONVERT(nvarchar(10), GETDATE(), 103), N'" + txtNoiGui.Text + "', N'" + txtNguoiGui.Text + "', " +
                 "N'" + txtTTNguoiGui.Text + "', N'" + txtNoiNhan.Text + "', N'" + txtNguoiNhan.Text + "', " +
-                "N'" + txtTTNguoiNhan.Text + "', N'" + txtNoiDung.Text + "', N'" + txtNQL.Text + "', N'" + txtBPQL.Text + "', N'" + txtNgQL.Text + "'" +
+                "N'" + txtTTNguoiNhan.Text + "', N'" + txtNoiDung.Text + "', N'" + txtNQL.Text + "', N'" + txtBPQL.Text + "', N'" + txtNgQL.Text + "', " +
                 "N'" + txtGhiChu.Text + "')");
 
-            update(connectString, "update ThietBi set DonVi = N'"+txtDonVi+"', NoiQuanLy = N'"+txtNQL+"', BoPhanQuanLy = N'"+txtBPQL+"', " +
-                "NguoiQuanLy = N'"+txtNgQL+"', TinhTrang = '"+txtTinhTrang+"', TrangThai = '"+txtTrangThai+"' " +
+            update(connectString, "update ThietBi set DonVi = N'"+txtDonVi.Text+"', NoiQuanLy = N'"+txtNQL.Text+"', BoPhanQuanLy = N'"+txtBPQL.Text+"', " +
+                "NguoiQuanLy = N'"+txtNgQL.Text+"', TinhTrang = '"+txtTinhTrang.Text+"', TrangThai = '"+txtTrangThai.Text+"' " +
                 "where id = '"+idThietBi+"' ");
         }
 

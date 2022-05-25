@@ -15,6 +15,22 @@ using CrystalDecisions.Shared;
 
 namespace Company
 {
+
+    /*select NoiQuanLy, LoaiThietBi, tt.TinhTrang, tt2.TrangThai, COUNT(*) as 'Số Lượng' 
+    from ThietBi tb join TinhTrang tt on tb.TinhTrang = tt.ID join TrangThai tt2 on tb.TrangThai = tt2.ID
+    where DonVi = 'ADDJ'
+    group by NoiQuanLy, LoaiThietBi, tt.TinhTrang, tt2.TrangThai
+    order by NoiQuanLy, LoaiThietBi
+    
+     select tb.id as 'ID', MaThietBi as 'Mã thiết bị', DonVi as 'Đơn vị', NoiQuanLy as 'Nơi quản lý', 
+    BoPhanQuanLy as 'Bộ phận quản lý', NguoiQuanLy as 'Người quản lý', LoaiThietBi 'Loại thiết bị', TenThietBi as 'Tên thiết bị',
+    ThongSoKyThuat as 'Thông số kỹ thuật', NuocSanXuat as 'Nước sản xuất',
+    tt1.TinhTrang as 'Tình trạng', tt2.TrangThai as 'Trạng thái'
+    from ThietBi tb join TinhTrang tt1 
+    on tb.TinhTrang = tt1.id join TrangThai tt2 on tb.TrangThai = tt2.ID
+    where DonVi = 'ADDJ'
+    order by NoiQuanLy, BoPhanQuanLy, NguoiQuanLy, MaThietBi*/
+
     public partial class QuanLyThietBi : Form
     {
         public static QuanLyThietBi form1;
@@ -79,7 +95,7 @@ namespace Company
                     TextObject tinhtranghientai = (TextObject)crystal.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["text37"];
 
                     SqlConnection con = new SqlConnection(connectString);
-                    using (SqlCommand command = new SqlCommand("select NhaCungCap, ThongSoKyThuat, tt1.TinhTrang, tt2.TrangThai from ThietBi tb join TinhTrang tt1 " +
+                    using (SqlCommand command = new SqlCommand("select NhaCungCap, ThongSoKyThuat, tt1.TinhTrang, tt2.TrangThai, NuocSanXuat from ThietBi tb join TinhTrang tt1 " +
                         "on tb.TinhTrang = tt1.id join TrangThai tt2 on tb.TrangThai = tt2.ID where tb.id = " + id, con))
                     {
                         command.CommandType = CommandType.Text;
@@ -89,10 +105,10 @@ namespace Company
                         while (d.Read())
                         {
                             namsx.Text = "";
-                            nuocsx.Text = "";
                             nhacc.Text = d[0].ToString();
                             thongso.Text = d[1].ToString();
                             tinhtranghientai.Text = d[2].ToString() + ", " + d[3].ToString();
+                            nuocsx.Text = d[4].ToString();
                         }
                         con.Close();
                     }
