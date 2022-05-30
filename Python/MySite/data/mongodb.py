@@ -6,12 +6,14 @@
 # trước khi bạn muốn check xem database có tồn tại không
 
 # MongoDB sẽ tạo ra database mà bạn muốn.
-# Tuy nhiên nếu database đã tồn tại thì Python sẽ tạo ra 1 connection vơi database được chỉ định
+# Tuy nhiên nếu database đã tồn tại thì Python sẽ tạo ra 1 connection với database được chỉ định
+
+
+from pymongo import MongoClient
+
 
 # create db
 def get_database(db_name):
-    from pymongo import MongoClient
-    import pymongo
 
     # Provide the mongodb atlas url to connect python to mongodb using pymongo
     # CONNECTION_STRING = "mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/myFirstDatabase"
@@ -27,6 +29,11 @@ def get_database(db_name):
     return client[db_name]
 
 
+# insert document
+def insert(collection, document):
+    pass
+
+
 # This is added so that many files can reuse the function get_database()
 if __name__ == "__main__":
 
@@ -34,17 +41,18 @@ if __name__ == "__main__":
     db_name = get_database('ADDJ')
 
     # Create table
-    collection_name = db_name["ThietBi"]
+    collection_name = db_name.ThietBi
 
     # Creating Dictionary of records to be
     # inserted
-    record = {"_id": 6,
-              "name": "Raju",
-              "Roll No": "1005",
-              "Branch": "CSE"}
-    
-    cursor = collection_name.insert_one(record)
-    
-    for record in db_name.ThietBi.find():
+    # record = {"_id": 8,  # id mặc định của bảng
+    #           "name": "Raju",
+    #           "Roll No": "1005",
+    #           "Branch": "CSE",
+    #           "new": 1}
+
+    # cursor = collection_name.insert_one(record)
+
+    for record in collection_name.find():
         print(record)
     # print (db_name.ThietBi.find().pretty())
