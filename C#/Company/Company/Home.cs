@@ -136,7 +136,7 @@ namespace Company
         //10 phút sẽ cập nhật các trạng thái mới 1 lần
         private void timer_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine("Finish");
+            /*Console.WriteLine("Finish");
             using (SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=HoTich;Integrated Security=True"))
             {
                 using (SqlCommand cmd = new SqlCommand("if (select count(*)  from HT_KHAISINH where SUBSTRING (URLTapTinDinhKem, 1, 1) = '/') > 0 " +
@@ -153,7 +153,7 @@ namespace Company
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
-            }
+            }*/
         }
 
         private void Home_SizeChanged(object sender, EventArgs e)
