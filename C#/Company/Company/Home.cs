@@ -108,6 +108,7 @@ namespace Company
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
             notifyIcon.Visible = false;
+            System.Windows.Forms.Application.Exit();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -197,15 +198,22 @@ namespace Company
         private void thongKeThuMucStripMenuItem1_Click(object sender, EventArgs e)
         {
             Tree tree = new Tree();
-            this.Hide();
             tree.Show();
+            this.Hide();
         }
 
         private void thongKeThietBiStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ThongKeThietBi thongKeThietBi= new ThongKeThietBi();
-            thongKeThietBi.Show();
+            QuanLyThietBi quanLyThietBi= new QuanLyThietBi();
+            quanLyThietBi.Show();
+        }
+
+        private void hoTichStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HoTich ht = new HoTich();
+            ht.Show();
+            this.Hide();
         }
     }
 }

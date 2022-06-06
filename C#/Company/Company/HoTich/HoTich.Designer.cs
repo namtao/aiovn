@@ -31,12 +31,12 @@ namespace Company
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HoTich));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rdnDelete = new System.Windows.Forms.RadioButton();
             this.rdnQuyenSo = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -135,6 +135,7 @@ namespace Company
             this.rdnDelete.TabIndex = 12;
             this.rdnDelete.Text = "Xóa dữ liệu";
             this.rdnDelete.UseVisualStyleBackColor = true;
+            this.rdnDelete.CheckedChanged += new System.EventHandler(this.rdnDelete_CheckedChanged);
             // 
             // rdnQuyenSo
             // 
@@ -145,6 +146,7 @@ namespace Company
             this.rdnQuyenSo.TabIndex = 10;
             this.rdnQuyenSo.Text = "Quyển số trống";
             this.rdnQuyenSo.UseVisualStyleBackColor = true;
+            this.rdnQuyenSo.CheckedChanged += new System.EventHandler(this.rdnQuyenSo_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -178,6 +180,7 @@ namespace Company
             this.rdnTKQuyenSo.TabIndex = 11;
             this.rdnTKQuyenSo.Text = "Thống kê quyển";
             this.rdnTKQuyenSo.UseVisualStyleBackColor = true;
+            this.rdnTKQuyenSo.CheckedChanged += new System.EventHandler(this.rdnTKQuyenSo_CheckedChanged);
             // 
             // rdnKTBM2
             // 
@@ -188,6 +191,7 @@ namespace Company
             this.rdnKTBM2.TabIndex = 8;
             this.rdnKTBM2.Text = "KTBM2";
             this.rdnKTBM2.UseVisualStyleBackColor = true;
+            this.rdnKTBM2.CheckedChanged += new System.EventHandler(this.rdnKTBM2_CheckedChanged);
             // 
             // rdnKetThuc
             // 
@@ -198,6 +202,7 @@ namespace Company
             this.rdnKetThuc.TabIndex = 9;
             this.rdnKetThuc.Text = "KT";
             this.rdnKetThuc.UseVisualStyleBackColor = true;
+            this.rdnKetThuc.CheckedChanged += new System.EventHandler(this.rdnKetThuc_CheckedChanged);
             // 
             // rdnKTBM1
             // 
@@ -208,6 +213,7 @@ namespace Company
             this.rdnKTBM1.TabIndex = 7;
             this.rdnKTBM1.Text = "KTBM1";
             this.rdnKTBM1.UseVisualStyleBackColor = true;
+            this.rdnKTBM1.CheckedChanged += new System.EventHandler(this.rdnKTBM1_CheckedChanged);
             // 
             // rdnBM
             // 
@@ -218,6 +224,7 @@ namespace Company
             this.rdnBM.TabIndex = 6;
             this.rdnBM.Text = "BM";
             this.rdnBM.UseVisualStyleBackColor = true;
+            this.rdnBM.CheckedChanged += new System.EventHandler(this.rdnBM_CheckedChanged);
             // 
             // rdnOther
             // 
@@ -228,6 +235,7 @@ namespace Company
             this.rdnOther.TabIndex = 5;
             this.rdnOther.Text = "Khác";
             this.rdnOther.UseVisualStyleBackColor = true;
+            this.rdnOther.CheckedChanged += new System.EventHandler(this.rdnOther_CheckedChanged);
             // 
             // rdnFormat
             // 
@@ -238,6 +246,7 @@ namespace Company
             this.rdnFormat.TabIndex = 3;
             this.rdnFormat.Text = "Định dạng";
             this.rdnFormat.UseVisualStyleBackColor = true;
+            this.rdnFormat.CheckedChanged += new System.EventHandler(this.rdnFormat_CheckedChanged);
             // 
             // rdnId7
             // 
@@ -248,6 +257,7 @@ namespace Company
             this.rdnId7.TabIndex = 2;
             this.rdnId7.Text = "Chưa KT";
             this.rdnId7.UseVisualStyleBackColor = true;
+            this.rdnId7.CheckedChanged += new System.EventHandler(this.rdnId7_CheckedChanged);
             // 
             // rdnTrung
             // 
@@ -258,6 +268,7 @@ namespace Company
             this.rdnTrung.TabIndex = 1;
             this.rdnTrung.Text = "Lọc trùng";
             this.rdnTrung.UseVisualStyleBackColor = true;
+            this.rdnTrung.CheckedChanged += new System.EventHandler(this.rdnTrung_CheckedChanged);
             // 
             // rdnLoiTrangSo
             // 
@@ -268,6 +279,7 @@ namespace Company
             this.rdnLoiTrangSo.TabIndex = 0;
             this.rdnLoiTrangSo.Text = "Lọc lỗi";
             this.rdnLoiTrangSo.UseVisualStyleBackColor = true;
+            this.rdnLoiTrangSo.CheckedChanged += new System.EventHandler(this.rdnLoiTrangSo_CheckedChanged);
             // 
             // rdnCMC
             // 
@@ -278,6 +290,7 @@ namespace Company
             this.rdnCMC.TabIndex = 3;
             this.rdnCMC.Text = "CMC";
             this.rdnCMC.UseVisualStyleBackColor = true;
+            this.rdnCMC.CheckedChanged += new System.EventHandler(this.rdnCMC_CheckedChanged);
             // 
             // rdnKH
             // 
@@ -288,6 +301,7 @@ namespace Company
             this.rdnKH.TabIndex = 2;
             this.rdnKH.Text = "KH";
             this.rdnKH.UseVisualStyleBackColor = true;
+            this.rdnKH.CheckedChanged += new System.EventHandler(this.rdnKH_CheckedChanged);
             // 
             // rdnKT
             // 
@@ -298,6 +312,7 @@ namespace Company
             this.rdnKT.TabIndex = 1;
             this.rdnKT.Text = "KT";
             this.rdnKT.UseVisualStyleBackColor = true;
+            this.rdnKT.CheckedChanged += new System.EventHandler(this.rdnKT_CheckedChanged);
             // 
             // rdnKS
             // 
@@ -308,6 +323,7 @@ namespace Company
             this.rdnKS.TabIndex = 1000002;
             this.rdnKS.Text = "KS";
             this.rdnKS.UseVisualStyleBackColor = true;
+            this.rdnKS.CheckedChanged += new System.EventHandler(this.rdnKS_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -329,10 +345,12 @@ namespace Company
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Auto";
             this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // timer
             // 
             this.timer.Interval = 2000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // thôngTinPhiênBảnToolStripMenuItem
             // 
@@ -340,6 +358,7 @@ namespace Company
             this.thôngTinPhiênBảnToolStripMenuItem.Name = "thôngTinPhiênBảnToolStripMenuItem";
             this.thôngTinPhiênBảnToolStripMenuItem.Size = new System.Drawing.Size(207, 24);
             this.thôngTinPhiênBảnToolStripMenuItem.Text = "Thông tin phiên bản";
+            this.thôngTinPhiênBảnToolStripMenuItem.Click += new System.EventHandler(this.thôngTinPhiênBảnToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -360,6 +379,7 @@ namespace Company
             this.khởiĐộngLạiToolStripMenuItem2.Name = "khởiĐộngLạiToolStripMenuItem2";
             this.khởiĐộngLạiToolStripMenuItem2.Size = new System.Drawing.Size(163, 24);
             this.khởiĐộngLạiToolStripMenuItem2.Text = "Khởi động lại";
+            this.khởiĐộngLạiToolStripMenuItem2.Click += new System.EventHandler(this.khởiĐộngLạiToolStripMenuItem2_Click);
             // 
             // toolStripSeparator21
             // 
@@ -371,6 +391,7 @@ namespace Company
             this.tắtToolStripMenuItem2.Name = "tắtToolStripMenuItem2";
             this.tắtToolStripMenuItem2.Size = new System.Drawing.Size(163, 24);
             this.tắtToolStripMenuItem2.Text = "Tắt";
+            this.tắtToolStripMenuItem2.Click += new System.EventHandler(this.tắtToolStripMenuItem2_Click);
             // 
             // toolStripSeparator14
             // 
@@ -398,6 +419,7 @@ namespace Company
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1144, 590);
             this.tabControl.TabIndex = 1000000054;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -416,52 +438,51 @@ namespace Company
             this.dataGrid2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGrid2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGrid2.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid2.Location = new System.Drawing.Point(775, 20);
             this.dataGrid2.Margin = new System.Windows.Forms.Padding(20);
             this.dataGrid2.Name = "dataGrid2";
             this.dataGrid2.ReadOnly = true;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGrid2.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGrid2.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid2.Size = new System.Drawing.Size(338, 524);
             this.dataGrid2.TabIndex = 1000000045;
             this.dataGrid2.TabStop = false;
-            this.dataGrid2.Visible = false;
             // 
             // dataGrid1
             // 
             this.dataGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGrid1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGrid1.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid1.Location = new System.Drawing.Point(20, 20);
             this.dataGrid1.Margin = new System.Windows.Forms.Padding(20);
             this.dataGrid1.Name = "dataGrid1";
             this.dataGrid1.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGrid1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGrid1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid1.Size = new System.Drawing.Size(744, 524);
             this.dataGrid1.TabIndex = 1000000044;
             this.dataGrid1.TabStop = false;
-            this.dataGrid1.Visible = false;
+            this.dataGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid1_CellClick);
             this.dataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid1_CellContentClick);
             // 
             // tabPage2
@@ -499,21 +520,21 @@ namespace Company
             this.datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datagrid.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagrid.Location = new System.Drawing.Point(2, 167);
             this.datagrid.Margin = new System.Windows.Forms.Padding(20);
             this.datagrid.Name = "datagrid";
             this.datagrid.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datagrid.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datagrid.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagrid.Size = new System.Drawing.Size(1126, 355);
             this.datagrid.TabIndex = 1000000003;
@@ -541,6 +562,8 @@ namespace Company
             this.cbxTrangThai.Name = "cbxTrangThai";
             this.cbxTrangThai.Size = new System.Drawing.Size(381, 27);
             this.cbxTrangThai.TabIndex = 1000000057;
+            this.cbxTrangThai.DropDown += new System.EventHandler(this.cbxTrangThai_DropDown);
+            this.cbxTrangThai.TextChanged += new System.EventHandler(this.cbxTrangThai_TextChanged);
             // 
             // label2
             // 
@@ -577,12 +600,15 @@ namespace Company
             this.btnTKTBG.TabStop = false;
             this.btnTKTBG.Text = "Thống kê từng bản ghi";
             this.btnTKTBG.UseVisualStyleBackColor = false;
+            this.btnTKTBG.Visible = false;
+            this.btnTKTBG.Click += new System.EventHandler(this.btnTKTBG_Click);
             // 
             // khởiĐộngLạiToolStripMenuItem1
             // 
             this.khởiĐộngLạiToolStripMenuItem1.Name = "khởiĐộngLạiToolStripMenuItem1";
             this.khởiĐộngLạiToolStripMenuItem1.Size = new System.Drawing.Size(163, 24);
             this.khởiĐộngLạiToolStripMenuItem1.Text = "Khởi động lại";
+            this.khởiĐộngLạiToolStripMenuItem1.Click += new System.EventHandler(this.khởiĐộngLạiToolStripMenuItem1_Click);
             // 
             // cbxLoai
             // 
@@ -604,8 +630,9 @@ namespace Company
             // sốBảnGhiToolStripMenuItem
             // 
             this.sốBảnGhiToolStripMenuItem.Name = "sốBảnGhiToolStripMenuItem";
-            this.sốBảnGhiToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
+            this.sốBảnGhiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.sốBảnGhiToolStripMenuItem.Text = "Số bản ghi";
+            this.sốBảnGhiToolStripMenuItem.Click += new System.EventHandler(this.sốBảnGhiToolStripMenuItem_Click);
             // 
             // thốngKêToolStripMenuItem
             // 
@@ -623,24 +650,26 @@ namespace Company
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // tổngHợpToolStripMenuItem
             // 
             this.tổngHợpToolStripMenuItem.Name = "tổngHợpToolStripMenuItem";
-            this.tổngHợpToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
+            this.tổngHợpToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.tổngHợpToolStripMenuItem.Text = "Tổng hợp";
+            this.tổngHợpToolStripMenuItem.Click += new System.EventHandler(this.tổngHợpToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // nhânSựToolStripMenuItem
             // 
             this.nhânSựToolStripMenuItem.Name = "nhânSựToolStripMenuItem";
-            this.nhânSựToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
+            this.nhânSựToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.nhânSựToolStripMenuItem.Text = "Nhân sự";
+            this.nhânSựToolStripMenuItem.Click += new System.EventHandler(this.nhânSựToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -653,6 +682,7 @@ namespace Company
             this.clonePDFToolStripMenuItem.Name = "clonePDFToolStripMenuItem";
             this.clonePDFToolStripMenuItem.Size = new System.Drawing.Size(223, 24);
             this.clonePDFToolStripMenuItem.Text = "Nhân bản PDF";
+            this.clonePDFToolStripMenuItem.Click += new System.EventHandler(this.clonePDFToolStripMenuItem_Click);
             // 
             // toolStripSeparator11
             // 
@@ -687,6 +717,7 @@ namespace Company
             this.cậpNhậtDữLiệuMenuItem.Name = "cậpNhậtDữLiệuMenuItem";
             this.cậpNhậtDữLiệuMenuItem.Size = new System.Drawing.Size(223, 24);
             this.cậpNhậtDữLiệuMenuItem.Text = "Cập nhật trạng thái";
+            this.cậpNhậtDữLiệuMenuItem.Click += new System.EventHandler(this.cậpNhậtDữLiệuMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
@@ -715,6 +746,7 @@ namespace Company
             this.thốngKêToolStripMenuItem1.Name = "thốngKêToolStripMenuItem1";
             this.thốngKêToolStripMenuItem1.Size = new System.Drawing.Size(256, 24);
             this.thốngKêToolStripMenuItem1.Text = "Thực hiện so sánh";
+            this.thốngKêToolStripMenuItem1.Click += new System.EventHandler(this.thốngKêToolStripMenuItem1_Click);
             // 
             // toolStripSeparator18
             // 
@@ -732,6 +764,7 @@ namespace Company
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.saveToolStripMenuItem.Text = "Lưu vào Excel";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // txtNdk
             // 
@@ -742,6 +775,8 @@ namespace Company
             this.txtNdk.Name = "txtNdk";
             this.txtNdk.Size = new System.Drawing.Size(381, 27);
             this.txtNdk.TabIndex = 1000000048;
+            this.txtNdk.DropDown += new System.EventHandler(this.txtNdk_DropDown);
+            this.txtNdk.TextChanged += new System.EventHandler(this.txtNdk_TextChanged);
             // 
             // menuStrip
             // 
@@ -797,6 +832,7 @@ namespace Company
             this.thốngKêThôngTinToolStripMenuItem.Name = "thốngKêThôngTinToolStripMenuItem";
             this.thốngKêThôngTinToolStripMenuItem.Size = new System.Drawing.Size(223, 24);
             this.thốngKêThôngTinToolStripMenuItem.Text = "Thống kê thông tin";
+            this.thốngKêThôngTinToolStripMenuItem.Click += new System.EventHandler(this.tắtToolStripMenuItem_Click);
             // 
             // tắtToolStripMenuItem
             // 
@@ -814,6 +850,7 @@ namespace Company
             this.khởiĐộngLạiToolStripMenuItem.Name = "khởiĐộngLạiToolStripMenuItem";
             this.khởiĐộngLạiToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.khởiĐộngLạiToolStripMenuItem.Text = "Khởi động lại";
+            this.khởiĐộngLạiToolStripMenuItem.Click += new System.EventHandler(this.khởiĐộngLạiToolStripMenuItem_Click);
             // 
             // toolStripSeparator12
             // 
@@ -836,6 +873,7 @@ namespace Company
             this.tắtToolStripMenuItem1.Name = "tắtToolStripMenuItem1";
             this.tắtToolStripMenuItem1.Size = new System.Drawing.Size(163, 24);
             this.tắtToolStripMenuItem1.Text = "Tắt";
+            this.tắtToolStripMenuItem1.Click += new System.EventHandler(this.tắtToolStripMenuItem1_Click);
             // 
             // toolStripSeparator20
             // 
@@ -870,6 +908,7 @@ namespace Company
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(198, 28);
             this.txtYear.TabIndex = 1000000047;
+            this.txtYear.TextChanged += new System.EventHandler(this.txtYear_TextChanged);
             // 
             // btnExe
             // 
@@ -886,11 +925,13 @@ namespace Company
             this.btnExe.Text = "Thực hiện";
             this.btnExe.UseVisualStyleBackColor = false;
             this.btnExe.Visible = false;
+            this.btnExe.Click += new System.EventHandler(this.btnExe_Click);
             // 
             // HoTich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1176, 714);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl);
@@ -904,11 +945,17 @@ namespace Company
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.btnExe);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.MaximizeBox = false;
             this.Name = "HoTich";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HoTich";
+            this.Text = "Hộ tịch";
+            this.MinimumSizeChanged += new System.EventHandler(this.HoTich_SizeChanged);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HoTich_FormClosing);
+            this.Load += new System.EventHandler(this.HoTich_Load);
+            this.SizeChanged += new System.EventHandler(this.HoTich_SizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

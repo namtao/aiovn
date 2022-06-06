@@ -167,20 +167,20 @@
     <Compile Include="Model\Diff.cs" />
     <Compile Include="DuAn\BinhPhuoc.cs" />
     <Compile Include="DuAn\ThaiBinh.cs" />
-    <Compile Include="HoTich.cs">
+    <Compile Include="HoTich\HoTich.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HoTich.Designer.cs">
+    <Compile Include="HoTich\HoTich.Designer.cs">
       <DependentUpon>HoTich.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\HT_KETHON.cs" />
     <Compile Include="Model\HT_KHAISINH.cs" />
     <Compile Include="Model\HT_KHAITU.cs" />
     <Compile Include="Model\HT_NHANCHAMECON.cs" />
-    <Compile Include="QuaTrinhXuLy.cs">
+    <Compile Include="HoTich\QuaTrinhXuLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuaTrinhXuLy.Designer.cs">
+    <Compile Include="HoTich\QuaTrinhXuLy.Designer.cs">
       <DependentUpon>QuaTrinhXuLy.cs</DependentUpon>
     </Compile>
     <Compile Include="Rename.cs">
@@ -195,10 +195,10 @@
     <Compile Include="QuanLyThietBi\QuanLyThietBi.Designer.cs">
       <DependentUpon>QuanLyThietBi.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportViewer.cs">
+    <Compile Include="QuanLyThietBi\ReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportViewer.Designer.cs">
+    <Compile Include="QuanLyThietBi\ReportViewer.Designer.cs">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="SoSanhBP.cs">
@@ -207,17 +207,11 @@
     <Compile Include="SoSanhBP.Designer.cs">
       <DependentUpon>SoSanhBP.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongKeNhanSu.cs">
+    <Compile Include="HoTich\ThongKeNhanSu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongKeNhanSu.Designer.cs">
+    <Compile Include="HoTich\ThongKeNhanSu.Designer.cs">
       <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ThongKeThietBi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ThongKeThietBi.Designer.cs">
-      <DependentUpon>ThongKeThietBi.cs</DependentUpon>
     </Compile>
     <Compile Include="TKBP.cs">
       <SubType>Form</SubType>
@@ -275,14 +269,14 @@
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HoTich.resx">
+    <EmbeddedResource Include="HoTich\HoTich.resx">
       <DependentUpon>HoTich.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="QuanLyThietBi\GiaoNhanThietBi.resx">
       <DependentUpon>GiaoNhanThietBi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuaTrinhXuLy.resx">
+    <EmbeddedResource Include="HoTich\QuaTrinhXuLy.resx">
       <DependentUpon>QuaTrinhXuLy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rename.resx">
@@ -291,17 +285,14 @@
     <EmbeddedResource Include="QuanLyThietBi\QuanLyThietBi.resx">
       <DependentUpon>QuanLyThietBi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportViewer.resx">
+    <EmbeddedResource Include="QuanLyThietBi\ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SoSanhBP.resx">
       <DependentUpon>SoSanhBP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongKeNhanSu.resx">
+    <EmbeddedResource Include="HoTich\ThongKeNhanSu.resx">
       <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ThongKeThietBi.resx">
-      <DependentUpon>ThongKeThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TKBP.resx">
       <DependentUpon>TKBP.cs</DependentUpon>

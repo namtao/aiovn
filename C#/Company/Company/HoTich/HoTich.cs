@@ -18,7 +18,7 @@ namespace Company
     public partial class HoTich : Form
     {
         public string database = "";
-        public static string sqlConnect = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+        public static string sqlConnect = ConfigurationManager.ConnectionStrings["hotich"].ConnectionString;
         public static HoTich form1;
         public static string dtTo, dtFrom;
         public static string dbName = "USE HoTich;\n";
@@ -266,7 +266,7 @@ namespace Company
             InitializeComponent();
             form1 = this;
 
-            timer.Interval = 600000000;
+            timer.Interval = 60000;
             timer.Start();
         }
 
@@ -487,11 +487,12 @@ namespace Company
                     "NguoiThucHien, nksLoaiKhaiSinh, nksNoiSinhDVHC, nksQueQuan, nycLoaiGiayToTuyThan, " +
                     "nycSoGiayToTuyThan, nycNgayCapGiayToTuyThan, nycNoiCapGiayToTuyThan, nksNgaySinhBangChu" +
                     " FROM HT_KHAISINH" +
-                    " where id = " + id + ";" +
+                    " where id = @id;" +
                     " SET IDENTITY_INSERT QTXLKS OFF; ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@id", id);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -1440,6 +1441,7 @@ namespace Company
                         QuaTrinhXuLy();
                         ThongKe();
                         UpdateID7();
+                        xuLy();
 
                         sqlConnection.Close();
                     }
@@ -1519,7 +1521,10 @@ namespace Company
                 if (threadXuLyKS.ThreadState == ThreadState.Running) threadXuLyKS.Abort();
                 if (threadXuLyKT.ThreadState == ThreadState.Running) threadXuLyKT.Abort();
                 if (threadXuLyKH.ThreadState == ThreadState.Running) threadXuLyKH.Abort();
-                Application.Exit();
+                //Application.Exit();
+                this.Hide();
+                Home home = new Home();
+                home.ShowDialog();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -1703,7 +1708,6 @@ namespace Company
                 rdnFormat.Checked = false;
                 rdnOther.Checked = false;
                 rdnLoiTrangSo.Checked = true;
-                rtbSQL.Text = strCommandSql.ToLower();
             }
             catch (Exception ex)
             {
@@ -1915,7 +1919,6 @@ namespace Company
                     btnExe.Visible = true;
                     rdnKS.Checked = true;
                     rdnLoiTrangSo.Checked = true;
-                    rtbSQL.Text = strCommandSql.ToLower();
                     rtbSQL.Visible = true;
                 }
                 else
@@ -1959,9 +1962,9 @@ namespace Company
                     "left join  DM_LOAICUTRU lctc on ks.chaLoaiCuTru = lctc.MaLoaiCuTru " +
                     "left join  HT_KS_LOAIKHAISINH lks on ks.nksLoaiKhaiSinh = lks.MaLoaiKhaiSinh " +
                     "left join  HT_LOAIGIAYTO lgtnk on ks.nycLoaiGiayToTuyThan = lgtnk.MaLoaiGiayTo " +
-                    "left join  HT_Tinh_NoiSinh nsdvhc on ks.nksNoiSinhDVHC = nsdvhc.Ma " +
-                    "WHERE meNgaySinh NOT LIKE N'%TUỔI%' AND chaNgaySinh NOT LIKE N'%TUỔI%' AND TinhTrangID like '%" + cbxTrangThai.SelectedValue + "%' and quyenSo like '%" + txtYear.Text + "%' and noiDangKy like '%" + txtNdk.SelectedValue + "%' " +
-                    " and quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019' ORDER BY quyenSo, so, TenNoiDangKy";
+                    "left join  HT_Tinh_NoiSinh nsdvhc on ks.nksNoiSinhDVHC = nsdvhc.Ma ";
+                    //"WHERE meNgaySinh NOT LIKE N'%TUỔI%' AND chaNgaySinh NOT LIKE N'%TUỔI%' AND TinhTrangID like '%" + cbxTrangThai.SelectedValue + "%' and quyenSo like '%" + txtYear.Text + "%' and noiDangKy like '%" + txtNdk.SelectedValue + "%' " +
+                    //" and quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019' ORDER BY quyenSo, so, TenNoiDangKy";
             }
             else if (cbxLoai.Text.Equals("HT_KHAITU"))
             {
@@ -2055,8 +2058,10 @@ namespace Company
             int tren16 = 0, duoi16 = 0, index = 1;
             for (int j = 0; j < dt1.Columns.Count; j++)
             {
-                if (dataGrid1.SelectedCells[j].Value.ToString().Trim().Length > 15) tren16++;
-                else duoi16++;
+                if (dataGrid1.SelectedCells[j].Value.ToString().Trim().Length > 15) 
+                    tren16++;
+                else 
+                    duoi16++;
             }
             dt.Rows.Add(index++, tren16, duoi16);
 
@@ -2069,6 +2074,30 @@ namespace Company
                 tren16 = 0; duoi16 = 0; index = 0;
             }
             else MessageBox.Show("Không có dữ liệu để lưu vào excel, vui lòng kiểm tra lại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void dataGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGrid2.DataSource = null;
+            dataGrid2.Refresh();
+            SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
+
+            string sqlQuery = "select quyenSo as N'Quyển số', count(*) as N'Số lượng' from " + cbxLoai.Text + " ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy " +
+                "where TinhTrangID like '%" + cbxTrangThai.SelectedValue + "%' and quyenSo like '%" + dataGrid1.Rows[e.RowIndex].Cells[0].Value.ToString() + "%' " +
+                "and noiDangKy = '" + dataGrid1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'" +
+                "group by quyenSo order by quyenSo";
+
+            Utils.FillDgv(conn, sqlQuery, dataGrid2);
+        }
+
+        private void sốBảnGhiToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tổngHợpToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
         }
 
         private void thốngKêToolStripMenuItem1_Click(object sender, EventArgs e)

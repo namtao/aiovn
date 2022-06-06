@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'MySite.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "mssql",
-        "NAME": "ADDJ_DB",
+        "NAME": "ADDJ",
         "USER": "sa",
         "PASSWORD": "P@ssword",
         "HOST": ".",

@@ -34,7 +34,7 @@ namespace Company
     public partial class QuanLyThietBi : Form
     {
         public static QuanLyThietBi form1;
-        public static string connectString = ConfigurationManager.ConnectionStrings["ADDJ"].ConnectionString;
+        public static string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
         public QuanLyThietBi()
         {
             InitializeComponent();

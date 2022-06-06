@@ -53,6 +53,8 @@ namespace Company
             this.thôngTinPhiênBảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.lbCount = new System.Windows.Forms.Label();
+            this.hoTichStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -144,7 +146,9 @@ namespace Company
             this.toolStripSeparator7,
             this.thongKeThuMucStripMenuItem1,
             this.toolStripSeparator2,
-            this.thongKeThietBiStripMenuItem1});
+            this.thongKeThietBiStripMenuItem1,
+            this.toolStripSeparator3,
+            this.hoTichStripMenuItem});
             this.toolsToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(55, 23);
@@ -242,6 +246,19 @@ namespace Company
             this.lbCount.Size = new System.Drawing.Size(0, 19);
             this.lbCount.TabIndex = 1000000034;
             // 
+            // hoTichStripMenuItem
+            // 
+            this.hoTichStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hoTichStripMenuItem.Name = "hoTichStripMenuItem";
+            this.hoTichStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.hoTichStripMenuItem.Text = "Hộ tịch";
+            this.hoTichStripMenuItem.Click += new System.EventHandler(this.hoTichStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(191, 6);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +310,8 @@ namespace Company
         private System.Windows.Forms.ToolStripMenuItem thongKeThuMucStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem thongKeThietBiStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem hoTichStripMenuItem;
     }
 }
 
