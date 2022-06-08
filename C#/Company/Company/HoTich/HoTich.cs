@@ -272,6 +272,8 @@ namespace Company
 
         public void ThongKe()
         {
+            List<string> loaiHoSo = new List<string> {"HT_KHAISINH", "HT_KHAITU", "HT_KETHON", "HT_NHANCHAMECON"};
+
             // thread thống kê khai sinh
             threadKS = new Thread(() =>
             {
@@ -1208,185 +1210,6 @@ namespace Company
             threadXuLyCMC.Start();
         }
 
-        public void demKS()
-        {
-            int countIndex = 0;
-            using (SqlConnection con = new SqlConnection(sqlConnect))
-            {
-                string sql = "SELECT so, quyenSo, trangSo, ngayDangKy, TenLoaiDangKy, " +
-                    "TenNoiDangKy, nksHoTen, TenGioiTinh, nksNgaySinh, dt.TenDanToc, qt.TenQuocTich, " +
-                    "meHoTen, meNgaySinh, dtm.TenDanToc, qtm.TenQuocTich, lctm.TenLoaiCuTru, chaHoTen, " +
-                    "chaNgaySinh, dtc.TenDanToc, qtc.TenQuocTich, lctc.TenLoaiCuTru, GhiChu, nksNoiSinh, " +
-                    "meNoiCuTru, chaNoiCuTru, nycHoTen, nycQuanHe, nguoiKy, chucVuNguoiKy, NguoiThucHien, " +
-                    "lks.TenLoaiKhaiSinh, nsdvhc.ten, nksQueQuan, lgtnk.TenLoaiGiayTo, nycSoGiayToTuyThan, " +
-                    "nycNgayCapGiayToTuyThan, nycNoiCapGiayToTuyThan, nksNgaySinhBangChu FROM HT_KHAISINH " +
-                    "ks left join  HT_KS_LOAIDANGKY ldk on ks.loaiDangKy = ldk.MaLoaiDangKy " +
-                    "left join  DM_GIOITINH gt on  ks.nksGioiTinh = gt.MaGioiTinh " +
-                    "left join  DM_DANTOC dt on ks.nksDanToc = dt.MaDanToc " +
-                    "left join  DM_DANTOC dtm on ks.meDanToc = dtm.MaDanToc " +
-                    "left join  DM_DANTOC dtc on ks.chaDanToc = dtc.MaDanToc " +
-                    "left join  DM_QUOCTICH qt on ks.nksQuocTich = qt.MaQuocTich " +
-                    "left join  DM_QUOCTICH qtm on ks.meQuocTich = qtm.MaQuocTich " +
-                    "left join  DM_QUOCTICH qtc on ks.chaQuocTich = qtc.MaQuocTich " +
-                    "left join  HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy " +
-                    "left join  DM_LOAICUTRU lctm on ks.meLoaiCuTru = lctm.MaLoaiCuTru " +
-                    "left join  DM_LOAICUTRU lctc on ks.chaLoaiCuTru = lctc.MaLoaiCuTru " +
-                    "left join  HT_KS_LOAIKHAISINH lks on ks.nksLoaiKhaiSinh = lks.MaLoaiKhaiSinh " +
-                    "left join  HT_LOAIGIAYTO lgtnk on ks.nycLoaiGiayToTuyThan = lgtnk.MaLoaiGiayTo " +
-                    "left join  HT_Tinh_NoiSinh nsdvhc on ks.nksNoiSinhDVHC = nsdvhc.Ma " +
-                    "WHERE quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'";
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    //duyệt từng bản ghi
-                    while (dr.Read())
-                    {
-                        for (int i = 0; i < sql.Split(new string[] { "FROM" }, StringSplitOptions.None)[0].
-                            Split(new string[] { "SELECT" }, StringSplitOptions.None)[1].Trim().Split(',').Length; i++)
-                        {
-                            //duyệt từng cột
-                            if (dr[i].ToString().Trim().Length == 14) countIndex++;
-
-                        }
-                    }
-                    MessageBox.Show("" + countIndex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    con.Close();
-                }
-            }
-        }
-        public void demKT()
-        {
-            int countIndex = 0;
-            using (SqlConnection con = new SqlConnection(sqlConnect))
-            {
-                string sql = "SELECT So, quyenSo, trangSo, ngayDangKy, TenLoaiDangKy, TenNoiDangKy, nktHoTen,  TenGioiTinh, " +
-                        "nktNgaySinh, dt.TenDanToc, qt.TenQuocTich, TenLoaiCuTru, lgt.TenLoaiGiayTo,  nktSoGiayToTuyThan, " +
-                        "nktNgayChet, GhiChu, nktGioPhutChet, nktNoiChet, nktNguyenNhanChet,  nktNoiCuTru, nycHoTen, nycQuanHe, " +
-                        "nguoiKy, chucVuNguoiKy, nguoiThucHien,  nktNgayCapGiayToTuyThan, nktNoiCapGiayToTuyThan, gbt.TenLoai, " +
-                        "gbtSo, gbtNgay,  gbtCoQuanCap, lgtnk.TenLoaiGiayTo, nycSoGiayToTuyThan, nycNgayCapGiayToTuyThan, " +
-                        "nycNoiCapGiayToTuyThan FROM HT_KHAITU kt  left join HT_KT_LOAIDANGKY ldk on kt.loaiDangKy = ldk.MaLoaiDangKy " +
-                        "left join HT_NOIDANGKY ndk on kt.noiDangKy = ndk.MaNoiDangKy " +
-                        "left join DM_GIOITINH gt on kt.nktGioiTinh = gt.MaGioiTinh " +
-                        "left join DM_DANTOC dt on kt.nktDanToc = dt.MaDanToc " +
-                        "left join DM_QUOCTICH qt on kt.nktQuocTich = qt.MaQuocTich " +
-                        "left join DM_LOAICUTRU lct on kt.nktLoaiCuTru = lct.MaLoaiCuTru " +
-                        "left join HT_LOAIGIAYTO lgt on kt.nktLoaiGiayToTuyThan = lgt.MaLoaiGiayTo " +
-                        "left join HT_KT_LOAI_GIAY_BAO_TU gbt on kt.gbtLoai = gbt.MaLoai " +
-                        "left join HT_LOAIGIAYTO lgtnk on kt.nktLoaiGiayToTuyThan = lgtnk.MaLoaiGiayTo " +
-                        "WHERE quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'";
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    //duyệt từng bản ghi
-                    while (dr.Read())
-                    {
-                        for (int i = 0; i < sql.Split(new string[] { "FROM" }, StringSplitOptions.None)[0].
-                            Split(new string[] { "SELECT" }, StringSplitOptions.None)[1].Trim().Split(',').Length; i++)
-                        {
-                            //duyệt từng cột
-                            if (dr[i].ToString().Trim().Length == 14) countIndex++;
-
-                        }
-                    }
-                    MessageBox.Show("" + countIndex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    con.Close();
-                }
-            }
-        }
-        public void demKH()
-        {
-            int countIndex = 0;
-            using (SqlConnection con = new SqlConnection(sqlConnect))
-            {
-                string sql = "SELECT So, quyenSo, trangSo, ngayDangKy, TenLoaiDangKy, TenNoiDangKy, chongHoTen,  " +
-                        "chongNgaySinh, dtc.TenDanToc, qtc.TenQuocTich, lctc.TenLoaiCuTru, lgtc.TenLoaiGiayTo, " +
-                        " chongSoGiayToTuyThan, voHoTen, voNgaySinh, dtv.TenDanToc, qtv.TenQuocTich, lctv.TenLoaiCuTru,  " +
-                        "lgtv.TenLoaiGiayTo, voSoGiayToTuyThan, GhiChu, chongNoiCuTru, voNoiCuTru, nguoiKy,  chucVuNguoiKy, " +
-                        "nguoiThucHien, chongNgayCapGiayToTuyThan, chongNoiCapGiayToTuyThan,  voNgayCapGiayToTuyThan, voNoiCapGiayToTuyThan " +
-                        "FROM HT_KETHON kh left join HT_KH_LOAIDANGKY ldk on kh.loaiDangKy = ldk.MaLoaiDangKy " +
-                        "left join HT_NOIDANGKY ndk on kh.noiDangKy = ndk.MaNoiDangKy " +
-                        "left join DM_DANTOC dtc on kh.chongDanToc = dtc.MaDanToc " +
-                        "left join DM_QUOCTICH qtc on kh.chongQuocTich = qtc.MaQuocTich " +
-                        "left join DM_LOAICUTRU lctc on kh.chongLoaiCuTru = lctc.MaLoaiCuTru " +
-                        "left join HT_LOAIGIAYTO lgtc on kh.chongLoaiGiayToTuyThan = lgtc.MaLoaiGiayTo " +
-                        "left join DM_DANTOC dtv on kh.voDanToc = dtv.MaDanToc " +
-                        "left join DM_QUOCTICH qtv on kh.voQuocTich = qtv.MaQuocTich " +
-                        "left join DM_LOAICUTRU lctv on kh.voLoaiCuTru = lctv.MaLoaiCuTru " +
-                        "left join HT_LOAIGIAYTO lgtv on kh.voLoaiGiayToTuyThan = lgtv.MaLoaiGiayTo " +
-                        "WHERE quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'";
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    //duyệt từng bản ghi
-                    while (dr.Read())
-                    {
-                        for (int i = 0; i < sql.Split(new string[] { "FROM" }, StringSplitOptions.None)[0].
-                            Split(new string[] { "SELECT" }, StringSplitOptions.None)[1].Trim().Split(',').Length; i++)
-                        {
-                            //duyệt từng cột
-                            if (dr[i].ToString().Trim().Length == 14) countIndex++;
-
-                        }
-                    }
-                    MessageBox.Show("" + countIndex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    con.Close();
-                }
-            }
-        }
-        public void demCMC()
-        {
-            int countIndex = 0;
-            using (SqlConnection con = new SqlConnection(sqlConnect))
-            {
-                string sql = "SELECT So, quyenSo, trangSo, quyetDinhSo, ngayDangKy, TenLoaiDangKy, " +
-                        "TenLoaiXacNhan,  TenNoiDangKy, cmHoTen, cmNgaySinh, dtcm.TenDanToc, qtcm.TenQuocTich, " +
-                        "lctcm.TenLoaiCuTru, lgtcm.TenLoaiGiayTo,  cmSoGiayToTuyThan, ncHoTen, ncNgaySinh, " +
-                        "dtnc.TenDanToc, qtnc.TenQuocTich, lctnc.TenLoaiCuTru, lgtnc.TenLoaiGiayTo,  " +
-                        "ncSoGiayToTuyThan, GhiChu, cmNoiCuTru, ncNoiCuTru, nycHoTen, nycQHNguoiDuocNhan,  " +
-                        "nguoiKy, chucVuNguoiKy, nguoiThucHien, cmQueQuan, cmNgayCapGiayToTuyThan,  " +
-                        "cmNoiCapGiayToTuyThan, ncQueQuan, ncNgayCapGiayToTuyThan, ncNoiCapGiayToTuyThan,  " +
-                        "lgtnk.TenLoaiGiayTo, nycSoGiayToTuyThan, nycNgayCapGiayToTuyThan, nycNoiCapGiayToTuyThan " +
-                        "FROM HT_NHANCHAMECON cmc left join HT_NCM_LOAIDANGKY ldk on cmc.loaiDangKy = ldk.MaLoaiDangKy " +
-                        "left join DM_LOAIXACNHAN lxn on cmc.loaiXacNhan = lxn.MaLoaiXacNhan " +
-                        "left join HT_NOIDANGKY ndk on cmc.noiDangKy = ndk.MaNoiDangKy " +
-                        "left join DM_DANTOC dtcm on cmc.cmDanToc = dtcm.MaDanToc " +
-                        "left join DM_QUOCTICH qtcm on cmc.cmQuocTich = qtcm.MaQuocTich " +
-                        "left join DM_LOAICUTRU lctcm on cmc.cmLoaiCuTru = lctcm.MaLoaiCuTru " +
-                        "left join HT_LOAIGIAYTO lgtcm on cmc.cmLoaiGiayToTuyThan = lgtcm.MaLoaiGiayTo " +
-                        "left join DM_DANTOC dtnc on cmc.ncDanToc = dtnc.MaDanToc " +
-                        "left join DM_QUOCTICH qtnc on cmc.ncQuocTich = qtnc.MaQuocTich " +
-                        "left join DM_LOAICUTRU lctnc on cmc.ncLoaiCuTru = lctnc.MaLoaiCuTru " +
-                        "left join HT_LOAIGIAYTO lgtnc on cmc.ncLoaiGiayToTuyThan = lgtnc.MaLoaiGiayTo " +
-                        "left join HT_LOAIGIAYTO lgtnk on cmc.nycLoaiGiayToTuyThan = lgtnk.MaLoaiGiayTo " +
-                        "WHERE quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'";
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    //duyệt từng bản ghi
-                    while (dr.Read())
-                    {
-                        for (int i = 0; i < sql.Split(new string[] { "FROM" }, StringSplitOptions.None)[0].
-                            Split(new string[] { "SELECT" }, StringSplitOptions.None)[1].Trim().Split(',').Length; i++)
-                        {
-                            //duyệt từng cột
-                            if (dr[i].ToString().Trim().Length == 14) countIndex++;
-
-                        }
-                    }
-                    MessageBox.Show("" + countIndex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    con.Close();
-                }
-            }
-        }
-
         public void updateNgayThang(string cot, string bang)
         {
 
@@ -1475,6 +1298,7 @@ namespace Company
 
         private void btnExe_Click(object sender, EventArgs e)
         {
+            datagrid.Visible = true;
             try
             {
                 if (rdnBM.Checked || rdnKTBM1.Checked || rdnKTBM2.Checked || rdnKetThuc.Checked)
@@ -1605,12 +1429,12 @@ namespace Company
                 {
                     groupBox1.Enabled = false;
                     groupBox2.Enabled = false;
-                    rtbSQL.Enabled = false;
+                    //rtbSQL.Enabled = false;
+                    rtbSQL.ReadOnly = true;
                     btnExe.Visible = false;
                     rdnKS.Checked = false;
                     rdnLoiTrangSo.Checked = false;
                     rtbSQL.Text = "";
-                    rtbSQL.Enabled = false;
                     lbCount.Enabled = false;
                 }
             }
@@ -1643,7 +1467,6 @@ namespace Company
                     rdnLoiTrangSo.Checked = false;
                     rtbSQL.Text = "";
                     datagrid.Visible = false;
-                    rtbSQL.Visible = false;
                     lbCount.Visible = false;
                 }
                 xuLyLenh();
@@ -1850,9 +1673,11 @@ namespace Company
 
                 SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
 
-                string sqlQuery = "select RIGHT(quyenSo, 4) as N'Năm', noiDangKy as N'Mã nơi đăng ký',  REPLACE(TenNoiDangKy, N', Thành phố Hồ Chí Minh', '') as N'Tên nơi đăng ký', " +
+                string sqlQuery = "select RIGHT(quyenSo, 4) as N'Năm', noiDangKy as N'Mã nơi đăng ký',  " +
+                    "REPLACE(TenNoiDangKy, N', Thành phố Hồ Chí Minh', '') as N'Tên nơi đăng ký', " +
                     "count(*) as N'Số lượng' from " + cbxLoai.Text + " ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy " +
-                    "where TinhTrangID like '%" + cbxTrangThai.SelectedValue + "%' and quyenSo like '%" + txtYear.Text + "%' and noiDangKy like '%" + txtNdk.SelectedValue + "%' " +
+                    "where TinhTrangID like '%" + cbxTrangThai.SelectedValue + "%' and quyenSo like '%" + 
+                    txtYear.Text + "%' and noiDangKy like '%" + txtNdk.SelectedValue + "%' " +
                     "group by RIGHT(quyenSo, 4), TenNoiDangKy, noiDangKy " +
                     "order by RIGHT(quyenSo, 4), TenNoiDangKy";
 
@@ -1900,8 +1725,10 @@ namespace Company
             dataGrid2.Refresh();
             SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
 
-            string sqlQuery = "select quyenSo as N'Quyển số', count(*) as N'Số lượng' from " + cbxLoai.Text + " ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy " +
-                "where TinhTrangID like '%" + cbxTrangThai.SelectedValue + "%' and quyenSo like '%" + dataGrid1.Rows[e.RowIndex].Cells[0].Value.ToString() + "%' " +
+            string sqlQuery = "select quyenSo as N'Quyển số', count(*) as N'Số lượng' from " + cbxLoai.Text + 
+                " ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy " +
+                "where TinhTrangID like '%" + cbxTrangThai.SelectedValue + "%' and quyenSo like '%" + 
+                dataGrid1.Rows[e.RowIndex].Cells[0].Value.ToString() + "%' " +
                 "and noiDangKy = '" + dataGrid1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'" +
                 "group by quyenSo order by quyenSo";
 
@@ -1925,7 +1752,6 @@ namespace Company
                 {
                     groupBox1.Enabled = false;
                     groupBox2.Enabled = false;
-                    rtbSQL.Visible = false;
                     btnExe.Visible = false;
                     rdnKS.Checked = false;
                     rdnLoiTrangSo.Checked = false;
@@ -2088,16 +1914,6 @@ namespace Company
                 "group by quyenSo order by quyenSo";
 
             Utils.FillDgv(conn, sqlQuery, dataGrid2);
-        }
-
-        private void sốBảnGhiToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tổngHợpToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void thốngKêToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -2523,17 +2339,18 @@ namespace Company
                 List<string> listDayDu2TrangThai = new List<string>();
 
                 string str = " SELECT DISTINCT ID " +
-                    " FROM " + tableName + "" +
-                    " where ((id in (select id from " + tableName + " where TinhTrangID = 7) " +
-                    "and id in (select id from " + tableName + " where TinhTrangID = 6)) " +
-                    "or (id in (select id from " + tableName + " where TinhTrangID = 7) " +
-                    "and id in (select id from " + tableName + " where TinhTrangID = 5)) " +
-                    "or (id in (select id from " + tableName + " where TinhTrangID = 5) " +
-                    "and id in (select id from " + tableName + " where TinhTrangID = 6)))";
+                    " FROM @tableName" +
+                    " where ((id in (select id from @tableName where TinhTrangID = 7) " +
+                    "and id in (select id from @tableName where TinhTrangID = 6)) " +
+                    "or (id in (select id from @tableName where TinhTrangID = 7) " +
+                    "and id in (select id from @tableName where TinhTrangID = 5)) " +
+                    "or (id in (select id from @tableName where TinhTrangID = 5) " +
+                    "and id in (select id from @tableName where TinhTrangID = 6)))";
 
                 using (SqlCommand cmd = new SqlCommand(str, con))
                 {
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@tableName", tableName);    
                     con.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     //duyệt từng bản ghi

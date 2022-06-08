@@ -17,7 +17,7 @@ namespace Company.DuAn
 {
     class ThaiBinh
     {
-        string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+        string connectString = ConfigurationManager.ConnectionStrings["hotich"].ConnectionString;
         public void countFieldExcelTruoc()
         {
             // cho 3 loại của DK = 0, tổng người có công + văn bản + thân nhân chia đều cho số đối tượng của từng phông, còn lại để của liệt sỹ

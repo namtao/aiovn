@@ -248,7 +248,7 @@
     <Compile Include="Tree.Designer.cs">
       <DependentUpon>Tree.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Utils.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="ViewPdf.cs">
       <SubType>Form</SubType>
     </Compile>

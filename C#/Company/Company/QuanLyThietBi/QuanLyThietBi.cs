@@ -132,5 +132,11 @@ namespace Company
                 }
             }
         }
+
+        private void QuanLyThietBi_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Home.form1.Show();
+            this.Hide();
+        }
     }
 }

@@ -9,6 +9,7 @@
 # Tuy nhiên nếu database đã tồn tại thì Python sẽ tạo ra 1 connection với database được chỉ định
 
 
+from unicodedata import name
 from pymongo import MongoClient
 
 
@@ -53,6 +54,6 @@ if __name__ == "__main__":
 
     # cursor = collection_name.insert_one(record)
 
-    for record in collection_name.find():
+    for record in collection_name.find({"name": { "$exists": "true" },"$expr": { "$gt": [ { "$strLenCP":"$name" }, 5]}}):
         print(record)
     # print (db_name.ThietBi.find().pretty())

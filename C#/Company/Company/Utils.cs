@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using Microsoft.Office.Interop.Excel;
@@ -501,6 +502,29 @@ namespace Company
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
             string temp = s.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
+        public static int DemTruong(string connectString, string table, List<string> list)
+        {
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(connectString))
+            {
+                con.Open();
+                foreach (string a in list)
+                {
+                    string sql = "select count(*) from " + table + " " +
+                        "where " + a + " is not null and CAST(" + a + " as varchar(max)) != ''";
+                    count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
+                }
+
+                /*Parallel.For(0, list.Count, a =>
+                {
+                    string sql = "select count(*) from " + table + " " +
+                        "where " + a + " is not null and CAST(" + a + " as varchar(max)) != ''";
+                    count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
+                });*/
+            }
+            return count;
         }
     }
 }
