@@ -516,13 +516,6 @@ namespace Company
                         "where " + a + " is not null and CAST(" + a + " as varchar(max)) != ''";
                     count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
                 }
-
-                /*Parallel.For(0, list.Count, a =>
-                {
-                    string sql = "select count(*) from " + table + " " +
-                        "where " + a + " is not null and CAST(" + a + " as varchar(max)) != ''";
-                    count += Int32.Parse((new SqlCommand(sql, con).ExecuteScalar().ToString()));
-                });*/
             }
             return count;
         }
