@@ -1,0 +1,34 @@
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\bin\Debug\file transfer.exe
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\bin\Debug\file transfer.pdb
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\obj\Debug\file transfer.csprojResolveAssemblyReference.cache
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\obj\Debug\Main.resources
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\obj\Debug\file_transfer.Properties.Resources.resources
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\obj\Debug\file transfer.csproj.GenerateResource.Cache
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\obj\Debug\file transfer.exe
+C:\Users\Nathan\Documents\Visual Studio\Tutorial Projects\file transfer(edited 2)\file transfer\obj\Debug\file transfer.pdb
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\bin\Debug\file transfer.exe
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\bin\Debug\file transfer.pdb
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\obj\Debug\Main.resources
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\obj\Debug\file_transfer.Properties.Resources.resources
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\obj\Debug\file transfer.csproj.GenerateResource.cache
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\obj\Debug\file transfer.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\obj\Debug\file transfer.exe
+C:\Users\ADMIN\Downloads\Socket File Transfer\file transfer\file transfer\obj\Debug\file transfer.pdb
+C:\Projects\C#\File Transfer\file transfer\bin\Debug\file transfer.exe
+C:\Projects\C#\File Transfer\file transfer\bin\Debug\file transfer.pdb
+C:\Projects\C#\File Transfer\file transfer\obj\Debug\Main.resources
+C:\Projects\C#\File Transfer\file transfer\obj\Debug\file_transfer.Properties.Resources.resources
+C:\Projects\C#\File Transfer\file transfer\obj\Debug\file transfer.csproj.GenerateResource.cache
+C:\Projects\C#\File Transfer\file transfer\obj\Debug\file transfer.csproj.CoreCompileInputs.cache
+C:\Projects\C#\File Transfer\file transfer\obj\Debug\file transfer.exe
+C:\Projects\C#\File Transfer\file transfer\obj\Debug\file transfer.pdb
+C:\Projects\C#\New folder\File Transfer\file transfer\bin\Debug\file transfer.exe
+C:\Projects\C#\New folder\File Transfer\file transfer\bin\Debug\file transfer.pdb
+C:\Projects\C#\New folder\File Transfer\file transfer\obj\Debug\file transfer.csproj.AssemblyReference.cache
+C:\Projects\C#\New folder\File Transfer\file transfer\obj\Debug\Main.resources
+C:\Projects\C#\New folder\File Transfer\file transfer\obj\Debug\file_transfer.Properties.Resources.resources
+C:\Projects\C#\New folder\File Transfer\file transfer\obj\Debug\file transfer.csproj.GenerateResource.cache
+C:\Projects\C#\New folder\File Transfer\file transfer\obj\Debug\file transfer.csproj.CoreCompileInputs.cache
+C:\Projects\C#\New folder\File Transfer\file transfer\obj\Debug\file transfer.exe
+C:\Projects\C#\New folder\File Transfer\file transfer\obj\Debug\file transfer.pdb
+C:\Projects\C#\File Transfer\file transfer\obj\Debug\file transfer.csproj.AssemblyReference.cache

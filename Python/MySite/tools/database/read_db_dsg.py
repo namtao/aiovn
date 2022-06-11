@@ -51,6 +51,6 @@ def get_db():
 
 
 config = configparser.ConfigParser()
-config.read(r'C:\Projects\Python\Tools\database\config.ini')
+config.read(r'MySite\tools\config.ini')
 
 print(config['SqlServerDB']['host'])
