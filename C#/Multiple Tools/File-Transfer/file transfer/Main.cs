@@ -184,7 +184,7 @@ public partial class Main : Form
         i.Name = queue.ID.ToString(); //Set the name of the item to the ID of our transfer for easy access.
         lstTransfers.Items.Add(i); //Add the item
         i.EnsureVisible();
-        
+
         //If the type is download, let the uploader know we're ready.
         if (queue.Type == QueueType.Download)
         {
