@@ -130,7 +130,7 @@ namespace ClientInterface
             if (ClientInterfaceProps.UserIsValid)
             {
                 // tên người dùng đăng nhập
-                new_user = new UserData(IPasString, userPort, "Nguyễn Văn Nam");
+                new_user = new UserData(IPasString, userPort, userNIckname);
                 MessageData mData = new MessageData(new_user);
                 mData.action = NetworkAction.Connection;
                 UserLogic.LolacAction = NetworkAction.Connection;

@@ -217,9 +217,9 @@
             this.Userlabel.ForeColor = System.Drawing.Color.Indigo;
             this.Userlabel.Location = new System.Drawing.Point(3, 7);
             this.Userlabel.Name = "Userlabel";
-            this.Userlabel.Size = new System.Drawing.Size(68, 32);
+            this.Userlabel.Size = new System.Drawing.Size(148, 32);
             this.Userlabel.TabIndex = 19;
-            this.Userlabel.Text = "Nam";
+            this.Userlabel.Text = "Người dùng";
             // 
             // pictureBox1
             // 

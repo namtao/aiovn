@@ -82,8 +82,7 @@
             this.UserNameBox.Location = new System.Drawing.Point(120, 127);
             this.UserNameBox.Name = "UserNameBox";
             this.UserNameBox.Size = new System.Drawing.Size(160, 26);
-            this.UserNameBox.TabIndex = 18;
-            this.UserNameBox.Text = "3";
+            this.UserNameBox.TabIndex = 3;
             // 
             // portTextBox
             // 
