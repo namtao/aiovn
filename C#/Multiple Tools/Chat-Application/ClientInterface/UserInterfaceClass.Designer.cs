@@ -49,7 +49,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PrivatecheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.UserPanel = new System.Windows.Forms.Panel();
-            this.ColorChoosing = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.RedLightPanel.SuspendLayout();
@@ -207,7 +206,6 @@
             this.PrivateMessageButton.TabIndex = 18;
             this.PrivateMessageButton.Text = "Private Message";
             this.PrivateMessageButton.UseVisualStyleBackColor = true;
-            this.PrivateMessageButton.Visible = false;
             this.PrivateMessageButton.Click += new System.EventHandler(this.PrivateMessageButton_Click);
             // 
             // Userlabel
@@ -225,7 +223,7 @@
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 465);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 465);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(291, 122);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -239,7 +237,6 @@
             this.PrivatecheckedListBox.Name = "PrivatecheckedListBox";
             this.PrivatecheckedListBox.Size = new System.Drawing.Size(151, 94);
             this.PrivatecheckedListBox.TabIndex = 30;
-            this.PrivatecheckedListBox.Visible = false;
             this.PrivatecheckedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.PrivatecheckedListBox_ItemCheck);
             // 
             // UserPanel
@@ -251,7 +248,6 @@
             this.UserPanel.Controls.Add(this.GreenLightPanel);
             this.UserPanel.Controls.Add(this.RedLightPanel);
             this.UserPanel.Controls.Add(this.panel5);
-            this.UserPanel.Controls.Add(this.ColorChoosing);
             this.UserPanel.Controls.Add(this.PrivateMessageButton);
             this.UserPanel.Controls.Add(this.ConnectToserverButton);
             this.UserPanel.Controls.Add(this.DisconnectFromServerButton);
@@ -261,20 +257,6 @@
             this.UserPanel.Name = "UserPanel";
             this.UserPanel.Size = new System.Drawing.Size(530, 635);
             this.UserPanel.TabIndex = 31;
-            // 
-            // ColorChoosing
-            // 
-            this.ColorChoosing.Enabled = false;
-            this.ColorChoosing.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColorChoosing.ForeColor = System.Drawing.Color.MediumBlue;
-            this.ColorChoosing.Location = new System.Drawing.Point(11, 233);
-            this.ColorChoosing.Name = "ColorChoosing";
-            this.ColorChoosing.Size = new System.Drawing.Size(130, 38);
-            this.ColorChoosing.TabIndex = 9;
-            this.ColorChoosing.Text = "Change Color";
-            this.ColorChoosing.UseVisualStyleBackColor = true;
-            this.ColorChoosing.Visible = false;
-            this.ColorChoosing.Click += new System.EventHandler(this.ColorChoosing_Click);
             // 
             // UserInterfaceClass
             // 
@@ -329,7 +311,6 @@
         private System.Windows.Forms.CheckedListBox PrivatecheckedListBox;
         private System.Windows.Forms.RichTextBox ChatrichTextBox;
         private System.Windows.Forms.Panel UserPanel;
-        public System.Windows.Forms.Button ColorChoosing;
     }
 }
 

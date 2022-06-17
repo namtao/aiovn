@@ -26,25 +26,6 @@ namespace ClientInterface
         // tên người dùng khi nhắn tin
         UserData uData;
 
-        private void ColorChoosing_Click(object sender, EventArgs e)
-        {
-
-            colorDialog1.AllowFullOpen = true;
-            colorDialog1.AnyColor = true;
-            DialogResult result = colorDialog1.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                uData.color = colorDialog1.Color;
-                MesData.color = colorDialog1.Color;
-                this.TextMessages.ForeColor = colorDialog1.Color;
-                this.ChatrichTextBox.SelectionColor = colorDialog1.Color;
-
-            }
-        }
-
-
-
         private void ConnectToserverButton_Click(object sender, EventArgs e)
         {
             registration.ShowDialog();
@@ -55,7 +36,6 @@ namespace ClientInterface
 
                 sendmessageButton.Enabled = true;
                 PrivateMessageButton.Enabled = true;
-                ColorChoosing.Enabled = true;
 
 
                 RedLightPanel.Visible = false;
@@ -178,25 +158,8 @@ namespace ClientInterface
                 DisconnectFromServerButton.Enabled = false;
                 sendmessageButton.Enabled = false;
                 PrivateMessageButton.Enabled = false;
-                ColorChoosing.Enabled = false;
-
-
-
-
             }
         }
-
-
-
-
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://github.com/rodionz");
-        }
-
-
-
 
         private void PrivatecheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
