@@ -41,12 +41,6 @@ namespace ServerInterface
                  
         }
 
-      
-
-      
-
-      
-
         private void StopServerButton_Click(object sender, EventArgs e)
         {
            

@@ -50,7 +50,7 @@ namespace ClientBL
                 /* Please Pay Attention that attempt to connect to unexisting server will cause
                 a delay (7 - 10 seconds) untill it throws an exeption
                 */
-                preclient.Connect("192.16.0.2", 10001);
+                preclient.Connect(premesData.Userdat.IPadress, premesData.Userdat.Portnumber);
 
                 using (NetworkStream netStream = preclient.GetStream())
                 {
@@ -117,17 +117,17 @@ namespace ClientBL
                 NoConnectionWhithServerEvent("Máy chủ ngoại tuyến");
                 ServerDisconnected();
             }
-            
 
 
-            }
+
+        }
         private static void StariListenToIncomingMessages(UserData currentUser)
         {
             BinaryFormatter listerformatter = new BinaryFormatter();
             MessageData incoming = new MessageData();
             NetworkStream usernetstream = ClientProps.clientStream;
 
-            
+
 
             while (ClientProps.UserisOnline)
             {
@@ -204,12 +204,10 @@ namespace ClientBL
                 BinaryFormatter sendingformatter = new BinaryFormatter();
                 NetworkStream localstrem = ClientProps.clientStream;
                 sendingformatter.Serialize(localstrem, outcoming);
+                /*
+                 This property servs as a detector of network interferences (like Network Cable disconnection)
+                 Please see more information inside of ClientProps class */
 
-
-          /*
-          This property servs as a detector of network interferences (like Network Cable disconnection)
-          Please see more information inside of ClientProps class
-                */
                 if (!ClientProps.Network_Works)
                 {
 
@@ -218,8 +216,6 @@ namespace ClientBL
                     client.Close();
                     return;
                 }
-
-               
             }
 
             catch (Exception io)
@@ -230,42 +226,26 @@ namespace ClientBL
                 client.Close();
                 return;
             }
-
-
-          
-            
         }
-
-
-
-
-
 
         public static void Disconnection(UserData uData)
 
         {
-            
+
             GlobalValidIpandPort = false;
             MessageData mData = new MessageData(uData, NetworkAction.UserDisconnection);
             BinaryFormatter disconnect = new BinaryFormatter();
             NetworkStream local = ClientProps.clientStream;
 
-          
-
-
             try
             {
                 disconnect.Serialize(local, mData);
-                
             }
 
-           catch
+            catch
             {
-                
+
             }
-
-
-
 
             try
             {
@@ -273,14 +253,11 @@ namespace ClientBL
                 ClientProps.clientStream.Dispose();
             }
 
-
             finally
             {
                 client.Close();
             }
 
         }
-
-
     }
 }

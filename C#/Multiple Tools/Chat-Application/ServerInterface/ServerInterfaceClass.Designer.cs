@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerInterfaceClass));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.CurrentUsersListbox = new System.Windows.Forms.ListBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.HistoryListbox = new System.Windows.Forms.ListBox();
+            this.tabChat = new System.Windows.Forms.TabPage();
+            this.ChatListBox = new System.Windows.Forms.ListBox();
             this.StartServerButton = new System.Windows.Forms.Button();
             this.GreenLightPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,24 +48,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ServerPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabChat = new System.Windows.Forms.TabPage();
-            this.ChatListBox = new System.Windows.Forms.ListBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.HistoryListbox = new System.Windows.Forms.ListBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.CurrentUsersListbox = new System.Windows.Forms.ListBox();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
             this.panel1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabChat.SuspendLayout();
             this.GreenLightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GreenLamp)).BeginInit();
             this.RedLightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RedLamp)).BeginInit();
             this.ServerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabChat.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,6 +70,79 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(363, 326);
             this.panel1.TabIndex = 1;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabChat);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(359, 322);
+            this.tabControl2.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage4.Controls.Add(this.CurrentUsersListbox);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(351, 296);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Người dùng trực tuyến";
+            // 
+            // CurrentUsersListbox
+            // 
+            this.CurrentUsersListbox.BackColor = System.Drawing.Color.White;
+            this.CurrentUsersListbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CurrentUsersListbox.FormattingEnabled = true;
+            this.CurrentUsersListbox.Location = new System.Drawing.Point(3, 3);
+            this.CurrentUsersListbox.Name = "CurrentUsersListbox";
+            this.CurrentUsersListbox.Size = new System.Drawing.Size(345, 290);
+            this.CurrentUsersListbox.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage5.Controls.Add(this.HistoryListbox);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(351, 296);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Lịch sử";
+            // 
+            // HistoryListbox
+            // 
+            this.HistoryListbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HistoryListbox.FormattingEnabled = true;
+            this.HistoryListbox.Location = new System.Drawing.Point(3, 3);
+            this.HistoryListbox.Name = "HistoryListbox";
+            this.HistoryListbox.Size = new System.Drawing.Size(345, 290);
+            this.HistoryListbox.TabIndex = 0;
+            // 
+            // tabChat
+            // 
+            this.tabChat.Controls.Add(this.ChatListBox);
+            this.tabChat.Location = new System.Drawing.Point(4, 22);
+            this.tabChat.Name = "tabChat";
+            this.tabChat.Padding = new System.Windows.Forms.Padding(3);
+            this.tabChat.Size = new System.Drawing.Size(351, 296);
+            this.tabChat.TabIndex = 2;
+            this.tabChat.Text = "Nội dung";
+            this.tabChat.UseVisualStyleBackColor = true;
+            // 
+            // ChatListBox
+            // 
+            this.ChatListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ChatListBox.FormattingEnabled = true;
+            this.ChatListBox.Location = new System.Drawing.Point(3, 3);
+            this.ChatListBox.Name = "ChatListBox";
+            this.ChatListBox.Size = new System.Drawing.Size(345, 290);
+            this.ChatListBox.TabIndex = 0;
             // 
             // StartServerButton
             // 
@@ -193,79 +266,6 @@
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
-            // tabChat
-            // 
-            this.tabChat.Controls.Add(this.ChatListBox);
-            this.tabChat.Location = new System.Drawing.Point(4, 22);
-            this.tabChat.Name = "tabChat";
-            this.tabChat.Padding = new System.Windows.Forms.Padding(3);
-            this.tabChat.Size = new System.Drawing.Size(351, 296);
-            this.tabChat.TabIndex = 2;
-            this.tabChat.Text = "Nội dung";
-            this.tabChat.UseVisualStyleBackColor = true;
-            // 
-            // ChatListBox
-            // 
-            this.ChatListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChatListBox.FormattingEnabled = true;
-            this.ChatListBox.Location = new System.Drawing.Point(3, 3);
-            this.ChatListBox.Name = "ChatListBox";
-            this.ChatListBox.Size = new System.Drawing.Size(345, 290);
-            this.ChatListBox.TabIndex = 0;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage5.Controls.Add(this.HistoryListbox);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(351, 296);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Lịch sử";
-            // 
-            // HistoryListbox
-            // 
-            this.HistoryListbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HistoryListbox.FormattingEnabled = true;
-            this.HistoryListbox.Location = new System.Drawing.Point(3, 3);
-            this.HistoryListbox.Name = "HistoryListbox";
-            this.HistoryListbox.Size = new System.Drawing.Size(345, 290);
-            this.HistoryListbox.TabIndex = 0;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage4.Controls.Add(this.CurrentUsersListbox);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(351, 296);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Người dùng trực tuyến";
-            // 
-            // CurrentUsersListbox
-            // 
-            this.CurrentUsersListbox.BackColor = System.Drawing.Color.White;
-            this.CurrentUsersListbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CurrentUsersListbox.FormattingEnabled = true;
-            this.CurrentUsersListbox.Location = new System.Drawing.Point(3, 3);
-            this.CurrentUsersListbox.Name = "CurrentUsersListbox";
-            this.CurrentUsersListbox.Size = new System.Drawing.Size(345, 290);
-            this.CurrentUsersListbox.TabIndex = 0;
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabChat);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl2.Location = new System.Drawing.Point(0, 0);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(359, 322);
-            this.tabControl2.TabIndex = 1;
-            // 
             // ServerInterfaceClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,12 +273,19 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(512, 597);
             this.Controls.Add(this.ServerPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ServerInterfaceClass";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Máy chủ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerInterfaceClass_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ServerInterfaceClass_FormClosed);
             this.Load += new System.EventHandler(this.ServerInterfaceClass_Load);
             this.panel1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabChat.ResumeLayout(false);
             this.GreenLightPanel.ResumeLayout(false);
             this.GreenLightPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GreenLamp)).EndInit();
@@ -288,10 +295,6 @@
             this.ServerPanel.ResumeLayout(false);
             this.ServerPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabChat.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

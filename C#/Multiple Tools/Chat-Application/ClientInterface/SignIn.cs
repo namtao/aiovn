@@ -18,65 +18,63 @@ namespace ClientInterface
 
         }
 
-
-        IPAddress clientIpAddr = IPAddress.Parse("192.168.0.2");
+        IPAddress clientIpAddr;
         internal UserData new_user;
         MessageData mData;
         internal string userNIckname;
         internal string IPasString;
-        internal int userPort = 10001;
+        internal int userPort;
         internal List<UserData> localListofUsers;
 
 
-
-        /* Please Pay Attention that attempt to check IP address and port of unexisting server will cause
-               a delay (7 - 10 seconds) untill it throws an exeption
-               */
-
-        public void ConfirmIP_Click(object sender, EventArgs e)
+        private void ClearAll()
         {
-            //this.IPmaskedTextBox.ValidatingType = typeof(IPAddress);
-            //char[] delimit = { ' ' };
-            //string[] str = IPmaskedTextBox.Text.Split();
-            //string separator = "";
-            //IPasString = string.Join(separator, str);
-            bool b = IPAddress.TryParse("192.168.0.2", out clientIpAddr);
+            IPmaskedTextBox.Clear();
+            UserNameBox.Clear();
+            portTextBox.Clear();
+        }
+
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
+
+            // check IP
+            this.IPmaskedTextBox.ValidatingType = typeof(IPAddress);
+            char[] delimit = { ' ' };
+            string[] str = IPmaskedTextBox.Text.Split();
+            string separator = "";
+            IPasString = IPmaskedTextBox.Text;
+            bool b = IPAddress.TryParse(IPasString, out clientIpAddr);
 
 
 
-            bool portvalid = int.TryParse("192.168.0.2", out userPort);
+            bool portvalid = int.TryParse(portTextBox.Text, out userPort);
 
-            /*if(!portvalid)
+            if (!portvalid)
             {
-                MessageBox.Show("Please Fill Number of Port and IPAdress", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show("Không được để trống thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-           else if (!b)
+            else if (!b)
             {
-                WarningLabel.ForeColor = Color.Red;
-                WarningLabel.Text = "Illigal IP, please enter IP adress in correct format";
+                MessageBox.Show("Thông tin không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-           else if(!userPort.PortisValid())
+            else if (!userPort.PortisValid())
             {
-                WarningLabel.ForeColor = Color.Red;
-                WarningLabel.Text = "Port Number is Illigal \n Pelease choose port \n from 10000 to 65535";
+                MessageBox.Show("Cổng trong khoảng 10000 đến 65535", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
-            else*/
+            else
             {
 
-                mData = new MessageData(new UserData("192.168.0.2", 10001), NetworkAction.IpandPortValidaton);
+                mData = new MessageData(new UserData(IPasString, userPort), NetworkAction.IpandPortValidaton);
                 UserLogic.IPAndPortValidation(mData);
 
 
 
                 if (UserLogic.GlobalValidIpandPort)
                 {
-                    WarningLabel.ForeColor = Color.Lime;
-                    WarningLabel.Text = "IP Adress and Port are Confirmed";
-                    ConfirmIPandPortButton.Enabled = false;
                     localListofUsers = ClientProps.listofUserfortheUsers;
                     ClientInterfaceProps.IPandPortconfirmed = UserLogic.GlobalValidIpandPort;
 
@@ -84,57 +82,15 @@ namespace ClientInterface
 
                 else
                 {
-                    WarningLabel.ForeColor = Color.Red;
-                    WarningLabel.Text = "Service is Unavavailble, please try another adress or port";
+                    MessageBox.Show("Thông tin không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 
             }
 
-
-        }
-
-        private void clearIP_Click(object sender, EventArgs e)
-        {
-            ConfirmIPandPortButton.Enabled = true;
-            IPmaskedTextBox.Clear();
-            WarningLabel.Text = "";
-        }
-
-        private void UsernameClearButton_Click(object sender, EventArgs e)
-        {
-            UserNameBox.Clear();
-            WarningLabel.Text = "";
-        }
-
-        private void Clearportbutton_Click(object sender, EventArgs e)
-        {
-            ConfirmIPandPortButton.Enabled = true;
-            portTextBox.Clear();
-
-        }
-
-        private void ClearAll()
-        {
-            IPmaskedTextBox.Clear();
-            UserNameBox.Clear();
-            portTextBox.Clear();
-            WarningLabel.Text = "";
-            ConfirmIPandPortButton.Enabled = true;
-            NickNameConfirmationLabel.Text = "";
-
-        }
-
-
-
-        private void NicknameConfirmationButton_Click(object sender, EventArgs e)
-        {
-
-
+            //check name
             if (ClientInterfaceProps.IPandPortconfirmed)
             {
-
-
                 var listofnames = from n in localListofUsers
                                   where n != null
                                   select (n.Username);
@@ -146,8 +102,6 @@ namespace ClientInterface
                 {
                     if (!a)
                     {
-                        NickNameConfirmationLabel.ForeColor = Color.Lime;
-                        NickNameConfirmationLabel.Text = "UserName confirmed";
                         userNIckname = UserNameBox.Text;
                         ClientInterfaceProps.uNmake = userNIckname;
                         ClientInterfaceProps.NicnameConfirmed = true;
@@ -155,32 +109,28 @@ namespace ClientInterface
 
                     else
                     {
-                        NickNameConfirmationLabel.ForeColor = Color.Red;
-                        NickNameConfirmationLabel.Text = "UserName wae already taken, please choose another one";
+                        MessageBox.Show("Tên đã có!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
                 else
                 {
-                    WarningLabel.ForeColor = Color.Red;
-                    WarningLabel.Text = "Name is illigal";
+                    MessageBox.Show("Tên không khả dụng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
 
             else
             {
-                WarningLabel.ForeColor = Color.Red;
-                WarningLabel.Text = "Please confiirm IP Adress and port before choosing Username";
+                MessageBox.Show("Không được để trống thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        private void ConnectButton_Click(object sender, EventArgs e)
-        {
-            //if (ClientInterfaceProps.UserIsValid)
+
+            //kết nối
+            if (ClientInterfaceProps.UserIsValid)
             {
                 // tên người dùng đăng nhập
-                new_user = new UserData("192.168.0.2", 10001, "Nguyễn Văn Nam");
+                new_user = new UserData(IPasString, userPort, "Nguyễn Văn Nam");
                 MessageData mData = new MessageData(new_user);
                 mData.action = NetworkAction.Connection;
                 UserLogic.LolacAction = NetworkAction.Connection;
@@ -190,19 +140,23 @@ namespace ClientInterface
                 Close();
             }
 
-            /* else
+             else
              {
-                 MessageBox.Show("You need to confirm IPAdress, Port and UserName before connecting server", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                 //ClientInterfaceProps.ResetBooleans();
+                MessageBox.Show("Không được để trống thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClientInterfaceProps.ResetBooleans();
 
-             }*/
+             }
         }
 
 
         private void SignIn_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ConfirmIPandPortButton.Enabled = true;
             ClearAll();
+        }
+
+        private void SignIn_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -145,7 +145,6 @@
             this.RedLightPanel.Name = "RedLightPanel";
             this.RedLightPanel.Size = new System.Drawing.Size(144, 82);
             this.RedLightPanel.TabIndex = 15;
-            this.RedLightPanel.Visible = false;
             // 
             // label1
             // 
@@ -161,7 +160,7 @@
             // RedLamp
             // 
             this.RedLamp.Image = global::ClientInterface.Properties.Resources.red;
-            this.RedLamp.Location = new System.Drawing.Point(60, 3);
+            this.RedLamp.Location = new System.Drawing.Point(60, 0);
             this.RedLamp.Name = "RedLamp";
             this.RedLamp.Size = new System.Drawing.Size(35, 34);
             this.RedLamp.TabIndex = 13;
@@ -175,6 +174,7 @@
             this.GreenLightPanel.Name = "GreenLightPanel";
             this.GreenLightPanel.Size = new System.Drawing.Size(141, 82);
             this.GreenLightPanel.TabIndex = 16;
+            this.GreenLightPanel.Visible = false;
             // 
             // label2
             // 
@@ -190,7 +190,7 @@
             // GreenLamp
             // 
             this.GreenLamp.Image = global::ClientInterface.Properties.Resources.green;
-            this.GreenLamp.Location = new System.Drawing.Point(59, 0);
+            this.GreenLamp.Location = new System.Drawing.Point(55, 0);
             this.GreenLamp.Name = "GreenLamp";
             this.GreenLamp.Size = new System.Drawing.Size(35, 35);
             this.GreenLamp.TabIndex = 14;
@@ -269,7 +269,7 @@
             this.ColorChoosing.ForeColor = System.Drawing.Color.MediumBlue;
             this.ColorChoosing.Location = new System.Drawing.Point(11, 233);
             this.ColorChoosing.Name = "ColorChoosing";
-            this.ColorChoosing.Size = new System.Drawing.Size(118, 38);
+            this.ColorChoosing.Size = new System.Drawing.Size(130, 38);
             this.ColorChoosing.TabIndex = 9;
             this.ColorChoosing.Text = "Change Color";
             this.ColorChoosing.UseVisualStyleBackColor = true;
@@ -283,8 +283,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(531, 591);
             this.Controls.Add(this.UserPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "UserInterfaceClass";
-            this.Text = "ClientInterface";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Người dùng";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserInterfaceClass_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserInterfaceClass_FormClosed);
             this.Load += new System.EventHandler(this.UserInterfaceClass_Load);

@@ -24,7 +24,7 @@ namespace ClientInterface
         SignIn registration = new SignIn();
 
         // tên người dùng khi nhắn tin
-        UserData uData = new UserData("192.168.0.2", 10001, "Nguyễn Văn Nam");
+        UserData uData;
 
         private void ColorChoosing_Click(object sender, EventArgs e)
         {
@@ -172,11 +172,11 @@ namespace ClientInterface
 
             else
             {
-                //GreenLightPanel.Visible = false;
-                //RedLightPanel.Visible = true;
+                GreenLightPanel.Visible = false;
+                RedLightPanel.Visible = true;
                 ConnectToserverButton.Enabled = true;
                 DisconnectFromServerButton.Enabled = false;
-                //sendmessageButton.Enabled = false;
+                sendmessageButton.Enabled = false;
                 PrivateMessageButton.Enabled = false;
                 ColorChoosing.Enabled = false;
 

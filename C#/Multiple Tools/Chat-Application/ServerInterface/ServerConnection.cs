@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using CommonTypes;
 using System.Net;
 using ServerBI;
+using System.Net.Sockets;
 
 namespace ServerInterface
 {
@@ -18,94 +19,85 @@ namespace ServerInterface
         ServerData Sdata;
         IPAddress ServerIP;
         string adress;
-       
 
-        private void ConfirmIP_Click(object sender, EventArgs e)
+        private void CreateServerButton_Click(object sender, EventArgs e)
         {
+            // check ip
             this.IPmaskedTextBox.ValidatingType = typeof(IPAddress);
             char[] delimit = { ' ' };
             string[] str = IPmaskedTextBox.Text.Split();
             string separator = "";
-             adress = string.Join(separator, str);
-            bool b = IPAddress.TryParse("192.168.0.2", out ServerIP);
+            adress = IPmaskedTextBox.Text;
+            bool b = IPAddress.TryParse(adress, out ServerIP);
 
             if (b)
             {
                 Sdata.IPadress = adress;
-                 ipConfirmLabel.ForeColor = Color.Lime;
-                ipConfirmLabel.Text = "IP is Valid";
                 ServerBools.IPisVAlid = true;
             }
 
             else
             {
-                ipConfirmLabel.ForeColor = Color.Red;
-                ipConfirmLabel.Text = "IP is Invalid, please try again";
+                MessageBox.Show("IP không khả dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        private void PortConfirmationButtom_Click(object sender, EventArgs e)
-        {
+            // check port
             int portnum;
-            bool p  = int.TryParse("10001", out portnum);
+            bool p = int.TryParse(portTextBox.Text, out portnum);
 
             if (p)
             {
                 if (portnum.PortisValid())
                 {
                     Sdata.Portnumber = portnum;
-                    portConfirmLabel.ForeColor = Color.Lime;
-                    portConfirmLabel.Text = "Port is Valid";
                     ServerBools.PortValid = true;
                 }
 
                 else
                 {
-                    portConfirmLabel.ForeColor = Color.Red;
-                    portConfirmLabel.Text = "Port Number is Illigal \n Pelease choose port \n from 10000 to 65535";
-
+                    MessageBox.Show("IP trong khoảng 10000 đến 65535", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
             else
             {
-                portConfirmLabel.ForeColor = Color.Red;
-                portConfirmLabel.Text = "Illigal input";
+                MessageBox.Show("IP không khả dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        private void CreateServerButton_Click(object sender, EventArgs e)
-        {
-            if(ServerBools.ServerisValid)
-                
-            Close();
+            //Tạo phòng
+            if (ServerBools.ServerisValid)
+
+                Close();
 
             else
             {
-                ServerCreationError.Text = "Please confirm IP Adress and Port Before Creating Server";
+                MessageBox.Show("Không để thông tin trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void clearIP_Click(object sender, EventArgs e)
-        {
-            ipConfirmLabel.Text = "";
-            IPmaskedTextBox.Clear();
-        }
-
-        private void Clearportbutton_Click(object sender, EventArgs e)
-        {
-            portConfirmLabel.Text = "";
-            portTextBox.Clear();
         }
 
         private void ServerConnection_Load(object sender, EventArgs e)
         {
             ServerLogic.ConnecionWhithWrongIPorPort += ServerInterfaceClass.AtemmttoconnectWhithWrongIPandPort_Handler;
+            IPmaskedTextBox.Text = GetLocalIPAddress();
+            portTextBox.Text = "12121";
         }
 
         private void ServerConnection_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+
+        }
+
+        public string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }

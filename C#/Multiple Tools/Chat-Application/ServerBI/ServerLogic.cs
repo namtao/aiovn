@@ -31,8 +31,7 @@ namespace ServerBI
         public async static void ServerOnline(ServerData sData)
 
         {           
-                //server = new TcpListener(IPAddress.Parse(sData.IPadress), sData.Portnumber);
-                server = new TcpListener(IPAddress.Parse("192.168.0.2"), 10001);
+                server = new TcpListener(IPAddress.Parse(sData.IPadress), sData.Portnumber);
 
                 ServerProps.ServerisOnline = true;
                 ipandportvalidation += ServerEventHandlers.IPandPortValidationHandler;
