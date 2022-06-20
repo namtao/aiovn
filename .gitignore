@@ -1,6 +1,8 @@
 env/
-*/Debug/
+*bin/
+*Debug/
 *.py[co]
-*/.vs/
-*/.vscode/
+*.vs/
+*obj/
+*.vscode/
 
