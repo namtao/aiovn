@@ -159,7 +159,7 @@
             // RedLamp
             // 
             this.RedLamp.Image = global::ClientInterface.Properties.Resources.red;
-            this.RedLamp.Location = new System.Drawing.Point(60, 0);
+            this.RedLamp.Location = new System.Drawing.Point(56, 0);
             this.RedLamp.Name = "RedLamp";
             this.RedLamp.Size = new System.Drawing.Size(35, 34);
             this.RedLamp.TabIndex = 13;

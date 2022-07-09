@@ -10,24 +10,24 @@ namespace ServerInterface
     public partial class ServerInterfaceClass : Form
     {
 
-      
-        public  void NewUserEvenHandler(MessageData mymesdata)
+
+        public void NewUserEvenHandler(MessageData mymesdata)
 
         {
-         
+
             if (CurrentUsersListbox.InvokeRequired || HistoryListbox.InvokeRequired)
             {
-               Action<MessageData> stc = NewUserEvenHandler;
+                Action<MessageData> stc = NewUserEvenHandler;
                 this.Invoke(stc, new object[] { mymesdata });
 
             }
 
             else
             {
-              
-                CurrentUsersListbox.Items.Add(mymesdata.Userdat.Username +" IP: " + mymesdata.Userdat.IPadress + 
+
+                CurrentUsersListbox.Items.Add(mymesdata.Userdat.Username + " IP: " + mymesdata.Userdat.IPadress +
                     " Port: " + mymesdata.Userdat.Portnumber);
-                HistoryListbox.Items.Add(mymesdata.Textmessage + mymesdata.Time.ToLongTimeString()  );
+                HistoryListbox.Items.Add(mymesdata.Textmessage + mymesdata.Time.ToLongTimeString());
             }
         }
 
@@ -40,13 +40,13 @@ namespace ServerInterface
             ServerLogic.ConnecionWhithWrongIPorPort -= ServerInterfaceClass.AtemmttoconnectWhithWrongIPandPort_Handler;
         }
 
-    
+
         public void MessagesentHandler(MessageData mData)
         {
             DateTime current = DateTime.Now;
 
 
-            if (ChatListBox.InvokeRequired || CurrentUsersListbox.InvokeRequired || HistoryListbox.InvokeRequired )
+            if (ChatListBox.InvokeRequired || CurrentUsersListbox.InvokeRequired || HistoryListbox.InvokeRequired)
             {
                 Action<MessageData> dicon = MessagesentHandler;
                 this.Invoke(dicon, new object[] { mData });
@@ -55,13 +55,14 @@ namespace ServerInterface
 
 
             else
-            {     if (mData.action == NetworkAction.ConectionREsponse)
+            {
+                if (mData.action == NetworkAction.ConectionREsponse)
                 {
                     ChatListBox.Items.Add("Máy chủ: " + mData.Textmessage);
                 }
 
-            // In the case of unexpected user disconnection
-                   else if (mData.action == NetworkAction.UserDisconnection)
+                // In the case of unexpected user disconnection
+                else if (mData.action == NetworkAction.UserDisconnection)
                 {
                     ChatListBox.Items.Add("Máy chủ: " + mData.Userdat.Username + " đã ngắt kết nối");
 
@@ -80,7 +81,7 @@ namespace ServerInterface
                 }
 
 
-            else if (mData.action == NetworkAction.SeverDisconnection)
+                else if (mData.action == NetworkAction.SeverDisconnection)
                 {
 
                     ChatListBox.Items.Add(mData.Textmessage);
@@ -92,12 +93,12 @@ namespace ServerInterface
             }
         }
 
-        public  void NoServerHandler()
+        public void NoServerHandler()
         {
 
 
             try
-        {
+            {
                 if (ServerPanel.InvokeRequired)
                 {
                     Action dicon = NoServerHandler;
@@ -115,31 +116,31 @@ namespace ServerInterface
                     StartServerButton.Enabled = true;
                     StopServerButton.Enabled = false;
                     //if(!ServerBools.WasPrinted)
-                        //MessageBox.Show("Connection was suddenly lost ", "Network Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        //ServerBools.WasPrinted = true;
+                    //MessageBox.Show("Connection was suddenly lost ", "Network Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    //ServerBools.WasPrinted = true;
                 }
             }
-            catch 
+            catch
             {
                 return;
             }
-            }
+        }
 
-      
+
         public void DisconnectUserHAndler(UserData uData)
         {
             if (ServerPanel.InvokeRequired)
             {
-                Action <UserData> dicon = DisconnectUserHAndler;
-                Invoke(dicon, new object[] {uData });
+                Action<UserData> dicon = DisconnectUserHAndler;
+                Invoke(dicon, new object[] { uData });
             }
 
 
             else
             {
                 DateTime current = DateTime.Now;
-                    
-             for(int i = 0;  i< CurrentUsersListbox.Items.Count; i++)
+
+                for (int i = 0; i < CurrentUsersListbox.Items.Count; i++)
 
                 {
                     if (CurrentUsersListbox.Items[i].ToString().Contains(uData.Username))
@@ -149,14 +150,14 @@ namespace ServerInterface
                     }
 
                 }
-                            
-                
+
+
                 HistoryListbox.Items.Add(uData.Username + " đã ngắt kết nối " + current.ToLongTimeString());
                 ChatListBox.Items.Add("Máy chủ: " + uData.Username + " đã ngắt kết nối ");
 
             }
-            
+
         }
 
-}
+    }
 }

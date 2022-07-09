@@ -9,38 +9,38 @@ namespace ServerBI
 {
     public class ServerEventHandlers
     {
-      
+
         public static event Action<MessageData> newuserconnected;
         public static event Action<MessageData> messgesent;
         public static event Action<UserData> UserRemovalfromtheInterface;
         public static event Action<MessageData, NetworkStream, int> UserDisconnectedUnexpected;
 
 
-        internal static void IPandPortValidationHandler( MessageData mData, NetworkStream nStr)
+        internal static void IPandPortValidationHandler(MessageData mData, NetworkStream nStr)
 
-        {          
-                BinaryFormatter bf = new BinaryFormatter();
-                mData.listofUsers = ServerProps.listofUsersontheserver;
-                bf.Serialize(nStr, mData);
-                return;           
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            mData.listofUsers = ServerProps.listofUsersontheserver;
+            bf.Serialize(nStr, mData);
+            return;
         }
 
 
-        internal static void ConnectionHandler( MessageData mData, NetworkStream nStr)
+        internal static void ConnectionHandler(MessageData mData, NetworkStream nStr)
         {
             mData.Userdat.Userid = ServerProps.StreamsofClients.Count;
             BinaryFormatter bf = new BinaryFormatter();
             ServerProps.StreamsofClients.Add(nStr);
-            ServerProps.listofUsersontheserver.Add(mData.Userdat);            
+            ServerProps.listofUsersontheserver.Add(mData.Userdat);
             mData.Time = DateTime.Now;
             mData.Textmessage = mData.Userdat.Username.ToString() + " đã kết nối ";
             newuserconnected(mData);
             mData.action = NetworkAction.ConectionREsponse;
-  
+
 
         }
 
-        internal static void PublicMessageHandler( MessageData mData, NetworkStream nstr)
+        internal static void PublicMessageHandler(MessageData mData, NetworkStream nstr)
         {
             for (int i = 0; i < ServerProps.StreamsofClients.Count; i++)
             {
@@ -53,18 +53,17 @@ namespace ServerBI
                         bf.Serialize(netStream, mData);
                     }
 
-                    
+
                 }
 
                 // Unexpected Client Disconnection
-                catch(IOException)
+                catch (IOException)
                 {
 
                     UserDisconnectedUnexpected(mData, nstr, i);
 
-
                 }
-               
+
             }
             messgesent(mData);
 
@@ -75,12 +74,12 @@ namespace ServerBI
 
 
 
-        internal static void UsersListRequestHandler( MessageData mData, NetworkStream nStr)
+        internal static void UsersListRequestHandler(MessageData mData, NetworkStream nStr)
         {
-            
+
             BinaryFormatter bf = new BinaryFormatter();
             mData.listofUsers = new List<UserData>();
-            foreach(UserData ud in ServerProps.listofUsersontheserver)
+            foreach (UserData ud in ServerProps.listofUsersontheserver)
             {
                 if (ud != null)
                     mData.listofUsers.Add(ud);
@@ -98,33 +97,33 @@ namespace ServerBI
 
 
 
-    //Usuall Disconnection
+        //Usuall Disconnection
         internal static void DisconnectUser(MessageData mData, NetworkStream nStr, UserData uData)
         {
-           
+
             BinaryFormatter bf = new BinaryFormatter();
-           
+
 
             for (int i = 0; i < ServerProps.StreamsofClients.Count; i++)
             {
-               mData.Textmessage =  mData.Userdat.Username + " đã ngắt kết nối";
+                mData.Textmessage = mData.Userdat.Username + " đã ngắt kết nối";
 
                 if (ServerProps.StreamsofClients[i] != null)
                 {
                     mData.action = NetworkAction.UserDisconnection;
                     NetworkStream netStream = ServerProps.StreamsofClients[i];
                     bf = new BinaryFormatter();
-                   
+
                     bf.Serialize(netStream, mData);
                 }
-               
+
             }
 
             UserRemovalfromtheInterface(uData);
         }
 
 
-        internal static  void UnexpectedDisconnectionHandler(MessageData mData, NetworkStream nStream, int index)
+        internal static void UnexpectedDisconnectionHandler(MessageData mData, NetworkStream nStream, int index)
         {
             mData = new MessageData();
             UserData LostUser = ServerProps.listofUsersontheserver[index];
@@ -136,7 +135,7 @@ namespace ServerBI
             }
 
             catch { }
-                            
+
             ServerProps.listofUsersontheserver[index] = null;
             ServerProps.StreamsofClients[index] = null;
             mData.Textmessage = LostUser.Username + " đã ngắt kết nối";
@@ -161,7 +160,7 @@ namespace ServerBI
 
         internal static void PrivatemessageHandler(MessageData mData, NetworkStream nStream)
         {
-          
+
 
 
             for (int i = 0; i < ServerProps.StreamsofClients.Count; i++)
@@ -177,7 +176,7 @@ namespace ServerBI
                     }
 
                 }
-                catch(IOException)
+                catch (IOException)
                 {
 
                     UserDisconnectedUnexpected(mData, nStream, i);

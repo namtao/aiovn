@@ -161,7 +161,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HoSoThietBiReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\Diff.cs" />
     <Compile Include="DuAn\BinhPhuoc.cs" />
@@ -271,7 +270,6 @@
     <EmbeddedResource Include="HoTich\HoTich.resx">
       <DependentUpon>HoTich.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="QuanLyThietBi\GiaoNhanThietBi.resx">
       <DependentUpon>GiaoNhanThietBi.cs</DependentUpon>
     </EmbeddedResource>

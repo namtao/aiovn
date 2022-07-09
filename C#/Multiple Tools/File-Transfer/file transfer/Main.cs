@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using file_transfer;
+using System.Net.Sockets;
 
 public partial class Main : Form
 {
@@ -23,12 +24,16 @@ public partial class Main : Form
     //Disconnects
     private bool serverRunning;
 
+    //create list sockets
+    List<Socket> sockets;
+
     public Main()
     {
         InitializeComponent();
         //Create the listener and register the event.
         listener = new Listener();
         listener.Accepted += listener_Accepted;
+        sockets = new List<Socket>();
 
         //Create the timer and register the event.
         tmrOverallProg = new Timer();

@@ -1,9 +1,16 @@
-import cv2
+def function1(function):
+    def wrapper():
+        print("hello world")
+        function()
+        print("hello world 2")
+    
+    return wrapper
 
-img = cv2.imread(r'C:\Users\Administrator\Downloads\0001.jpg')
+@function1
+def function2():
+    print("hello world 3")
+    
 
-# Bilateral Blur
-bilateral = cv2.bilateralFilter(img, 9, 75, 75)
-cv2.imwrite('Bilateral.jpg', bilateral)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# function2 = function1(function2)
+
+function2()

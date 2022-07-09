@@ -8,10 +8,7 @@ using CommonTypes;
 namespace ClientInterface
 {
     public partial  class UserInterfaceClass : Form
-    {
-
-       
-
+    {   
         public  void NoServerHandler(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

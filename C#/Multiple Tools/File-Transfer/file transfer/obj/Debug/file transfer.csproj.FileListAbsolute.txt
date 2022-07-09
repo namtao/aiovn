@@ -40,3 +40,4 @@ C:\Projects\C#\Multiple Tools\File-Transfer\file transfer\obj\Debug\file transfe
 C:\Projects\C#\Multiple Tools\File-Transfer\file transfer\obj\Debug\file transfer.csproj.CoreCompileInputs.cache
 C:\Projects\C#\Multiple Tools\File-Transfer\file transfer\obj\Debug\file transfer.exe
 C:\Projects\C#\Multiple Tools\File-Transfer\file transfer\obj\Debug\file transfer.pdb
+C:\Projects\C#\Multiple Tools\File-Transfer\file transfer\obj\Debug\file transfer.csproj.AssemblyReference.cache
