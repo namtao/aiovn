@@ -17,7 +17,7 @@ namespace ADDJ
     public partial class GiaoNhanThietBi : Form
     {
         public int idThietBi;
-        public static string connectString = ConfigurationManager.ConnectionStrings["ADDJ"].ConnectionString;
+        public static string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
         public GiaoNhanThietBi()
         {
             InitializeComponent();
