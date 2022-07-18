@@ -9,8 +9,8 @@ import urllib3
 from datetime import datetime
 import re
 import urllib3
-from utils.string_utils import *
-from utils.tts_utils import *
+from common.utils.string_utils import *
+from common.utils.tts_utils import *
 import time
 
 
