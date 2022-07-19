@@ -15,7 +15,7 @@ namespace ADDJ
 {
     public partial class ReportViewer : Form
     {
-        public static string connectString = ConfigurationManager.ConnectionStrings["ADDJ"].ConnectionString;
+        public static string connectString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 
         public ReportViewer()
         {

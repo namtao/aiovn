@@ -30,8 +30,8 @@ namespace ADDJ
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportViewer));
+            this.HoSoThietBiReport = new ADDJ.HoSoThietBiReport();
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.HoSoThietBiReport1 = new ADDJ.HoSoThietBiReport();
             this.SuspendLayout();
             // 
             // crystalReportViewer
@@ -42,6 +42,7 @@ namespace ADDJ
             this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer.Name = "crystalReportViewer";
+            this.crystalReportViewer.ReportSource = this.HoSoThietBiReport;
             this.crystalReportViewer.Size = new System.Drawing.Size(1259, 550);
             this.crystalReportViewer.TabIndex = 0;
             // 
@@ -63,7 +64,7 @@ namespace ADDJ
         }
 
         #endregion
+        private ADDJ.HoSoThietBiReport HoSoThietBiReport;
         public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
-        private ADDJ.HoSoThietBiReport HoSoThietBiReport1;
     }
 }

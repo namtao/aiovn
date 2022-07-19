@@ -121,10 +121,10 @@ namespace ADDJ
                     string strSql = "select * from LichSuThietBi where idThietBi = " + id + " order by NgayThang";
                     SqlDataAdapter adapter = new SqlDataAdapter(strSql, connectString);
                     DataSet dataReport = new DataSet();
-                    adapter.Fill(dataReport, "LichSuThietBi");
+                    adapter.Fill(dataReport);
 
                     ReportViewer reportViewer = new ReportViewer();
-                    crystal.SetDataSource(dataReport);
+                    crystal.SetDataSource(dataReport.Tables[0]);
                     reportViewer.crystalReportViewer.ReportSource = crystal;
                     reportViewer.Show();
 
