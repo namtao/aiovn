@@ -58,5 +58,6 @@ def main(img):
 
 if __name__ == '__main__':
     # sys.argv[0] = [r"C:\Projects\Python\common\examples\tools\1.jpg", r"C:\Projects\Python\common\examples\tools\2.jpg", r"C:\Projects\Python\common\examples\tools\3.jpg"]
-    main([r"C:\Projects\Python\common\examples\tools\1.jpg", r"C:\Projects\Python\common\examples\tools\2.jpg", r"C:\Projects\Python\common\examples\tools\3.jpg"])
+    main([r"common\examples\tools\image00001.jpg", r"common\examples\tools\image00002.jpg", 
+          r"common\examples\tools\image00003.jpg", r"common\examples\tools\image00004.jpg", r"common\examples\tools\image00005.jpg"])
     cv.destroyAllWindows()

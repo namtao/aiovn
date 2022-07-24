@@ -89,6 +89,7 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument(
     'img_names', nargs='+',
+    # default = [r"common\examples\tools\image00001.jpg", r"common\examples\tools\image00002.jpg", r"common\examples\tools\image00003.jpg", r"common\examples\tools\image00004.jpg"],
     help="Files to stitch", type=str
 )
 parser.add_argument(
@@ -273,7 +274,10 @@ def get_compensator(args):
 
 def main():
     args = parser.parse_args()
-    img_names = args.img_names
+    # img_names = args.img_names
+    img_names = [r"C:\Projects\Python\common\examples\tools\image00001.jpg", r"C:\Projects\Python\common\examples\tools\image00002.jpg", 
+                 r"C:\Projects\Python\common\examples\tools\image00003.jpg", r"C:\Projects\Python\common\examples\tools\image00004.jpg"]
+    args.img_names = img_names
     print(img_names)
     work_megapix = args.work_megapix
     seam_megapix = args.seam_megapix

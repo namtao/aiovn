@@ -1,64 +1,34 @@
-#!/usr/bin/env python
+import cv2
+image_paths=[r"C:\Projects\Python\common\examples\tools\image00001.jpg", r"C:\Projects\Python\common\examples\tools\image00002.jpg", 
+                 r"C:\Projects\Python\common\examples\tools\image00003.jpg", r"C:\Projects\Python\common\examples\tools\image00004.jpg"]
+# initialized a list of images
+imgs = []
 
-'''
-Stitching sample
-================
+for i in range(len(image_paths)):
+	imgs.append(cv2.imread(image_paths[i]))
+	imgs[i]=cv2.resize(imgs[i],(0,0),fx=0.4,fy=0.4)
+	# this is optional if your input images isn't too large
+	# you don't need to scale down the image
+	# in my case the input images are of dimensions 3000x1200
+	# and due to this the resultant image won't fit the screen
+	# scaling down the images
+# showing the original pictures
+cv2.imshow('1',imgs[0])
+cv2.imshow('2',imgs[1])
+cv2.imshow('3',imgs[2])
 
-Show how to use Stitcher API from python in a simple way to stitch panoramas
-or scans.
-'''
+stitchy=cv2.Stitcher.create()
+(dummy,output)=stitchy.stitch(imgs)
 
-# Python 2/3 compatibility
-from __future__ import print_function
+if dummy != cv2.STITCHER_OK:
+# checking if the stitching procedure is successful
+# .stitch() function returns a true value if stitching is
+# done successfully
+	print("stitching ain't successful")
+else:
+	print('Your Panorama is ready!!!')
 
-import numpy as np
-import cv2 as cv
+# final output
+cv2.imshow('final result', cv2.resize(output, (960, 540)))
 
-import argparse
-import sys
-
-modes = (cv.Stitcher_PANORAMA, cv.Stitcher_SCANS)
-
-parser = argparse.ArgumentParser(prog='stitching.py', description='Stitching sample.')
-parser.add_argument('--mode',
-    type = int, choices = modes, default = cv.Stitcher_PANORAMA,
-    help = 'Determines configuration of stitcher. The default is `PANORAMA` (%d), '
-        'mode suitable for creating photo panoramas. Option `SCANS` (%d) is suitable '
-        'for stitching materials under affine transformation, such as scans.' % modes)
-parser.add_argument('--output', default = 'result.jpg',
-    help = 'Resulting image. The default is `result.jpg`.')
-parser.add_argument('img', nargs='+', help = 'input images')
-
-__doc__ += '\n' + parser.format_help()
-
-def main():
-    args = parser.parse_args()
-    
-    args.img = [r"C:\Projects\Python\common\examples\tools\1.jpg", r"C:\Projects\Python\common\examples\tools\2.jpg", r"C:\Projects\Python\common\examples\tools\3.jpg"]
-
-    # read input images
-    imgs = []
-    for img_name in args.img:
-        img = cv.imread(cv.samples.findFile(img_name))
-        if img is None:
-            print("can't read image " + img_name)
-            sys.exit(-1)
-        imgs.append(img)
-
-    stitcher = cv.Stitcher.create(args.mode)
-    status, pano = stitcher.stitch(imgs)
-
-    if status != cv.Stitcher_OK:
-        print("Can't stitch images, error code = %d" % status)
-        sys.exit(-1)
-
-    cv.imwrite(args.output, pano)
-    print("stitching completed successfully. %s saved!" % args.output)
-
-    print('Done')
-
-
-if __name__ == '__main__':
-    print(__doc__)
-    main()
-    cv.destroyAllWindows()
+cv2.waitKey(0)

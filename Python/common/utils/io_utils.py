@@ -6,7 +6,7 @@ def get_files(folderPath, fileFormat):
     for root, dirs, files in os.walk(folderPath):
         for file in files:
             if file.endswith("." + fileFormat):
-                lst.append(os.path.join(file))
+                lst.append(os.path.join(root, file))
                 # print(os.path.join(root, file))
 
     return lst
@@ -103,16 +103,7 @@ def rename(dir, strA):
         rename_all(root, files)
 
 
-# lst = []
-# index = 0
-# for root, dirs, files in os.walk(r'\\192.168.31.127\New folder (2)\new\so ldtbxh-000.00.38.H41\G07-LD11(vl)', 'pdf'):
-#     for file in files:
-#         if file.endswith("." + 'pdf'):
-#             # lst.append(os.path.join(root, file))
-#             # print(os.path.join(root, file))
-#             index+=1
-#             print(str(index))
-#             shutil.copyfile(os.path.join(root, file), os.path.join(r'\\192.168.31.127\New folder (2)\new\new', '000.00.38.H41.G07-LD11.' + str(index) + '.pdf'))
-
-rename(r'\\192.168.31.127\New folder (2)\new\so vhtt 000.00.46.H41\G16-VH14',
-       '000.00.46.H41.' + 'G16-VH14.')
+lst = get_files(r'\\192.168.1.110\Share', 'jpg')
+with open(r'\\192.168.1.110\Share\path.txt', 'a') as f:
+    for path in lst:
+        f.write(path + '\n')

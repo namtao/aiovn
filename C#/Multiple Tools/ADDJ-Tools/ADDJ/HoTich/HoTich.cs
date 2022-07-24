@@ -17,11 +17,10 @@ namespace ADDJ
 {
     public partial class HoTich : Form
     {
-        public string database = "";
         public static string sqlConnect = ConfigurationManager.ConnectionStrings["hotich"].ConnectionString;
+        string imagePath = ConfigurationManager.AppSettings.Get("imagePath");
         public static HoTich form1;
         public static string dtTo, dtFrom;
-        public static string dbName = "USE HoTich;\n";
         string hoten = null;
         string ngaySinh = null;
         string strCommandSql = null;
@@ -2117,24 +2116,24 @@ namespace ADDJ
                 conn.Open();
 
                 //thêm số bản ghi trước 2016
-                dt.Rows.Add("Số bản ghi trước 2016", new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAISINH where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
-                    new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAITU where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
-                    new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KETHON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
-                    new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
-                    (Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAISINH where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar()) +
-                        Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAITU where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar()) +
-                        Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KETHON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar()) +
-                        Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar())));
+                dt.Rows.Add("Số bản ghi trước 2016", new SqlCommand("SELECT COUNT(*) FROM HT_KHAISINH where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
+                    new SqlCommand("SELECT COUNT(*) FROM HT_KHAITU where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
+                    new SqlCommand("SELECT COUNT(*) FROM HT_KETHON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
+                    new SqlCommand("SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar(),
+                    (Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KHAISINH where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar()) +
+                        Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KHAITU where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar()) +
+                        Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KETHON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar()) +
+                        Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo NOT LIKE '%2016' AND quyenSo NOT LIKE '%2017' AND quyenSo NOT LIKE '%2018' AND quyenSo NOT LIKE '%2019'", conn).ExecuteScalar())));
 
                 //thêm số bản ghi sau 2016
-                dt.Rows.Add("Số bản ghi sau 2016", new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAISINH where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
-                    new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAITU where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
-                    new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KETHON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
-                    new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
-                    (Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAISINH where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar()) +
-                        Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAITU where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar()) +
-                        Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KETHON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar()) +
-                        Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar())));
+                dt.Rows.Add("Số bản ghi sau 2016", new SqlCommand("SELECT COUNT(*) FROM HT_KHAISINH where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
+                    new SqlCommand("SELECT COUNT(*) FROM HT_KHAITU where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
+                    new SqlCommand("SELECT COUNT(*) FROM HT_KETHON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
+                    new SqlCommand("SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar(),
+                    (Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KHAISINH where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar()) +
+                        Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KHAITU where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar()) +
+                        Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KETHON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar()) +
+                        Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_NHANCHAMECON where quyenSo LIKE '%2016' or quyenSo LIKE '%2017' or quyenSo LIKE '%2018' or quyenSo LIKE '%2019'", conn).ExecuteScalar())));
 
                 conn.Close();
                 datagrid.DataSource = dt;
@@ -2178,14 +2177,14 @@ namespace ADDJ
             string mess = "";
             conn = new SqlConnection(sqlConnect);
             conn.Open();
-            mess = mess + "Khai sinh: " + new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAISINH", conn).ExecuteScalar().ToString() + "\n";
-            mess = mess + "Khai Tử: " + new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAITU", conn).ExecuteScalar().ToString() + "\n";
-            mess = mess + "Kết hôn: " + new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KETHON", conn).ExecuteScalar().ToString() + "\n";
-            mess = mess + "Nhận cha mẹ con: " + new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_NHANCHAMECON", conn).ExecuteScalar().ToString() + "\n";
-            mess = mess + "Tổng: " + (Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAISINH", conn).ExecuteScalar()) +
-                Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KHAITU", conn).ExecuteScalar()) +
-                Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_KETHON", conn).ExecuteScalar()) +
-                Convert.ToInt32(new SqlCommand(dbName + "SELECT COUNT(*) FROM HT_NHANCHAMECON", conn).ExecuteScalar())).ToString() + "\n";
+            mess = mess + "Khai sinh: " + new SqlCommand("SELECT COUNT(*) FROM HT_KHAISINH", conn).ExecuteScalar().ToString() + "\n";
+            mess = mess + "Khai Tử: " + new SqlCommand("SELECT COUNT(*) FROM HT_KHAITU", conn).ExecuteScalar().ToString() + "\n";
+            mess = mess + "Kết hôn: " + new SqlCommand("SELECT COUNT(*) FROM HT_KETHON", conn).ExecuteScalar().ToString() + "\n";
+            mess = mess + "Nhận cha mẹ con: " + new SqlCommand("SELECT COUNT(*) FROM HT_NHANCHAMECON", conn).ExecuteScalar().ToString() + "\n";
+            mess = mess + "Tổng: " + (Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KHAISINH", conn).ExecuteScalar()) +
+                Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KHAITU", conn).ExecuteScalar()) +
+                Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_KETHON", conn).ExecuteScalar()) +
+                Convert.ToInt32(new SqlCommand("SELECT COUNT(*) FROM HT_NHANCHAMECON", conn).ExecuteScalar())).ToString() + "\n";
             conn.Close();
             MessageBox.Show(mess, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -2196,19 +2195,19 @@ namespace ADDJ
             {
                 if (rdnLoiTrangSo.Checked)
                 {
-                    strCommandSql = dbName + "SELECT SO, QUYENSO, TENNOIDANGKY, " + hoten + ", TRANGSO, TINHTRANGID, TENFILESAUUPLOAD " + "\n" + "FROM " + table +
+                    strCommandSql = "SELECT SO, QUYENSO, TENNOIDANGKY, " + hoten + ", TRANGSO, TINHTRANGID, TENFILESAUUPLOAD " + "\n" + "FROM " + table +
                         " KT JOIN HT_NOIDANGKY NDK ON KT.NOIDANGKY = NDK.MANOIDANGKY " + "\n" + "WHERE ISNUMERIC(TRANGSO) != 1 " +
                         "AND TRANGSO IS NOT NULL AND TRANGSO !='' AND QUYENSO LIKE '%" + txtYear.Text.Trim() + "%' AND NOIDANGKY LIKE '%" + txtNdk.SelectedValue + "%'";
 
                 }
                 else if (rdnTrung.Checked)
                 {
-                    strCommandSql = dbName + "SELECT SO , QUYENSO, TENNOIDANGKY, COUNT(*) AS 'SL TRUNG' " + "\n" + "FROM " + table + " KT JOIN HT_NOIDANGKY NDK ON KT.NOIDANGKY = NDK.MANOIDANGKY \n" +
+                    strCommandSql = "SELECT SO , QUYENSO, TENNOIDANGKY, COUNT(*) AS 'SL TRUNG' " + "\n" + "FROM " + table + " KT JOIN HT_NOIDANGKY NDK ON KT.NOIDANGKY = NDK.MANOIDANGKY \n" +
                         "WHERE(QUYENSO LIKE '%" + txtYear.Text.Trim() + "%') AND NOIDANGKY LIKE '%" + txtNdk.SelectedValue + "%' GROUP BY TENNOIDANGKY,QUYENSO,SO HAVING COUNT(*) >= 2 ORDER BY TENNOIDANGKY, QUYENSO";
                 }
                 else if (rdnId7.Checked)
                 {
-                    strCommandSql = dbName + "SELECT SO, QUYENSO , TENNOIDANGKY, TRANGSO, " +
+                    strCommandSql = "SELECT SO, QUYENSO , TENNOIDANGKY, TRANGSO, " +
                                 hoten + ", TINHTRANGID, TENFILESAUUPLOAD\n" +
                                 " FROM " + table + " KT JOIN HT_NOIDANGKY NDK ON KT.NOIDANGKY = NDK.MANOIDANGKY \n" +
                                 "WHERE QUYENSO LIKE '%" + txtYear.Text.Trim() + "%' AND NOIDANGKY LIKE '%" + txtNdk.SelectedValue + "%'" +
@@ -2217,7 +2216,7 @@ namespace ADDJ
                 }
                 else if (rdnFormat.Checked)
                 {
-                    strCommandSql = dbName + "SELECT SO, QUYENSO, TENNOIDANGKY, " + hoten +
+                    strCommandSql = "SELECT SO, QUYENSO, TENNOIDANGKY, " + hoten +
                                 " , TENFILESAUUPLOAD\n FROM " + table + " KS JOIN HT_NOIDANGKY NDK ON KS.NOIDANGKY = NDK.MANOIDANGKY \n" +
                                 "WHERE(SO = ''  OR  NGAYDANGKY = '' OR CHARINDEX('/', SO, 0) = 0 " +
                                 "OR CHARINDEX('/', QUYENSO, 0) = 0  OR CHARINDEX('.', NGAYDANGKY, 0) = 0  " +
@@ -2229,7 +2228,7 @@ namespace ADDJ
                 }
                 else if (rdnBM.Checked)
                 {
-                    strCommandSql = dbName + "update " + table + " " +
+                    strCommandSql = "update " + table + " " +
                         "set TinhTrangID = 1 \n" +
                         "where  (ISNUMERIC(TRANGSO) = 1 or TRANGSO IS NULL or TRANGSO ='') AND " +
                         "QUYENSO LIKE '%" + txtYear.Text.Trim() + "%' AND NOIDANGKY LIKE '%" + txtNdk.SelectedValue + "%'; \n" +
@@ -2243,7 +2242,7 @@ namespace ADDJ
                 }
                 else if (rdnKTBM1.Checked)
                 {
-                    strCommandSql = dbName + "update " + table + " " +
+                    strCommandSql = "update " + table + " " +
                         "set TinhTrangID = 5 \n" +
                         "where  (ISNUMERIC(TRANGSO) = 1 or TRANGSO IS NULL or TRANGSO ='') AND " +
                         "QUYENSO LIKE '%" + txtYear.Text.Trim() + "%' AND NOIDANGKY LIKE '%" + txtNdk.SelectedValue + "%'; \n" +
@@ -2257,7 +2256,7 @@ namespace ADDJ
                 }
                 else if (rdnKTBM2.Checked)
                 {
-                    strCommandSql = dbName + "update " + table + " " +
+                    strCommandSql = "update " + table + " " +
                         "set TinhTrangID = 6 \n" +
                         "where  (ISNUMERIC(TRANGSO) = 1 or TRANGSO IS NULL or TRANGSO ='') AND " +
                         "QUYENSO LIKE '%" + txtYear.Text.Trim() + "%' AND NOIDANGKY LIKE '%" + txtNdk.SelectedValue + "%'; \n" +
@@ -2271,7 +2270,7 @@ namespace ADDJ
                 }
                 else if (rdnKetThuc.Checked)
                 {
-                    strCommandSql = dbName + "update " + table + " " +
+                    strCommandSql = "update " + table + " " +
                         "set TinhTrangID = 7 \n" +
                         "where  (ISNUMERIC(TRANGSO) = 1 or TRANGSO IS NULL or TRANGSO ='') AND " +
                         "QUYENSO LIKE '%" + txtYear.Text.Trim() + "%' AND NOIDANGKY LIKE '%" + txtNdk.SelectedValue + "%'; \n" +
@@ -2285,7 +2284,7 @@ namespace ADDJ
                 }
                 else if (rdnTKQuyenSo.Checked)
                 {
-                    strCommandSql = dbName + "select TenNoiDangKy, quyenSo, count(*) as N'Sum'\n" +
+                    strCommandSql = "select TenNoiDangKy, quyenSo, count(*) as N'Sum'\n" +
                         "from " + table + " kt join HT_NOIDANGKY ndk on kt.noiDangKy = ndk.MaNoiDangKy \n" +
                         "where quyenSo like '%" + txtYear.Text.Trim() + "%' and noiDangKy LIKE '%" + txtNdk.SelectedValue + "%' \n" +
                         "group by TenNoiDangKy, quyenSo \n" +
@@ -2293,13 +2292,13 @@ namespace ADDJ
                 }
                 else if (rdnQuyenSo.Checked)
                 {
-                    strCommandSql = dbName + "SELECT SO, QUYENSO, noiDangKy, " + hoten +
+                    strCommandSql = "SELECT SO, QUYENSO, noiDangKy, " + hoten +
                         " , TENFILESAUUPLOAD\n FROM " + table + " " +
                         "\nwhere so is null or so ='' or quyenSo is null or quyenSo = '' or noiDangKy is null or noiDangKy = ''";
                 }
                 else if (rdnDelete.Checked)
                 {
-                    strCommandSql = dbName + "delete from " + table +
+                    strCommandSql = "delete from " + table +
                         " \nwhere quyenSo like '%" + txtYear.Text.Trim() + "%' and noiDangKy LIKE '%" + txtNdk.SelectedValue + "%' \n";
                 }
                 else if (rdnOther.Checked)
