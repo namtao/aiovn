@@ -77,33 +77,34 @@ def after_rename(dir, str):
 
 
 def rename(dir, strA):
-    # renames all subforders of dir, not including dir itself
-    # dir = os.path.dirname(os.path.abspath(__file__))
-
-    index = 0
-
     def rename_all(root, items):
-        lst = get_files(r'D:\New folder (2)\Files', 'pdf')
+        lst = get_files(dir, 'JPG')
+        index = 0
         for name in items:
             try:
-                global index
                 index += 1
-                tenmoi = os.path.join(strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+                if(len(str(index)) == 1):
+                    tenmoi = os.path.join(strA + '0' + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+                else:
+                    tenmoi = os.path.join(strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
                 # kierm tra trùng tên
                 while (tenmoi in lst):
                     index += 1
-                    tenmoi = os.path.join(strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+                    
+                    if(len(index) == 1):
+                        tenmoi = os.path.join(strA + '0' + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
+                    else:
+                        tenmoi = os.path.join(strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower()))
                     
                 os.rename(os.path.join(root, name),
-                          os.path.join(root, strA + str(index) + str(os.path.splitext(os.path.join(root, name))[1].lower())))
+                          os.path.join(root, tenmoi))
             except OSError:
                 pass  # can't rename it, so what
+            
     for root, dirs, files in os.walk(dir, topdown=False):
         # rename_all(root, dirs)
         rename_all(root, files)
 
 
-lst = get_files(r'\\192.168.1.110\Share', 'jpg')
-with open(r'\\192.168.1.110\Share\path.txt', 'a') as f:
-    for path in lst:
-        f.write(path + '\n')
+rename(r'\\192.168.1.110\Share\JPG GOC\KH\2014\31321\01\A4', 'KH.2014.31321.01.A4.')
+
