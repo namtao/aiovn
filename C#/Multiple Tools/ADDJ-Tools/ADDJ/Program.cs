@@ -13,7 +13,7 @@ namespace ADDJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CheckPdf());
+            Application.Run(new Home());
         }
     }
 }

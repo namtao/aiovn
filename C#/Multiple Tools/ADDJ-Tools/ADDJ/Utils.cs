@@ -54,7 +54,7 @@ namespace ADDJ
             oBooks = oExcel.Workbooks;
             oBook = oExcel.Workbooks.Add(Type.Missing);
             oSheets = oBook.Worksheets;
-            oSheet = oSheets.get_Item(1);
+            oSheet = (Worksheet)oSheets.get_Item(1);
             oSheet.Name = sheetName;
 
             //in đậm title
