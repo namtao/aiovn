@@ -7,7 +7,7 @@ import configparser
 # execute query database 
 def execute(strSql):
     config = configparser.ConfigParser()
-    config.read(r'common\utils\config.ini')
+    config.read(r'config.ini')
 
     conn = pyodbc.connect('Driver={SQL Server};'
                           f'Server={config["SqlServerDB"]["host"]};'
@@ -21,7 +21,7 @@ def execute(strSql):
 # execute query to json
 def select(strSql):
     config = configparser.ConfigParser()
-    config.read(r'common\utils\config.ini')
+    config.read(r'config.ini')
 
     conn = pyodbc.connect('Driver={SQL Server};'
                           f'Server={config["SqlServerDB"]["host"]};'

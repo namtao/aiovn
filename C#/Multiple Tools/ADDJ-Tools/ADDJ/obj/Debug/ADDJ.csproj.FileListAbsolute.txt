@@ -230,17 +230,13 @@ D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.Home.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.HoTich.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.GiaoNhanThietBi.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.QuaTrinhXuLy.resources
-D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.Rename.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.QuanLyThietBi.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.ReportViewer.resources
-D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.SoSanhBP.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.ThongKeNhanSu.resources
-D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.TKBP.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.Clone.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.LANScanner.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.Properties.Resources.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.Tree.resources
-D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.ViewPdf.resources
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.csproj.GenerateResource.cache
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.csproj.CoreCompileInputs.cache
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.csproj.CopyComplete
@@ -325,3 +321,4 @@ D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\tr\CrystalDecisions.Shar
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\zh-CHS\CrystalDecisions.Shared.resources.dll
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\zh-CHT\CrystalDecisions.Shared.resources.dll
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.csproj.AssemblyReference.cache
