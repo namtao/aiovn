@@ -220,7 +220,6 @@ D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\Microsoft.VisualStudio.T
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\nl\PdfiumViewer.resources.dll
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\Interop.AcroPDFLib.dll
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\bin\Debug\AxInterop.AcroPDFLib.dll
-D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.csproj.AssemblyReference.cache
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\ADDJ.exe.config
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\Interop.AcroPDFLib.dll
 D:\Projects\C#\Multiple Tools\ADDJ-Tools\ADDJ\obj\Debug\AxInterop.AcroPDFLib.dll
