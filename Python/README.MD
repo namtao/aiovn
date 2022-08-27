@@ -10,8 +10,11 @@ pip install --upgrade pip setuptools wheel
 
 python manage.py inspectdb > models.py
 
-python -m pip freeze > requirements.txt
+python -m pip freeze --all > requirements.txt
 python -m pip install -r requirements.txt
+
+pipreqs --force --encoding utf-8 "./"
+
 pyuic5 -x gui/demo.ui -o gui/demo.py
 django-admin startproject mysite
 python manage.py startapp <Tên APP>
