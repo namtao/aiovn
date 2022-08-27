@@ -698,7 +698,7 @@ namespace ADDJ
                         {
                             if (!root.GetType().GetProperty(property.Name).GetValue(root, null).Equals(qtxl.GetType().GetProperty(property.Name).GetValue(qtxl, null)))
                             {
-                                string strCo = "use HoTich; delete QTXLKS where TinhTrangID  = 7  and ID = " + str;
+                                string strCo = "delete QTXLKS where TinhTrangID  = 7  and ID = " + str;
                                 using (SqlCommand cmd = new SqlCommand(strCo, con))
                                 {
                                     cmd.CommandType = CommandType.Text;
@@ -802,7 +802,7 @@ namespace ADDJ
                         {
                             if (!root.GetType().GetProperty(property.Name).GetValue(root, null).Equals(qtxl.GetType().GetProperty(property.Name).GetValue(qtxl, null)))
                             {
-                                string strCo = "use HoTich; delete QTXLKT where TinhTrangID  = 7  and ID = " + str;
+                                string strCo = " delete QTXLKT where TinhTrangID  = 7  and ID = " + str;
                                 using (SqlCommand cmd = new SqlCommand(strCo, con))
                                 {
                                     cmd.CommandType = CommandType.Text;
@@ -904,7 +904,7 @@ namespace ADDJ
                         {
                             if (!root.GetType().GetProperty(property.Name).GetValue(root, null).Equals(qtxl.GetType().GetProperty(property.Name).GetValue(qtxl, null)))
                             {
-                                string strCo = "use HoTich; delete QTXLKH where TinhTrangID  = 7  and ID = " + str;
+                                string strCo = "delete QTXLKH where TinhTrangID  = 7  and ID = " + str;
                                 using (SqlCommand cmd = new SqlCommand(strCo, con))
                                 {
                                     cmd.CommandType = CommandType.Text;
@@ -1010,7 +1010,7 @@ namespace ADDJ
                         {
                             if (!root.GetType().GetProperty(property.Name).GetValue(root, null).Equals(qtxl.GetType().GetProperty(property.Name).GetValue(qtxl, null)))
                             {
-                                string strCo = "use HoTich; delete QTXLCMC where TinhTrangID  = 7  and ID = " + str;
+                                string strCo = "delete QTXLCMC where TinhTrangID  = 7  and ID = " + str;
                                 using (SqlCommand cmd = new SqlCommand(strCo, con))
                                 {
                                     cmd.CommandType = CommandType.Text;
@@ -2344,18 +2344,18 @@ namespace ADDJ
                 List<string> listDayDu2TrangThai = new List<string>();
 
                 string str = " SELECT DISTINCT ID " +
-                    " FROM @tableName" +
-                    " where ((id in (select id from @tableName where TinhTrangID = 7) " +
-                    "and id in (select id from @tableName where TinhTrangID = 6)) " +
-                    "or (id in (select id from @tableName where TinhTrangID = 7) " +
-                    "and id in (select id from @tableName where TinhTrangID = 5)) " +
-                    "or (id in (select id from @tableName where TinhTrangID = 5) " +
-                    "and id in (select id from @tableName where TinhTrangID = 6)))";
+                    " FROM " + tableName +
+                    " where ((id in (select id from "+ tableName +" where TinhTrangID = 7) " +
+                    "and id in (select id from " + tableName + " where TinhTrangID = 6)) " +
+                    "or (id in (select id from " + tableName + " where TinhTrangID = 7) " +
+                    "and id in (select id from " + tableName + " where TinhTrangID = 5)) " +
+                    "or (id in (select id from " + tableName + " where TinhTrangID = 5) " +
+                    "and id in (select id from " + tableName + " where TinhTrangID = 6)))";
 
                 using (SqlCommand cmd = new SqlCommand(str, con))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@tableName", tableName);
+                    //cmd.Parameters.AddWithValue("@tableName", tableName);
                     con.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     //duyệt từng bản ghi
@@ -2411,7 +2411,7 @@ namespace ADDJ
                             {
                                 SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo +
                                     "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" +
@@ -2454,7 +2454,7 @@ namespace ADDJ
                             {
                                 SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -2492,7 +2492,7 @@ namespace ADDJ
                             {
                                 SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -2531,7 +2531,7 @@ namespace ADDJ
                             {
                                 SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -2565,7 +2565,7 @@ namespace ADDJ
                             {
                                 SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +
@@ -2599,7 +2599,7 @@ namespace ADDJ
                             {
                                 SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
                                 conn.Open();
-                                SqlCommand cmd = new SqlCommand("use HoTich; if(select count(*) from Diff " +
+                                SqlCommand cmd = new SqlCommand("if(select count(*) from Diff " +
                                     "where id = '" + diff.id + "' and so = '" + diff.so + "' and quyenSo = '" + diff.quyenSo + "' and noiDangKy = '" + diff.noiDangKy + "' " +
                                     "and ngayDangKy = '" + diff.ngayDangKy + "' and tableName = '" + diff.tableName + "' and columnName = '" + diff.columnName + "' " +
                                     "and ktbm1 = N'" + Utils.QuotationMarks(diff.ktbm1) +

@@ -32,7 +32,7 @@ namespace ADDJ
         private void QuaTrinhXuLy_Load(object sender, EventArgs e)
         {
             cbxLoai.SelectedIndex = 0;
-            cbxNhiemVu.SelectedIndex = 1;
+            //cbxNhiemVu.SelectedIndex = 1;
             updateSum();
         }
 
@@ -56,7 +56,7 @@ namespace ADDJ
         {
             SqlConnection conn = new SqlConnection(HoTich.sqlConnect);
             conn.Open();
-            string strCmd = "SELECT * FROM HT_NOIDANGKY WHERE TenNoiDangKy LIKE N'%Quận 10%' ORDER BY TenNoiDangKy";
+            string strCmd = "SELECT * FROM HT_NOIDANGKY";
             SqlCommand cmd = new SqlCommand(strCmd, conn);
             SqlDataAdapter da = new SqlDataAdapter(strCmd, conn);
             DataSet ds = new DataSet();
@@ -118,12 +118,12 @@ namespace ADDJ
             }
             else if (cbxNhiemVu.SelectedIndex == 1)
             {
-                nhiemVu = " and(ghiChu = '5 -> 6' or ghiChu = '5 -> 7')";
+                nhiemVu = " and (ghiChu = '5 -> 6' or ghiChu = '5 -> 7')";
                 col = "ngayCapNhatKTBM1";
             }
             else
             {
-                nhiemVu = " and(ghiChu = '6 -> 7' or ghiChu = '5 -> 7')";
+                nhiemVu = " and (ghiChu = '6 -> 7' or ghiChu = '5 -> 7')";
                 col = "ngayCapNhatKTBM2";
             }
             SqlConnection conn = new SqlConnection(HoTich.sqlConnect);

@@ -4,8 +4,8 @@
 
 find . -name "*.pyc" -exec rm -f {} \;
 
-python -m venv Website-Django
-Website-Django\Scripts\activate
+python -m venv env
+env\Scripts\activate
 pip install --upgrade pip setuptools wheel
 
 python manage.py inspectdb > models.py

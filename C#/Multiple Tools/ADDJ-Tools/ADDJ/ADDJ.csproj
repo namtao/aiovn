@@ -241,6 +241,12 @@
     <Reference Include="Telerik.WinControls.Themes.Office2007Black, Version=2021.3.1109.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckPdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckPdf.Designer.cs">
+      <DependentUpon>CheckPdf.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,9 @@
       <DependentUpon>ViewPdf.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\XuLy.cs" />
+    <EmbeddedResource Include="CheckPdf.resx">
+      <DependentUpon>CheckPdf.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectDB.resx">
       <DependentUpon>ConnectDB.cs</DependentUpon>
     </EmbeddedResource>

@@ -125,6 +125,7 @@ namespace ADDJ
             this.thôngTinPhiênBảnToolStripMenuItem1.Name = "thôngTinPhiênBảnToolStripMenuItem1";
             this.thôngTinPhiênBảnToolStripMenuItem1.Size = new System.Drawing.Size(207, 24);
             this.thôngTinPhiênBảnToolStripMenuItem1.Text = "Thông tin phiên bản";
+            this.thôngTinPhiênBảnToolStripMenuItem1.Click += new System.EventHandler(this.tổngHợpToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
@@ -141,6 +142,7 @@ namespace ADDJ
             this.tổngHợpToolStripMenuItem.Name = "tổngHợpToolStripMenuItem";
             this.tổngHợpToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.tổngHợpToolStripMenuItem.Text = "So sánh tổng hợp";
+            this.tổngHợpToolStripMenuItem.Click += new System.EventHandler(this.tổngHợpToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -153,6 +155,7 @@ namespace ADDJ
             this.soSánhChiTiếtToolStripMenuItem.Name = "soSánhChiTiếtToolStripMenuItem";
             this.soSánhChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.soSánhChiTiếtToolStripMenuItem.Text = "So sánh chi tiết";
+            this.soSánhChiTiếtToolStripMenuItem.Click += new System.EventHandler(this.soSánhChiTiếtToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -168,7 +171,7 @@ namespace ADDJ
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // label7
             // 
@@ -184,8 +187,9 @@ namespace ADDJ
             // 
             this.saveToolStripMenuItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.saveToolStripMenuItem.Text = "Lưu vào Excel";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // menuStrip
             // 
@@ -255,7 +259,6 @@ namespace ADDJ
             this.datagrid.Size = new System.Drawing.Size(956, 315);
             this.datagrid.TabIndex = 1000000063;
             this.datagrid.TabStop = false;
-            this.datagrid.Visible = false;
             // 
             // lbSum
             // 
@@ -305,6 +308,7 @@ namespace ADDJ
             this.cbxLoai.Name = "cbxLoai";
             this.cbxLoai.Size = new System.Drawing.Size(194, 27);
             this.cbxLoai.TabIndex = 1000000055;
+            this.cbxLoai.TextChanged += new System.EventHandler(this.cbxLoai_TextChanged);
             // 
             // cbxQuyenSo
             // 
@@ -316,6 +320,8 @@ namespace ADDJ
             this.cbxQuyenSo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbxQuyenSo.Size = new System.Drawing.Size(145, 27);
             this.cbxQuyenSo.TabIndex = 1000000052;
+            this.cbxQuyenSo.DropDown += new System.EventHandler(this.cbxQuyenSo_DropDown);
+            this.cbxQuyenSo.TextChanged += new System.EventHandler(this.cbxQuyenSo_TextChanged);
             // 
             // label3
             // 
@@ -346,6 +352,8 @@ namespace ADDJ
             this.cbxNDK.Name = "cbxNDK";
             this.cbxNDK.Size = new System.Drawing.Size(334, 27);
             this.cbxNDK.TabIndex = 1000000053;
+            this.cbxNDK.DropDown += new System.EventHandler(this.cbxNDK_DropDown);
+            this.cbxNDK.TextChanged += new System.EventHandler(this.cbxNDK_TextChanged);
             // 
             // QuaTrinhXuLy
             // 
@@ -375,6 +383,7 @@ namespace ADDJ
             this.Name = "QuaTrinhXuLy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuaTrinhXuLy";
+            this.Load += new System.EventHandler(this.QuaTrinhXuLy_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).EndInit();

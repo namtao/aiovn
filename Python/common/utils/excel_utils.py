@@ -1,6 +1,7 @@
 from openpyxl import Workbook
 import openpyxl
 import string_utils
+from io_utils import *
 import pandas as pd
 import os
 import glob
@@ -18,7 +19,7 @@ def write_to_excel(arr, filename):
 
     workbook.save(filename=filename)
     workbook.close()
-    
+
 
 def read_from_excel(path): 
     # To open the workbook
@@ -30,20 +31,37 @@ def read_from_excel(path):
     sheet_obj = wb_obj.active
     max_col = sheet_obj.max_column
     max_row = sheet_obj.max_row
-        
+
+    # list all row excel 
     lst = []
+
+    # list title
+    lstTitle = []
     
-    # Loop will print all columns name
+    # Loop will print all rows name
     for i in range(1, max_row + 1):
+        # list noi dung
         arr = []
-        for j in range(1, max_col + 1):
-            cell_obj = sheet_obj.cell(row = i, column = j)     
+
+        # Loop will print all column name
+        for j in range(1, max_col + 1):            
+            # doc thong tin trong o
+            cell_obj = sheet_obj.cell(row = i, column = j)  
+            
             if(cell_obj.value is not None):
-                print(cell_obj.value)   
-                arr.append(string_utils.compound_unicode(str(cell_obj.value)))
-            else:
-                arr.append('')
+                # compound unicode cell_obj
+                content = string_utils.compound_unicode(str(cell_obj.value))
                 
+                # nếu là dòng đầu tiên thì thêm vào list tiêu đề
+                if(i == 1): 
+                    lstTitle.append(content)
+                else:  
+                    arr.append(content)
+            else:
+                # nếu trống thông tin list noi dung se them ''
+                arr.append('')
+        
+        # thêm vào danh sách nội dung dòng
         lst.append(arr)
             
     return lst
@@ -106,4 +124,6 @@ def change_column():
 
         writer.save()
 
-change_column()
+lst = get_files(r'D:\Data\EXCEL VỊ THANH ĐÃ BIÊN MỤC\KH', 'xlsx')
+for excelFiles in lst:
+    read_from_excel(excelFiles)

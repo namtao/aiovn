@@ -1,6 +1,18 @@
-import cv2
-from cv2 import imshow
-import numpy as np
-import imgstitch
+# 
+import sys
+from PIL import Image
 
-img = imgstitch.stitch_images_and_save(r'common\examples\tools', [r"C:\Projects\Python\common\examples\tools\1.jpg", r"C:\Projects\Python\common\examples\tools\2.jpg", r"C:\Projects\Python\common\examples\tools\3.jpg"], 1, r'common\examples\tools')
+images = [Image.open(x) for x in [r'common\examples\tools\1.1.jpg', r'common\examples\tools\2.1.jpg']]
+widths, heights = zip(*(i.size for i in images))
+
+total_width = sum(widths)
+max_height = max(heights)
+
+new_im = Image.new('RGB', (total_width, max_height))
+
+x_offset = 0
+for im in images:
+  new_im.paste(im, (x_offset,0))
+  x_offset += im.size[0]
+
+new_im.save('result.jpg')
