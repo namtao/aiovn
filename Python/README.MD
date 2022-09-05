@@ -7,6 +7,9 @@ find . -name "*.pyc" -exec rm -f {} \;
 python -m venv env
 env\Scripts\activate
 pip install --upgrade pip setuptools wheel
+py -m ensurepip --upgrade
+pip install --upgrade pip
+auto-py-to-exe
 
 python manage.py inspectdb > models.py
 

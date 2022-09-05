@@ -1,2 +1,0 @@
-Eel==0.12.4 # giao diện
-PyInstaller>=4.6
