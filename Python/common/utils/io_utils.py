@@ -68,15 +68,18 @@ def count_page_pdf(lstPdfFiles):
 
 
 # Tạo cấu trúc thư mục như Files
-def create_struct_pdf(lstPdfFiles):
+def create_struct_pdf(pathRoot, pathTarget):
     
-    for fileName in lstPdfFiles:
+    lst = get_files(pathRoot, 'pdf')
+    
+    for fileName in lst:
         try:
             head, tail = (os.path.split(Path(fileName)))
-            newPath = os.path.join(r'D:\FilesTempKhongNen', tail.split('.')[0], tail.split('.')[1], tail.split('.')[2], tail.split('.')[3])
+            newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[1], tail.split('.')[2], tail.split('.')[3])
             newFolder = Path(newPath).mkdir(parents=True, exist_ok=True)
             shutil.move(fileName, os.path.join(newPath, tail.replace(' ', '')))
         except:
+            print(fileName)
             pass
 
 
@@ -106,21 +109,22 @@ def check_modifier_file(lstFiles, formatFile):
 
 
 # đổi tên file theo quy tắc mới
-lst = get_files(r'C:\Users\Administrator\Downloads\New folder\1890\93029\01', 'pdf')
+# lst = get_files(r'C:\Users\Administrator\Downloads\New folder\1890\93029\01', 'pdf')
 
-for fileName in lst:
-    try:
-        head, tail = (os.path.split(Path(fileName)))
+# for fileName in lst:
+    # try:
+    #     head, tail = (os.path.split(Path(fileName)))
         
-        # check quyển nhiều năm
-        if(len(tail.split('.')) > 7):
-            haisonam = tail.split('.')[len(tail.split('.')) - 3]
-            nam = int(haisonam)
-            namMoi = nam + 1900
+    #     # check quyển nhiều năm
+    #     if(len(tail.split('.')) > 7):
+    #         haisonam = tail.split('.')[len(tail.split('.')) - 3]
+    #         nam = int(haisonam)
+    #         namMoi = nam + 1900
             
-            newName = os.path.join(head, tail.replace('.' + haisonam + '.', '.' + str(namMoi) + '.'))
-            os.rename(fileName, newName)
-    except:
-        pass
+    #         newName = os.path.join(head, tail.replace('.' + haisonam + '.', '.' + str(namMoi) + '.'))
+    #         os.rename(fileName, newName)
+    # except:
+    #     pass
 
 
+create_struct_pdf(r'C:\Users\Administrator\Desktop\test', r'C:\Users\Administrator\Desktop\test')
