@@ -75,9 +75,10 @@ def create_struct_pdf(pathRoot, pathTarget):
     for fileName in lst:
         try:
             head, tail = (os.path.split(Path(fileName)))
-            newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[1], tail.split('.')[2], tail.split('.')[3])
-            newFolder = Path(newPath).mkdir(parents=True, exist_ok=True)
-            shutil.move(fileName, os.path.join(newPath, tail.replace(' ', '')))
+            if(len(tail.split('.')) > 6):
+                newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[1], tail.split('.')[2], tail.split('.')[3])
+                Path(newPath).mkdir(parents=True, exist_ok=True)
+                shutil.move(fileName, os.path.join(newPath, tail.replace(' ', '')))
         except:
             print(fileName)
             pass
@@ -127,4 +128,4 @@ def check_modifier_file(lstFiles, formatFile):
     #     pass
 
 
-create_struct_pdf(r'C:\Users\Administrator\Desktop\test', r'C:\Users\Administrator\Desktop\test')
+create_struct_pdf(r'C:\Users\Nam\Downloads\New folder', r'C:\Users\Nam\Downloads\New folder')
