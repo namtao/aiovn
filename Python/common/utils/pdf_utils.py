@@ -1,11 +1,8 @@
-from PyPDF2 import PdfFileReader
 from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger, pdf
 import glob
 import os
 import pathlib
 from PIL import Image
-from PyPDF2.generic import NullObject
-from pdf2image import convert_from_path
 import time
 
 
