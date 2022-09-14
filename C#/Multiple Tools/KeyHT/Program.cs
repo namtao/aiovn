@@ -34,7 +34,7 @@ namespace KeyHT
 			}*/
 
 			var p = new Program();
-			p.EncodeHardDisk();
+			p.checkLicense("");
 			//Console.WriteLine(GetHardDisk());
 			Console.ReadKey();
 		}
@@ -65,6 +65,35 @@ namespace KeyHT
 				}
 			}
 			return sMBsernumb;
+		}
+
+		public bool checkLicense(string Key)
+		{
+			string str = "31534137394a5a30303436343537202020202020";
+			ManagementObjectSearcher managementObjectSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+			bool result;
+			try
+			{
+				ManagementObjectCollection.ManagementObjectEnumerator enumerator = managementObjectSearcher.Get().GetEnumerator();
+				while (enumerator.MoveNext())
+				{
+					ManagementObject managementObject = (ManagementObject)enumerator.Current;
+					string str2 = managementObject["Model"].ToString().Trim();
+					Console.WriteLine(this.MD5(str2 + str));
+					bool flag = Operators.CompareString(Key, this.MD5(str2 + str), false) == 0;
+					if (flag)
+					{
+						result = true;
+						return result;
+					}
+				}
+			}
+			catch
+			{
+				
+			}
+			result = false;
+			return result;
 		}
 
 		private void EncodeHardDisk()
