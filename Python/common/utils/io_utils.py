@@ -120,9 +120,8 @@ def check_modifier_file(lstFiles, formatFile):
 
 
 # đổi tên file theo quy tắc mới
-def rename_new_rule():
-    lst = []
-    for root, dirs, files in os.walk(r'\\192.168.1.96\e\Huyen\da ocr'):
+def rename_new_rule(path):
+    for root, dirs, files in os.walk(path):
         for fileName in files:
             try:
                 head, tail = (os.path.split(Path(fileName)))
@@ -131,12 +130,12 @@ def rename_new_rule():
                 if(len(tail.split('.')) > 7):
                     haisonam = tail.split('.')[len(tail.split('.')) - 3]
                     if(len(haisonam) != 4):
-                        print()
-                    # nam = int(haisonam)
-                    # namMoi = nam + 1900
+                        print(os.path.join(root, fileName))
+                        nam = int(haisonam)
+                        namMoi = nam + 1900
 
-                    # newName = os.path.join(head, tail.replace('.' + haisonam + '.', '.' + str(namMoi) + '.'))
-                    # os.rename(fileName, newName)
+                        newName = os.path.join(head, tail.replace('.' + haisonam + '.', '.' + str(namMoi) + '.'))
+                        # os.rename(os.path.join(root, fileName), os.path.join(root, newName))
             except:
                 pass
 
@@ -152,8 +151,8 @@ def countFiles():
     print(count)
 
 
-create_struct(r'\\192.168.1.96\e\Huyen\Cho OCR\Long My\New folder 3',
-              r'\\192.168.1.96\e\Huyen\Cho OCR\Long My')
+# create_struct(r'\\192.168.1.96\e\Huyen\Cho OCR\Long My\New folder 3',
+#               r'\\192.168.1.96\e\Huyen\Cho OCR\Long My')
 
 # countFiles()
 
@@ -173,3 +172,5 @@ create_struct(r'\\192.168.1.96\e\Huyen\Cho OCR\Long My\New folder 3',
 #             os.rename(os.path.join(root, fileName), newName)
 #         except:
 #             pass
+
+rename_new_rule(r'\\192.168.1.96\e\Huyen\da ocr')
