@@ -197,6 +197,7 @@ def rename_new_rule():
             except:
                 pass
 
+
 # tìm kiếm file
 def search_files():
     rootFolder = input("Nhập đường dẫn thư mục cần tìm kiếm: ")
@@ -232,6 +233,16 @@ def action(x):
     }
     func = switcher.get(x, lambda: "Chúc bạn may mắn lần sau!!!")
     return func()
+
+
+# for root, dirs, files in os.walk(r'\\192.168.1.96\e\Huyen\Cho OCR\Long My\New folder 3'):
+#     for fileName in files:
+#         try:
+#             head, tail = (os.path.split(Path(os.path.join(root, fileName))))
+#             newName = os.path.join(head, os.path.splitext(tail)[0] + '(1)' + os.path.splitext(tail)[1])
+#             os.rename(os.path.join(root, fileName), newName)
+#         except:
+#             pass
 
 
 if __name__ == '__main__':
