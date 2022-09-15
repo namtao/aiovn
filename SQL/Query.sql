@@ -1,4 +1,5 @@
-﻿select right(quyenSo, 4) as 'Quyển số KS', TenNoiDangKy as 'Tên nơi đăng ký', COUNT(*) as 'Số lượng'
+﻿-- thống kê số lượng bản ghi theo nơi đăng ký
+select right(quyenSo, 4) as 'Quyển số KS', TenNoiDangKy as 'Tên nơi đăng ký', COUNT(*) as 'Số lượng'
 from HT_KHAISINH ks join HT_NOIDANGKY ndk
 on ks.noiDangKy = ndk.MaNoiDangKy
 where TinhTrangID = 1
