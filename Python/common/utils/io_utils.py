@@ -75,9 +75,13 @@ def analysis_in_folder():
 
 
 # đổi tên files
-def rename(dir):
+def rename():
     # renames all subforders of dir, not including dir itself
-    # dir = os.path.dirname(os.path.abspath(__file__))
+    dir = input("Nhập đường dẫn thư mục: ")
+    # oldName = input("Nhập tên cần thay đổi: ")
+    # newName = input("Nhập tên mới: ")
+    
+    
     def rename_all(root, items):
         for name in items:
             try:
