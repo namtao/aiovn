@@ -80,8 +80,7 @@ def rename():
     dir = input("Nhập đường dẫn thư mục: ")
     # oldName = input("Nhập tên cần thay đổi: ")
     # newName = input("Nhập tên mới: ")
-    
-    
+
     def rename_all(root, items):
         for name in items:
             try:
@@ -248,7 +247,7 @@ def action(x):
 if __name__ == '__main__':
     print("-----Công cụ tương tác với Files-----")
     while True:
-        try:
+        try:    
             print('1. Phân tích thư mục')
             print('2. Tìm kiếm tệp tin')
             print('3. Kiểm tra trùng tên trong 1 thư mục')
