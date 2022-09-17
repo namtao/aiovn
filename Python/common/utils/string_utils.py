@@ -140,7 +140,6 @@ def compound_unicode(unicode_str):
     return unicode_str
 
 
-
 def string_search_from_multiple_files(path):
     text = input("input text : ")
 
