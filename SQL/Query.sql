@@ -106,3 +106,11 @@ select * from HT_XULY
 where ObjectID = 516469
 
 select * from HoTichPortal..Users where UserID = 2915
+
+go
+-- Xuất lỗi
+select so, quyenSo, TenNoiDangKy, trangSo, TenFileSauUpLoad 
+from HT_KHAISINH ks join HT_NOIDANGKY ndk
+on ks.noiDangKy = ndk.MaNoiDangKy
+where TinhTrangID = 10
+order by TenNoiDangKy, quyenSo, so

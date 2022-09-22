@@ -186,13 +186,13 @@ def rename_new_rule():
                 if(len(tail.split('.')) > 7):
                     haisonam = tail.split('.')[len(tail.split('.')) - 3]
                     if(len(haisonam) != 4):
-                        print(os.path.join(root, fileName))
+                        # print(os.path.join(root, fileName))
                         nam = int(haisonam)
                         namMoi = nam + 1900
 
                         newName = os.path.join(head, tail.replace(
                             '.' + haisonam + '.', '.' + str(namMoi) + '.'))
-                        # os.rename(os.path.join(root, fileName), os.path.join(root, newName))
+                        os.rename(os.path.join(root, fileName), os.path.join(root, newName))
             except:
                 pass
 
