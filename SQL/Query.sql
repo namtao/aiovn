@@ -2,7 +2,7 @@
 select right(quyenSo, 4) as 'Quyển số KS', TenNoiDangKy as 'Tên nơi đăng ký', COUNT(*) as 'Số lượng'
 from HT_KHAISINH ks join HT_NOIDANGKY ndk
 on ks.noiDangKy = ndk.MaNoiDangKy
-where TinhTrangID = 1
+where TinhTrangID = 1   
 group by right(quyenSo, 4), TenNoiDangKy
 order by right(quyenSo, 4)
 go
