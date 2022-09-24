@@ -6,6 +6,8 @@ import pandas as pd
 import os
 import glob
 import xlsxwriter
+import pandas as pd
+import xlrd
 
 
 def write_to_excel(arr, filename):
@@ -65,7 +67,7 @@ def read_from_excel(path):
         lst.append(arr)
             
     return lst
-    
+
 
 def change_column():
     # use glob to get all the csv files
@@ -124,6 +126,8 @@ def change_column():
 
         writer.save()
 
-lst = get_files(r'D:\Data\EXCEL VỊ THANH ĐÃ BIÊN MỤC\KH', 'xlsx')
+lst = get_files(r'D:\Data\EXCEL ĐÃ BIÊN MỤC\Tx Long Mỹ\Dữ liệu Tx Long Mỹ', 'xls')
 for excelFiles in lst:
-    read_from_excel(excelFiles)
+    book = xlrd.open_workbook(excelFiles)
+    print("The number of worksheets is {0}".format(book.nsheets))
+    print("Worksheet name(s): {0}".format(book.sheet_names()))
