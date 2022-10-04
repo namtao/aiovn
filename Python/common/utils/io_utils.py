@@ -15,8 +15,8 @@ def get_files(folderPath, fileFormat):
             pattern = re.compile(".*"+fileFormat+"$")
 
             if pattern.match(file):
-                lst.append(os.path.join(root, file))
-                # lst.append(os.path.join(file))
+                # lst.append(os.path.join(root, file))
+                lst.append(os.path.join(file))
                 # lst.append(os.path.splitext(file)[0])
     return lst
 
@@ -115,6 +115,8 @@ def check_duplicate_two_dir():
     lstPdfFilesTemp = get_files(dir2, '')
 
     lstDuplicate = list(set(lstPdfFilesTemp) & set(lstPdfFilesTemp1))
+    # lstDuplicate = list(set(lstPdfFilesTemp) - set(lstPdfFilesTemp1))
+    
     print(lstDuplicate)
 
 
