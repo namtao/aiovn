@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-# câu này bắt buộc phải có nhé
+
+# câu này bắt buộc phải có
 class abstractClassName(ABC):
     @abstractmethod
     def methodName(self):
