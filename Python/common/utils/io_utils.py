@@ -266,8 +266,9 @@ if __name__ == '__main__':
         except Exception as e:
             print(str(e))
         finally:
-            if(str(input('\nBạn có muốn tiếp tục? (Y/N?): ')).lower() == 'n'):
+            ip = str(input('\nBạn có muốn tiếp tục? (Y/N?): ')).upper()
+            if(ip == 'Y'):
+                continue
+            else:
                 print("Hẹn gặp lại!!!\n")
                 break
-            else:
-                continue

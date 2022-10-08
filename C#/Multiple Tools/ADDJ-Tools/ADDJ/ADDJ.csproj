@@ -65,10 +65,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Design.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\CrystalDecisions.CrystalReports.Engine\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
-    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.TemplateEngine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -92,6 +88,9 @@
       <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="GdPicture.NET.14">
+      <HintPath>..\..\..\..\..\GdPicture.NET 14\Samples\Bin\GdPicture.NET.14.dll</HintPath>
+    </Reference>
     <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
@@ -122,6 +121,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HoTich\ViewPdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich\ViewPdf.Designer.cs">
+      <DependentUpon>ViewPdf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\CheckPdf.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +226,9 @@
     </Compile>
     <Compile Include="Model\Utils.cs" />
     <Compile Include="Model\XuLy.cs" />
+    <EmbeddedResource Include="HoTich\ViewPdf.resx">
+      <DependentUpon>ViewPdf.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\CheckPdf.resx">
       <DependentUpon>CheckPdf.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,7 +283,6 @@
       <DependentUpon>Tree.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -329,6 +336,110 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspose.Cells">
+      <Version>22.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="Aspose.Words">
+      <Version>22.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="BouncyCastle">
+      <Version>1.8.9</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.Engine">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.ClientDoc">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CommLayer">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CommonControls">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CommonObjectModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.Controllers">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CubeDefModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.DataDefModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.DataSetConversion">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.ObjectFactory">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.Prompting">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.ReportDefModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.XmlSerialize">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportSource">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.Shared">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="iTextSharp">
+      <Version>5.5.13.3</Version>
+    </PackageReference>
+    <PackageReference Include="log4net">
+      <Version>2.0.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Excel">
+      <Version>15.0.4795.1001</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="PdfiumViewer">
+      <Version>2.13.0</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Compression.Base">
+      <Version>19.4.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Licensing">
+      <Version>20.2.0.39</Version>
+    </PackageReference>
+    <PackageReference Include="System.Buffers">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Memory">
+      <Version>4.5.5</Version>
+    </PackageReference>
+    <PackageReference Include="System.Numerics.Vectors">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Encodings.Web">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>6.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks.Extensions">
+      <Version>4.5.4</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -336,7 +447,5 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Text.Json.6.0.1\build\System.Text.Json.targets'))" />
-    <Error Condition="!Exists('..\..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets'))" />
   </Target>
-  <Import Project="..\..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets" Condition="Exists('..\..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" />
 </Project>
