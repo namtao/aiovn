@@ -1,4 +1,5 @@
 ﻿-- thống kê số lượng bản ghi theo nơi đăng ký
+use HoTichDaTa;
 select right(quyenSo, 4) as 'Quyển số KS', TenNoiDangKy as 'Tên nơi đăng ký', COUNT(*) as 'Số lượng'
 from HT_KHAISINH ks join HT_NOIDANGKY ndk
 on ks.noiDangKy = ndk.MaNoiDangKy
@@ -110,7 +111,7 @@ select * from HoTichPortal..Users where UserID = 2915
 go
 -- Xuất lỗi
 select so, quyenSo, TenNoiDangKy, trangSo, TenFileSauUpLoad 
-from HT_KHAISINH ks join HT_NOIDANGKY ndk
+from HT_KHAITU ks join HT_NOIDANGKY ndk
 on ks.noiDangKy = ndk.MaNoiDangKy
 where TinhTrangID = 10
 order by TenNoiDangKy, quyenSo, so
