@@ -29,82 +29,104 @@ namespace ADDJ
         /// </summary>
         private void InitializeComponent()
         {
-            this.gdViewer = new GdPicture14.GdViewer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gdViewer1 = new GdPicture14.GdViewer();
             this.thumbnailEx1 = new GdPicture14.ThumbnailEx();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gdViewer
+            // tableLayoutPanel1
             // 
-            this.gdViewer.AllowDropFile = false;
-            this.gdViewer.AnimateGIF = true;
-            this.gdViewer.AnnotationDropShadow = true;
-            this.gdViewer.AnnotationEnableMultiSelect = true;
-            this.gdViewer.AnnotationResizeRotateHandlesColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(128)))));
-            this.gdViewer.AnnotationResizeRotateHandlesScale = 1F;
-            this.gdViewer.AnnotationSelectionLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gdViewer.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.gdViewer.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.gdViewer.BackColor = System.Drawing.Color.White;
-            this.gdViewer.BackgroundImage = null;
-            this.gdViewer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.gdViewer.ClipAnnotsToPageBounds = true;
-            this.gdViewer.ClipRegionsToPageBounds = true;
-            this.gdViewer.ContinuousViewMode = true;
-            this.gdViewer.DisplayQuality = GdPicture14.DisplayQuality.DisplayQualityAutomatic;
-            this.gdViewer.DisplayQualityAuto = true;
-            this.gdViewer.DocumentAlignment = GdPicture14.ViewerDocumentAlignment.DocumentAlignmentMiddleCenter;
-            this.gdViewer.DocumentPosition = GdPicture14.ViewerDocumentPosition.DocumentPositionMiddleCenter;
-            this.gdViewer.DrawPageBorders = true;
-            this.gdViewer.EnableDeferredPainting = true;
-            this.gdViewer.EnabledProgressBar = true;
-            this.gdViewer.EnableICM = false;
-            this.gdViewer.EnableMenu = true;
-            this.gdViewer.EnableMouseWheel = true;
-            this.gdViewer.EnableTextSelection = true;
-            this.gdViewer.ForceScrollBars = false;
-            this.gdViewer.ForceTemporaryMode = false;
-            this.gdViewer.ForeColor = System.Drawing.Color.Black;
-            this.gdViewer.Gamma = 1F;
-            this.gdViewer.HQAnnotationRendering = true;
-            this.gdViewer.IgnoreDocumentResolution = false;
-            this.gdViewer.KeepDocumentPosition = false;
-            this.gdViewer.Location = new System.Drawing.Point(12, 12);
-            this.gdViewer.LockViewer = false;
-            this.gdViewer.MagnifierHeight = 90;
-            this.gdViewer.MagnifierWidth = 160;
-            this.gdViewer.MagnifierZoomX = 2F;
-            this.gdViewer.MagnifierZoomY = 2F;
-            this.gdViewer.MouseButtonForMouseMode = GdPicture14.MouseButton.MouseButtonLeft;
-            this.gdViewer.MouseMode = GdPicture14.ViewerMouseMode.MouseModePan;
-            this.gdViewer.MouseWheelMode = GdPicture14.ViewerMouseWheelMode.MouseWheelModeZoom;
-            this.gdViewer.Name = "gdViewer";
-            this.gdViewer.PageBordersColor = System.Drawing.Color.Black;
-            this.gdViewer.PageBordersPenSize = 1;
-            this.gdViewer.PageDisplayMode = GdPicture14.PageDisplayMode.MultiplePagesView;
-            this.gdViewer.PdfDisplayFormField = true;
-            this.gdViewer.PdfEnableFileLinks = true;
-            this.gdViewer.PdfEnableLinks = true;
-            this.gdViewer.PdfIncreaseTextContrast = false;
-            this.gdViewer.PdfShowDialogForPassword = true;
-            this.gdViewer.PdfShowOpenFileDialogForDecryption = true;
-            this.gdViewer.PdfVerifyDigitalCertificates = false;
-            this.gdViewer.PreserveViewRotation = true;
-            this.gdViewer.RectBorderColor = System.Drawing.Color.Black;
-            this.gdViewer.RectBorderSize = 1;
-            this.gdViewer.RectIsEditable = true;
-            this.gdViewer.RegionsAreEditable = true;
-            this.gdViewer.RenderGdPictureAnnots = true;
-            this.gdViewer.ScrollBars = true;
-            this.gdViewer.ScrollLargeChange = ((short)(50));
-            this.gdViewer.ScrollSmallChange = ((short)(1));
-            this.gdViewer.SilentMode = true;
-            this.gdViewer.Size = new System.Drawing.Size(776, 426);
-            this.gdViewer.TabIndex = 0;
-            this.gdViewer.ViewRotation = System.Drawing.RotateFlipType.RotateNoneFlipNone;
-            this.gdViewer.Zoom = 1D;
-            this.gdViewer.ZoomCenterAtMousePosition = false;
-            this.gdViewer.ZoomMode = GdPicture14.ViewerZoomMode.ZoomMode100;
-            this.gdViewer.ZoomStep = 25;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.64151F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.35849F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
+            this.tableLayoutPanel1.Controls.Add(this.gdViewer1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.thumbnailEx1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.85077F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.14923F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1272, 583);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // gdViewer1
+            // 
+            this.gdViewer1.AllowDropFile = false;
+            this.gdViewer1.AnimateGIF = true;
+            this.gdViewer1.AnnotationDropShadow = true;
+            this.gdViewer1.AnnotationEnableMultiSelect = true;
+            this.gdViewer1.AnnotationResizeRotateHandlesColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(128)))));
+            this.gdViewer1.AnnotationResizeRotateHandlesScale = 1F;
+            this.gdViewer1.AnnotationSelectionLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gdViewer1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.gdViewer1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.gdViewer1.BackColor = System.Drawing.Color.White;
+            this.gdViewer1.BackgroundImage = null;
+            this.gdViewer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.gdViewer1.ClipAnnotsToPageBounds = true;
+            this.gdViewer1.ClipRegionsToPageBounds = true;
+            this.gdViewer1.ContinuousViewMode = true;
+            this.gdViewer1.DisplayQuality = GdPicture14.DisplayQuality.DisplayQualityAutomatic;
+            this.gdViewer1.DisplayQualityAuto = true;
+            this.gdViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gdViewer1.DocumentAlignment = GdPicture14.ViewerDocumentAlignment.DocumentAlignmentMiddleCenter;
+            this.gdViewer1.DocumentPosition = GdPicture14.ViewerDocumentPosition.DocumentPositionMiddleCenter;
+            this.gdViewer1.DrawPageBorders = true;
+            this.gdViewer1.EnableDeferredPainting = true;
+            this.gdViewer1.EnabledProgressBar = true;
+            this.gdViewer1.EnableICM = false;
+            this.gdViewer1.EnableMenu = true;
+            this.gdViewer1.EnableMouseWheel = true;
+            this.gdViewer1.EnableTextSelection = true;
+            this.gdViewer1.ForceScrollBars = false;
+            this.gdViewer1.ForceTemporaryMode = false;
+            this.gdViewer1.ForeColor = System.Drawing.Color.Black;
+            this.gdViewer1.Gamma = 1F;
+            this.gdViewer1.HQAnnotationRendering = true;
+            this.gdViewer1.IgnoreDocumentResolution = false;
+            this.gdViewer1.KeepDocumentPosition = false;
+            this.gdViewer1.Location = new System.Drawing.Point(561, 3);
+            this.gdViewer1.LockViewer = false;
+            this.gdViewer1.MagnifierHeight = 90;
+            this.gdViewer1.MagnifierWidth = 160;
+            this.gdViewer1.MagnifierZoomX = 2F;
+            this.gdViewer1.MagnifierZoomY = 2F;
+            this.gdViewer1.MouseButtonForMouseMode = GdPicture14.MouseButton.MouseButtonLeft;
+            this.gdViewer1.MouseMode = GdPicture14.ViewerMouseMode.MouseModePan;
+            this.gdViewer1.MouseWheelMode = GdPicture14.ViewerMouseWheelMode.MouseWheelModeZoom;
+            this.gdViewer1.Name = "gdViewer1";
+            this.gdViewer1.PageBordersColor = System.Drawing.Color.Black;
+            this.gdViewer1.PageBordersPenSize = 1;
+            this.gdViewer1.PageDisplayMode = GdPicture14.PageDisplayMode.MultiplePagesView;
+            this.gdViewer1.PdfDisplayFormField = true;
+            this.gdViewer1.PdfEnableFileLinks = true;
+            this.gdViewer1.PdfEnableLinks = true;
+            this.gdViewer1.PdfIncreaseTextContrast = false;
+            this.gdViewer1.PdfShowDialogForPassword = true;
+            this.gdViewer1.PdfShowOpenFileDialogForDecryption = true;
+            this.gdViewer1.PdfVerifyDigitalCertificates = false;
+            this.gdViewer1.PreserveViewRotation = true;
+            this.gdViewer1.RectBorderColor = System.Drawing.Color.Black;
+            this.gdViewer1.RectBorderSize = 1;
+            this.gdViewer1.RectIsEditable = true;
+            this.gdViewer1.RegionsAreEditable = true;
+            this.gdViewer1.RenderGdPictureAnnots = true;
+            this.gdViewer1.ScrollBars = true;
+            this.gdViewer1.ScrollLargeChange = ((short)(50));
+            this.gdViewer1.ScrollSmallChange = ((short)(1));
+            this.gdViewer1.SilentMode = true;
+            this.gdViewer1.Size = new System.Drawing.Size(496, 511);
+            this.gdViewer1.TabIndex = 0;
+            this.gdViewer1.ViewRotation = System.Drawing.RotateFlipType.RotateNoneFlipNone;
+            this.gdViewer1.Zoom = 1D;
+            this.gdViewer1.ZoomCenterAtMousePosition = false;
+            this.gdViewer1.ZoomMode = GdPicture14.ViewerZoomMode.ZoomMode100;
+            this.gdViewer1.ZoomStep = 25;
             // 
             // thumbnailEx1
             // 
@@ -117,10 +139,11 @@ namespace ADDJ
             this.thumbnailEx1.DefaultItemCheckState = false;
             this.thumbnailEx1.DefaultItemTextPrefix = "";
             this.thumbnailEx1.DisplayAnnotations = true;
+            this.thumbnailEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.thumbnailEx1.EnableDropShadow = true;
             this.thumbnailEx1.HorizontalTextAlignment = GdPicture14.TextAlignment.TextAlignmentCenter;
             this.thumbnailEx1.HotTracking = false;
-            this.thumbnailEx1.Location = new System.Drawing.Point(381, 176);
+            this.thumbnailEx1.Location = new System.Drawing.Point(3, 3);
             this.thumbnailEx1.LockGdViewerEvents = false;
             this.thumbnailEx1.MultiSelect = false;
             this.thumbnailEx1.Name = "thumbnailEx1";
@@ -132,7 +155,7 @@ namespace ADDJ
             this.thumbnailEx1.SelectedThumbnailBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(160)))), ((int)(((byte)(218)))));
             this.thumbnailEx1.SelectedThumbnailBackColorAlpha = 100;
             this.thumbnailEx1.ShowText = true;
-            this.thumbnailEx1.Size = new System.Drawing.Size(407, 262);
+            this.thumbnailEx1.Size = new System.Drawing.Size(552, 511);
             this.thumbnailEx1.TabIndex = 0;
             this.thumbnailEx1.TextMarginLeft = 0;
             this.thumbnailEx1.TextMarginTop = 0;
@@ -144,22 +167,35 @@ namespace ADDJ
             this.thumbnailEx1.ThumbnailSpacing = new System.Drawing.Size(0, 0);
             this.thumbnailEx1.VerticalTextAlignment = GdPicture14.TextAlignment.TextAlignmentCenter;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(1063, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(206, 511);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
+            // 
             // ViewPdf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.thumbnailEx1);
-            this.Controls.Add(this.gdViewer);
+            this.ClientSize = new System.Drawing.Size(1272, 583);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ViewPdf";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewPdf";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private GdPicture14.GdViewer gdViewer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private GdPicture14.GdViewer gdViewer1;
         private GdPicture14.ThumbnailEx thumbnailEx1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
