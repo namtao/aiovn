@@ -15,8 +15,13 @@ def get_files(folderPath, fileFormat):
             pattern = re.compile(".*"+fileFormat+"$")
 
             if pattern.match(file):
+                # fullpath filename
                 # lst.append(os.path.join(root, file))
+                
+                # filename with extension
                 lst.append(os.path.join(file))
+                
+                # filename without extension
                 # lst.append(os.path.splitext(file)[0])
     return lst
 
