@@ -1,10 +1,12 @@
-def greet(name):
-       return "Hello " + name 
+import multiprocessing
+x = 2644  # khối lượng
+y = 9000  # giá
 
-def call_func(func):
-    other_name = "John"
-    return func(other_name)  
+result = (73596780 + x*y + (x*y)*0.001)/(7356+x)
 
-print (call_func(greet))
+print("{:,}".format(round(result/1000, 2)))
+print("{:,}".format(round(int(result))))
+print("{:,}".format(result))
+print("{:,}".format(x*y + (x*y)*0.001))
 
-# Outputs: Hello John
+print("Số lượng cpu : ", multiprocessing.cpu_count())

@@ -11,4 +11,4 @@ class normalClass(abstractClassName):
     # khai báo cho class ở đây
     pass
 
-print(dict(ABC))
+# print(dict(ABC))
