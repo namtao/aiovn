@@ -1,7 +1,7 @@
 import os
 import shutil
 
-path = r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen\HoTich\HOTICH_HG\source - haugiang\Files'
+path = r'E:\OCR NEN\Nen\OCR NEN'
 
 for root, dirs, files in os.walk(path):
     for dir in dirs:
