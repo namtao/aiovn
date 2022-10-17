@@ -2,22 +2,35 @@
 
 ## Các câu lệnh quan trọng
 
+<!-- xóa file cache -->
 find . -name "*.pyc" -exec rm -f {} \;
 
-python -m venv env
-env\Scripts\activate
 pip install --upgrade pip setuptools wheel
 py -m ensurepip --upgrade
 pip install --upgrade pip
+
+<!-- py to exe -->
 auto-py-to-exe
 
-python manage.py inspectdb > models.py
+<!-- tạo môi trường ảo -->
+pip install virtualenv
+virtualenv --version
+virtualenv my_project_env
 
+<!-- tạo môi trường ảo pypy -->
+virtualenv -p C:\Projects\Python\library\pypy3.9-v7.3.9-win64\pypy.exe pypy
+
+python -m venv env
+env\Scripts\activate
+
+<!-- cài đặt thư viện -->
 python -m pip freeze --all > requirements.txt
 python -m pip install -r requirements.txt
 
 pipreqs --force --encoding utf-8 "./"
 
+<!-- Django -->
+python manage.py inspectdb > models.py
 pyuic5 -x gui/demo.ui -o gui/demo.py
 django-admin startproject mysite
 python manage.py startapp <Tên APP>

@@ -33,6 +33,7 @@ def analysis_in_folder():
 
     countDirs = 0
     countFiles = 0
+    countFilesNotThumbs = 0
     # lấy tất cả các phần mở rộng
     extensions = list(set(os.path.splitext(
         f)[1] for dir, dirs, files in os.walk(folderPath) for f in files))
@@ -41,6 +42,8 @@ def analysis_in_folder():
     for root, dirs, files in os.walk(folderPath):
         for file in files:
             countFiles += 1
+            if(file != 'Thumbs.db'):
+                countFilesNotThumbs +=1
 
         for file2 in dirs:
             countDirs += 1
