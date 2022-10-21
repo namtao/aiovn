@@ -1,7 +1,7 @@
 import os
 import shutil
 
-path = r'E:\OCR NEN\Nen\OCR NEN'
+path = r'E:\OCR NEN\Nen\OCR NEN\Chua nen\2006-2015'
 
 for root, dirs, files in os.walk(path):
     for dir in dirs:
