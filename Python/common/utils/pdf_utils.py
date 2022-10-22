@@ -1,4 +1,4 @@
-from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger, pdf
+from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger
 import glob
 import os
 import pathlib
@@ -33,16 +33,26 @@ def split_pdf(pathPdfInput):
 
 
 def merge_pdf(pdfs):
-    pdfs = [r'C:\Users\ADMIN\Downloads\CHUONGV.pdf',
-            r'C:\Users\ADMIN\Downloads\CHUONGV.pdf']
+    pdfs = [r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.1.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.2.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.3.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.4.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.5.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.6.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.7.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.8.pdf',
+            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.9.pdf']
     merger = PdfFileMerger()
     index = 0
     for page in pdfs:
         merger.append(page)
     merger.write('merge.pdf')
+    
+pdfs = []
+merge_pdf(pdfs)
 
 
-def spit_and_merge_pdf(pathPdfInput, bytes=9000000):
+def spit_and_merge_pdf(pathPdfInput, bytes=10485760):
     if(os.path.getsize(pathPdfInput) >= 10485760):
         inputpdf = PdfFileReader(pathPdfInput, "rb")
         fileName = pathlib.Path(pathPdfInput).stem
@@ -64,7 +74,8 @@ def spit_and_merge_pdf(pathPdfInput, bytes=9000000):
         for page in pdfs:
             # get size file
             sum += os.path.getsize(page)
-            if(sum < bytes and page != pdfs[-1]):
+            # nếu dung lượng các trang chưa quá 10MB thì vẫn thêm vào sau
+            if(sum < bytes):
                 merger.append(page)
 
             else:
@@ -78,7 +89,7 @@ def spit_and_merge_pdf(pathPdfInput, bytes=9000000):
                 merger = PdfFileMerger()
                 merger.append(page)
                 index += 1
-                sum = 0
+                sum = os.path.getsize(page)
 
         try:
             listPdf = glob.glob("*pdf")
@@ -115,6 +126,8 @@ def detect_size():
     print(round(2.665))
 
 
+# spit_and_merge_pdf(r'C:\Users\Nam\Downloads\New folder\DJI_Avata_User_Manual-EN.pdf', 9000000)
+
 # # get file pdf
 # pathPdf = r'C:\Users\ADMIN\Downloads\New folder'
 # lst = get_files(pathPdf, 'pdf')
@@ -143,14 +156,14 @@ def detect_size():
 
 #     spit_and_merge_pdf(path)
 
-from PyPDF2 import PdfFileReader
+# from PyPDF2 import PdfFileReader
 
-# D:\New folder (2)\
-count = 0
-index = 0
-with open(r'D:\New folder (2)\aaa.txt', "r", encoding="utf-8") as file:
-    for line in file:
-        index+=1
-        print(str(index))
-        count += PdfFileReader(open(line.strip(),'rb')).getNumPages()
-print(str(count))
+# # D:\New folder (2)\
+# count = 0
+# index = 0
+# with open(r'D:\New folder (2)\aaa.txt', "r", encoding="utf-8") as file:
+#     for line in file:
+#         index+=1
+#         print(str(index))
+#         count += PdfFileReader(open(line.strip(),'rb')).getNumPages()
+# print(str(count))
