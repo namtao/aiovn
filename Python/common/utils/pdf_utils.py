@@ -1,3 +1,4 @@
+import re
 from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger
 import glob
 import os
@@ -16,20 +17,24 @@ def get_files(path, extensionFile):
 
 
 def split_pdf(pathPdfInput):
-    inputpdf = PdfFileReader(pathPdfInput, "rb")
-    fileName = pathlib.Path(pathPdfInput).stem
-    parentPath = pathlib.Path(pathPdfInput).parent.absolute()
+    for root, dirs, files in os.walk(r'E:\OCR NEN\Chua nen\2006-2015 - Copy'):
+        for file in files:
+            pattern = re.compile(".*"+'pdf'+"$")
 
-    sum = 0
-    pdfs = []
+            if pattern.match(file):
+                inputpdf = PdfFileReader(os.path.join(root, file), strict=False)
+                fileName = pathlib.Path(file).stem
+                parentPath = pathlib.Path(file).parent.absolute()
 
-    for i in range(inputpdf.numPages):
-        output = PdfFileWriter()
-        output.addPage(inputpdf.getPage(i))
-        with open("%s.%s.pdf" % (fileName, i), "wb") as outputStream:
-            output.write(outputStream)
-            pdfs.append("%s.%s.pdf" % (fileName, i))
-            outputStream.close()
+                pdfs = []
+
+                for i in range(inputpdf.numPages):
+                    output = PdfFileWriter()
+                    output.addPage(inputpdf.getPage(i))
+                    with open("%s-%s.pdf" % (os.path.join(r'E:\OCR NEN\Chua nen\2006-2015 - Copy', fileName), i), "wb") as outputStream:
+                        output.write(outputStream)
+                        pdfs.append("%s-%s.pdf" % (os.path.join(r'E:\OCR NEN\Chua nen\2006-2015 - Copy', fileName), i))
+                        outputStream.close()
 
 
 def merge_pdf(pdfs):
