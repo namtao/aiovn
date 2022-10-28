@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
-    <height>134</height>
+    <width>796</width>
+    <height>552</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
      <string>Đường dẫn</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="txtPath">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -50,13 +50,36 @@
      <string>Thực hiện</string>
     </property>
    </widget>
+   <widget class="QTreeView" name="tree">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>80</y>
+      <width>721</width>
+      <height>431</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCheck">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>30</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Kiểm tra</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>610</width>
+     <width>796</width>
      <height>21</height>
     </rect>
    </property>
@@ -67,12 +90,36 @@
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
-     <string>Tools</string>
+     <string>Công cụ</string>
     </property>
     <addaction name="btnXoaRac"/>
    </widget>
+   <widget class="QMenu" name="menuChuy_n_i">
+    <property name="title">
+     <string>Chuyển đổi</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuTi_n_ch">
+    <property name="title">
+     <string>Tiện ích</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuC_u_h_nh">
+    <property name="title">
+     <string>Cấu hình</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuTr_gi_p">
+    <property name="title">
+     <string>Trợ giúp</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuTools"/>
+   <addaction name="menuChuy_n_i"/>
+   <addaction name="menuTi_n_ch"/>
+   <addaction name="menuC_u_h_nh"/>
+   <addaction name="menuTr_gi_p"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="btnXoaRac">
