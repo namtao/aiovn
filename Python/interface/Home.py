@@ -1,26 +1,17 @@
-from PyQt6 import QtWidgets, uic, QtGui
-import sys
+import eel, os, random
 
-class Ui(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Ui, self).__init__()
-        uic.loadUi(r'interface\design\Home.ui', self)
-        self.show()
-        self.btnExe.clicked.connect(self.btnXoa)
-        self.setWindowIcon(QtGui.QIcon(r'interface\image\icon.ico'))
-    
-    def btnXoa(self):
-        self.win2 = Ui2()
-        self.win2.show()
-    
-        
-        
-class Ui2(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(Ui2, self).__init__()
-        uic.loadUi(r'interface\design\test2.ui', self)
-        # self.show()
+eel.init(r'interface\web')
 
-app = QtWidgets.QApplication(sys.argv)
-window = Ui()
-app.exec()
+@eel.expose
+def pick_file(folder):
+    if os.path.isdir(folder):
+        return random.choice(os.listdir(folder))
+    else:
+        return 'Not valid folder'
+
+def close_callback(route, websockets):
+    if not websockets:
+        exit()
+
+
+eel.start('error-404.html', size=(320, 120), close_callback=close_callback)
