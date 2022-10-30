@@ -13,5 +13,4 @@ def close_callback(route, websockets):
     if not websockets:
         exit()
 
-
-eel.start('error-404.html', size=(320, 120), close_callback=close_callback)
+eel.start('/tabs.html', close_callback=close_callback)
