@@ -1,22 +1,21 @@
 
-kyhieu = input('Nhập ký hiệu: ') # NELCAI
-so = input('Nhập số max: ') # 6200
+kyhieu = 'NEGLAI'
+so = 24000
 
-lst = []
 with open('timso.txt', 'r') as fr:   
     with open('ketqua.txt', 'w+') as fw:   
-        # thêm số vào lst
-        for s_line in fr:
-            try:
-                lst.append(int(s_line.strip()[(len(kyhieu)):]))
-            # lst.append(int(s_line.strip()[(len(kyhieu) + 2):]))
-            except:
-                print(s_line.strip())
-            
-            
-        # kiểm tra số không có
+        
+        lst = fr.read().splitlines() 
+                
         for s in range(1, int(so) + 1):
-            if(int(s) not in lst): 
-                # fw.write(kyhieu + '-T' + f'{s:05}' + '\n')
-                fw.write(kyhieu + f'{s:05}' + '\n')
+            NotT = kyhieu +'-' + f'{s:05}'
+            T = kyhieu +'-T' + f'{s:05}'
+            
+            if(NotT not in lst):
+                fw.write(kyhieu +'-' + f'{s:05}' + '\n')
+                
+            if(T not in lst):
+                fw.write(kyhieu +'-T' + f'{s:05}' + '\n')
+                
+            
                 
