@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4DED93B-15AC-4D7A-9266-94A2E791AACF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>xD</RootNamespace>
+    <AssemblyName>xD</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CRVsPackageLib, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CRVsPackageLib.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.TemplateEngine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.TemplateEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Data.AdoDotNetInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Viewing.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Enterprise.Viewing.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.VSDesigner.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Core.Desktop, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v21.2.Extensions, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="GdPicture.NET.14">
+      <HintPath>..\..\..\..\..\GdPicture.NET 14\Samples\Bin\GdPicture.NET.14.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\SAPBusinessObjects.WPF.ViewerShared.dll</HintPath>
+    </Reference>
+    <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HoTich\ViewPdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich\ViewPdf.Designer.cs">
+      <DependentUpon>ViewPdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\CheckPdf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\CheckPdf.Designer.cs">
+      <DependentUpon>CheckPdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HoTich\ConnectDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich\ConnectDB.Designer.cs">
+      <DependentUpon>ConnectDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HoTich\CountField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich\CountField.Designer.cs">
+      <DependentUpon>CountField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DB.cs" />
+    <Compile Include="QuanLyThietBi\GiaoNhanThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyThietBi\GiaoNhanThietBi.Designer.cs">
+      <DependentUpon>GiaoNhanThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HoSoThietBiReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HoSoThietBiReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model\Diff.cs" />
+    <Compile Include="DuAn\BinhPhuoc.cs" />
+    <Compile Include="DuAn\ThaiBinh.cs" />
+    <Compile Include="HoTich\HoTich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich\HoTich.Designer.cs">
+      <DependentUpon>HoTich.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HT_KETHON.cs" />
+    <Compile Include="Model\HT_KHAISINH.cs" />
+    <Compile Include="Model\HT_KHAITU.cs" />
+    <Compile Include="Model\HT_NHANCHAMECON.cs" />
+    <Compile Include="HoTich\QuaTrinhXuLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich\QuaTrinhXuLy.Designer.cs">
+      <DependentUpon>QuaTrinhXuLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyThietBi\QuanLyThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyThietBi\QuanLyThietBi.Designer.cs">
+      <DependentUpon>QuanLyThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyThietBi\ReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyThietBi\ReportViewer.Designer.cs">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HoTich\ThongKeNhanSu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoTich\ThongKeNhanSu.Designer.cs">
+      <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\GetSources.cs" />
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Clone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Clone.Designer.cs">
+      <DependentUpon>Clone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ItemComparer.cs" />
+    <Compile Include="Tools\LANScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\LANScanner.Designer.cs">
+      <DependentUpon>LANScanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DuAn\Q10.cs" />
+    <Compile Include="Tree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tree.Designer.cs">
+      <DependentUpon>Tree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Utils.cs" />
+    <Compile Include="Model\XuLy.cs" />
+    <EmbeddedResource Include="HoTich\ViewPdf.resx">
+      <DependentUpon>ViewPdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Tools\CheckPdf.resx">
+      <DependentUpon>CheckPdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoTich\ConnectDB.resx">
+      <DependentUpon>ConnectDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoTich\CountField.resx">
+      <DependentUpon>CountField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoSoThietBiReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HoSoThietBiReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoTich\HoTich.resx">
+      <DependentUpon>HoTich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyThietBi\GiaoNhanThietBi.resx">
+      <DependentUpon>GiaoNhanThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoTich\QuaTrinhXuLy.resx">
+      <DependentUpon>QuaTrinhXuLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyThietBi\QuanLyThietBi.resx">
+      <DependentUpon>QuanLyThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyThietBi\ReportViewer.resx">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoTich\ThongKeNhanSu.resx">
+      <DependentUpon>ThongKeNhanSu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Clone.resx">
+      <DependentUpon>Clone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\LANScanner.resx">
+      <DependentUpon>LANScanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Tree.resx">
+      <DependentUpon>Tree.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspose.Cells">
+      <Version>22.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="Aspose.Words">
+      <Version>22.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="BouncyCastle">
+      <Version>1.8.9</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.Engine">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.ClientDoc">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CommLayer">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CommonControls">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CommonObjectModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.Controllers">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.CubeDefModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.DataDefModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.DataSetConversion">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.ObjectFactory">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.Prompting">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.ReportDefModel">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportAppServer.XmlSerialize">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.ReportSource">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="CrystalReports.Shared">
+      <Version>13.0.4001</Version>
+    </PackageReference>
+    <PackageReference Include="iTextSharp">
+      <Version>5.5.13.3</Version>
+    </PackageReference>
+    <PackageReference Include="log4net">
+      <Version>2.0.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Excel">
+      <Version>15.0.4795.1001</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="PdfiumViewer">
+      <Version>2.13.0</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Compression.Base">
+      <Version>19.4.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Licensing">
+      <Version>20.2.0.39</Version>
+    </PackageReference>
+    <PackageReference Include="System.Buffers">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Memory">
+      <Version>4.5.5</Version>
+    </PackageReference>
+    <PackageReference Include="System.Numerics.Vectors">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Encodings.Web">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>6.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks.Extensions">
+      <Version>4.5.4</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Text.Json.6.0.1\build\System.Text.Json.targets'))" />
+  </Target>
+</Project>
