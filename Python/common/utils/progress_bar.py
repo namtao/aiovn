@@ -32,9 +32,9 @@ def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, 
 import time
 
 # A List of Items
-items = list(range(0, 57))
+items = list(range(0, 100000))
 
 # A Nicer, Single-Call Usage
 for item in progressBar(items, prefix = 'Progress:', suffix = 'Complete', length = 50):
     # Do stuff...
-    time.sleep(0.1)
+    time.sleep(0.000001)

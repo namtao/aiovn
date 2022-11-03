@@ -131,49 +131,6 @@ def detect_size():
     print(round(2.665))
 
 
-# spit_and_merge_pdf(r'C:\Users\Nam\Downloads\New folder\DJI_Avata_User_Manual-EN.pdf', 9000000)
-
-# # get file pdf
-# pathPdf = r'C:\Users\ADMIN\Downloads\New folder'
-# lst = get_files(pathPdf, 'pdf')
-
-# # lst = get_files(pathPdf, 'pdf')
-
-# # lstNotSplit = []
-
-# # for index in os.listdir(pathPdf):
-# #     for i in os.listdir(os.path.join(pathPdf, index)):
-# #         if not os.path.isdir(os.path.join(pathPdf, index, i)):
-# #             lstNotSplit.append(os.path.join(pathPdf, index, i))
-
-# '''
-# lọc danh sách khác nhau giữa 2 list
-# '''
-
-# # lstDiff = set(lst) ^ set(lstNotSplit)
-
-# # index = 0
-# for path in lst:
-# #     if(os.path.getsize(path) >= 10485760):
-# #         print(path)
-#         # index+=1
-#         # print(index)
-
-#     spit_and_merge_pdf(path)
-
-# from PyPDF2 import PdfFileReader
-
-# # D:\New folder (2)\
-# count = 0
-# index = 0
-# with open(r'D:\New folder (2)\aaa.txt', "r", encoding="utf-8") as file:
-#     for line in file:
-#         index+=1
-#         print(str(index))
-#         count += PdfFileReader(open(line.strip(),'rb')).getNumPages()
-# print(str(count))
-
-
 import os
 from PIL import Image
 
