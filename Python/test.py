@@ -1,4 +1,5 @@
 import multiprocessing
+
 x = 0  # khối lượng
 y = 8990  # giá
 
