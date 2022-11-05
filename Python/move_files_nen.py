@@ -17,8 +17,8 @@ def get_files(folderPath, fileFormat):
 
 
 
-dir1 = r'E:\OCR NEN\Chua nen'
-dir2 = r'E:\OCR NEN\Nen\OCR NEN\Chua nen\2006-2015'
+dir1 = r'E:\OCR NEN\Chua nen\duoi 2006'
+dir2 = r'E:\OCR NEN\Nen\OCR NEN\Chua nen\duoi 2006'
 # dir3 = r'E:\Chua nen'
 
 lstPdf1 = get_files(dir1, 'pdf')
@@ -36,5 +36,7 @@ for root, dirs, files in os.walk(dir1):
     for file in files:
         if(file in lstDuplicate):
             os.remove(os.path.join(root, file))
+            # shutil.copy(filePath,  os.path.join(targetFolder, tail))
+            pass
 
 # print(str(count))

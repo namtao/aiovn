@@ -1,11 +1,12 @@
-from fileinput import filename
-import os
-from pathlib import Path
-import PyPDF2
-import shutil
 # import pikepdf
 import datetime
+import os
 import re
+import shutil
+from fileinput import filename
+from pathlib import Path
+
+import PyPDF2
 
 
 def get_files(folderPath, fileFormat):
@@ -149,9 +150,14 @@ def create_struct():
                             newPath, tail.replace(' ', '')))
                         count += 1
                     else:
-                        print(os.path.join(root, fileName))
+                        # print(os.path.join(root, fileName))
+                        with open('error.txt', 'a', encoding='utf8') as f:
+                            # print(os.path.join(root, fileName))
+                            f.write(os.path.join(root, fileName) + '\n')
             except:
-                print(os.path.join(root, fileName))
+                with open('error.txt', 'a', encoding='utf8') as f:
+                    # print(os.path.join(root, fileName))
+                    f.write(os.path.join(root, fileName) + '\n')
                 pass
     print(count)
 
