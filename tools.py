@@ -9,7 +9,6 @@ from pathlib import Path
 import PyPDF2
 
 
-
 def get_files(folderPath, fileFormat):
     lst = []
     for root, dirs, files in os.walk(folderPath):
@@ -225,7 +224,7 @@ def search_files():
     rootFolder = input("Nhập đường dẫn thư mục cần tìm kiếm: ")
     fileName = input("Nhập tên tệp tin cần tìm kiếm: ")
     targetFolder = r'D:\Reup'
-    print("Tệp tin sẽ được sao chép vào thư mục D:\Reup")
+    print("Tệp tin sẽ được sao chép vào thư mục D:\\Reup")
 
     Path(r'D:\Reup').mkdir(parents=True, exist_ok=True)
 

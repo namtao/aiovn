@@ -51,6 +51,6 @@ for root, dirs, files in os.walk(r'D:\HoTich\HOTICH_HG\source - haugiang\Files')
                 if line.strip() == file:
                     # print (os.path.join(root, file))
                     try:
-                        shutil.copy(os.path.join(root, file), os.path.join('E:\OCR NEN\Bu chua nen', file))
+                        shutil.copy(os.path.join(root, file), os.path.join(r'E:\OCR NEN\Bu chua nen', file))
                     except Exception as e:
                         pass
