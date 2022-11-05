@@ -40,19 +40,19 @@ def setDpiImg2Pdf():
 # magick mogrify -set density 300 "C:\Users\Nam\Downloads\New folder\result.jpg"
 # convert  "C:\Users\Nam\Downloads\New folder\result.jpg" -density 300 -units PixelsPerInch  "C:\Users\Nam\Downloads\New folder\result.jpg"
 
-# from PIL import Image
-# image = cv2.imread(img_path)
-# RGBimage = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-# PILimage = Image.fromarray(RGBimage)
-# PILimage.save(r"C:\Users\Nam\Downloads\New folder\result2.jpg", dpi=(300,300))
+from PIL import Image
+image = cv2.imread(r'C:\Users\Nam\Downloads\New folder\result.jpg')
+RGBimage = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+PILimage = Image.fromarray(RGBimage)
+PILimage.save(r"C:\Users\Nam\Downloads\New folder\result2.jpg", dpi=(300,300))
 
 
 
 
-# from PIL import Image
+from PIL import Image
 
-# image = Image.open(r"C:\Users\Nam\Downloads\New folder\result.pdf")
-# print(f"Original size : {image.size}") # 5464x3640
+image = Image.open(r"C:\Users\Nam\Downloads\New folder\result.pdf")
+print(f"Original size : {image.size}") # 5464x3640
 
-# sunset_resized = image.resize((7680, 4320))
-# sunset_resized.save(r"C:\Users\Nam\Downloads\New folder\result_resize.pdf")
+sunset_resized = image.resize((7680, 4320))
+sunset_resized.save(r"C:\Users\Nam\Downloads\New folder\result_resize.pdf")
