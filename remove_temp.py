@@ -1,8 +1,9 @@
 import os
+import pathlib
 import re
 import shutil
-from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger
-import pathlib
+
+from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
 path = r'E:\OCR NEN\Nen\OCR NEN\Chua nen\duoi 2006'
 
@@ -75,8 +76,8 @@ def merge_pdf():
                     merger.write(os.path.join(r'E:\OCR NEN\Nen ghep', file.split('-')[0] + '.pdf'))
                 else:
                     merger = PdfFileMerger()
-                    merger.append(PdfFileReader(os.path.join(r'E:\OCR NEN\Nen ghep', file.split('-')[0] + '.pdf'), 'rb'))
-                    merger.append(PdfFileReader(os.path.join(root, file), 'rb'))
+                    merger.append(PdfFileReader(os.path.join(r'E:\OCR NEN\Nen ghep', file.split('-')[0] + '.pdf'), 'rb'))  # type: ignore
+                    merger.append(PdfFileReader(os.path.join(root, file), 'rb'))  # type: ignore
                     merger.write(os.path.join(r'E:\OCR NEN\Nen ghep', file.split('-')[0] + '.pdf'))
                                         
 

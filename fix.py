@@ -40,7 +40,7 @@ for file in lstDuplicate:
     try:
         # di chuyển ảnh chưa nén về thư mục lỗi
         shutil.move(os.path.join(r'D:\HoTich\HOTICH_HG\source - haugiang\Files',
-                    file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file), os.path.join(r'E:\Error\Khong nen', file))
+                    file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file), os.path.join(r'E:\Sua loi\Anh loi', file))
 
         # xóa ảnh nén trong FilesNen
         os.remove(os.path.join(r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen',
