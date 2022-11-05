@@ -1,8 +1,10 @@
 import os
 import re
 import shutil
+from pathlib import Path
 
 # lấy tên file => xóa data => xóa ảnh => up lại
+# xóa ảnh trong Files, FilesNen và OCR NEN
 
 # ghi file txt lỗi và di chuyển file lỗi về thư mục quy định
 
@@ -40,8 +42,16 @@ for file in lstDuplicate:
         shutil.move(os.path.join(r'D:\HoTich\HOTICH_HG\source - haugiang\Files',
                     file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file), os.path.join(r'E:\Error\Khong nen', file))
 
-        # di chuyển ảnh nén về thư mục lỗi
-        shutil.move(os.path.join(r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen',
-                    file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file), os.path.join(r'E:\Error\Nen', file))
+        # xóa ảnh nén trong FilesNen
+        os.remove(os.path.join(r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen',
+                    file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file))
+        
+        # xóa ảnh trong OCR NEN
+        os.remove(os.path.join(r'E:\OCR NEN\Chua nen\duoi 2006',
+                    file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file))
+        
+        os.remove(os.path.join(r'E:\OCR NEN\Nen\OCR NEN\Chua nen\duoi 2006',
+                    file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file))
+        
     except Exception as e:
         pass

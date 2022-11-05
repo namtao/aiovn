@@ -2,6 +2,7 @@
 import os
 import re
 import shutil
+from pathlib import Path
 
 # vị thanh
 lstMaPhuong = ['31318', '31321', '31324', '31327',
@@ -34,23 +35,17 @@ def check_duplicate_two_dir():
     # lstDuplicate = list(set(lst1) & set(lst2))
     lstDiff = list(set(lst1) - set(lst2))
 
-    # print(lstDiff)
-    # shutil.copy(filePath,  os.path.join(targetFolder, tail))
-    
-    with open('error.txt', 'w+') as f:               
-        for file in lstDiff:
-            f.write(file + '\n')
+    for file in lstDiff:
+        try:
+            newPath = os.path.join(r'E:\OCR NEN', file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3])
+            Path(newPath).mkdir(parents=True, exist_ok=True)
+            shutil.copy(os.path.join(r'D:\HoTich\HOTICH_HG\source - haugiang\Files',
+                        file.split('.')[0], file.split('.')[1], file.split('.')[2], file.split('.')[3], file), 
+                        os.path.join(newPath, file))
+
+        except Exception as e:
+            pass
 
 
-# check_duplicate_two_dir()
-lst = []
-for root, dirs, files in os.walk(r'D:\HoTich\HOTICH_HG\source - haugiang\Files'):
-    for file in files:    
-        with open('error.txt', 'r') as f:           
-            for line in f:
-                if line.strip() == file:
-                    # print (os.path.join(root, file))
-                    try:
-                        shutil.copy(os.path.join(root, file), os.path.join(r'E:\OCR NEN\Bu chua nen', file))
-                    except Exception as e:
-                        pass
+check_duplicate_two_dir()
+
