@@ -1,7 +1,14 @@
+import configparser
 import os
 import sys
 import collections
 import string
+import pandas as pd
+import pyodbc
+import dask.dataframe as dd
+import sqlalchemy as sa
+from pandas import DataFrame
+from sqlalchemy import create_engine
 
 
 def format_str(strA):
@@ -143,10 +150,10 @@ def compound_unicode(unicode_str):
 def string_search_from_multiple_files(path):
     text = input("input text : ")
 
-    path = input("path : ")
+    # path = input("path : ")
     f = 0
     os.chdir(path)
-    files = os.listdir()
+    files = os.listdir()  # type: ignore
     # print(files)
     for file_name in files:
         abs_path = os.path.abspath(file_name)
@@ -167,7 +174,9 @@ def string_search_from_multiple_files(path):
 
 
 def textfile_analysis():
-    script_name = sys.argv[0]
+    # script_name = sys.argv[0]
+    textfile = r'error.txt'
+    script_name = 'string_utils.py'
 
     res = {
         "total_lines": "",
@@ -178,20 +187,20 @@ def textfile_analysis():
     }
 
     try:
-        textfile = sys.argv[1]
+        # textfile = sys.argv[1]
         with open(textfile, "r", encoding="utf_8") as f:
 
             data = f.read()
-            res["total_lines"] = data.count(os.linesep)
-            res["total_characters"] = len(
-                data.replace(" ", "")) - res["total_lines"]
+            res["total_lines"] = data.count(os.linesep)  # type: ignore
+            res["total_characters"] = len(data.replace(
+                " ", "")) - res["total_lines"]  # type: ignore
             counter = collections.Counter(data.split())
             d = counter.most_common()
-            res["total_words"] = sum([i[1] for i in d])
-            res["unique_words"] = len([i[0] for i in d])
+            res["total_words"] = sum([i[1] for i in d])  # type: ignore
+            res["unique_words"] = len([i[0] for i in d])  # type: ignore
             special_chars = string.punctuation
-            res["special_characters"] = sum(
-                v for k, v in collections.Counter(data).items() if k in special_chars)
+            res["special_characters"] = sum(v for k, v in collections.Counter(
+                data).items() if k in special_chars)  # type: ignore
 
     except IndexError:
         print('Usage: %s TEXTFILE' % script_name)
@@ -199,3 +208,38 @@ def textfile_analysis():
         print('"%s" cannot be opened.' % textfile)
 
     print(res)
+
+
+def sql_analysis():
+    config = configparser.ConfigParser()
+    config.read(r'config.ini')
+
+    conn = pyodbc.connect('Driver={SQL Server};'
+                          f'Server={config["SqlServerDB"]["host"]};'
+                          f'Database={config["SqlServerDB"]["db"]};'
+                          )
+
+    a = pd.read_sql('select * from HT_KHAISINH', conn)
+    engine = sa.create_engine('mssql+pyodbc://./HoTichData')
+    # engine = sa.create_engine('mssql+pyodbc://user:password@server/database')
+    
+    # b = dd.read_sql_query('select * from HT_KHAISINH', 'mssql+pyodbc://./HoTichData', 'ID')
+    print(type(a))
+
+
+# textfile_analysis();
+# string_search_from_multiple_files(r'C:\Users\Nam\Downloads\New folder');
+# sql_analysis()
+
+Server = "."
+Database ="HoTichData"
+Driver = "ODBC Driver 17 for SQL Server"
+
+conn = f'mssql://@{Server}/{Database}?driver={Driver}'
+
+engine = create_engine(conn)
+
+connection = engine.connect()
+
+df = pd.read_sql_query('select * from HT_KHAISINH', conn)
+print(df)

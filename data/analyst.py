@@ -1,7 +1,13 @@
-import pandas as pd
 import numpy as np
+import configparser
+import pandas as pd
+import dask.dataframe as dd
+from collections import Counter
+from collections import OrderedDict
 
 # tối ưu hóa hiệu suất dataframe
+
+
 def reduce_mem_usage(df):
     """ iterate through all the columns of a dataframe and modify the data type
         to reduce memory usage.        
@@ -42,5 +48,41 @@ def reduce_mem_usage(df):
     return df
 
 
-# Create a Dictionary of series
+def merge_dict(dict1, dict2):
+    for i in dict2.keys():
+        if (i in dict1):
+            dict1[i] = dict1[i] + dict2[i]
+        else:
+            dict1[i] = dict2[i]
+    return dict1
 
+
+def sql_analysis():
+    config = configparser.ConfigParser()
+    config.read(r'config.ini')
+
+    conn = f'mssql://@{config["SqlServerDB"]["host"]}/{config["SqlServerDB"]["db"]}?driver={config["SqlServerDB"]["driver"]}'
+
+    df = pd.read_sql_query('select nksHoTen from HT_KHAISINH', conn)
+
+    # dic = df.to_dict('records')
+
+    series = df.squeeze()
+    # sắp xếp theo key dictionary
+    d = OrderedDict(
+        sorted(dict(Counter(list(series.map(lambda calc: len(str(calc)))))).items()))
+
+    # lọc theo key dictionary
+    filtered_dict = {k: v for k, v in d.items() if k > 16}
+
+    print(filtered_dict)
+
+    count = sum(filtered_dict.values())
+    print(count)
+
+
+sql_analysis()
+# dict1 = {'x': 10, 'y': 8}
+# dict2 = {'x': 6, 'b': 4}
+# dict3 = merge_dict(dict1, dict2)
+# print(dict3)
