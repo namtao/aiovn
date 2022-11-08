@@ -4,6 +4,7 @@ import pandas as pd
 import dask.dataframe as dd
 from collections import Counter
 from collections import OrderedDict
+import re
 
 # tối ưu hóa hiệu suất dataframe
 
@@ -57,32 +58,48 @@ def merge_dict(dict1, dict2):
     return dict1
 
 
+def removeEscape(value):
+    return ' '.join(str(value).splitlines()).strip()
+
+
 def sql_analysis():
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
     conn = f'mssql://@{config["SqlServerDB"]["host"]}/{config["SqlServerDB"]["db"]}?driver={config["SqlServerDB"]["driver"]}'
 
-    df = pd.read_sql_query('select nksHoTen from HT_KHAISINH', conn)
+    sql = 'SELECT * from view_tk_ks'
 
-    # dic = df.to_dict('records')
+    df = pd.read_sql_query(sql, conn)
+    # df= reduce_mem_usage(df)
+    count = 0
+    dic = {}
 
-    series = df.squeeze()
-    # sắp xếp theo key dictionary
-    d = OrderedDict(
-        sorted(dict(Counter(list(series.map(lambda calc: len(str(calc)))))).items()))
+    for col in df.columns:
+        series = df[col]
+        # series = df.squeeze()
+        # series = df.nksHoTen
+        # series = pd.Series(df.nksHoTen)
+        # lst = df['nksHoTen'].to_list()
 
-    # lọc theo key dictionary
-    filtered_dict = {k: v for k, v in d.items() if k > 16}
+        # tính độ dài của series
+        lenValue = series.map(lambda calc: len(removeEscape(calc)))
 
-    print(filtered_dict)
+        # for i in list(series):
+        #     a = removeEscape(i)
+        #     if (len(removeEscape(i)) > 900):
+        #         pass
 
-    count = sum(filtered_dict.values())
-    print(count)
+        # sắp xếp theo key dictionary
+        d = OrderedDict(sorted(dict(Counter(list(lenValue))).items()))
+
+        # lọc theo key dictionary
+        filtered_dict = {k: v for k, v in d.items() if k > 500}
+
+        dic = merge_dict(dic, d)
+
+        # tính tổng value của dict
+        print("\rTổng trường: {:<20,}".format(sum(dic.values())), end='')
 
 
 sql_analysis()
-# dict1 = {'x': 10, 'y': 8}
-# dict2 = {'x': 6, 'b': 4}
-# dict3 = merge_dict(dict1, dict2)
-# print(dict3)
