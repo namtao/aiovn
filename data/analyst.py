@@ -102,4 +102,10 @@ def sql_analysis():
         print("\rTổng trường: {:<20,}".format(sum(dic.values())), end='')
 
 
-sql_analysis()
+def read_excel():
+    df = pd.read_excel(r'C:\xD\sql\test.xlsx')
+    a  = df.shape
+    print()
+
+# sql_analysis()
+read_excel()
