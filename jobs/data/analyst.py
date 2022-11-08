@@ -1,3 +1,6 @@
+
+import os
+import sys
 import numpy as np
 import configparser
 import pandas as pd
@@ -5,6 +8,11 @@ import dask.dataframe as dd
 from collections import Counter
 from collections import OrderedDict
 import re
+
+sys.path.append('utils')
+import string_utils
+
+print(sys.path)
 
 # tối ưu hóa hiệu suất dataframe
 
@@ -58,8 +66,8 @@ def merge_dict(dict1, dict2):
     return dict1
 
 
-def removeEscape(value):
-    return ' '.join(str(value).splitlines()).strip()
+# def removeEscape(value):
+#     return ' '.join(str(value).splitlines()).strip()
 
 
 def sql_analysis():
@@ -83,7 +91,8 @@ def sql_analysis():
         # lst = df['nksHoTen'].to_list()
 
         # tính độ dài của series
-        lenValue = series.map(lambda calc: len(removeEscape(calc)))
+        lenValue = series.map(lambda calc: len(
+            string_utils.removeEscape(calc)))
 
         # for i in list(series):
         #     a = removeEscape(i)
@@ -103,9 +112,20 @@ def sql_analysis():
 
 
 def read_excel():
-    df = pd.read_excel(r'C:\xD\sql\test.xlsx')
-    a  = df.shape
-    print()
+    # C:\Users\Nam\Downloads\ADDJ\Hậu Giang\EXCEL ĐÃ BIÊN MỤC\Vị Thủy\KS\Vị Thắng\vị thắng-KS.2006.01.xlsx
+    count = 0
+    for root, dirs, files in os.walk(r'C:\Users\Nam\Downloads\ADDJ\Hậu Giang\EXCEL ĐÃ BIÊN MỤC\Vị Thanh'):
+        for file in files:
+            pattern = re.compile(".*"+'xls')
 
-# sql_analysis()
-read_excel()
+            if pattern.match(file):
+                df = pd.read_excel(os.path.join(root, file))
+                for col in df.columns:
+                    series = df[col].dropna()
+                    count += int(series.shape[0]) - 1
+                    print(('\rTổng số bản ghi: {:<20,}'.format(count)), end='')
+                    break
+
+
+sql_analysis()
+# read_excel()

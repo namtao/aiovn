@@ -210,36 +210,5 @@ def textfile_analysis():
     print(res)
 
 
-def sql_analysis():
-    config = configparser.ConfigParser()
-    config.read(r'config.ini')
-
-    conn = pyodbc.connect('Driver={SQL Server};'
-                          f'Server={config["SqlServerDB"]["host"]};'
-                          f'Database={config["SqlServerDB"]["db"]};'
-                          )
-
-    a = pd.read_sql('select * from HT_KHAISINH', conn)
-    engine = sa.create_engine('mssql+pyodbc://./HoTichData')
-    # engine = sa.create_engine('mssql+pyodbc://user:password@server/database')
-    
-    # b = dd.read_sql_query('select * from HT_KHAISINH', 'mssql+pyodbc://./HoTichData', 'ID')
-    print(type(a))
-
-
-# textfile_analysis();
-# string_search_from_multiple_files(r'C:\Users\Nam\Downloads\New folder');
-# sql_analysis()
-
-Server = "."
-Database ="HoTichData"
-Driver = "ODBC Driver 17 for SQL Server"
-
-conn = f'mssql://@{Server}/{Database}?driver={Driver}'
-
-engine = create_engine(conn)
-
-connection = engine.connect()
-
-df = pd.read_sql_query('select * from HT_KHAISINH', conn)
-print(df)
+def removeEscape(value):
+    return ' '.join(str(value).splitlines()).strip()

@@ -21,13 +21,13 @@ def get_files(folderPath, fileFormat):
     return lst
 
 
-# with open('error.txt', 'w+') as f:
-#     for root, dirs, files in os.walk(r'E:\reup'):
-#         for file in files:
-#             pattern = re.compile(".*"+'pdf'+"$")
+with open('error.txt', 'w+') as f:
+    for root, dirs, files in os.walk(r'E:\reup'):
+        for file in files:
+            pattern = re.compile(".*"+'pdf'+"$")
 
-#             if pattern.match(file):
-#                 f.write('\'' + file + '\','+ '\n')
+            if pattern.match(file):
+                f.write('\'' + file + '\','+ '\n')
 
 
 lstFiles = get_files(r'D:\HoTich\HOTICH_HG\source - haugiang\Files', 'pdf')
