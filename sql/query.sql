@@ -60,54 +60,44 @@ select(
 +
 (select count(*) from HT_KETHON where TinhTrangID = 1)
 +
-(select count(*) from HT_NHANCHAMECON where TinhTrangID = 1)) as 'Biên mục'
-go
-select(
+(select count(*) from HT_NHANCHAMECON where TinhTrangID = 1)) as 'Biên mục',
+
+(select(
 (select count(*) from HT_KHAISINH where TinhTrangID = 5)
 +
 (select count(*) from HT_KHAITU where TinhTrangID = 5)
 +
 (select count(*) from HT_KETHON where TinhTrangID = 5)
 +
-(select count(*) from HT_NHANCHAMECON where TinhTrangID = 5)) as 'Kiểm tra 1'
-go
-select(
-(select count(*) from HT_KHAISINH where TinhTrangID = 6)
+(select count(*) from HT_NHANCHAMECON where TinhTrangID = 5))) as 'Kiểm tra 1',
+
+(select(
+(select count(*) from HT_KHAISINH ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)
 +
-(select count(*) from HT_KHAITU where TinhTrangID = 6)
+(select count(*) from HT_KHAITU ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)
 +
-(select count(*) from HT_KETHON where TinhTrangID = 6)
+(select count(*) from HT_KETHON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)
 +
-(select count(*) from HT_NHANCHAMECON where TinhTrangID = 6)) as 'Kiểm tra 2'
-go
-select(
-(select count(*) from HT_KHAISINH where TinhTrangID = 7)
+(select count(*) from HT_NHANCHAMECON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)) 
+) as 'Kiểm tra 2',
+(select(
+(select count(*) from HT_KHAISINH ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)
 +
-(select count(*) from HT_KHAITU where TinhTrangID = 7)
+(select count(*) from HT_KHAITU ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)
 +
-(select count(*) from HT_KETHON where TinhTrangID = 7)
+(select count(*) from HT_KETHON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)
 +
-(select count(*) from HT_NHANCHAMECON where TinhTrangID = 7)) as 'Kết thúc'
-go
-select(
+(select count(*) from HT_NHANCHAMECON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)) 
+) as 'Kết thúc',
+(select(
 (select count(*) from HT_KHAISINH)
 +
 (select count(*) from HT_KHAITU)
 +
 (select count(*) from HT_KETHON)
 +
-(select count(*) from HT_NHANCHAMECON)) as 'Tổng'
-go
-
-select id, so, quyenSo, noiDangKy, URLTapTinDinhKem, trangSo as 'Lỗi' from HT_KHAISINH
-where TinhTrangID = 10
-order by noiDangKy, quyenSo, so
-
-select * from HT_XULY
-where ObjectID = 511419
-
-select * from HoTichPortal..Users where UserID = 2915
-
+(select count(*) from HT_NHANCHAMECON)) 
+) as 'Tổng'
 go
 --Xuất lỗi
 select so, quyenSo, TenNoiDangKy, trangSo, TenFileSauUpLoad 
