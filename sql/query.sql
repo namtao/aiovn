@@ -72,22 +72,22 @@ select(
 (select count(*) from HT_NHANCHAMECON where TinhTrangID = 5))) as 'Kiểm tra 1',
 
 (select(
-(select count(*) from HT_KHAISINH ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)
+(select count(*) from HT_KHAISINH ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6)
 +
-(select count(*) from HT_KHAITU ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)
+(select count(*) from HT_KHAITU ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6)
 +
-(select count(*) from HT_KETHON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)
+(select count(*) from HT_KETHON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6)
 +
-(select count(*) from HT_NHANCHAMECON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6 and MaCapCha = @ma)) 
+(select count(*) from HT_NHANCHAMECON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 6)) 
 ) as 'Kiểm tra 2',
 (select(
-(select count(*) from HT_KHAISINH ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)
+(select count(*) from HT_KHAISINH ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7)
 +
-(select count(*) from HT_KHAITU ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)
+(select count(*) from HT_KHAITU ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7)
 +
-(select count(*) from HT_KETHON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)
+(select count(*) from HT_KETHON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7)
 +
-(select count(*) from HT_NHANCHAMECON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7 and MaCapCha = @ma)) 
+(select count(*) from HT_NHANCHAMECON ks join HT_NOIDANGKY ndk on ks.noiDangKy = ndk.MaNoiDangKy where TinhTrangID = 7)) 
 ) as 'Kết thúc',
 (select(
 (select count(*) from HT_KHAISINH)
