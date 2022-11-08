@@ -1,6 +1,6 @@
 
-kyhieu = 'NELCH'
-so = 3813
+kyhieu = 'NECB'
+so = 6000
 
 with open('timso.txt', 'r') as fr:   
     with open('ketqua.txt', 'w+') as fw:   
