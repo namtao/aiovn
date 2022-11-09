@@ -1,7 +1,7 @@
 from openpyxl import Workbook
 import openpyxl
 import string_utils
-from main import *
+from tools import *
 import pandas as pd
 import os
 import glob

@@ -10,7 +10,6 @@ from collections import OrderedDict
 import re
 
 sys.path.append('utils')
-import string_utils
 
 print(sys.path)
 
@@ -66,8 +65,8 @@ def merge_dict(dict1, dict2):
     return dict1
 
 
-# def removeEscape(value):
-#     return ' '.join(str(value).splitlines()).strip()
+def removeEscape(value):
+    return ' '.join(str(value).splitlines()).strip()
 
 
 def sql_analysis():
@@ -92,7 +91,7 @@ def sql_analysis():
 
         # tính độ dài của series
         lenValue = series.map(lambda calc: len(
-            string_utils.removeEscape(calc)))
+            removeEscape(calc)))
 
         # for i in list(series):
         #     a = removeEscape(i)
