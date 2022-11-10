@@ -5,7 +5,7 @@ import shutil
 
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
-path = r'E:\OCR NEN\Chua nen\duoi 2006'
+path = r'E:\OCR NEN\Chua nen'
 
 for root, dirs, files in os.walk(path):
     for dir in dirs:
