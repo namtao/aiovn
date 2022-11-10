@@ -1,17 +1,12 @@
 
-import os
-import sys
-import numpy as np
 import configparser
-import pandas as pd
-import dask.dataframe as dd
-from collections import Counter
-from collections import OrderedDict
+import os
 import re
+import sys
+from collections import Counter, OrderedDict
 
-sys.path.append('utils')
-
-print(sys.path)
+import numpy as np
+import pandas as pd
 
 # tối ưu hóa hiệu suất dataframe
 
@@ -69,13 +64,15 @@ def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
 
+# tính tổng value
+# đếm số ký tự
 def sql_analysis():
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
-    conn = f'mssql://@{config["SqlServerDB"]["host"]}/{config["SqlServerDB"]["db"]}?driver={config["SqlServerDB"]["driver"]}'
+    conn = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
 
-    sql = 'SELECT * from view_tk_ks'
+    sql = 'SELECT * from tk_ks(930)'
 
     df = pd.read_sql_query(sql, conn)
     # df= reduce_mem_usage(df)
@@ -89,7 +86,7 @@ def sql_analysis():
         # series = pd.Series(df.nksHoTen)
         # lst = df['nksHoTen'].to_list()
 
-        # tính độ dài của series
+        # tính độ dài chuỗi giá trị của series
         lenValue = series.map(lambda calc: len(
             removeEscape(calc)))
 
@@ -107,6 +104,7 @@ def sql_analysis():
         dic = merge_dict(dic, d)
 
         # tính tổng value của dict
+        
         print("\rTổng trường: {:<20,}".format(sum(dic.values())), end='')
 
 
@@ -125,6 +123,15 @@ def read_excel():
                     print(('\rTổng số bản ghi: {:<20,}'.format(count)), end='')
                     break
 
+# đếm số trường
+def tktruong(conn, sql):
+    df = pd.read_sql_query(sql, conn)
+    return np.sum(df.count())
 
-sql_analysis()
-# read_excel()
+
+
+config = configparser.ConfigParser()
+config.read(r'config.ini')
+conn = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
+
+print("Vị Thanh - KS: " + tktruong(conn, 'SELECT * from tk_ks(930)'))
