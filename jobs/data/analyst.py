@@ -104,7 +104,7 @@ def sql_analysis():
         dic = merge_dict(dic, d)
 
         # tính tổng value của dict
-        
+
         print("\rTổng trường: {:<20,}".format(sum(dic.values())), end='')
 
 
@@ -124,14 +124,70 @@ def read_excel():
                     break
 
 # đếm số trường
+
+
 def tktruong(conn, sql):
     df = pd.read_sql_query(sql, conn)
     return np.sum(df.count())
 
 
+def tksoluong(conn, sql):
+    df = pd.read_sql_query(sql, conn)
+    return int(removeEscape(df.to_string(index=False)))
 
-config = configparser.ConfigParser()
-config.read(r'config.ini')
-conn = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
 
-print("Vị Thanh - KS: " + tktruong(conn, 'SELECT * from tk_ks(930)'))
+def thongkehotich():
+    config = configparser.ConfigParser()
+    config.read(r'config.ini')
+
+    connViThanh = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
+    connLongMy = f'mssql://@{config["longmy"]["host"]}/{config["longmy"]["db"]}?driver={config["longmy"]["driver"]}'
+    connViThuy = f'mssql://@{config["vithuy"]["host"]}/{config["vithuy"]["db"]}?driver={config["vithuy"]["driver"]}'
+
+    print("Thống kê hộ tịch")
+
+    dicLoai = {'ks': 'HT_KHAISINH', 'kt': 'HT_KHAITU', 'kh': 'HT_KETHON',
+               'cmc': 'HT_NHANCHAMECON', 'hn': 'HT_XACNHANHONNHAN'}
+
+    dic = {930: ['Vị Thanh', connViThanh],
+           931: ['Thị xã Ngã Bảy', connViThanh],
+           935: ['Vị Thủy', connViThuy],
+           936: ['Huyện Long Mỹ', connLongMy],
+           937: ['Thị xã Long Mỹ', connViThanh]}
+    
+    d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [], 'Số lượng biên mục': [], 'Tổng số trường' : []}
+    
+    for k, v in dic.items():
+        # print(v[0] + "\t\tTổng số lượng\tSố lượng biên mục\tTổng số trường")
+        for k1, v1 in dicLoai.items():            
+            ndk = ''
+
+            if (v1 == 'HT_XACNHANHONNHAN'):
+                ndk = 'noiCap'
+            else:
+                ndk = 'noiDangKy'
+
+            tongsoluong = tksoluong(v[1], 'select count(*) from ' + v1 + ' ks join HT_NOIDANGKY ndk on ks.' +
+                                    ndk + ' = ndk.MaNoiDangKy where MaCapCha = ' + str(k))
+
+            soluongbienmuc = tksoluong(v[1], 'select count(*) from ' + v1 + ' ks join HT_NOIDANGKY ndk on ks.' +
+                                       ndk + ' = ndk.MaNoiDangKy where MaCapCha = ' + str(k) + 'and TinhTrangID in (5, 6, 7)')
+
+            tongtruong = tktruong(
+                v[1], 'SELECT * from tk_' + k1 + '(' + str(k) + ')')
+
+            # print("\t{:<20}: {:10,}{:10,}{:15,}".format(
+            #     v1, tongsoluong, soluongbienmuc, tongtruong))
+            # print()
+            
+                        
+            d['Nơi đăng ký'].append(v[0])
+            d['Loại sổ'].append(v1)
+            d['Tổng số lượng'].append(tongsoluong)            
+            d['Số lượng biên mục'].append(soluongbienmuc)            
+            d['Tổng số trường'].append(tongtruong)
+            
+            
+    pd.DataFrame(d).to_excel('thongke.xlsx', index=False)
+
+thongkehotich()
