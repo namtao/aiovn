@@ -5,7 +5,7 @@ import shutil
 
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
-path = r'E:\OCR NEN\Chua nen'
+path = r'E:\OCR NEN - VI THUY\NEN'
 
 for root, dirs, files in os.walk(path):
     for dir in dirs:
@@ -90,4 +90,4 @@ def merge_pdf():
 
 
 # merge_pdf()
-# removeEmptyFolders(r'D:\HoTich\HOTICH_HG\source - vithuy\Files\Trung')
+removeEmptyFolders(path)

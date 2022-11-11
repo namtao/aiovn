@@ -17,8 +17,8 @@ def get_files(folderPath, fileFormat):
 
 
 
-dir1 = r'E:\OCR NEN\Chua nen'
-dir2 = r'E:\OCR NEN\Nen'
+dir1 = r'E:\OCR NEN - VI THUY\CHUA NEN'
+dir2 = r'E:\OCR NEN - VI THUY\NEN'
 # dir3 = r'E:\Chua nen'
 
 lstPdf1 = get_files(dir1, 'pdf')

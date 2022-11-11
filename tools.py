@@ -5,9 +5,10 @@ import re
 import shutil
 from fileinput import filename
 from pathlib import Path
-from jobs.utils import files_utils
 
 import PyPDF2
+
+from jobs.utils import files_utils
 
 
 def get_files(folderPath, fileFormat):
