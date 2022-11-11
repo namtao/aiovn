@@ -1,21 +1,30 @@
-
-kyhieu = 'NECB'
+kyhieu = 'NEKT'
 so = 6000
+hauto = 'T'
 
-with open('timso.txt', 'r') as fr:   
-    with open('ketqua.txt', 'w+') as fw:   
+
+
+with open(r'other\timso.txt', 'r') as fr:   
+    with open(r'other\ketqua.txt', 'w+') as fw:   
         
         lst = fr.read().splitlines() 
-                
+        
+             
         for s in range(1, int(so) + 1):
-            NotT = kyhieu + f'{s:05}'
-            # T = kyhieu +'-T' + f'{s:05}'
+            try:
             
-            if(NotT not in lst):
-                fw.write(kyhieu + f'{s:05}' + '\n')
+                NotT = kyhieu + f'{s:05}'
+                T = kyhieu + f'{s:05}' + hauto
                 
-            # if(T not in lst):
-            #     fw.write(kyhieu +'-T' + f'{s:05}' + '\n')
+                if(NotT not in lst):
+                    fw.write(NotT + '\n')
+                    
+                if(T not in lst):
+                    fw.write(T + '\n')
+                    
+            except Exception as e:
+                print(e)
+                print(lst[s-1])
                 
             
                 
