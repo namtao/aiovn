@@ -1,7 +1,5 @@
-import pyautogui
-import pyperclip
-import time
 
+import pyautogui
 
 # while True:    
     # sohieu = input('Số hiệu: ')

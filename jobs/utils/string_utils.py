@@ -1,14 +1,6 @@
-import configparser
-import os
-import sys
 import collections
+import os
 import string
-import pandas as pd
-import pyodbc
-import dask.dataframe as dd
-import sqlalchemy as sa
-from pandas import DataFrame
-from sqlalchemy import create_engine
 
 
 def format_str(strA):

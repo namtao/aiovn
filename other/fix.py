@@ -1,7 +1,6 @@
 import os
 import re
 import shutil
-from pathlib import Path
 
 # lấy tên file => xóa data => xóa ảnh => up lại
 # xóa ảnh trong Files, FilesNen và OCR NEN

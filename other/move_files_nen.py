@@ -1,6 +1,5 @@
 import os
 import re
-import shutil
 
 
 def get_files(folderPath, fileFormat):

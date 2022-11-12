@@ -1,6 +1,5 @@
 # Import libraries
 import os
-import sys
 
 import pytesseract
 from pdf2image import convert_from_path

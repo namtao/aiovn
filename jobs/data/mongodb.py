@@ -9,7 +9,6 @@
 # Tuy nhiên nếu database đã tồn tại thì Python sẽ tạo ra 1 connection với database được chỉ định
 
 
-from unicodedata import name
 from pymongo import MongoClient
 
 

@@ -1,8 +1,8 @@
-from posixpath import split
-import pyodbc
-import json
-import numpy as np
 import configparser
+import json
+
+import pyodbc
+
 
 # execute query database 
 def execute(strSql):

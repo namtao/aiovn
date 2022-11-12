@@ -1,14 +1,10 @@
 
 import json
 import os
-import re
 import time
-from datetime import datetime
 
 import requests
-import urllib3
 from bs4 import BeautifulSoup
-from gtts import gTTS
 from string_utils import *
 from tts_utils import *
 

@@ -2,13 +2,10 @@
 import configparser
 import os
 import re
-import subprocess
-import sys
 from collections import Counter, OrderedDict
 
 import numpy as np
 import pandas as pd
-import xlsxwriter
 
 # tối ưu hóa hiệu suất dataframe
 
@@ -139,7 +136,7 @@ def tksoluong(conn, sql):
 
 
 def thongkehotich():
-    fileName = 'Thống kê hộ tịch.xlsx'
+    fileName = r'C:\Users\Administrator\Desktop\Thống kê hộ tịch.xlsx'
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 

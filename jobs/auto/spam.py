@@ -1,8 +1,8 @@
-import pyautogui
-import pyperclip
 import random
 import time
 
+import pyautogui
+import pyperclip
 
 print("Tool Spam 1.0")
 msg = input("Nhập nội dung cần spam: ").split(" || ")

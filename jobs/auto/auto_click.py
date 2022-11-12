@@ -1,6 +1,4 @@
 import pyautogui
-import time
-
 
 # print ('di chuyển chuột đến vị trí cần click')
 # time.sleep(5)
