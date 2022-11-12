@@ -224,7 +224,7 @@ def thongkehotich():
     # format_data.set_align('center')
     format_data.set_text_wrap()
 
-    worksheet.set_column('A:Z', 20, format_data)
+    worksheet.set_column('A:Z', 25, format_data)
     worksheet.set_column(2, 2, 20, format_number)
     worksheet.set_column(3, 3, 20, format_number)
     worksheet.set_column(4, 4, 20, format_percentage)
