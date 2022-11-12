@@ -1,7 +1,9 @@
+import os
+
+import cv2
 import img2pdf
 from PIL import Image
-import os
-import cv2
+
 
 # set dpi keep size
 def setDpiImg2Pdf():
@@ -41,6 +43,7 @@ def setDpiImg2Pdf():
 # convert  "C:\Users\Nam\Downloads\New folder\result.jpg" -density 300 -units PixelsPerInch  "C:\Users\Nam\Downloads\New folder\result.jpg"
 
 from PIL import Image
+
 image = cv2.imread(r'C:\Users\Nam\Downloads\New folder\result.jpg')
 RGBimage = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 PILimage = Image.fromarray(RGBimage)

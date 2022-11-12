@@ -1,7 +1,8 @@
+import io
+
+import PyPDF2
 import pytesseract
 from pdf2image import convert_from_path
-import PyPDF2
-import io
 
 PDF_file = r"C:\Users\Nam\Downloads\New folder\KS.1885.93646.01.A4.1885.01-daocr.pdf"
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"

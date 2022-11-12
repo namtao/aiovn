@@ -153,7 +153,7 @@ def string_search_from_multiple_files(path):
     # path = input("path : ")
     f = 0
     os.chdir(path)
-    files = os.listdir()  # type: ignore
+    files = os.listdir()  
     # print(files)
     for file_name in files:
         abs_path = os.path.abspath(file_name)
@@ -191,16 +191,16 @@ def textfile_analysis():
         with open(textfile, "r", encoding="utf_8") as f:
 
             data = f.read()
-            res["total_lines"] = data.count(os.linesep)  # type: ignore
+            res["total_lines"] = data.count(os.linesep)  
             res["total_characters"] = len(data.replace(
-                " ", "")) - res["total_lines"]  # type: ignore
+                " ", "")) - res["total_lines"]  
             counter = collections.Counter(data.split())
             d = counter.most_common()
-            res["total_words"] = sum([i[1] for i in d])  # type: ignore
-            res["unique_words"] = len([i[0] for i in d])  # type: ignore
+            res["total_words"] = sum([i[1] for i in d])  
+            res["unique_words"] = len([i[0] for i in d])  
             special_chars = string.punctuation
             res["special_characters"] = sum(v for k, v in collections.Counter(
-                data).items() if k in special_chars)  # type: ignore
+                data).items() if k in special_chars)  
 
     except IndexError:
         print('Usage: %s TEXTFILE' % script_name)

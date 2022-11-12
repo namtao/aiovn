@@ -1,8 +1,10 @@
 # Import libraries
-import pytesseract
-import sys
-from pdf2image import convert_from_path
 import os
+import sys
+
+import pytesseract
+from pdf2image import convert_from_path
+
 
 def pdf2jpg(pdfPath, jpgPath):
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"

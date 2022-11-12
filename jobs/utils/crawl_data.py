@@ -1,17 +1,16 @@
 
-import requests
-from bs4 import BeautifulSoup
 import json
 import os
-from gtts import gTTS
+import re
+import time
+from datetime import datetime
+
 import requests
 import urllib3
-from datetime import datetime
-import re
-import urllib3
+from bs4 import BeautifulSoup
+from gtts import gTTS
 from string_utils import *
 from tts_utils import *
-import time
 
 
 def crawl_audio_book_fpt(urlbook):

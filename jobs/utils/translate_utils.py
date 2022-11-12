@@ -1,5 +1,6 @@
-from googletrans import Translator
 import os
+
+from googletrans import Translator
 
 
 def trans():

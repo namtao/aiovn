@@ -1,6 +1,7 @@
-import pandas as pd
-import os
 import glob
+import os
+
+import pandas as pd
 import xlsxwriter
 
 # use glob to get all the csv files

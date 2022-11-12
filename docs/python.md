@@ -28,3 +28,8 @@ thay đổi phần tử hoặc giá trị của biến thì mới cần sử d�
 
 Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.
 Decorator là những functions thay đổi tính năng của một function, method hay class một cách dynamic, mà không phải sử dụng subclass
+
+## list
+
+append: list append list => list 2 chiều (datatframe)
+extend: list extend list => list (nối 2 list thành 1 list)

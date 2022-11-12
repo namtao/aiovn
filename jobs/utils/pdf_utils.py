@@ -1,10 +1,11 @@
-import re
-from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger
 import glob
 import os
 import pathlib
-from PIL import Image
+import re
 import time
+
+from PIL import Image
+from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
 
 def get_files(path, extensionFile):
@@ -132,7 +133,9 @@ def detect_size():
 
 
 import os
+
 from PIL import Image
+
 
 def get_size_format(b, factor=1024, suffix="B"):
     """

@@ -1,11 +1,12 @@
-from logging import fatal
-import pyttsx3
-import os
-from bs4 import BeautifulSoup
 import json
+import os
+from logging import fatal
+from urllib.parse import quote
+
+import pyttsx3
 import requests
 import urllib3
-from urllib.parse import quote
+from bs4 import BeautifulSoup
 from gtts import gTTS
 
 
