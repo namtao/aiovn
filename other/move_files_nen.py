@@ -1,3 +1,4 @@
+import logging
 import os
 import re
 
@@ -16,8 +17,8 @@ def get_files(folderPath, fileFormat):
 
 
 
-dir1 = r'E:\OCR NEN - VI THUY\CHUA NEN'
-dir2 = r'E:\OCR NEN - VI THUY\NEN'
+dir1 = r'E:\OCR NEN - LONG MY\CHUA NEN'
+dir2 = r'E:\OCR NEN - LONG MY\NEN'
 # dir3 = r'E:\Chua nen'
 
 lstPdf1 = get_files(dir1, 'pdf')
@@ -34,8 +35,8 @@ count = 0
 for root, dirs, files in os.walk(dir1):
     for file in files:
         if(file in lstDuplicate):
+            logging.info(os.path.join(root, file))
             os.remove(os.path.join(root, file))
-            # shutil.copy(filePath,  os.path.join(targetFolder, tail))
             pass
 
 # print(str(count))

@@ -1,3 +1,4 @@
+import logging
 import os
 import pathlib
 import re
@@ -5,18 +6,18 @@ import shutil
 
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
-path = r'E:\OCR NEN - VI THUY\CHUA NEN'
+path = r'E:\OCR NEN - LONG MY\CHUA NEN'
 
 for root, dirs, files in os.walk(path):
     for dir in dirs:
         if (len(dir) > 10 or ('Temp' in dir)):
-            print(os.path.join(root, dir))
+            logging.info(os.path.join(root, dir))
             shutil.rmtree(os.path.join(root, dir))
 
 for root, dirs, files in os.walk(path):
     for file in files:
-        if (('_' in file) or os.path.getsize(os.path.join(root, file)) == 0):
-            print(os.path.join(root, file))
+        if (('_' in file) or os.path.getsize(os.path.join(root, file)) == 0 or ('jpg' in file)):
+            logging.info(os.path.join(root, file))
             os.remove(os.path.join(root, file))
 
 

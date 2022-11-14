@@ -1,5 +1,6 @@
 
 import configparser
+import logging
 import os
 import re
 from collections import Counter, OrderedDict
@@ -71,7 +72,7 @@ def sql_analysis():
 
     conn = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
 
-    sql = 'SELECT * from tk_ks(930)'
+    sql = 'SELECT id from ht_khaisinh'
 
     df = pd.read_sql_query(sql, conn)
     # df= reduce_mem_usage(df)
@@ -247,3 +248,8 @@ def thongkehotich():
 
 
 thongkehotich()
+# sql_analysis()
+
+
+# logging.basicConfig(level=logging.DEBUG)
+# logging.info('ok')
