@@ -7,6 +7,7 @@ import shutil
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
 path = r'E:\OCR NEN - LONG MY\CHUA NEN'
+logging.basicConfig(level=logging.DEBUG)
 
 for root, dirs, files in os.walk(path):
     for dir in dirs:
@@ -83,9 +84,9 @@ def merge_pdf():
                 else:
                     merger = PdfFileMerger()
                     merger.append(PdfFileReader(os.path.join(
-                        r'E:\OCR NEN\Nen ghep', file.split('-')[0] + '.pdf'), 'rb'))  
+                        r'E:\OCR NEN\Nen ghep', file.split('-')[0] + '.pdf'), 'rb'))
                     merger.append(PdfFileReader(os.path.join(
-                        root, file), 'rb'))  
+                        root, file), 'rb'))
                     merger.write(os.path.join(
                         r'E:\OCR NEN\Nen ghep', file.split('-')[0] + '.pdf'))
 
