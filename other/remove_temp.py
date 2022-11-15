@@ -18,7 +18,6 @@ def remove_temp(path):
                 os.remove(os.path.join(root, file))
 
     def removeEmptyFolders(path, removeRoot=True):
-        'Function to remove empty folders'
         if not os.path.isdir(path):
             return
 
@@ -99,7 +98,7 @@ def remove_nen(dir1, dir2):
         for file in files:
             if (file in lstDuplicate):
                 print(os.path.join(root, file))
-                # os.remove(os.path.join(root, file))
+                os.remove(os.path.join(root, file))
 
 
 remove_temp(r'E:\OCR NEN\CHUA NEN')
