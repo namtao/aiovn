@@ -9,7 +9,7 @@ from pathlib import Path
 import PyPDF2
 
 from jobs.utils import files_utils
-
+import difflib
 
 def get_files(folderPath, fileFormat):
     lst = []
