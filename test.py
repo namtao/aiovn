@@ -1,9 +1,21 @@
-import numpy as np
-import pandas as pd
+# import pandas as pd
+# import configparser
 
-dates = pd.date_range("20130101", periods=6)
+# import sqlalchemy
 
 
-df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list("ABCD"))
-print(df)
-print(df.apply(lambda x: x.max() - x.min()))
+# config = configparser.ConfigParser()
+# config.read(r'config.ini')
+
+# conn = f'mssql://@{config["tayninh"]["host"]}/{config["tayninh"]["db"]}?driver={config["tayninh"]["driver"]}'
+
+# df = pd.read_sql_query('select * from lichsu', conn)
+
+# print(df.iloc[0])
+
+
+list1 = ['abc', 15, 20, 25, 30, 35, 40]
+list2 = [25, 40, 35, 80, 'a'] 
+
+print(list(set(list1) - set(list2)) + (list(set(list2) - set(list1))))
+
