@@ -19,3 +19,11 @@ giống iloc nhưng có thể truyền tham số là nhãn nhưng k nhận chỉ
 có thể truyền vào 1 boolean => lọc dữ liệu
 
 ## ix: là sự kết hợp giữa iloc và loc
+
+## reduce
+
+## map
+
+## flatten
+
+## deepdiff
