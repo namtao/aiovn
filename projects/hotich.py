@@ -42,7 +42,7 @@ def read_excel():
 def tktruong(conn, sql):
     # đếm số trường
     df = pd.read_sql_query(sql, conn)
-    return np.sum(df.count())
+    return np.sum(df.count())  # đếm số ô có thông tin (loại bỏ nan)
 
 
 def tksoluong(conn, sql):

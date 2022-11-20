@@ -4,7 +4,6 @@ import logging
 import os
 import re
 from collections import Counter, OrderedDict
-
 import numpy as np
 import pandas as pd
 
@@ -70,15 +69,18 @@ def sql_analysis():
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
-    conn = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
+    conn = f'mssql://@{config["local"]["host"]}/{config["local"]["db"]}?driver={config["local"]["driver"]}'
 
-    sql = 'SELECT id from ht_khaisinh'
+    sql = 'SELECT id from HT_KHAISINH'
+    lst = []
 
+    # tạo dataframe từ câu lênh sql
     df = pd.read_sql_query(sql, conn)
     # df= reduce_mem_usage(df)
     count = 0
     dic = {}
 
+    # duyệt từng cột
     for col in df.columns:
         series = df[col]
         # series = df.squeeze()
@@ -86,26 +88,28 @@ def sql_analysis():
         # series = pd.Series(df.nksHoTen)
         # lst = df['nksHoTen'].to_list()
 
-        # tính độ dài chuỗi giá trị của series
+        # tính độ dài chuỗi giá trị trong cột (series)
         lenValue = series.map(lambda calc: len(
             removeEscape(calc)))
 
         # for i in list(series):
         #     a = removeEscape(i)
         #     if (len(removeEscape(i)) > 900):
-        #         pass
+        #         print(i)
 
         # sắp xếp theo key dictionary
+        # Counter: đếm số lần xuất hiện của value trong list
         d = OrderedDict(sorted(dict(Counter(list(lenValue))).items()))
 
         # lọc theo key dictionary
-        filtered_dict = {k: v for k, v in d.items() if k > 500}
+        # lọc trường theo độ dài số ký tự
+        filtered_dict = {k: v for k, v in d.items() if k > 0}
 
-        dic = merge_dict(dic, d)
+        dic = merge_dict(dic, filtered_dict)
 
-        # tính tổng value của dict
-
-        print("\rTổng trường: {:<20,}".format(sum(dic.values())), end='')
+        # tính tổng độ dài value trong dict
+        # print("\rTổng số ký tự chuỗi: {:<20,}".format(sum(dic.values())), end='')
+    print(sum(dic.values()))
 
 
 def read_excel():
@@ -122,3 +126,6 @@ def read_excel():
                     count += int(series.shape[0]) - 1
                     print(('\rTổng số bản ghi: {:<20,}'.format(count)), end='')
                     break
+
+
+sql_analysis()
