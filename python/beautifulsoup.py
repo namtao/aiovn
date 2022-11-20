@@ -1,8 +1,8 @@
 import os
 import re
+
 from bs4 import BeautifulSoup
 from openpyxl import Workbook
-
 
 for root, dirs, files in os.walk(r'C:\M-Files Content Packages\Kho của tôi'):
     for file in files:

@@ -11,11 +11,11 @@ or scans.
 # Python 2/3 compatibility
 from __future__ import print_function
 
-import numpy as np
-import cv2 as cv
-
 import argparse
 import sys
+
+import cv2 as cv
+import numpy as np
 
 modes = (cv.Stitcher_PANORAMA, cv.Stitcher_SCANS)
 

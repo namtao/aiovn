@@ -1,5 +1,6 @@
 from functools import reduce
 
+
 def A(x):
     return lambda y: x+y
 
