@@ -1,10 +1,9 @@
-import os
-import re
-import pandas as pd
 import configparser
+import re
+import os
 
+import pandas as pd
 from deepdiff import DeepDiff
-
 
 config = configparser.ConfigParser()
 config.read(r'config.ini')
