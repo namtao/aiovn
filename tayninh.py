@@ -55,8 +55,6 @@ for id in lst:
                 d['Trước'].append(str(value.t2))
                 d['Sau'].append(str(value.t1))
                 d['Ngày cập nhật'].append(df['NgayCapNhat'][0])
-
-            # print(value.path()[6:-2] + '\t\tTrước: '+str(value.t1)+'\t\tSau: '+str(value.t2))
     except Exception as e:
         pass
 
