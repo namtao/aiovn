@@ -4,4 +4,4 @@ env/
 *.py[co]
 *.vs/
 *obj/
-*.vscode/
+# *.vscode/
