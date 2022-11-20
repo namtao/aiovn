@@ -1,4 +1,5 @@
 import cv2
+
 image_paths=[r"C:\Projects\Python\common\examples\tools\image00001.jpg", r"C:\Projects\Python\common\examples\tools\image00002.jpg", 
                  r"C:\Projects\Python\common\examples\tools\image00003.jpg", r"C:\Projects\Python\common\examples\tools\image00004.jpg"]
 # initialized a list of images

@@ -1,6 +1,7 @@
-import cv2
 import argparse
 import glob
+
+import cv2
 import numpy as np
 
 # mouse callback function

@@ -1,10 +1,9 @@
+import configparser
 import os
 import re
+
 import pandas as pd
-import configparser
-
 from deepdiff import DeepDiff
-
 
 config = configparser.ConfigParser()
 config.read(r'config.ini')
@@ -17,7 +16,8 @@ conn = f'mssql://@{config["tayninh"]["host"]}/{config["tayninh"]["db"]}?driver={
 
 
 lst = pd.read_sql_query(
-    'select id from lichsu where CONVERT(date, NgayCapNhat, 103) between CONVERT(date, \''+ngaybatdau+'\', 103) and CONVERT(date, \''+ngayketthuc+'\', 103) group by id having count(*) > 1', conn)['id'].to_list()
+    'select id from lichsu where CONVERT(date, NgayCapNhat, 103) between CONVERT(date, \'' + ngaybatdau +
+    '\', 103) and CONVERT(date, \'' + ngayketthuc + '\', 103) group by id having count(*) > 1', conn)['id'].to_list()
 
 d = {'Phông': [], 'Hộp số': [], 'Hồ sơ số': [],
      'Trường': [], 'Trước': [], 'Sau': [], 'Ngày cập nhật': []}
@@ -32,22 +32,22 @@ for id in lst:
     # list2 = df.iloc[1].values.flatten().tolist()
 
     # lấy 2 bản ghi gần đây nhất
-    dict1 = df.iloc[0].to_dict() # sau
-    dict2 = df.iloc[1].to_dict() # trước
+    dict1 = df.iloc[0].to_dict()  # sau
+    dict2 = df.iloc[1].to_dict()  # trước
 
     # so sánh trường khác nhau
     dict = DeepDiff(dict1, dict2, view="tree").to_dict()
 
     #   print(DeepDiff(dict1, dict2, view="tree").pretty())
 
-    try:            
+    try:
         for value in dict['values_changed']:
-            
+
             if (value.path()[6:-2] != 'TrangThai'
-            and value.path()[6:-2] != 'IdNguoiDung'
-            and value.path()[6:-2] != 'NgayTao'
-            and value.path()[6:-2] != 'NgayCapNhat'):
-            
+                and value.path()[6:-2] != 'IdNguoiDung'
+                and value.path()[6:-2] != 'NgayTao'
+                    and value.path()[6:-2] != 'NgayCapNhat'):
+
                 d['Phông'].append(df['Phong'][0])
                 d['Hộp số'].append(['HopSo'][0])
                 d['Hồ sơ số'].append(df['HoSoSo'][0])

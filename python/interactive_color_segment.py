@@ -1,7 +1,8 @@
-import cv2
-import time
 import argparse
 import glob
+import time
+
+import cv2
 import numpy as np
 
 # global variable to keep track of

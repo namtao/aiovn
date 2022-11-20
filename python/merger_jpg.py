@@ -1,5 +1,6 @@
 # 
 import sys
+
 from PIL import Image
 
 images = [Image.open(x) for x in [r'common\examples\tools\1.1.jpg', r'common\examples\tools\2.1.jpg']]

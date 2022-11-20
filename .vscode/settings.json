@@ -1,6 +1,19 @@
 {
-    "python.analysis.typeCheckingMode": "off",
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wrappingIndent": "same",
-    "editor.wordWrapColumn": 120
+  "python.analysis.typeCheckingMode": "off",
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wrappingIndent": "same",
+  "editor.wordWrapColumn": 120,
+  "editor.formatOnSave": true,
+
+  "python.formatting.provider": "autopep8",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  //custom config for python
+  "python.formatting.autopep8Args": [
+    "--max-line-length",
+    "120",
+    "--experimental"
+  ]
 }

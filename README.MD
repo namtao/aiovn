@@ -31,6 +31,9 @@ pipreqs --force --encoding utf-8 "./"
 
 jupyter notebook
 
+<!-- sắp xếp lại thư viên import -->
+isort .
+
 <!-- Django -->
 python manage.py inspectdb > models.py
 pyuic5 -x gui/demo.ui -o gui/demo.py
