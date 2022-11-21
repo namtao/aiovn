@@ -1,21 +1,32 @@
-# import pandas as pd
-# import configparser
+def DFA(transitions, start, final, string):
+    
+    num = len(string)
+    num_final = len(final)
+    cur = start
 
-# import sqlalchemy
+    for i in range(num):
+
+        if transitions[cur][string[i]] is None:
+            return False
+        else:
+            cur = transitions[cur][string[i]]
+
+    for i in range(num_final):
+        if cur == final[i]:
+            return True
+    return False
 
 
-# config = configparser.ConfigParser()
-# config.read(r'config.ini')
-
-# conn = f'mssql://@{config["tayninh"]["host"]}/{config["tayninh"]["db"]}?driver={config["tayninh"]["driver"]}'
-
-# df = pd.read_sql_query('select * from lichsu', conn)
-
-# print(df.iloc[0])
+transitions = {
+    'a': {'1': 'a', '0': 'b'},
+    'b': {'1': 'b', '0': 'a'}
+}
 
 
-list1 = ['abc', 15, 20, 25, 30, 35, 40]
-list2 = [25, 40, 35, 80, 'a'] 
+final = ['a']
+start = 'a'
 
-print(list(set(list1) - set(list2)) + (list(set(list2) - set(list1))))
+print(DFA(transitions, start, final, "000111100"))
+
+print(DFA(transitions, start, final, "111000011"))
 
