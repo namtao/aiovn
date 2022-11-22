@@ -2,6 +2,7 @@ ECHO OFF
 :: Di chuyển đến thư mục chứa code của chúng ta
 :: cd "C:xD"
 :: cập nhật thư viện
+cd ..
 python -m pip freeze --all > requirements.txt
 :: Set các giá trị về file git exe và nhánh cần làm việc
 set GIT_PATH="C:\Program Files\Git\bin\git.exe"
