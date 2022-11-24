@@ -46,10 +46,14 @@
 >
 > Decorator là những functions thay đổi tính năng của một function, method hay class một cách dynamic, mà không phải sử dụng subclass
 
-- list
+- list[]
 
 > append: list append list => list 2 chiều (datatframe)
 > extend: list extend list => list (nối 2 list thành 1 list)
+
+- tuple()
+
+> tốc độ nhanh hơn list nhưng các đối tượng không thay đổi đc
 
 - enumerate
 
