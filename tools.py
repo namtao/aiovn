@@ -142,7 +142,7 @@ def create_struct():
             try:
                 head, tail = (os.path.split(
                     Path(os.path.join(root, fileName))))
-                if(len(tail.split('.')) > 6):
+                if(len(tail.split('.')) >= 6):
                     newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
                                            1], tail.split('.')[2], tail.split('.')[3])
                     Path(newPath).mkdir(parents=True, exist_ok=True)

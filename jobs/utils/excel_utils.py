@@ -8,7 +8,7 @@ import xlrd
 import xlsxwriter
 from openpyxl import Workbook
 
-from projects.sohoahotich import *
+from tools import *
 
 
 def write_to_excel(arr, filename):
