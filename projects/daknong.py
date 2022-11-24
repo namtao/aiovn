@@ -4,6 +4,7 @@ import logging
 import os
 import re
 from collections import Counter, OrderedDict
+import urllib.parse
 
 import numpy as np
 import pandas as pd
@@ -55,7 +56,7 @@ def thongkehotich():
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
-    conn = f'mssql://@{config["local"]["host"]}/{config["local"]["db"]}?driver={config["local"]["driver"]}'
+    conn = f'mssql+pyodbc://{config["local"]["user"]}:{urllib.parse.quote_plus(config["local"]["pass"])}@{config["local"]["host"]}/{config["local"]["db"]}?driver={config["local"]["driver"]}'
 
     print("Thống kê hộ tịch")
 
