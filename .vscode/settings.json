@@ -18,5 +18,39 @@
   ],
   "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "*_test.py"],
   "python.testing.pytestEnabled": false,
-  "python.testing.unittestEnabled": true
+  "python.testing.unittestEnabled": true,
+  "editor.tokenColorCustomizations": {
+    "[Monokai]": {
+      "textMateRules": [
+        {
+          "scope":"entity.name.namespace",
+          "settings": {
+            "fontStyle": "italic underline",
+            "foreground": "#82b8dd"
+          }
+        },
+        {
+          "scope":"variable.other.readwrite",
+          "settings": {
+            "fontStyle": "italic",
+            "foreground": "#d3bebe"
+          }
+        },
+        {
+          "scope":"keyword.control.import",
+          "settings": {
+            "fontStyle": "italic underline",
+            "foreground": "#F92672"
+          }
+        },
+        {
+          "scope":"entity.name.function",
+          "settings": {
+            "fontStyle": "bold",
+            "foreground": "#99d381"
+          }
+        }
+      ]
+    }
+  }
 }
