@@ -15,6 +15,7 @@
     - [enumerate](#enumerate)
     - [zip](#zip)
     - [Packing and Unpacking Arguments](#packing-and-unpacking-arguments)
+    - [Type conversion](#type-conversion)
   - [Markdown](#markdown)
   - [Command](#command)
   - [PEP-8](#pep-8)
@@ -38,16 +39,13 @@
 
 ### *args
 
-Thay thế nhiều tham số trong hàm
-
-args là một tuple chứ không phải list
-
+Thay thế nhiều tham số trong hàm\
+args là một tuple chứ không phải list\
 *args sẽ phải đặt ở cuối cùng nếu không sẽ gặp lỗi ngay
 
 ### **kwargs
 
-**kwargs cũng tương tự như như *args, tuy nhiên, nó không dùng cho các tham số thông thường truyền vào lần lượt, mà nó được sử dụng cho các tham số
-
+**kwargs cũng tương tự như như *args, tuy nhiên, nó không dùng cho các tham số thông thường truyền vào lần lượt, mà nó được sử dụng cho các tham số\
 **kwargs trong hàm sẽ nhận giá trị là một dict với key là các tham số được truyền kèm giá trị tương ứng của chúng
 
 ### nonlocal
@@ -56,8 +54,7 @@ args là một tuple chứ không phải list
 
 ### global
 
-Muốn thay đổi biến toàn cục trong hàm thì ta phải thêm từ khóa global vào biến
-
+Muốn thay đổi biến toàn cục trong hàm thì ta phải thêm từ khóa global vào biến\
 Thay đổi phần tử hoặc giá trị của biến thì mới cần sử dụng global
 
 ### yield
@@ -66,28 +63,23 @@ Sẽ đình chỉ việc thực thi của hàm và trả về một giá trị c
 
 ### decorator
 
-Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.
-
+Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.\
 Decorator là những functions thay đổi tính năng của một function, method hay class một cách dynamic, mà không phải sử dụng subclass
 
 ### list[]
 
-append: list append list =list 2 chiều (datatframe)
-
-extend: list extend list =list (nối 2 list thành 1 list)
-
+append: list append list =list 2 chiều (datatframe)\
+extend: list extend list =list (nối 2 list thành 1 list)\
 count: cho biết số lượng của phần tử trong list
 
 ### tuple()
 
-tốc độ nhanh hơn list nhưng các đối tượng không thay đổi đc
-
+tốc độ nhanh hơn list nhưng các đối tượng không thay đổi đc\
 truy cập vào phần tử giống như chuỗi và list
 
 ### set{}
 
-set có thể thay đổi nhưng các phần tử không được trùng nhau
-
+set có thể thay đổi nhưng các phần tử không được trùng nhau\
 set không được sắp xếp nên không thể truy cập bằng chỉ mục
 
 ### dictionary {key:value}
@@ -107,7 +99,6 @@ Ta có thể gán các giá trị của list hay tuple vào tham số của hàm
 - Lưu ý độ dài của list hay tuple phải có cùng số lượng với số tham số của hàm.
 
 ```:
-
 def fun(a, b, c, d):
   print(a, b, c, d)
 
@@ -116,12 +107,59 @@ my_list = [1, 2, 3, 4]
 fun(*my_list)
 ```
 
+### Type conversion
+
+ord() : chuyển đổi ký tự thành số nguyên.\
+hex() : chuyển đổi số nguyên thành chuỗi thập phân.\
+oct() : chuyển đổi số nguyên thành chuỗi bát phân.\
+tuple(): chuyển đổi thành tuple.\
+set(): chuyển đổi thành set.\
+list(): chuyển đổi thành list.\
+dict() : chuyển đổi thành dictionary.\
+str() : chuyển đổi thành string.\
+complex(real,imag) : chuyển đổi thành số phức.\
+chr(number): chuyển đổi số thành ký tự ASCII tương ứng.
+
+```:
+s = '4'
+
+# printing character converting to integer
+c = ord(s)
+print ("After converting character to integer : ",end="")
+print (c)
+
+# printing integer converting to hexadecimal string
+c = hex(56)
+print ("After converting 56 to hexadecimal string : ",end="")
+print (c)
+
+# printing integer converting to octal string
+c = oct(56)
+print ("After converting 56 to octal string : ",end="")
+print (c)
+
+
+# Convert ASCII value to characters
+a = chr(76)
+b = chr(77)
+  
+print(a)
+print(b)
+```
+
+```:
+After converting character to integer : 52
+After converting 56 to hexadecimal string : 0x38
+After converting 56 to octal string : 0o70
+
+L
+M
+```
+
 ## Markdown
 
-Sử dụng > để viết trích dẫn
-
-Sử dụng ``` để tạo khối văn bản nhiều dòng
-
+Sử dụng > để viết trích dẫn\
+Sử dụng ``` để tạo khối văn bản nhiều dòng\
 Sử dụng \\ để xuống dòng văn bản
 
 ## Command

@@ -1,5 +1,6 @@
-lst = ['G', 'E', 'E', 'K', 'S', 'F', 'O', 'R', 'G', 'E', 'E', 'K', 'S']
-a = 7
-n = 'Nguyễn văn nam'
-
-print(lst)
+c = oct(56)
+print("After converting 56 to octal string : ", end="")
+print(c)
+c = ord('4')
+print("After converting character to integer : ", end="")
+print(c)
