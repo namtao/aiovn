@@ -7,7 +7,6 @@
     - [nonlocal](#nonlocal)
     - [global](#global)
     - [yield](#yield)
-    - [decorator](#decorator)
     - [list\[\]](#list)
     - [tuple()](#tuple)
     - [set{}](#set)
@@ -16,6 +15,8 @@
     - [zip](#zip)
     - [Packing and Unpacking Arguments](#packing-and-unpacking-arguments)
     - [Type conversion](#type-conversion)
+    - [Closure python](#closure-python)
+    - [Decorator](#decorator)
   - [Markdown](#markdown)
   - [Command](#command)
   - [PEP-8](#pep-8)
@@ -60,11 +61,6 @@ Thay đổi phần tử hoặc giá trị của biến thì mới cần sử d�
 ### yield
 
 Sẽ đình chỉ việc thực thi của hàm và trả về một giá trị cho caller nhưng vẫn giữ lại đầy đủ trạng thái của hàm để ngay sau khi thực thi xong câu lệnh yield, hàm vẫn có thể quay lại thực thi tiếp được tại câu lệnh tiếp theo nằm ngay sau câu lệnh yield vừa chạy xong. Điều này cho phép một hàm có thể trả về một loạt các giá trị theo thời gian, thay vì phải tính toán cùng một lúc ra nhiều outputs rồi đưa tất cả chúng vào trong một list (danh sách) và trả về duy nhất list đó.
-
-### decorator
-
-Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.\
-Decorator là những functions thay đổi tính năng của một function, method hay class một cách dynamic, mà không phải sử dụng subclass
 
 ### list[]
 
@@ -156,6 +152,74 @@ L
 M
 ```
 
+### Closure python
+
+Là phương pháp ràng buộc dữ liệu với 1 hàm mà không cần thực sự truyền chúng làm tham số cho hàm\
+Closure là một đối tượng hàm\
+Closure được tạo hàm lồng nhau\
+Sử dụng lớp lồng để không cần sử dụng biến toàn cục\
+Giúp che giấu thông tin của hàm
+
+Trong trường hợp có ít phương thức thì ta có thể dùng closure nhưng nếu nhiều thì nên sử dụng lập trình hướng đối tượng OOP
+
+Ví dụ:
+
+```:
+def make_multiplier_of(n):
+    def multiplier(x):
+        return x * n
+    return multiplier
+
+# He so 3
+times3 = make_multiplier_of(3)
+
+# He so 5
+times5 = make_multiplier_of(5)
+
+# Output: 27
+print(times3(9))
+
+# Output: 15
+print(times5(3))
+
+# Output: 30
+print(times5(times3(2)))
+```
+
+### Decorator
+
+Hàm có thể được truyền như tham số trong hàm khác\
+Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.\
+Decorator là những functions thay đổi tính năng của một function, method hay class một cách dynamic, mà không phải sử dụng subclass\
+Decorator là một hàm có thể nhận các hàm khác, cho phép bạn chạy một số đoạn code trước hoặc sau hàm chính mà không thay đổi kết quả.\
+Tham số của hàm sẽ được truyền vào hàm decorator\
+Tham số hàm decorator luôn là 1 hàm
+
+```:
+def smart_divide(func):
+   def inner(a,b):
+      print("I am going to divide",a,"and",b)
+      if b == 0:
+         print("Whoops! cannot divide")
+         return
+
+      return func(a,b)
+   return inner
+
+@smart_divide
+def divide(a,b):
+    return a/b
+```
+
+```:
+>>> divide(2,5)
+I am going to divide 2 and 5
+0.4
+>>> divide(2,0)
+I am going to divide 2 and 0
+Whoops! cannot divide
+```
+
 ## Markdown
 
 Sử dụng > để viết trích dẫn\
@@ -185,7 +249,7 @@ Môi trường ảo trong Python
 pip install virtualenv
 virtualenv --version
 virtualenv my_project_env
-python -m venv env
+python -m venv .venv
 env\Scripts\activate
 
 python -m pip freeze --all requirements.txt

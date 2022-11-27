@@ -52,8 +52,7 @@ def analysis_in_folder():
         for file2 in dirs:
             countDirs += 1
 
-    print("Tổng số thư mục: \t{0: >9}\nTổng số file: \t\t{1: >9} \n".format(
-        countDirs, countFiles))
+    print(f"Tổng số thư mục: \t{countDirs: >9}\nTổng số file: \t\t{countFiles: >9} \n")
 
     # đếm số file theo phần mở rộng
     # đếm trang pdf
@@ -75,13 +74,13 @@ def analysis_in_folder():
                         # readpdf = PyPDF2.PdfFileReader(open(a, 'rb'), strict=False)
                         # print(readpdf.numPages)
 
-            print("Số file {0: <22} {1}".format(ex, count))
+            print(f"Số file {ex: <22} {count}")
 
             index += count
 
-    print("Số file không có phần mở rộng: {0}".format(countFiles - index))
+    print(f"Số file không có phần mở rộng: {countFiles - index}")
 
-    print("{:<31}{:,}".format('Số trang pdf: ', totalPdfPages).replace(',', '.'))
+    print(f"{'Số trang pdf: ':<31}{totalPdfPages:,}".replace(',', '.'))
 
     return
 

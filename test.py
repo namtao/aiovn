@@ -1,6 +1,29 @@
-c = oct(56)
-print("After converting 56 to octal string : ", end="")
-print(c)
-c = ord('4')
-print("After converting character to integer : ", end="")
-print(c)
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    # @property
+    def gotmarks(self):
+        return self.name + ' obtained ' + self.marks + ' marks'
+
+    # @gotmarks.setter
+    # def gotmarks(self, sentence):
+    #     name, rand, marks = sentence.split(' ')
+    #     self.name = name
+    #     self.marks = marks
+
+
+st = Student("Jaki", "25")
+print(st.name)
+print(st.marks)
+print(st.gotmarks)
+print("##################")
+st.name = "Anusha"
+print(st.name)
+print(st.gotmarks)
+# print("##################")
+# st.gotmarks = 'Golam obtained 36'
+# print(st.gotmarks)
+# print(st.name)
+# print(st.marks) 

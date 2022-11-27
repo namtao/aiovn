@@ -1,4 +1,4 @@
-env/
+*env/
 *bin/
 *Debug/
 *.py[co]

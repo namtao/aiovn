@@ -46,7 +46,6 @@
         {
           "scope":"entity.name.function",
           "settings": {
-            "fontStyle": "bold",
             "foreground": "#99d381"
           }
         }

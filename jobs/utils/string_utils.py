@@ -195,9 +195,9 @@ def textfile_analysis():
                 data).items() if k in special_chars)  
 
     except IndexError:
-        print('Usage: %s TEXTFILE' % script_name)
+        print(f'Usage: {script_name} TEXTFILE')
     except IOError:
-        print('"%s" cannot be opened.' % textfile)
+        print(f'{textfile} cannot be opened.')
 
     print(res)
 

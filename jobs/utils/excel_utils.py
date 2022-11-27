@@ -130,5 +130,5 @@ def change_column():
 lst = get_files(r'D:\Data\EXCEL ĐÃ BIÊN MỤC\Tx Long Mỹ\Dữ liệu Tx Long Mỹ', 'xls')
 for excelFiles in lst:
     book = xlrd.open_workbook(excelFiles)
-    print("The number of worksheets is {0}".format(book.nsheets))
-    print("Worksheet name(s): {0}".format(book.sheet_names()))
+    print(f"The number of worksheets is {book.nsheets}")
+    print(f"Worksheet name(s): {book.sheet_names()}")
