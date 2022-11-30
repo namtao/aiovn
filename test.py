@@ -1,29 +1,17 @@
-class Student:
-    def __init__(self, name, marks):
-        self.name = name
-        self.marks = marks
+class MyClass: 
+     "Đây là class thứ 3 được khởi tạo" 
+     a = 10 
+     def func(self): 
+        print('Xin chào')
 
-    # @property
-    def gotmarks(self):
-        return self.name + ' obtained ' + self.marks + ' marks'
+ob = MyClass()
 
-    # @gotmarks.setter
-    # def gotmarks(self, sentence):
-    #     name, rand, marks = sentence.split(' ')
-    #     self.name = name
-    #     self.marks = marks
+# Output: <function MyClass.func at 0x000000000335B0D0>
+print(MyClass.func)
 
+# Output: <bound method MyClass.func of <__main__.MyClass object at 0x000000000332DEF0>>
+print(ob.func)
 
-st = Student("Jaki", "25")
-print(st.name)
-print(st.marks)
-print(st.gotmarks)
-print("##################")
-st.name = "Anusha"
-print(st.name)
-print(st.gotmarks)
-# print("##################")
-# st.gotmarks = 'Golam obtained 36'
-# print(st.gotmarks)
-# print(st.name)
-# print(st.marks) 
+# Gọi hàm func()
+# Output: Xin chào
+ob.func()

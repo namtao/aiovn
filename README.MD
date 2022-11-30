@@ -17,6 +17,8 @@
     - [Type conversion](#type-conversion)
     - [Closure python](#closure-python)
     - [Decorator](#decorator)
+    - [Class object](#class-object)
+    - [Property](#property)
   - [Markdown](#markdown)
   - [Command](#command)
   - [PEP-8](#pep-8)
@@ -219,6 +221,14 @@ I am going to divide 2 and 5
 I am going to divide 2 and 0
 Whoops! cannot divide
 ```
+
+### Class object
+
+Khi gọi phương thức có 1 tham số thì ta không cần gán tham số đầu tiên, bởi vì, bất cứ khi nào, object gọi các phương thức, object sẽ tự pass qua parameter đầu tiên
+
+### Property
+
+Được sử dụng trong getter setter trong class
 
 ## Markdown
 
