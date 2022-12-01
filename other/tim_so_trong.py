@@ -1,6 +1,7 @@
-kyhieu = 'NEKT'
-so = 6000
-hauto = 'T'
+kyhieu = 'NE'
+so = 700
+hautoT = 'T'
+hautoS = 'S'
 
 
 
@@ -14,10 +15,14 @@ with open(r'other\timso.txt', 'r') as fr:
             try:
             
                 NotT = kyhieu + f'{s:05}'
-                T = kyhieu + f'{s:05}' + hauto
+                T = kyhieu + f'{s:05}' + hautoT
+                S = kyhieu + f'{s:05}' + hautoS 
                 
-                if(NotT not in lst):
-                    fw.write(NotT + '\n')
+                # if(NotT not in lst):
+                #     fw.write(NotT + '\n')
+                                        
+                if(S not in lst):
+                    fw.write(S + '\n')
                     
                 if(T not in lst):
                     fw.write(T + '\n')

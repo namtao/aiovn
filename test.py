@@ -1,21 +1,17 @@
-# import pandas as pd
-# import configparser
+class MyClass: 
+     "Đây là class thứ 3 được khởi tạo" 
+     a = 10 
+     def func(self): 
+        print('Xin chào')
 
-# import sqlalchemy
+ob = MyClass()
 
+# Output: <function MyClass.func at 0x000000000335B0D0>
+print(MyClass.func)
 
-# config = configparser.ConfigParser()
-# config.read(r'config.ini')
+# Output: <bound method MyClass.func of <__main__.MyClass object at 0x000000000332DEF0>>
+print(ob.func)
 
-# conn = f'mssql://@{config["tayninh"]["host"]}/{config["tayninh"]["db"]}?driver={config["tayninh"]["driver"]}'
-
-# df = pd.read_sql_query('select * from lichsu', conn)
-
-# print(df.iloc[0])
-
-
-list1 = ['abc', 15, 20, 25, 30, 35, 40]
-list2 = [25, 40, 35, 80, 'a'] 
-
-print(list(set(list1) - set(list2)) + (list(set(list2) - set(list1))))
-
+# Gọi hàm func()
+# Output: Xin chào
+ob.func()

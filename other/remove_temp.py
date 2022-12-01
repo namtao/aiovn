@@ -150,6 +150,7 @@ def create_struct(pathRoot, pathTarget):
                 # f.write(os.path.join(root, fileName) + '\n')
                 pass
     print(count)
+<<<<<<< HEAD
 
 
 # xóa temp
@@ -175,3 +176,30 @@ remove_nen(r'E:\OCR NEN\CHUA NEN\a', r'E:\OCR NEN\NEN\OCR NEN\CHUA NEN\a')
 # create_struct(r'E:\OCR NEN\CHUA NEN\VI THANH', r'E:\OCR NEN\CHUA NEN\VI THANH')
 # create_struct(r'E:\OCR NEN\CHUA NEN\VI THUY', r'E:\OCR NEN\CHUA NEN\VI THUY')
 # create_struct(r'E:\OCR NEN\CHUA NEN\LONG MY', r'E:\OCR NEN\CHUA NEN\LONG MY')
+=======
+
+
+# xóa temp
+remove_temp(r'E:\OCR NEN\CHUA NEN')
+
+# copy nén vị thanh
+copy_nen(r'D:\HoTich\HOTICH_HG\source - haugiang\Files',
+         r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen', r'E:\OCR NEN\CHUA NEN\VI THANH')
+
+# copy nén vị thủy
+copy_nen(r'D:\HoTich\HOTICH_HG\source - vithuy\Files',
+         r'D:\HoTich\HOTICH_HG\source - vithuy\FilesNen', r'E:\OCR NEN\CHUA NEN\VI THUY')
+
+# copy nén long mỹ
+copy_nen(r'D:\HoTich\HOTICH_HG\soucre - hlongmy\Files',
+         r'D:\HoTich\HOTICH_HG\soucre - hlongmy\FilesNen', r'E:\OCR NEN\CHUA NEN\LONG MY')
+
+# xóa file đã nén
+remove_nen(r'E:\OCR NEN\CHUA NEN', r'E:\OCR NEN\NEN')
+
+# tạo cấu trúc thư mục
+create_struct(r'E:\OCR NEN\CHUA NEN\VI THANH', r'E:\OCR NEN\CHUA NEN\VI THANH')
+create_struct(r'E:\OCR NEN\CHUA NEN\VI THUY', r'E:\OCR NEN\CHUA NEN\VI THUY')
+create_struct(r'E:\OCR NEN\CHUA NEN\LONG MY', r'E:\OCR NEN\CHUA NEN\LONG MY')
+
+>>>>>>> 0ed19e3f30a766bab30734c51cf387ca06c25ab8

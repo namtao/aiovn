@@ -21,10 +21,10 @@ def get_files(folderPath, fileFormat):
             if pattern.match(file):
                 # fullpath filename
                 lst.append(os.path.join(root, file))
-                
+
                 # filename with extension
                 # lst.append(os.path.join(file))
-                
+
                 # filename without extension
                 # lst.append(os.path.splitext(file)[0])
     return lst
@@ -46,28 +46,27 @@ def analysis_in_folder():
     for root, dirs, files in os.walk(folderPath):
         for file in files:
             countFiles += 1
-            if(file != 'Thumbs.db'):
-                countFilesNotThumbs +=1
+            if (file != 'Thumbs.db'):
+                countFilesNotThumbs += 1
 
         for file2 in dirs:
             countDirs += 1
 
-    print("Tổng số thư mục: \t{0: >9}\nTổng số file: \t\t{1: >9} \n".format(
-        countDirs, countFiles))
+    print(f"Tổng số thư mục: \t{countDirs: >9}\nTổng số file: \t\t{countFiles: >9} \n")
 
     # đếm số file theo phần mở rộng
     # đếm trang pdf
     totalPdfPages = 0
     index = 0
     for ex in extensions:
-        if(ex != ''):
+        if (ex != ''):
             count = 0
             for root, dirs, files in os.walk(folderPath):
                 for file in files:
                     if file.endswith(ex):
                         count += 1
 
-                    if(file.endswith('.pdf')):
+                    if (file.endswith('.pdf')):
                         readpdf = PyPDF2.PdfFileReader(
                             open(os.path.join(root, file), 'rb'), strict=False)
                         totalPdfPages += readpdf.numPages
@@ -75,13 +74,13 @@ def analysis_in_folder():
                         # readpdf = PyPDF2.PdfFileReader(open(a, 'rb'), strict=False)
                         # print(readpdf.numPages)
 
-            print("Số file {0: <22} {1}".format(ex, count))
+            print(f"Số file {ex: <22} {count}")
 
             index += count
 
-    print("Số file không có phần mở rộng: {0}".format(countFiles - index))
+    print(f"Số file không có phần mở rộng: {countFiles - index}")
 
-    print("{:<31}{:,}".format('Số trang pdf: ', totalPdfPages).replace(',', '.'))
+    print(f"{'Số trang pdf: ':<31}{totalPdfPages:,}".replace(',', '.'))
 
     return
 
@@ -128,7 +127,7 @@ def check_duplicate_two_dir():
 
     lstDuplicate = list(set(lstPdfFilesTemp) & set(lstPdfFilesTemp1))
     # lstDuplicate = list(set(lstPdfFilesTemp) - set(lstPdfFilesTemp1))
-    
+
     print(lstDuplicate)
 
 
@@ -142,7 +141,7 @@ def create_struct():
             try:
                 head, tail = (os.path.split(
                     Path(os.path.join(root, fileName))))
-                if(len(tail.split('.')) > 6):
+                if (len(tail.split('.')) >= 6):
                     newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
                                            1], tail.split('.')[2], tail.split('.')[3])
                     Path(newPath).mkdir(parents=True, exist_ok=True)
@@ -193,7 +192,7 @@ def check_modifier_file():
     lst = []
 
     for files in list_of_files:
-        if(str(datetime.date.fromtimestamp(max(os.path.getmtime(files), os.path.getctime(files))).strftime("%d/%m/%Y")) == dateModified):
+        if (str(datetime.date.fromtimestamp(max(os.path.getmtime(files), os.path.getctime(files))).strftime("%d/%m/%Y")) == dateModified):
             lst.append(files)
 
     # latest_file = max(list_of_files, key=latest_change)
@@ -209,9 +208,9 @@ def rename_new_rule():
                 head, tail = (os.path.split(Path(fileName)))
 
                 # check quyển nhiều năm
-                if(len(tail.split('.')) > 7):
+                if (len(tail.split('.')) > 7):
                     haisonam = tail.split('.')[len(tail.split('.')) - 3]
-                    if(len(haisonam) != 4):
+                    if (len(haisonam) != 4):
                         # print(os.path.join(root, fileName))
                         nam = int(haisonam)
                         namMoi = nam + 1900
@@ -261,11 +260,10 @@ def action(x):
     return func()
 
 
-
 if __name__ == '__main__':
     print("-----Công cụ tương tác với Files-----")
     while True:
-        try:    
+        try:
             print('1. Phân tích thư mục')
             print('2. Tìm kiếm tệp tin')
             print('3. Kiểm tra trùng tên trong 1 thư mục')
@@ -285,9 +283,8 @@ if __name__ == '__main__':
             input()
         finally:
             ip = str(input('\nBạn có muốn tiếp tục? (Y/N?): ')).upper()
-            if(ip == 'Y'):
+            if (ip == 'Y'):
                 continue
             else:
                 print("Hẹn gặp lại!!!\n")
                 break
-
