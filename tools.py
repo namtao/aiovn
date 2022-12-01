@@ -153,14 +153,15 @@ def create_struct():
                             newPath, tail.replace(' ', '')))
                         count += 1
                     else:
+                        pass
                         # print(os.path.join(root, fileName))
-                        with open('error.txt', 'a', encoding='utf8') as f:
+                        # with open('error.txt', 'a', encoding='utf8') as f:
                             # print(os.path.join(root, fileName))
-                            f.write(os.path.join(root, fileName) + '\n')
+                            # f.write(os.path.join(root, fileName) + '\n')
             except:
-                with open('error.txt', 'a', encoding='utf8') as f:
+                # with open('error.txt', 'a', encoding='utf8') as f:
                     # print(os.path.join(root, fileName))
-                    f.write(os.path.join(root, fileName) + '\n')
+                    # f.write(os.path.join(root, fileName) + '\n')
                 pass
     print(count)
 

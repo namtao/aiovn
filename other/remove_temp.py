@@ -1,7 +1,14 @@
 import os
 import re
 import shutil
+from pathlib import Path
 
+lstMaPhuong = [
+    '31471', '31472', '31473', '31474', '31475', '31477', '31478', '31480', '31481', '93711', '93712', '93713', '93714',
+    '93715', '93716', '93717', '93718', '93719', '93720', '93721', '93722', '93723', '93724', '93725', '93726', '93727',
+    '93728', '93729', '93730', '93731', '93732', '93733', '93734', '93735', '93736', '93737', '93738', '93739', '93740',
+    '93741', '93742', '93743', '93744', '93745', '93746', '93748', '93749', '93750', '93751', '93752', '93753', '93754',
+    '93755', '93756', '93757', '93758', '93759', '93760', '93761', '93762', '93763']
 
 # xóa file rác và thư mục trống
 def remove_temp(path):
@@ -54,6 +61,8 @@ def copy_nen(dir1, dir2, pathTarget):
 
     lstPdf1 = get_files(dir1, 'pdf')
     lstPdf2 = get_files(dir2, 'pdf')
+    
+    # lstDaCopy = get_files(r'E:\OCR NEN', 'pdf')
     # lstPdf3 = get_files(dir3, 'pdf')
 
     # lstDuplicate = list(set(lstPdf1) & set(lstPdf2))
@@ -65,9 +74,20 @@ def copy_nen(dir1, dir2, pathTarget):
     for root, dirs, files in os.walk(dir1):
         for file in files:
             if (file in lstNotDuplicate):
-                print(os.path.join(root, file))
-                shutil.copy(os.path.join(root, file),
-                            os.path.join(pathTarget, file))
+                    
+                
+                head, tail = (os.path.split(
+                    Path(os.path.join(root, file))))
+                    
+                if (tail.split('.')[2] not in lstMaPhuong):
+                    
+                    print(os.path.join(root, file))
+                    newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
+                                            1], tail.split('.')[2], tail.split('.')[3])
+                    
+                    Path(newPath).mkdir(parents=True, exist_ok=True)
+                    shutil.copy(os.path.join(root, file),
+                                os.path.join(newPath, file))
 
 
 def remove_nen(dir1, dir2):
@@ -101,8 +121,57 @@ def remove_nen(dir1, dir2):
                 os.remove(os.path.join(root, file))
 
 
-remove_temp(r'E:\OCR NEN\CHUA NEN')
+def create_struct(pathRoot, pathTarget):
+    count = 0
+    for root, dirs, files in os.walk(pathRoot):
+        for fileName in files:
+            try:
+                head, tail = (os.path.split(
+                    Path(os.path.join(root, fileName))))
+                if (len(tail.split('.')) > 6):
+                    newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
+                                           1], tail.split('.')[2], tail.split('.')[3])
+                    Path(newPath).mkdir(parents=True, exist_ok=True)
+                    # os.path.splitext(tail)[0]
+                    # os.path.splitext(tail)[1]
+                    if not os.path.exists(os.path.join(newPath, tail.replace(' ', ''))):
+                        shutil.move(os.path.join(root, fileName), os.path.join(
+                            newPath, tail.replace(' ', '')))
+                        count += 1
+                    else:
+                        pass
+                        # print(os.path.join(root, fileName))
+                        # with open('error.txt', 'a', encoding='utf8') as f:
+                        # print(os.path.join(root, fileName))
+                        # f.write(os.path.join(root, fileName) + '\n')
+            except:
+                # with open('error.txt', 'a', encoding='utf8') as f:
+                # print(os.path.join(root, fileName))
+                # f.write(os.path.join(root, fileName) + '\n')
+                pass
+    print(count)
 
-# copy_nen(r'D:\HoTich\HOTICH_HG\source - vithuy\Files', r'D:\HoTich\HOTICH_HG\source - vithuy\FilesNen', r'E:\OCR NEN\CHUA NEN\VI THUY')
 
-remove_nen(r'E:\OCR NEN\CHUA NEN', r'E:\OCR NEN\NEN')
+# xóa temp
+remove_temp(r'E:\OCR NEN\CHUA NEN\a')
+
+# xóa file đã nén
+remove_nen(r'E:\OCR NEN\CHUA NEN\a', r'E:\OCR NEN\NEN\OCR NEN\CHUA NEN\a')
+
+# # copy nén vị thanh
+# copy_nen(r'D:\HoTich\HOTICH_HG\source - haugiang\Files',
+#          r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen', r'E:\OCR NEN\CHUA NEN\a\VI THANH')
+
+# # copy nén vị thủy
+# copy_nen(r'D:\HoTich\HOTICH_HG\source - vithuy\Files',
+#          r'D:\HoTich\HOTICH_HG\source - vithuy\FilesNen', r'E:\OCR NEN\CHUA NEN\a\VI THUY')
+
+# # copy nén long mỹ
+# copy_nen(r'D:\HoTich\HOTICH_HG\soucre - hlongmy\Files',
+#          r'D:\HoTich\HOTICH_HG\soucre - hlongmy\FilesNen', r'E:\OCR NEN\CHUA NEN\a\LONG MY')
+
+
+# # tạo cấu trúc thư mục
+# create_struct(r'E:\OCR NEN\CHUA NEN\VI THANH', r'E:\OCR NEN\CHUA NEN\VI THANH')
+# create_struct(r'E:\OCR NEN\CHUA NEN\VI THUY', r'E:\OCR NEN\CHUA NEN\VI THUY')
+# create_struct(r'E:\OCR NEN\CHUA NEN\LONG MY', r'E:\OCR NEN\CHUA NEN\LONG MY')
