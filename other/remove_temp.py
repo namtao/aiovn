@@ -150,7 +150,6 @@ def create_struct(pathRoot, pathTarget):
                 # f.write(os.path.join(root, fileName) + '\n')
                 pass
     print(count)
-<<<<<<< HEAD
 
 
 # xóa temp
@@ -176,7 +175,6 @@ remove_nen(r'E:\OCR NEN\CHUA NEN\a', r'E:\OCR NEN\NEN\OCR NEN\CHUA NEN\a')
 # create_struct(r'E:\OCR NEN\CHUA NEN\VI THANH', r'E:\OCR NEN\CHUA NEN\VI THANH')
 # create_struct(r'E:\OCR NEN\CHUA NEN\VI THUY', r'E:\OCR NEN\CHUA NEN\VI THUY')
 # create_struct(r'E:\OCR NEN\CHUA NEN\LONG MY', r'E:\OCR NEN\CHUA NEN\LONG MY')
-=======
 
 
 # xóa temp
@@ -201,5 +199,3 @@ remove_nen(r'E:\OCR NEN\CHUA NEN', r'E:\OCR NEN\NEN')
 create_struct(r'E:\OCR NEN\CHUA NEN\VI THANH', r'E:\OCR NEN\CHUA NEN\VI THANH')
 create_struct(r'E:\OCR NEN\CHUA NEN\VI THUY', r'E:\OCR NEN\CHUA NEN\VI THUY')
 create_struct(r'E:\OCR NEN\CHUA NEN\LONG MY', r'E:\OCR NEN\CHUA NEN\LONG MY')
-
->>>>>>> 0ed19e3f30a766bab30734c51cf387ca06c25ab8
