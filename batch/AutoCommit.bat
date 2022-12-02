@@ -4,8 +4,8 @@ ECHO OFF
 
 :: cập nhật thư viện
 cd ..
-.venv\Scripts\python.exe -m pip freeze --all > requirements.txt
 .venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv\Scripts\python.exe -m pip freeze --all > requirements.txt
 
 :: Set các giá trị về file git exe và nhánh cần làm việc
 set GIT_PATH="C:\Program Files\Git\bin\git.exe"

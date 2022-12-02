@@ -3,8 +3,8 @@ import configparser
 import logging
 import os
 import re
-from collections import Counter, OrderedDict
 import urllib.parse
+from collections import Counter, OrderedDict
 
 import numpy as np
 import pandas as pd
