@@ -10,7 +10,6 @@ import pandas as pd
 
 
 def merge_dict(dict1, dict2):
-    # tối ưu hóa hiệu suất dataframe
     for i in dict2.keys():
         if (i in dict1):
             dict1[i] = dict1[i] + dict2[i]

@@ -153,10 +153,10 @@ def create_struct(pathRoot, pathTarget):
 
 
 # xóa temp
-remove_temp(r'E:\OCR NEN\CHUA NEN\a')
+remove_temp(r'E:\OCR NEN\CHUA NEN\TX LONG MY')
 
 # xóa file đã nén
-remove_nen(r'E:\OCR NEN\CHUA NEN\a', r'E:\OCR NEN\NEN\OCR NEN\CHUA NEN\a')
+remove_nen(r'E:\OCR NEN\CHUA NEN\TX LONG MY', r'E:\OCR NEN\NEN\OCR NEN\CHUA NEN\TX LONG MY')
 
 # # copy nén vị thanh
 # copy_nen(r'D:\HoTich\HOTICH_HG\source - haugiang\Files',
