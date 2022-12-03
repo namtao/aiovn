@@ -1,17 +1,5 @@
-class MyClass: 
-     "Đây là class thứ 3 được khởi tạo" 
-     a = 10 
-     def func(self): 
-        print('Xin chào')
+import numpy as np
 
-ob = MyClass()
-
-# Output: <function MyClass.func at 0x000000000335B0D0>
-print(MyClass.func)
-
-# Output: <bound method MyClass.func of <__main__.MyClass object at 0x000000000332DEF0>>
-print(ob.func)
-
-# Gọi hàm func()
-# Output: Xin chào
-ob.func()
+a = np.array((1, 2, 3, 4, 5, 6))
+a = np.append(a, 1)
+print(a)

@@ -25,6 +25,7 @@
   - [Note](#note)
   - [Sql Server](#sql-server)
   - [MongoDB](#mongodb)
+  - [Numpy](#numpy)
   - [Pandas](#pandas)
     - [Lý thuyết cơ bản](#lý-thuyết-cơ-bản)
     - [df.describe()](#dfdescribe)
@@ -297,6 +298,7 @@ isort .
 ## Note
 
 1. Dùng đệ quy để cải thiên tốc độ
+2. Sử dụng np.array thay cho list
 
 ## Sql Server
 
@@ -319,6 +321,14 @@ isort .
 
   - Tốc độ nhanh
   - JSON object
+
+## Numpy
+
+Numpy so với List
+
+- Tốn ít bộ nhớ hơn
+- Nhanh hơn
+- Tiện lợi hơn (thuận tiện trong việc thực hiện các phép toán đối với danh sách)
 
 ## Pandas
 
