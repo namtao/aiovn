@@ -41,6 +41,7 @@
   - [PyautoGui](#pyautogui)
   - [Sources](#sources)
   - [How to?](#how-to)
+  - [Tricks](#tricks)
 
 ## Python
 
@@ -397,5 +398,10 @@ Các định dạng không ghi đè lên nhau, phải Lý thuyết riêng
 
 ## How to?
 
-<https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate>\
+<https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate>
+
+<https://thispointer.com/remove-duplicates-from-numpy-array-in-python/>
+
+## Tricks
+
 [Download FB video](https://snapsave.app/vn)
