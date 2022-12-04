@@ -41,6 +41,7 @@
   - [PyAutoGui](#pyautogui)
   - [SQLAlchemy](#sqlalchemy)
   - [Mediapipe](#mediapipe)
+  - [Docker](#docker)
   - [OCR](#ocr)
   - [TextToSpeech](#texttospeech)
   - [Dataset](#dataset)
@@ -442,6 +443,18 @@ Các định dạng không ghi đè lên nhau, phải Lý thuyết riêng
 ## Mediapipe
 
 [Lý thuyết](https://viblo.asia/p/mediapipe-live-ml-solutions-va-ung-dung-ve-bang-hands-gestures-gAm5ymOV5db)
+
+## Docker
+
+[Lý thuyết](https://viblo.asia/p/huong-dan-cho-nguoi-moi-bat-dau-su-dung-docker-build-run-push-va-pull-naQZRp8X5vx)
+
+Dùng để đóng gói project để triển khai
+
+Giống như máy ảo nhưng nhanh hơn
+
+Chứa các container chạy ứng dụng khác nhau
+
+Images có thể tạo ra nhiều container
 
 ## OCR
 

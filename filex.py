@@ -15,7 +15,7 @@ def get_files(function):
                 pattern = re.compile(".*"+fileFormat+"$")
                 if pattern.match(file):
                     lstFiles.append(os.path.join(root, file))
-                    function(os.path.join(root, file))
+                    function(os.path.join(root, file), 'pdf')
 
     return wrapper
 
@@ -26,6 +26,9 @@ def handle(path):
     pass
 
 
-# nhận tham số trong wrapper
-handle(r'C:\Users\Nam\Downloads\New folder', 'pdf')
-print(lstFiles)
+@get_files
+def analysis_in_folder(folderPath, fileFormat):
+    print('Cái này chạy khi có file pdf')
+
+
+analysis_in_folder(r'C:\Users\Nam\Downloads\New folder', 'pdf')
