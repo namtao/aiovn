@@ -208,6 +208,7 @@ tzlocal==4.2
 urllib3==1.26.12
 uvicorn==0.19.0
 virtualenv==20.16.5
+Wand==0.6.10
 wcwidth==0.2.5
 webencodings==0.5.1
 websocket-client==1.4.2

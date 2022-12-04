@@ -531,7 +531,11 @@ Images có thể tạo ra nhiều container
   - <https://stackoverflow.com/questions/2693820/extract-images-from-pdf-without-resampling-in-python>
   - <https://pymupdf.readthedocs.io/en/latest/recipes-images.html>
   - <https://filegi.com/file-info/jp2-2091/>
+  - <https://www.geeksforgeeks.org/how-to-compress-images-using-python-and-pil/>
+  - <https://askubuntu.com/questions/113544/how-can-i-reduce-the-file-size-of-a-scanned-pdf-file>
+  - <https://sourceforge.net/projects/jpegoptim/>
 
 ## Tricks
 
-[Download FB video](https://snapsave.app/vn)
+[Download FB video](https://snapsave.app/vn)\
+[Hidden Folder](https://quantrimang.com/cong-nghe/tao-mat-khau-bao-ve-thu-muc-trong-windows-7-73499)
