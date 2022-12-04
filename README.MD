@@ -38,6 +38,9 @@
     - [deepdiff](#deepdiff)
   - [XlsxWriter](#xlsxwriter)
     - [overlap](#overlap)
+  - [PyautoGui](#pyautogui)
+  - [Sources](#sources)
+  - [How to?](#how-to)
 
 ## Python
 
@@ -85,7 +88,9 @@ set không được sắp xếp nên không thể truy cập bằng chỉ mục
 
 ### enumerate
 
-Được sử dụng để lặp qua các danh sách và bao gồm chỉ mục (key, value)
+Được sử dụng để lặp qua các danh sách và bao gồm chỉ mục (key, value)\
+Có thể điều chỉnh số bắt đầu của index\
+Nhanh hơn so với lặp thông thường
 
 ### zip
 
@@ -157,6 +162,8 @@ M
 
 ### Closure python
 
+[Lý thuyết](https://quantrimang.com/hoc/cach-su-dung-closure-trong-python-165316)
+
 Là phương pháp ràng buộc dữ liệu với 1 hàm mà không cần thực sự truyền chúng làm tham số cho hàm\
 Closure là một đối tượng hàm\
 Closure được tạo hàm lồng nhau\
@@ -190,6 +197,9 @@ print(times5(times3(2)))
 ```
 
 ### Decorator
+
+[Lý thuyết](https://quantrimang.com/hoc/decorator-trong-python-165379)\
+[Tìm hiểu thêm](https://viblo.asia/p/cung-tim-hieu-python-decorators-bJzKmzJEZ9N)
 
 Hàm có thể được truyền như tham số trong hàm khác\
 Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.\
@@ -225,9 +235,13 @@ Whoops! cannot divide
 
 ### Class object
 
+[Lý thuyết](https://viblo.asia/p/class-va-object-trong-python-4P856dvLZY3)
+
 Khi gọi phương thức có 1 tham số thì ta không cần gán tham số đầu tiên, bởi vì, bất cứ khi nào, object gọi các phương thức, object sẽ tự pass qua parameter đầu tiên
 
 ### Property
+
+[Lý thuyết](https://quantrimang.com/hoc/property-trong-python-165430)
 
 Được sử dụng trong getter setter trong class
 
@@ -324,13 +338,19 @@ isort .
 
 ## Numpy
 
+[Lý thuyết](https://www.geeksforgeeks.org/numpy-tutorial/)
+
 Numpy so với List
 
 - Tốn ít bộ nhớ hơn
 - Nhanh hơn
 - Tiện lợi hơn (thuận tiện trong việc thực hiện các phép toán đối với danh sách)
 
+Numpy có thể được tạo thành từ list, tuple, set, dict
+
 ## Pandas
+
+[Lý thuyết](https://viblo.asia/p/pandas-python-tutorial-XL6lAxaDZek)
 
 ### Lý thuyết cơ bản
 
@@ -364,4 +384,18 @@ Là sự kết hợp giữa iloc và loc
 
 ### overlap
 
-Các định dạng không ghi đè lên nhau, phải định nghĩa riêng
+Các định dạng không ghi đè lên nhau, phải Lý thuyết riêng
+
+## PyautoGui
+
+[Lý thuyết](https://pywinauto.readthedocs.io/en/latest/)
+
+## Sources
+
+[Deep learning](https://phamdinhkhanh.github.io/deepai-book/intro.html)\
+[Data Science](https://phamdinhkhanh.github.io/2019/01/07/Ky_thuat_feature_engineering.html)
+
+## How to?
+
+<https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate>\
+[Download FB video](https://snapsave.app/vn)
