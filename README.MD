@@ -57,13 +57,16 @@
 
 ### *args
 
-Thay thế nhiều tham số trong hàm\
-args là một tuple chứ không phải list\
+Thay thế nhiều tham số trong hàm
+
+args là một tuple chứ không phải list
+
 *args sẽ phải đặt ở cuối cùng nếu không sẽ gặp lỗi ngay
 
 ### **kwargs
 
-**kwargs cũng tương tự như như *args, tuy nhiên, nó không dùng cho các tham số thông thường truyền vào lần lượt, mà nó được sử dụng cho các tham số\
+**kwargs cũng tương tự như như *args, tuy nhiên, nó không dùng cho các tham số thông thường truyền vào lần lượt, mà nó được sử dụng cho các tham số
+
 **kwargs trong hàm sẽ nhận giá trị là một dict với key là các tham số được truyền kèm giá trị tương ứng của chúng
 
 ### nonlocal
@@ -72,7 +75,8 @@ args là một tuple chứ không phải list\
 
 ### global
 
-Muốn thay đổi biến toàn cục trong hàm thì ta phải thêm từ khóa global vào biến\
+Muốn thay đổi biến toàn cục trong hàm thì ta phải thêm từ khóa global vào biến
+
 Thay đổi phần tử hoặc giá trị của biến thì mới cần sử dụng global
 
 ### yield
@@ -81,26 +85,32 @@ Sẽ đình chỉ việc thực thi của hàm và trả về một giá trị c
 
 ### list[]
 
-append: list append list =list 2 chiều (datatframe)\
-extend: list extend list =list (nối 2 list thành 1 list)\
+append: list append list =list 2 chiều (datatframe)
+
+extend: list extend list =list (nối 2 list thành 1 list)
+
 count: cho biết số lượng của phần tử trong list
 
 ### tuple()
 
-tốc độ nhanh hơn list nhưng các đối tượng không thay đổi đc\
+tốc độ nhanh hơn list nhưng các đối tượng không thay đổi đc
+
 truy cập vào phần tử giống như chuỗi và list
 
 ### set{}
 
-set có thể thay đổi nhưng các phần tử không được trùng nhau\
+set có thể thay đổi nhưng các phần tử không được trùng nhau
+
 set không được sắp xếp nên không thể truy cập bằng chỉ mục
 
 ### dictionary {key:value}
 
 ### enumerate
 
-Được sử dụng để lặp qua các danh sách và bao gồm chỉ mục (key, value)\
-Có thể điều chỉnh số bắt đầu của index\
+Được sử dụng để lặp qua các danh sách và bao gồm chỉ mục (key, value)
+
+Có thể điều chỉnh số bắt đầu của index
+
 Nhanh hơn so với lặp thông thường
 
 ### zip
@@ -124,15 +134,24 @@ fun(*my_list)
 
 ### Type conversion
 
-ord() : chuyển đổi ký tự thành số nguyên.\
-hex() : chuyển đổi số nguyên thành chuỗi thập phân.\
-oct() : chuyển đổi số nguyên thành chuỗi bát phân.\
-tuple(): chuyển đổi thành tuple.\
-set(): chuyển đổi thành set.\
-list(): chuyển đổi thành list.\
-dict() : chuyển đổi thành dictionary.\
-str() : chuyển đổi thành string.\
-complex(real,imag) : chuyển đổi thành số phức.\
+ord() : chuyển đổi ký tự thành số nguyên.
+
+hex() : chuyển đổi số nguyên thành chuỗi thập phân.
+
+oct() : chuyển đổi số nguyên thành chuỗi bát phân.
+
+tuple(): chuyển đổi thành tuple.
+
+set(): chuyển đổi thành set.
+
+list(): chuyển đổi thành list.
+
+dict() : chuyển đổi thành dictionary.
+
+str() : chuyển đổi thành string.
+
+complex(real,imag) : chuyển đổi thành số phức.
+
 chr(number): chuyển đổi số thành ký tự ASCII tương ứng.
 
 ```:
@@ -175,10 +194,14 @@ M
 
 [Lý thuyết](https://quantrimang.com/hoc/cach-su-dung-closure-trong-python-165316)
 
-Là phương pháp ràng buộc dữ liệu với 1 hàm mà không cần thực sự truyền chúng làm tham số cho hàm\
-Closure là một đối tượng hàm\
-Closure được tạo hàm lồng nhau\
-Sử dụng lớp lồng để không cần sử dụng biến toàn cục\
+Là phương pháp ràng buộc dữ liệu với 1 hàm mà không cần thực sự truyền chúng làm tham số cho hàm
+
+Closure là một đối tượng hàm
+
+Closure được tạo hàm lồng nhau
+
+Sử dụng lớp lồng để không cần sử dụng biến toàn cục
+
 Giúp che giấu thông tin của hàm
 
 Trong trường hợp có ít phương thức thì ta có thể dùng closure nhưng nếu nhiều thì nên sử dụng lập trình hướng đối tượng OOP
@@ -212,11 +235,16 @@ print(times5(times3(2)))
 [Lý thuyết](https://quantrimang.com/hoc/decorator-trong-python-165379)\
 [Tìm hiểu thêm](https://viblo.asia/p/cung-tim-hieu-python-decorators-bJzKmzJEZ9N)
 
-Hàm có thể được truyền như tham số trong hàm khác\
-Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.\
-Decorator là những functions thay đổi tính năng của một function, method hay class một cách dynamic, mà không phải sử dụng subclass\
-Decorator là một hàm có thể nhận các hàm khác, cho phép bạn chạy một số đoạn code trước hoặc sau hàm chính mà không thay đổi kết quả.\
-Tham số của hàm sẽ được truyền vào hàm decorator\
+Hàm có thể được truyền như tham số trong hàm khác
+
+Decorator là công cụ rất mạnh mẽ và hữu ích trong Python vì nó cho phép các lập trình viên sửa đổi hành vi của hàm hoặc lớp. Decorator cho phép chúng ta nhận tham số đầu vào là một hàm khác và mở rộng tính năng cho hàm đó mà không thay đổi nội dung của nó.
+
+Decorator là những functions thay đổi tính năng của một function, method hay class một cách dynamic, mà không phải sử dụng subclass
+
+Decorator là một hàm có thể nhận các hàm khác, cho phép bạn chạy một số đoạn code trước hoặc sau hàm chính mà không thay đổi kết quả.
+
+Tham số của hàm sẽ được truyền vào hàm decorator
+
 Tham số hàm decorator luôn là 1 hàm
 
 ```:
@@ -258,8 +286,10 @@ Khi gọi phương thức có 1 tham số thì ta không cần gán tham số đ
 
 ## Markdown
 
-Sử dụng > để viết trích dẫn\
-Sử dụng ``` để tạo khối văn bản nhiều dòng\
+Sử dụng > để viết trích dẫn
+
+Sử dụng ``` để tạo khối văn bản nhiều dòng
+
 Sử dụng \\ để xuống dòng văn bản
 
 ## Command
