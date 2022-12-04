@@ -1,6 +1,6 @@
-# Tài liệu
+# Documents
 
-- [Tài liệu](#tài-liệu)
+- [Documents](#documents)
   - [Python](#python)
     - [\*args](#args)
     - [\*\*kwargs](#kwargs)
@@ -38,12 +38,22 @@
     - [deepdiff](#deepdiff)
   - [XlsxWriter](#xlsxwriter)
     - [overlap](#overlap)
-  - [PyautoGui](#pyautogui)
+  - [PyAutoGui](#pyautogui)
+  - [SQLAlchemy](#sqlalchemy)
+  - [Mediapipe](#mediapipe)
+  - [OCR](#ocr)
+  - [TextToSpeech](#texttospeech)
+  - [Dataset](#dataset)
+  - [Machine Learning](#machine-learning)
+  - [Data Science](#data-science)
   - [Sources](#sources)
+  - [Knowledge](#knowledge)
   - [How to?](#how-to)
   - [Tricks](#tricks)
 
 ## Python
+
+[Lý thuyết](https://www.geeksforgeeks.org/python-programming-language/?ref=ghm)
 
 ### *args
 
@@ -321,6 +331,8 @@ isort .
 
 ## MongoDB
 
+[Lý thuyết](https://viblo.asia/p/tim-hieu-ve-mongodb-4P856ajGlY3)
+
 - Tương quan giữa mongodb với sqlserver
 
 | Operation | In SQL | In MongoDB |
@@ -351,7 +363,9 @@ Numpy có thể được tạo thành từ list, tuple, set, dict
 
 ## Pandas
 
-[Lý thuyết](https://viblo.asia/p/pandas-python-tutorial-XL6lAxaDZek)
+[Lý thuyết](https://viblo.asia/p/pandas-python-tutorial-XL6lAxaDZek)\
+[Hướng dẫn](https://pandas.pydata.org/docs/user_guide/10min.html)\
+[Group by](https://viblo.asia/p/pandas-groupby-13-chuc-nang-de-tong-hop-du-lieu-eW65G6gJlDO)
 
 ### Lý thuyết cơ bản
 
@@ -387,20 +401,93 @@ Là sự kết hợp giữa iloc và loc
 
 Các định dạng không ghi đè lên nhau, phải Lý thuyết riêng
 
-## PyautoGui
+## PyAutoGui
 
 [Lý thuyết](https://pywinauto.readthedocs.io/en/latest/)
 
-## Sources
+## SQLAlchemy
+
+[Lý thuyết](https://docs.sqlalchemy.org/en/20/core/engines.html)
+
+## Mediapipe
+
+[Lý thuyết](https://viblo.asia/p/mediapipe-live-ml-solutions-va-ung-dung-ve-bang-hands-gestures-gAm5ymOV5db)
+
+## OCR
+
+- <https://github.com/open-mmlab/mmocr?fbclid=IwAR37knpiJg8PkIYI4dl6Caugg4NkSMmQUMh7RlKYRXtKMgax9XOD01k9Zkc>
+- <https://hypjudy.github.io/2017/03/28/cvpr-A4-paper-sheet-detection-and-cropping/>
+
+## TextToSpeech
+
+- <https://github.com/mozilla/TTS>  
+- <https://github.com/as-ideas/TransformerTTS>
+- <https://viblo.asia/p/text-to-speech-with-tacotron-2-L4x5x6DOZBM>
+- <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7287261/>
+- <https://itzone.com.vn/vi/article/text-to-speech-with-tacotron-2/>
+- <https://github.com/TensorSpeech/TensorFlowTTS>
+- <https://github.com/as-ideas/TransformerTTS#pre-trained-ljspeech-api>
+- <https://github.com/buriburisuri/speech-to-text-wavenet>
+- <https://github.com/duykhuongnguyen/Text-to-speech-for-Vietnamese>
+- <https://github.com/open-mmlab/mmocr?fbclid=IwAR0E5m4w1ClcohJQf5CSjWmOYjvOGj9ITjHJbowNisjdNfkx3Hdso-4rQjA>
+
+## Dataset
+
+[Dataset Kaggle](https://www.kaggle.com/datasets)\
+[Dataset UCI](https://archive.ics.uci.edu/ml/datasets.php)\
+[Dataset Google](https://datasetsearch.research.google.com/)\
+[Dataset Github](https://github.com/namtao/awesome-public-datasets)
+
+## Machine Learning
 
 [Deep learning](https://phamdinhkhanh.github.io/deepai-book/intro.html)\
-[Data Science](https://phamdinhkhanh.github.io/2019/01/07/Ky_thuat_feature_engineering.html)
+[Machine Learning](https://paperswithcode.com)\
+[Parallelization](https://ray-project.github.io/2017/05/20/announcing-ray.html)
+
+## Data Science
+
+[Data Science](https://phamdinhkhanh.github.io/2019/01/07/Ky_thuat_feature_engineering.html)\
+[Dark](https://dask.pydata.org/en/latest/)\
+[Distarray](https://docs.enthought.com/distarray/)
+
+## Sources
+
+[SS64](https://ss64.com/)
+
+## Knowledge
+
+<https://www.howstuffworks.com/>
+
+<https://bigthink.com/>
 
 ## How to?
 
-<https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate>
+- How to Determine the Orientation of an Object?
+  - <https://automaticaddison.com/how-to-determine-the-orientation-of-an-object-using-opencv/>
+  - <https://stackoverflow.com/questions/46731947/detect-angle-and-rotate-an-image-in-python/46732132>
+  - <https://stackoverflow.com/questions/61609845/detect-angle-and-rotate-image-using-houghline-transform>
+  - <https://www.fatalerrors.org/a/ocr-text-correction-after-text-detection.html>
+  - <https://stackoverflow.com/questions/55654142/detect-if-an-ocr-text-image-is-upside-down>
+  - <https://developpaper.com/python-opencv-implementation-of-rotating-text-correction/>
+  - <https://gist.github.com/scionoftech/43b4dbe9e822411787e08d59d30f5368>
+  - <https://gist.github.com/smeschke/aa989df78551a9050a78e0d7a8c50495>
+  - <https://pyimagesearch.com/2017/02/20/text-skew-correction-opencv-python/>
+  - <https://pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/>
 
-<https://thispointer.com/remove-duplicates-from-numpy-array-in-python/>
+- How can i make git accept a self signed certificate in iis?
+  - <https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate>
+
+- Remove duplicates from numpy array in python
+  - <https://thispointer.com/remove-duplicates-from-numpy-array-in-python/>
+
+- Cannot use Vietnamese keyboard in *.md file
+  - <https://github.com/yzhang-gh/vscode-markdown/issues/617#issuecomment-585629661>
+
+- How to Compress PDF Files in Python?
+  - <https://www.thepythoncode.com/article/compress-pdf-files-in-python>
+  - <https://stackoverflow.com/questions/2693820/extract-images-from-pdf-without-resampling-in-python>
+  - <https://pymupdf.readthedocs.io/en/latest/recipes-images.html>
+  - <https://filegi.com/file-info/jp2-2091/>
 
 ## Tricks
 
