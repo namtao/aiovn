@@ -51,6 +51,7 @@
   - [Knowledge](#knowledge)
   - [How to?](#how-to)
   - [Tricks](#tricks)
+  - [Keep reading](#keep-reading)
 
 ## Python
 
@@ -535,6 +536,8 @@ Images có thể tạo ra nhiều container
   - <https://askubuntu.com/questions/113544/how-can-i-reduce-the-file-size-of-a-scanned-pdf-file>
   - <https://sourceforge.net/projects/jpegoptim/>
 
+  - <https://pyimagesearch.com/2014/07/07/color-quantization-opencv-using-k-means-clustering/>
+  - <https://realpython.com/python-opencv-color-spaces/>
   - <https://github.com/iamaaditya/image-compression-cnn>
   - <https://github.com/Justin-Tan/high-fidelity-generative-compression>
 
@@ -542,3 +545,10 @@ Images có thể tạo ra nhiều container
 
 [Download FB video](https://snapsave.app/vn)\
 [Hidden Folder](https://quantrimang.com/cong-nghe/tao-mat-khau-bao-ve-thu-muc-trong-windows-7-73499)
+
+## Keep reading
+
+- <https://filebrowser.org/installation>
+- <https://github.com/namtao/filebrowser>
+- <https://github.com/tjko/jpegoptim>
+- <https://manpages.ubuntu.com/manpages/bionic/man1/jpegoptim.1.html>
