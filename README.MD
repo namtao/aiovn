@@ -535,6 +535,9 @@ Images có thể tạo ra nhiều container
   - <https://askubuntu.com/questions/113544/how-can-i-reduce-the-file-size-of-a-scanned-pdf-file>
   - <https://sourceforge.net/projects/jpegoptim/>
 
+  - <https://github.com/iamaaditya/image-compression-cnn>
+  - <https://github.com/Justin-Tan/high-fidelity-generative-compression>
+
 ## Tricks
 
 [Download FB video](https://snapsave.app/vn)\
