@@ -9,8 +9,6 @@ from pathlib import Path
 
 import PyPDF2
 
-from jobs.utils import files_utils
-
 
 def get_files(folderPath, fileFormat):
     lst = []

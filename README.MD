@@ -44,6 +44,7 @@
   - [Docker](#docker)
   - [OCR](#ocr)
   - [TextToSpeech](#texttospeech)
+  - [Nodejs](#nodejs)
   - [Dataset](#dataset)
   - [Machine Learning](#machine-learning)
   - [Data Science](#data-science)
@@ -51,7 +52,6 @@
   - [Knowledge](#knowledge)
   - [How to?](#how-to)
   - [Tricks](#tricks)
-  - [Keep reading](#keep-reading)
 
 ## Python
 
@@ -249,6 +249,8 @@ Tham số của hàm sẽ được truyền vào hàm decorator
 
 Tham số hàm decorator luôn là 1 hàm
 
+Tham số khi gọi hàm decorator là tham số được gán vào hàm inner. Sau khi return func về thì tham số trong func return sẽ gán vào hàm decorator
+
 ```:
 def smart_divide(func):
    def inner(a,b):
@@ -356,6 +358,7 @@ isort .
 
 1. Dùng đệ quy để cải thiên tốc độ
 2. Sử dụng np.array thay cho list
+3. Sử dụng dictionary thay cho list nếu có thể
 
 ## Sql Server
 
@@ -475,6 +478,10 @@ Images có thể tạo ra nhiều container
 - <https://github.com/duykhuongnguyen/Text-to-speech-for-Vietnamese>
 - <https://github.com/open-mmlab/mmocr?fbclid=IwAR0E5m4w1ClcohJQf5CSjWmOYjvOGj9ITjHJbowNisjdNfkx3Hdso-4rQjA>
 
+## Nodejs
+
+[Hướng dẫn](https://viblo.asia/p/lam-quen-voi-nodejs-xay-dung-web-server-don-gian-YWOZrEe7KQ0)
+
 ## Dataset
 
 [Dataset Kaggle](https://www.kaggle.com/datasets)\
@@ -545,10 +552,3 @@ Images có thể tạo ra nhiều container
 
 [Download FB video](https://snapsave.app/vn)\
 [Hidden Folder](https://quantrimang.com/cong-nghe/tao-mat-khau-bao-ve-thu-muc-trong-windows-7-73499)
-
-## Keep reading
-
-- <https://filebrowser.org/installation>
-- <https://github.com/namtao/filebrowser>
-- <https://github.com/tjko/jpegoptim>
-- <https://manpages.ubuntu.com/manpages/bionic/man1/jpegoptim.1.html>
