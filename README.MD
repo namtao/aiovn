@@ -427,6 +427,10 @@ Numpy so với List
 
 Numpy có thể được tạo thành từ list, tuple, set, dict
 
+Quy tắc truy cập và cắt trong numpy array: ```[start:end:step]```
+
+Truy cập mảng nhiều chiều: ```arr[x, y, z]```
+
 ## Pandas
 
 [Lý thuyết](https://viblo.asia/p/pandas-python-tutorial-XL6lAxaDZek)\
