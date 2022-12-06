@@ -19,6 +19,8 @@
     - [Decorator](#decorator)
     - [Class object](#class-object)
     - [Property](#property)
+  - [Switch case](#switch-case)
+  - [Union Operator](#union-operator)
   - [Markdown](#markdown)
   - [Command](#command)
   - [PEP-8](#pep-8)
@@ -287,6 +289,35 @@ Khi gọi phương thức có 1 tham số thì ta không cần gán tham số đ
 [Lý thuyết](https://quantrimang.com/hoc/property-trong-python-165430)
 
 Được sử dụng trong getter setter trong class
+
+## Switch case
+
+```:
+match subject:
+  case <patt1>:
+      <act1>
+  case <patt2>:
+      <act2>
+  case <patt3>:
+      <act3>
+  case _:
+      <action_default>
+```
+
+## Union Operator
+
+```:
+def func(num: int | float) -> int | float:
+    return num + 5
+
+
+def func(num: Union[int, float]) -> Union[int, float]:
+    return num + 5
+
+
+def func(num: int) -> int:
+    return num + 5
+```
 
 ## Markdown
 
