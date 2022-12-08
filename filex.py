@@ -4,10 +4,12 @@ import difflib
 import os
 import re
 import shutil
+from collections import Counter
 from fileinput import filename
 from functools import wraps
 from pathlib import Path
 
+import numpy as np
 import PyPDF2
 
 dictEx = {}
@@ -15,7 +17,7 @@ totalPdfPages = 0
 countDirs = 0
 countFiles = 0
 countFilesNotThumbs = 0
-lstFiles = []
+arr = np.array([])
 countModifier = 0
 pathTarget = ''
 
@@ -58,15 +60,15 @@ def analysis_in_folder(root, file):
 # lấy tất cả file
 @get_files
 def get_fullname(root, file):
-    global lstFiles
-    lstFiles.append(os.path.join(root, file))
+    global arr
+    arr = np.append(arr, os.path.join(root, file))
 
 
 # tìm kiếm trùng tên nhiều thư mục
 @get_files
 def get_basename(root, file):
-    global lstFiles
-    lstFiles.append(file)
+    global arr
+    arr = np.append(arr, file)
 
 
 @get_files
@@ -101,7 +103,7 @@ def create_struct(root, file):
 if __name__ == '__main__':
     print("-----Công cụ làm việc với Files-----")
     while True:
-        lstFiles = []
+        arr = np.array([])
 
         try:
             print('1. Phân tích thư mục')
@@ -125,14 +127,14 @@ if __name__ == '__main__':
                 case 2:
                     fileSearch = input('Nhập tên file: ')
                     get_fullname(input('Nhập đường dẫn cần tìm kiếm: '))
-                    for file in lstFiles:
+                    for file in arr:
                         if (fileSearch in file):
                             print(file)
                 case 3:
                     for path in input('Nhập đường dẫn cần kiểm tra trùng: ').split(','):
                         get_basename(path)
 
-                    dup = {x for x in lstFiles if lstFiles.count(x) > 1}
+                    dup = {item for item, count in Counter(arr).items() if count > 1}
                     print(len(dup))
                     print(dup)
                 case 4:

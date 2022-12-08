@@ -23,33 +23,36 @@
     "[Monokai]": {
       "textMateRules": [
         {
-          "scope":"entity.name.namespace",
+          "scope": "entity.name.namespace",
           "settings": {
             "fontStyle": "italic underline",
             "foreground": "#82b8dd"
           }
         },
         {
-          "scope":"variable.other.readwrite",
+          "scope": "variable.other.readwrite",
           "settings": {
             "fontStyle": "italic",
             "foreground": "#d3bebe"
           }
         },
         {
-          "scope":"keyword.control.import",
+          "scope": "keyword.control.import",
           "settings": {
             "fontStyle": "italic underline",
             "foreground": "#F92672"
           }
         },
         {
-          "scope":"entity.name.function",
+          "scope": "entity.name.function",
           "settings": {
             "foreground": "#99d381"
           }
         }
       ]
     }
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   }
 }

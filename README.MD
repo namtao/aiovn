@@ -28,11 +28,14 @@
   - [Sql Server](#sql-server)
   - [MongoDB](#mongodb)
   - [Numpy](#numpy)
+    - [Tìm kiếm](#tìm-kiếm)
+    - [Sắp xếp](#sắp-xếp)
+    - [Đếm số lần xuất hiện](#đếm-số-lần-xuất-hiện)
   - [Pandas](#pandas)
     - [Lý thuyết cơ bản](#lý-thuyết-cơ-bản)
     - [df.describe()](#dfdescribe)
+    - [loc\[hàng, cột\]](#lochàng-cột)
     - [iloc\[hàng, cột\]](#ilochàng-cột)
-    - [loc(hàng, cột)](#lochàng-cột)
     - [ix](#ix)
     - [reduce](#reduce)
     - [map](#map)
@@ -431,6 +434,37 @@ Quy tắc truy cập và cắt trong numpy array: ```[start:end:step]```
 
 Truy cập mảng nhiều chiều: ```arr[x, y, z]```
 
+Ta có thể thực hiện các phép toán số học vào numpy array, điều mà list không làm được
+
+Các thao tác làm việc với data nên sử dụng numpy
+
+### Tìm kiếm
+
+| Function                      | Mô tả                                                                                             |
+| ----------------------------- | :------------------------------------------------------------------------------------------------ |
+|numpy.nanargmin()              |Trả về chỉ số của các giá trị tối thiểu trong trục đã chỉ định bỏ qua NaN.                         |
+|numpy.argwhere()               |Tìm các chỉ số của các phần tử mảng khác không, được nhóm theo phần tử.                            |
+|numpy.nonzero()                |Trả về các chỉ số của các phần tử khác không.                                                      |
+|numpy.flatnonzero()            |Trả về các chỉ số khác không trong phiên bản phẳng của                                             |
+|numpy.where()                  |Trả về các phần tử được chọn từ x hoặc y tùy thuộc vào điều kiện.                                  |
+|numpy.searchsorted()           |Tìm các chỉ mục nơi các phần tử nên được chèn vào để duy trì trật tự.                              |
+|numpy.extract()                |Trả về các phần tử của một mảng thỏa mãn một số điều kiện.                                         |
+
+### Sắp xếp
+
+| Function                      | Mô tả                                                                                             |
+| ----------------------------- | :------------------------------------------------------------------------------------------------ |
+|numpy.ndarray.sort()           |Sắp xếp một mảng, tại chỗ.                                                                         |
+|numpy.msort()                  |Trả về một bản sao của một mảng được sắp xếp dọc theo trục đầu tiên.                               |
+|numpy.sort_complex()           |Sắp xếp một mảng phức tạp bằng cách sử dụng phần thực trước, sau đó là phần ảo.                    |
+|numpy.partition()              |Trả về một bản sao được phân vùng của một mảng.                                                    |
+|numpy.argpartition()           |Thực hiện phân vùng gián tiếp dọc theo trục đã cho bằng thuật toán được chỉ định bởi từ khóa loại. |
+
+### Đếm số lần xuất hiện
+
+- np.count_nonzero()
+- collections.Counter()
+
 ## Pandas
 
 [Lý thuyết](https://viblo.asia/p/pandas-python-tutorial-XL6lAxaDZek)\
@@ -439,19 +473,25 @@ Truy cập mảng nhiều chiều: ```arr[x, y, z]```
 
 ### Lý thuyết cơ bản
 
-Series giống như mảng, list; dataframe được tạo từ nhiều series
+Pandas được xây dựng dựa trên thư viện numpy
+
+Series giống như mảng, list, cột trong excel; dataframe được tạo từ nhiều series
+
+Hàng: axis = 0
+
+Cột: axis = 1
 
 ### df.describe()
 
 Hiển thị thống kê nhanh về dữ liệu (nhỏ nhất, lớn nhất, trung bình,...)
 
+### loc[hàng, cột]
+
+Lựa chọn dữ liệu theo tên của hàng và cột đó
+
 ### iloc[hàng, cột]
 
-Lựa chọn dữ liệu theo số thứ tự của hàng và cột, chỉ số hàng
-
-### loc(hàng, cột)
-
-Giống iloc nhưng có thể truyền tham số là nhãn nhưng k nhận chỉ số hàng làm tham số, có thể truyền vào 1 boolean =lọc dữ liệu
+Lựa chọn dữ liệu theo chỉ mục của hàng và cột
 
 ### ix
 
