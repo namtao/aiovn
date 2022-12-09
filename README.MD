@@ -19,6 +19,7 @@
     - [Decorator](#decorator)
     - [Class object](#class-object)
     - [Property](#property)
+    - [Regex](#regex)
   - [Switch case](#switch-case)
   - [Union Operator](#union-operator)
   - [Markdown](#markdown)
@@ -292,6 +293,8 @@ Khi gọi phương thức có 1 tham số thì ta không cần gán tham số đ
 [Lý thuyết](https://quantrimang.com/hoc/property-trong-python-165430)
 
 Được sử dụng trong getter setter trong class
+
+### Regex
 
 ## Switch case
 
