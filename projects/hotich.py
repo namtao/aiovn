@@ -70,7 +70,7 @@ def thongkehotich():
            936: ['Huyện Long Mỹ', connLongMy],
            937: ['Thị xã Long Mỹ', connViThanh]}
 
-    d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [],
+    d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số TH': [],
          'Số lượng biên mục': [], 'Tỷ lệ biên mục': [], 'Tổng số trường': []}
 
     for k, v in dic.items():
