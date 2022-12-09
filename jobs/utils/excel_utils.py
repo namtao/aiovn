@@ -8,8 +8,6 @@ import xlrd
 import xlsxwriter
 from openpyxl import Workbook
 
-from tools import *
-
 
 def write_to_excel(arr, filename):
     workbook = Workbook()
@@ -127,8 +125,8 @@ def change_column():
 
         writer.save()  
 
-lst = get_files(r'D:\Data\EXCEL ĐÃ BIÊN MỤC\Tx Long Mỹ\Dữ liệu Tx Long Mỹ', 'xls')
-for excelFiles in lst:
-    book = xlrd.open_workbook(excelFiles)
-    print(f"The number of worksheets is {book.nsheets}")
-    print(f"Worksheet name(s): {book.sheet_names()}")
+# lst = get_files(r'D:\Data\EXCEL ĐÃ BIÊN MỤC\Tx Long Mỹ\Dữ liệu Tx Long Mỹ', 'xls')
+# for excelFiles in lst:
+#     book = xlrd.open_workbook(excelFiles)
+#     print(f"The number of worksheets is {book.nsheets}")
+#     print(f"Worksheet name(s): {book.sheet_names()}")
