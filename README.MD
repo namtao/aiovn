@@ -376,6 +376,13 @@ python manage.py syncdb
 python manage.py collectstatic
 ```
 
+Fast API
+
+```:
+uvicorn main:app --host 0.0.0.0 --port 8000
+uvicorn main:app --reload
+```
+
 Khác
 
 ```:
