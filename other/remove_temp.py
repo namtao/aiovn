@@ -11,14 +11,15 @@ lstMaPhuong = [
     '93755', '93756', '93757', '93758', '93759', '93760', '93761', '93762', '93763']
 
 # xóa file rác và thư mục trống
+
+
 def remove_temp(path):
     for root, dirs, files in os.walk(path):
         # [shutil.rmtree(os.path.join(root, dir)) for dir in dirs if (len(dir) > 10 or ('Temp' in dir))]
 
         # [os.remove(os.path.join(root, file)) for file in files if (
         #     ('_' in file) or os.path.getsize(os.path.join(root, file)) == 0 or ('jpg' in file))]
-        
-        
+
         for dir in dirs:
             if (len(dir) > 10 or ('Temp' in dir)):
                 print(os.path.join(root, dir))
@@ -26,7 +27,8 @@ def remove_temp(path):
 
     for root, dirs, files in os.walk(path):
         for file in files:
-            if (('_' in file) or os.path.getsize(os.path.join(root, file)) == 0 or ('jpg' in file)):
+            # if (('_' in file) or os.path.getsize(os.path.join(root, file)) == 0 or ('jpg' in file)):
+            if (('_' in file) or ('jpg' in file)):
                 print(os.path.join(root, file))
                 os.remove(os.path.join(root, file))
 
