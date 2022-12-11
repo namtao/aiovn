@@ -46,6 +46,7 @@
     - [overlap](#overlap)
   - [PyAutoGui](#pyautogui)
   - [SQLAlchemy](#sqlalchemy)
+  - [FastAPI với authentication bằng JWT](#fastapi-với-authentication-bằng-jwt)
   - [Mediapipe](#mediapipe)
   - [Docker](#docker)
   - [OCR](#ocr)
@@ -528,6 +529,22 @@ Các định dạng không ghi đè lên nhau, phải Lý thuyết riêng
 ## SQLAlchemy
 
 [Lý thuyết](https://docs.sqlalchemy.org/en/20/core/engines.html)
+
+## FastAPI với authentication bằng JWT
+
+<https://viblo.asia/p/tich-hop-fastapi-voi-authentication-bang-jwt-XL6lA6rR5ek>
+
+<https://www.vultr.com/docs/how-to-create-a-restful-api-using-python-and-fastapi-3398/>
+
+<https://huongdanlaptrinh.net/fastapi-tao-api-chuan-va-cuc-nhanh-trong-python/>
+
+<https://sqlmodel.tiangolo.com/tutorial/fastapi/session-with-dependency/>
+
+<https://pyjwt.readthedocs.io/en/stable/>
+
+<https://docs.pydantic.dev/>
+
+<https://dev.to/anuradha9712/four-ways-to-make-an-api-calls-in-javascript-ilc>
 
 ## Mediapipe
 
