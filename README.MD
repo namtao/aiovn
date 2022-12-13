@@ -532,6 +532,10 @@ Các định dạng không ghi đè lên nhau, phải lý thuyết riêng
 
 ## Rest API
 
+<https://fastapi.tiangolo.com/tutorial/dependencies/>
+
+<https://fastapi.tiangolo.com/advanced/templates/>
+
 ## FastAPI với authentication bằng JWT
 
 <https://viblo.asia/p/tich-hop-fastapi-voi-authentication-bang-jwt-XL6lA6rR5ek>
