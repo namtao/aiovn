@@ -46,6 +46,7 @@
     - [overlap](#overlap)
   - [PyAutoGui](#pyautogui)
   - [SQLAlchemy](#sqlalchemy)
+  - [Rest API](#rest-api)
   - [FastAPI với authentication bằng JWT](#fastapi-với-authentication-bằng-jwt)
   - [Mediapipe](#mediapipe)
   - [Docker](#docker)
@@ -380,8 +381,7 @@ python manage.py collectstatic
 Fast API
 
 ```:
-uvicorn main:app --host 0.0.0.0 --port 8000
-uvicorn main:app --reload
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 Khác
@@ -520,7 +520,7 @@ Là sự kết hợp giữa iloc và loc
 
 ### overlap
 
-Các định dạng không ghi đè lên nhau, phải Lý thuyết riêng
+Các định dạng không ghi đè lên nhau, phải lý thuyết riêng
 
 ## PyAutoGui
 
@@ -529,6 +529,8 @@ Các định dạng không ghi đè lên nhau, phải Lý thuyết riêng
 ## SQLAlchemy
 
 [Lý thuyết](https://docs.sqlalchemy.org/en/20/core/engines.html)
+
+## Rest API
 
 ## FastAPI với authentication bằng JWT
 

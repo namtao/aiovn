@@ -54,5 +54,8 @@
   },
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
   }
 }

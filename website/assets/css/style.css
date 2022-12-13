@@ -398,7 +398,8 @@ p {
 
 .card-block ul li.list-inline-item {
   display: inline-block;
-  float: left; }
+  float: left; 
+}
 
 /*======= Typography css end ========*/
 /**  =====================
