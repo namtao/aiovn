@@ -44,27 +44,27 @@ def select(strSql):
 
 
 # check filename in HoTichData
-results = select('select so, TenFileSauUpLoad from ht_khaisinh')
+# results = select('select so, TenFileSauUpLoad from ht_khaisinh')
 
-json_object = json.loads(results)
+# json_object = json.loads(results)
 
-with open(r"a.txt", "w+", encoding="utf-8") as fp:
-    for key in json_object:
-        TenFileSauUpLoadSplit = key['TenFileSauUpLoad'].split('.')
-        TenFileSauUpLoad = key['TenFileSauUpLoad']
-        so = key['so']
+# with open(r"a.txt", "w+", encoding="utf-8") as fp:
+#     for key in json_object:
+#         TenFileSauUpLoadSplit = key['TenFileSauUpLoad'].split('.')
+#         TenFileSauUpLoad = key['TenFileSauUpLoad']
+#         so = key['so']
 
-        # check quyển nhiều năm
-        if(len(TenFileSauUpLoadSplit) > 7):
-            nam = int(so.split('/')[1])
-            namSo = int(TenFileSauUpLoadSplit[len(TenFileSauUpLoadSplit)-3]) + 1900
+#         # check quyển nhiều năm
+#         if(len(TenFileSauUpLoadSplit) > 7):
+#             nam = int(so.split('/')[1])
+#             namSo = int(TenFileSauUpLoadSplit[len(TenFileSauUpLoadSplit)-3]) + 1900
 
-            if(nam != namSo):
-                soHieuMoi = so.split('/')[0] + "/" + str(namSo)
+#             if(nam != namSo):
+#                 soHieuMoi = so.split('/')[0] + "/" + str(namSo)
 
-                # print(TenFileSauUpLoadSplit[len(TenFileSauUpLoadSplit)-3] + " " + key['TenFileSauUpLoad'] + " " + so + " => " + soHieuMoi)
-                query = 'update HT_KHAISINH set so = \''f'{soHieuMoi}\''' where TenFileSauUpLoad = \''f'{TenFileSauUpLoad}\''
-                print(query + '\n')
-                # fp.write(query + '\n')
-                # execute(query)
+#                 # print(TenFileSauUpLoadSplit[len(TenFileSauUpLoadSplit)-3] + " " + key['TenFileSauUpLoad'] + " " + so + " => " + soHieuMoi)
+#                 query = 'update HT_KHAISINH set so = \''f'{soHieuMoi}\''' where TenFileSauUpLoad = \''f'{TenFileSauUpLoad}\''
+#                 print(query + '\n')
+#                 # fp.write(query + '\n')
+#                 # execute(query)
 

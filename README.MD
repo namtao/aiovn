@@ -384,6 +384,12 @@ Fast API
 uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
+Tabel to model
+
+```:
+sqlacodegen mssql+pyodbc://sa:Addj%40123@./hotichdata?driver=ODBC+Driver+17+for+SQL+Server --outfile model.py
+```
+
 Khác
 
 ```:
