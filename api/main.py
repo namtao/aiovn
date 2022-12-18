@@ -3,10 +3,13 @@ import json
 import urllib.parse
 
 import pyodbc
+from sqlalchemy import MetaData, create_engine
 import uvicorn
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+from models.hotich import *
+from sqlalchemy.orm import Session, sessionmaker
 
 app = FastAPI()
 
@@ -15,11 +18,12 @@ app = FastAPI()
 async def root():
     return {"message": "Hello world"}
 
+
 @app.get("/getdb")
 async def select():
     config = configparser.ConfigParser()
     config.read(r'config.ini')
-    
+
     conn = pyodbc.connect('Driver={SQL Server};'
                           f'Server={config["local"]["host"]};'
                           f'Database={config["local"]["db"]};'
@@ -38,6 +42,34 @@ async def select():
     json_results = json.dumps(results, ensure_ascii=False, default=str)
     # print(urllib.parse.quote_plus("Addj@123"))
     return json.loads(json_results)
+
+engine = create_engine("mssql+pyodbc://sa:Addj%40123@./hotichdata?driver=ODBC+Driver+17+for+SQL+Server")
+
+meta = MetaData()
+
+conn = engine.connect()
+
+
+def get_db():
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    db: Session = SessionLocal()
+    try:
+        yield db
+        db.commit()
+    except Exception:
+        db.rollback()
+    finally:
+        db.close()
+
+
+@app.get("/getall")
+async def GetAll(db: Session = Depends(get_db)):
+
+    # get the model.patient with the given id
+    # using sql alchemy orm, we're querying the Patient table
+    query = db.query(DCDMTINHTRANG)
+    patients = query.all()
+    return patients
 
 if __name__ == '__main__':
     uvicorn.run(app)
