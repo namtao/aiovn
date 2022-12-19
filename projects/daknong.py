@@ -64,8 +64,10 @@ def thongkehotich():
     dicLoai = {'ks': 'HT_KHAISINH', 'kt': 'HT_KHAITU', 'kh': 'HT_KETHON',
                'cmc': 'HT_NHANCHAMECON', 'hn': 'HT_XACNHANHONNHAN'}
 
-    dic = {33333:['Sở Tư pháp, tỉnh Đắk Nông', conn],
-           66666: ['DAK R\'LAP', conn]}
+    dic = {44444: ['PTP TP Gia Nghĩa', conn],
+           55555: ['TP DAK SONG', conn],
+           66666: ['DAK R\'LAP', conn],
+           77777: ['UBND HUYỆN ĐẮK MIL', conn]}
 
     d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [],
          'Số lượng biên mục': [], 'Tỷ lệ biên mục': [], 'Tổng số trường': []}
