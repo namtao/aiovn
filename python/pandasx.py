@@ -10,3 +10,7 @@ data_top = data.head(10)
 
 # display
 print(data_top)
+first = data.ix[:4, 1:4]
+
+
+print(first)

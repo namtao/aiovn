@@ -34,14 +34,7 @@
     - [Đếm số lần xuất hiện](#đếm-số-lần-xuất-hiện)
   - [Pandas](#pandas)
     - [Lý thuyết cơ bản](#lý-thuyết-cơ-bản)
-    - [df.describe()](#dfdescribe)
-    - [loc\[hàng, cột\]](#lochàng-cột)
-    - [iloc\[hàng, cột\]](#ilochàng-cột)
-    - [ix](#ix)
-    - [reduce](#reduce)
-    - [map](#map)
-    - [flatten](#flatten)
-    - [deepdiff](#deepdiff)
+    - [Các hàm thường dùng](#các-hàm-thường-dùng)
   - [Dask](#dask)
   - [XlsxWriter](#xlsxwriter)
     - [overlap](#overlap)
@@ -501,31 +494,21 @@ Hàng: axis = 0
 
 Cột: axis = 1
 
-Các phương thức hay dùng
+### Các hàm thường dùng
 
-### df.describe()
+- df.describe(): Hiển thị thống kê nhanh về dữ liệu (nhỏ nhất, lớn nhất, trung bình,...)
 
-Hiển thị thống kê nhanh về dữ liệu (nhỏ nhất, lớn nhất, trung bình,...)
+- loc[hàng, cột]: Lựa chọn dữ liệu theo tên của hàng và cột đó, chỉ mục có thể là kiểu boolean (chỉ mục của df được định nghĩa thông qua tham số index_col khi khởi tạo df), nếu không định nghĩa mặc định là STT bắt đầu bằng 0, vì vậy khi dùng loc, tham số đầu tiên có thể là số
 
-### loc[hàng, cột]
+- iloc[hàng, cột]: Lựa chọn dữ liệu theo chỉ mục của hàng và cột
 
-Lựa chọn dữ liệu theo tên của hàng và cột đó
+- reduce
 
-### iloc[hàng, cột]
+- map
 
-Lựa chọn dữ liệu theo chỉ mục của hàng và cột
+- flatten
 
-### ix
-
-Là sự kết hợp giữa iloc và loc
-
-### reduce
-
-### map
-
-### flatten
-
-### deepdiff
+- deepdiff
 
 ## Dask
 
