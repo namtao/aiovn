@@ -42,6 +42,7 @@
     - [map](#map)
     - [flatten](#flatten)
     - [deepdiff](#deepdiff)
+  - [Dask](#dask)
   - [XlsxWriter](#xlsxwriter)
     - [overlap](#overlap)
   - [PyAutoGui](#pyautogui)
@@ -384,6 +385,14 @@ Fast API
 uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
+Tabel to model
+
+```:
+sqlacodegen mssql+pyodbc://sa:Addj%40123@./hotichdata?driver=ODBC+Driver+17+for+SQL+Server --outfile model.py
+omm db.sql -m pydantic
+omm db.sql -m sqlalchemy
+```
+
 Khác
 
 ```:
@@ -516,6 +525,12 @@ Là sự kết hợp giữa iloc và loc
 
 ### deepdiff
 
+## Dask
+
+<https://www.coiled.io/blog/speed-up-pandas-query-10x-with-dask>
+
+<https://docs.dask.org/en/stable/>
+
 ## XlsxWriter
 
 ### overlap
@@ -530,7 +545,13 @@ Các định dạng không ghi đè lên nhau, phải lý thuyết riêng
 
 [Lý thuyết](https://docs.sqlalchemy.org/en/20/core/engines.html)
 
+<https://itsjoshcampos.codes/fast-api-sql-server-connection#heading-introduction>
+
 ## Rest API
+
+<https://fastapi.tiangolo.com/tutorial/dependencies/>
+
+<https://fastapi.tiangolo.com/advanced/templates/>
 
 ## FastAPI với authentication bằng JWT
 
