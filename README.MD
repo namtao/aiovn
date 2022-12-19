@@ -501,6 +501,8 @@ Hàng: axis = 0
 
 Cột: axis = 1
 
+Các phương thức hay dùng
+
 ### df.describe()
 
 Hiển thị thống kê nhanh về dữ liệu (nhỏ nhất, lớn nhất, trung bình,...)

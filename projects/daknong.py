@@ -43,6 +43,7 @@ def read_excel():
 def tktruong(conn, sql):
     # đếm số trường
     df = pd.read_sql_query(sql, conn)
+    df = df.replace(r'^\s*$', np.nan, regex=True)
     return np.sum(df.count())  # đếm số ô có thông tin (loại bỏ nan)
 
 
@@ -52,7 +53,7 @@ def tksoluong(conn, sql):
 
 
 def thongkehotich():
-    fileName = r'C:\Data\DAK NONG\Thống kê hộ tịch.xlsx'
+    fileName = r'D:\Data\Dak Nong\Thống kê hộ tịch.xlsx'
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
@@ -63,7 +64,8 @@ def thongkehotich():
     dicLoai = {'ks': 'HT_KHAISINH', 'kt': 'HT_KHAITU', 'kh': 'HT_KETHON',
                'cmc': 'HT_NHANCHAMECON', 'hn': 'HT_XACNHANHONNHAN'}
 
-    dic = {66666: ['DAK R\'LAP', conn]}
+    dic = {33333:['Sở Tư pháp, tỉnh Đắk Nông', conn],
+           66666: ['DAK R\'LAP', conn]}
 
     d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [],
          'Số lượng biên mục': [], 'Tỷ lệ biên mục': [], 'Tổng số trường': []}

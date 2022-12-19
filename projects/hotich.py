@@ -18,6 +18,7 @@ def merge_dict(dict1, dict2):
     return dict1
 
 
+
 def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
@@ -70,7 +71,7 @@ def thongkehotich():
            936: ['Huyện Long Mỹ', connLongMy],
            937: ['Thị xã Long Mỹ', connViThanh]}
 
-    d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số TH': [],
+    d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [],
          'Số lượng biên mục': [], 'Tỷ lệ biên mục': [], 'Tổng số trường': []}
 
     for k, v in dic.items():
