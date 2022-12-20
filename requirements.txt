@@ -27,11 +27,8 @@ cloudpickle==2.2.0
 cmake==3.24.2
 colorama==0.4.5
 comtypes==1.1.14
-connectorx==0.3.1
 contourpy==1.0.6
 cycler==0.11.0
-dask==2022.10.0
-dask-sql==2022.10.1
 debugpy==1.6.3
 decorator==5.1.1
 deepdiff==6.2.1
