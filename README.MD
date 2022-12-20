@@ -567,7 +567,8 @@ Các thao tác làm việc với data nên sử dụng numpy
 
 [Lý thuyết](https://viblo.asia/p/pandas-python-tutorial-XL6lAxaDZek)\
 [Hướng dẫn](https://pandas.pydata.org/docs/user_guide/10min.html)\
-[Group by](https://viblo.asia/p/pandas-groupby-13-chuc-nang-de-tong-hop-du-lieu-eW65G6gJlDO)
+[Group by](https://viblo.asia/p/pandas-groupby-13-chuc-nang-de-tong-hop-du-lieu-eW65G6gJlDO)\
+[Tăng tốc](https://pythonspeed.com/articles/pandas-sql-chunking/)
 
 ***Lý thuyết cơ bản***
 
@@ -604,7 +605,13 @@ Cột: axis = 1
 
 ***inplace*** nếu là True n sẽ thay thế df cũ, nếu không thì cần phải gán nếu muốn nhận df mới
 
-Thay thế rỗng thành NaN: ```df.replace(r'^\s*$', np.nan, regex=True)```
+***read_sql_table()***: lấy tất cả thông tin của bảng, đầu vào chỉ cần tên bảng (tương đương select *)
+
+***read_sql_query()***: thực hiên câu lệnh sql (select)
+
+***read_sql***: bao gồm cả read_sql_table() và read_sql_query()
+
+- Thay thế rỗng thành NaN: ```df.replace(r'^\s*$', np.nan, regex=True)```
 
 ## Dask
 
