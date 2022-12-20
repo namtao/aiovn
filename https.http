@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 GET http://127.0.0.1:8000/test
-=======
-GET http://127.0.0.1:8000/getall
->>>>>>> b8319018dc48eb9dcd5d6aae128496c35cc375d2

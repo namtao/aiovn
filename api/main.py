@@ -5,15 +5,11 @@ import urllib.parse
 import pyodbc
 from sqlalchemy import MetaData, create_engine
 import uvicorn
-<<<<<<< HEAD
-from fastapi import FastAPI, Response
-=======
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI, Response, Depends
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from models.hotich import *
 from sqlalchemy.orm import Session, sessionmaker
->>>>>>> b8319018dc48eb9dcd5d6aae128496c35cc375d2
 
 app = FastAPI()
 
