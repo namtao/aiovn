@@ -3,12 +3,12 @@ import json
 import urllib.parse
 
 import pyodbc
-from sqlalchemy import MetaData, create_engine
 import uvicorn
-from fastapi import FastAPI, Response, Depends
+from fastapi import Depends, FastAPI, Response
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from models.hotich import *
+from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
 app = FastAPI()
