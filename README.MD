@@ -2,24 +2,6 @@
 
 - [Documents](#documents)
   - [Python](#python)
-    - [\*args](#args)
-    - [\*\*kwargs](#kwargs)
-    - [nonlocal](#nonlocal)
-    - [global](#global)
-    - [yield](#yield)
-    - [list\[\]](#list)
-    - [tuple()](#tuple)
-    - [set{}](#set)
-    - [dictionary {key:value}](#dictionary-keyvalue)
-    - [enumerate](#enumerate)
-    - [zip](#zip)
-    - [Packing and Unpacking Arguments](#packing-and-unpacking-arguments)
-    - [Type conversion](#type-conversion)
-    - [Closure python](#closure-python)
-    - [Decorator](#decorator)
-    - [Class object](#class-object)
-    - [Property](#property)
-    - [Regex](#regex)
   - [Switch case](#switch-case)
   - [Union Operator](#union-operator)
   - [Markdown](#markdown)
@@ -29,19 +11,13 @@
   - [Sql Server](#sql-server)
   - [MongoDB](#mongodb)
   - [Numpy](#numpy)
-    - [Tìm kiếm](#tìm-kiếm)
-    - [Sắp xếp](#sắp-xếp)
-    - [Đếm số lần xuất hiện](#đếm-số-lần-xuất-hiện)
   - [Pandas](#pandas)
-    - [Lý thuyết cơ bản](#lý-thuyết-cơ-bản)
-    - [Các hàm thường dùng](#các-hàm-thường-dùng)
   - [Dask](#dask)
   - [XlsxWriter](#xlsxwriter)
-    - [overlap](#overlap)
   - [PyAutoGui](#pyautogui)
   - [SQLAlchemy](#sqlalchemy)
   - [Rest API](#rest-api)
-  - [FastAPI với authentication bằng JWT](#fastapi-với-authentication-bằng-jwt)
+  - [JWT](#jwt)
   - [Mediapipe](#mediapipe)
   - [Docker](#docker)
   - [OCR](#ocr)
@@ -59,7 +35,7 @@
 
 [Lý thuyết](https://www.geeksforgeeks.org/python-programming-language/?ref=ghm)
 
-### *args
+****args***
 
 Thay thế nhiều tham số trong hàm
 
@@ -67,27 +43,32 @@ args là một tuple chứ không phải list
 
 *args sẽ phải đặt ở cuối cùng nếu không sẽ gặp lỗi ngay
 
-### **kwargs
+\
+*****kwargs***
 
 **kwargs cũng tương tự như như *args, tuy nhiên, nó không dùng cho các tham số thông thường truyền vào lần lượt, mà nó được sử dụng cho các tham số
 
 **kwargs trong hàm sẽ nhận giá trị là một dict với key là các tham số được truyền kèm giá trị tương ứng của chúng
 
-### nonlocal
+\
+***nonlocal***
 
 Được sử dụng trong nested functions, được khai báo trong hàm cha, khi gọi đến ở hàm con thì thêm từ khóa nonlocal
 
-### global
+\
+***global***
 
 Muốn thay đổi biến toàn cục trong hàm thì ta phải thêm từ khóa global vào biến
 
 Thay đổi phần tử hoặc giá trị của biến thì mới cần sử dụng global
 
-### yield
+\
+***yield***
 
 Sẽ đình chỉ việc thực thi của hàm và trả về một giá trị cho caller nhưng vẫn giữ lại đầy đủ trạng thái của hàm để ngay sau khi thực thi xong câu lệnh yield, hàm vẫn có thể quay lại thực thi tiếp được tại câu lệnh tiếp theo nằm ngay sau câu lệnh yield vừa chạy xong. Điều này cho phép một hàm có thể trả về một loạt các giá trị theo thời gian, thay vì phải tính toán cùng một lúc ra nhiều outputs rồi đưa tất cả chúng vào trong một list (danh sách) và trả về duy nhất list đó.
 
-### list[]
+\
+***list[]***
 
 append: list append list =list 2 chiều (datatframe)
 
@@ -95,21 +76,25 @@ extend: list extend list =list (nối 2 list thành 1 list)
 
 count: cho biết số lượng của phần tử trong list
 
-### tuple()
+\
+***tuple()***
 
 tốc độ nhanh hơn list nhưng các đối tượng không thay đổi đc
 
 truy cập vào phần tử giống như chuỗi và list
 
-### set{}
+\
+***set{}***
 
 set có thể thay đổi nhưng các phần tử không được trùng nhau
 
 set không được sắp xếp nên không thể truy cập bằng chỉ mục
 
-### dictionary {key:value}
+\
+***dictionary {key:value}***
 
-### enumerate
+\
+***enumerate***
 
 Được sử dụng để lặp qua các danh sách và bao gồm chỉ mục (key, value)
 
@@ -117,11 +102,27 @@ Có thể điều chỉnh số bắt đầu của index
 
 Nhanh hơn so với lặp thông thường
 
-### zip
+```:
+names = ['Bob', 'Alice', 'Guido']
+for index, value in enumerate(names):
+    print(f'{index}: {value}')
+
+```
+
+```:
+0: Bob
+1: Alice
+2: Guido
+
+```
+
+\
+***zip***
 
 Kết hợp 2 danh sách và in các giá trị theo thứ tự của n, vòng lặp kết thúc khi 1 vòng lặp lặp qua 1 danh sách
 
-### Packing and Unpacking Arguments
+\
+***Packing and Unpacking Arguments***
 
 Ta có thể gán các giá trị của list hay tuple vào tham số của hàm bằng cách sử dụng * đối với list hay tuple hay ** đối với dictionary trước tham số của hàm
 
@@ -136,7 +137,8 @@ my_list = [1, 2, 3, 4]
 fun(*my_list)
 ```
 
-### Type conversion
+\
+***Type conversion***
 
 ord() : chuyển đổi ký tự thành số nguyên.
 
@@ -194,7 +196,8 @@ L
 M
 ```
 
-### Closure python
+\
+***Closure python***
 
 [Lý thuyết](https://quantrimang.com/hoc/cach-su-dung-closure-trong-python-165316)
 
@@ -234,7 +237,8 @@ print(times5(3))
 print(times5(times3(2)))
 ```
 
-### Decorator
+\
+***Decorator***
 
 [Lý thuyết](https://quantrimang.com/hoc/decorator-trong-python-165379)\
 [Tìm hiểu thêm](https://viblo.asia/p/cung-tim-hieu-python-decorators-bJzKmzJEZ9N)
@@ -278,19 +282,100 @@ I am going to divide 2 and 0
 Whoops! cannot divide
 ```
 
-### Class object
+\
+***Class object***
 
 [Lý thuyết](https://viblo.asia/p/class-va-object-trong-python-4P856dvLZY3)
 
 Khi gọi phương thức có 1 tham số thì ta không cần gán tham số đầu tiên, bởi vì, bất cứ khi nào, object gọi các phương thức, object sẽ tự pass qua parameter đầu tiên
 
-### Property
+\
+***Property***
 
 [Lý thuyết](https://quantrimang.com/hoc/property-trong-python-165430)
 
 Được sử dụng trong getter setter trong class
 
-### Regex
+\
+***Regex***
+
+[Lý thuyết](https://viblo.asia/p/python-regex-Qbq5QMeE5D8)
+
+| Ký tự | Ví dụ | Mô tả | Chuỗi phù hợp|
+| --------- | :----: | :---------: |:-----:|
+| []    | Một tập hợp các ký tự |     "[a-e]" |"adbc"|
+| \      | Tín hiệu thể hiện một chuỗi đặc biệt (hoặc sử dụng để thoát các ký tự đặc biệt) |       "\d" |"123"|
+| .    | Bất kỳ ký tự nào (ngoại trừ ký tự dòng mới) |     "he..o" |"henno"|
+| ^    | Bắt đầu chuỗi |     "^hello" |"hello gua"|
+| $     | Kết thúc chuỗi  | "world$" |"helo world"|
+| *       |  Không hoặc nhiều lần xuất hiện   |   "aix*" |"ai"|
+| +       |  Xuất hiện ít nhất một lần   |   "aix+" |"aixxxx"|
+| {}       |   Chính xác số lần xuất hiện   |   "aix{2}" |"aixx"|
+| \|      |  Hoặc   |   "a\|b" |"a"|
+| ()       |  Nhóm ký tự   |   "(hello)" |"hello"|
+|-|-|-|-|
+| \A       |  Bắt đầu chuỗi bằng ký tự chỉ định   |   "\AThe" |"The world"|
+| \b       |  Bắt đầu hoặc kết thúc của một từ bằng ký tự chỉ định   |r"\bSpa"  r"ain\b" |"The rain in Spain"  "He is Bi Rain"|
+| \B       |  Khớp với các ký tự chỉ định nhưng không nằm ở đầu hoặc cuối từ   |   r"\BSpa"  r"ain\B" |"This is GSpan company"  "No words are rains"|
+| \d       |  Chuỗi chứa ký tự là chữ số   |   "\d" |"he1lo"|
+| \D       |  Chuỗi không chứa ký tự là số   |    "\D" |"Hello"|
+| \s       |  Chuỗi chứa khoảng trắng   |   "\s" |"Hello world"|
+| \S       |  Chuỗi không chứa khoảng trắng   |"\S" |"HelloWorld"|
+| \w       |  Chuỗi chứa bất kỳ ký tự nào trong nhóm từ a tới Z, từ 0 tới 9 và dấu _ (underscore)   |"\w"|"This is global_variable"|
+| \W       |  Ngược lại với \w   |   ""\W" |"*& ^ !"|
+| \Z       |  Kết thúc chuỗi bằng các ký tự được chỉ định   |   "Spain\Z" |"The Spain"|
+| -       |  -   |   - |-|
+| [arg]       |  Chuỗi chứa một trong các ký tự a, r hoặc g|
+| [a-n]       |  Chuỗi chứa một trong các ký tự nằm giữa a và n trong bảng chữ cái alphabet|
+| [^arg]       |  Chuỗi không chứa bất kỳ ký tự a, r và g|
+| [0124]       |  Chuỗi chứa bất kỳ chữ số nào trong nhóm 0, 1, 2 hoặc 4|
+| [0-9]       |  Chuỗi chứa ký tự chữ số (tương đương sử dụng \d)|
+| [0-5] [0-9]       |  Chuỗi chứa 2 ký tự số liên tiếp, số đầu tiên trong khoảng từ 0->5, số thứ 2 trong khoảng 0->9|
+| [a-zA-Z]       |  Chuỗi chứa ký tự là chữ cái không phân biệt hoa và thường|
+| [+]       |  Trong sets, các Special Sequences không mang ý nghĩa đặc biệt nữa, chúng chỉ là các ký tự thông thường. Biểu thức bên là chuỗi chứa ký tự +|
+
+\
+***re.compile()***: được sử dụng để biên dịch mẫu biểu thức chính quy được cung cấp dưới dạng chuỗi thành đối tượng mẫu biểu thức chính quy ( re.Pattern). Sau này, chúng ta có thể sử dụng đối tượng mẫu này để tìm kiếm sự trùng khớp bên trong các chuỗi mục tiêu khác nhau bằng cách sử dụng các phương thức biểu thức chính quy như a re.match() hoặc re.search().
+
+***re.match()***: sẽ so khớp ở đầu chuỗi nếu không có biểu thức regex
+
+***re.search()***: so khớp toàn bộ chuỗi
+
+Match là đối tượng chứa thông tin về tìm kiếm phù hợp và kết quả của chúng. Nếu không có tìm kiếm nào phù hợp thì sẽ trả về None
+
+***.string()*** trả về chuỗi được truyền vào hàm
+
+***.span()*** trả về một tuple chứa điểm bắt đầu và kết thúc của vị trí phù hợp
+
+***.group()*** trả về phần chuỗi phù hợp
+
+```:
+import re 
+  str = "The rain in Spain" 
+  x = re.search(r"\bS\w+", str) 
+  print(x.span())    
+--------------------------------------                
+(12, 17)
+```
+
+```:
+import re 
+  str = "The rain in Spain" 
+  x = re.search(r"\bS\w+", str) 
+  print(x.string)
+--------------------------------------                             
+The rain in Spain
+```
+
+```:
+import re 
+  str = "The rain in Spain" 
+  x = re.search(r"\bS\w+", str) 
+  print(x.group())
+---------------------------------------                    
+Spain
+
+```
 
 ## Switch case
 
@@ -451,7 +536,7 @@ Ta có thể thực hiện các phép toán số học vào numpy array, điều
 
 Các thao tác làm việc với data nên sử dụng numpy
 
-### Tìm kiếm
+***Tìm kiếm***
 
 | Function                      | Mô tả                                                                                             |
 | ----------------------------- | :------------------------------------------------------------------------------------------------ |
@@ -463,7 +548,7 @@ Các thao tác làm việc với data nên sử dụng numpy
 |numpy.searchsorted()           |Tìm các chỉ mục nơi các phần tử nên được chèn vào để duy trì trật tự.                              |
 |numpy.extract()                |Trả về các phần tử của một mảng thỏa mãn một số điều kiện.                                         |
 
-### Sắp xếp
+***Sắp xếp***
 
 | Function                      | Mô tả                                                                                             |
 | ----------------------------- | :------------------------------------------------------------------------------------------------ |
@@ -473,7 +558,7 @@ Các thao tác làm việc với data nên sử dụng numpy
 |numpy.partition()              |Trả về một bản sao được phân vùng của một mảng.                                                    |
 |numpy.argpartition()           |Thực hiện phân vùng gián tiếp dọc theo trục đã cho bằng thuật toán được chỉ định bởi từ khóa loại. |
 
-### Đếm số lần xuất hiện
+***Đếm số lần xuất hiện***
 
 - np.count_nonzero()
 - collections.Counter()
@@ -484,31 +569,42 @@ Các thao tác làm việc với data nên sử dụng numpy
 [Hướng dẫn](https://pandas.pydata.org/docs/user_guide/10min.html)\
 [Group by](https://viblo.asia/p/pandas-groupby-13-chuc-nang-de-tong-hop-du-lieu-eW65G6gJlDO)
 
-### Lý thuyết cơ bản
+***Lý thuyết cơ bản***
 
 Pandas được xây dựng dựa trên thư viện numpy
 
 Series giống như mảng, list, cột trong excel; dataframe được tạo từ nhiều series
 
+Dataframe giống với dictionary 1 key nhiều value
+
 Hàng: axis = 0
 
 Cột: axis = 1
 
-### Các hàm thường dùng
+\
+***df.describe()***: Hiển thị thống kê nhanh về dữ liệu (nhỏ nhất, lớn nhất, trung bình,...)
 
-- df.describe(): Hiển thị thống kê nhanh về dữ liệu (nhỏ nhất, lớn nhất, trung bình,...)
+***loc[hàng, cột]***: Lựa chọn dữ liệu theo tên của hàng và cột đó, chỉ mục có thể là kiểu boolean (chỉ mục của df được định nghĩa thông qua tham số index_col khi khởi tạo df), nếu không định nghĩa mặc định là STT bắt đầu bằng 0, vì vậy khi dùng loc, tham số đầu tiên có thể là số
 
-- loc[hàng, cột]: Lựa chọn dữ liệu theo tên của hàng và cột đó, chỉ mục có thể là kiểu boolean (chỉ mục của df được định nghĩa thông qua tham số index_col khi khởi tạo df), nếu không định nghĩa mặc định là STT bắt đầu bằng 0, vì vậy khi dùng loc, tham số đầu tiên có thể là số
+***iloc[hàng, cột]***: Lựa chọn dữ liệu theo chỉ mục của hàng và cột
 
-- iloc[hàng, cột]: Lựa chọn dữ liệu theo chỉ mục của hàng và cột
+***reduce***
 
-- reduce
+***map***
 
-- map
+***flatten***
 
-- flatten
+***deepdiff***
 
-- deepdiff
+***isnull()***: kiểm tra df chứa NaN hay None không, kết quả trả về dạng df nhưng chưa các biểu giá trị là boolean (rỗng thì vẫn là True)
+
+***notnull()***: ngược lại so với isnull()
+
+***count()***: đếm số giá trị khác NaN trong df
+
+***inplace*** nếu là True n sẽ thay thế df cũ, nếu không thì cần phải gán nếu muốn nhận df mới
+
+Thay thế rỗng thành NaN: ```df.replace(r'^\s*$', np.nan, regex=True)```
 
 ## Dask
 
@@ -518,7 +614,7 @@ Cột: axis = 1
 
 ## XlsxWriter
 
-### overlap
+***overlap***
 
 Các định dạng không ghi đè lên nhau, phải lý thuyết riêng
 
@@ -538,7 +634,7 @@ Các định dạng không ghi đè lên nhau, phải lý thuyết riêng
 
 <https://fastapi.tiangolo.com/advanced/templates/>
 
-## FastAPI với authentication bằng JWT
+## JWT
 
 <https://viblo.asia/p/tich-hop-fastapi-voi-authentication-bang-jwt-XL6lA6rR5ek>
 
