@@ -491,6 +491,7 @@ isort .
 1. Dùng đệ quy để cải thiên tốc độ
 2. Sử dụng np.array thay cho list
 3. Sử dụng dictionary thay cho list nếu có thể
+4. Chia nhỏ df để thực hiện truy vấn nhanh hơn
 
 ## Sql Server
 
@@ -568,7 +569,8 @@ Các thao tác làm việc với data nên sử dụng numpy
 [Lý thuyết](https://viblo.asia/p/pandas-python-tutorial-XL6lAxaDZek)\
 [Hướng dẫn](https://pandas.pydata.org/docs/user_guide/10min.html)\
 [Group by](https://viblo.asia/p/pandas-groupby-13-chuc-nang-de-tong-hop-du-lieu-eW65G6gJlDO)\
-[Tăng tốc](https://pythonspeed.com/articles/pandas-sql-chunking/)
+[Tăng tốc select](https://pythonspeed.com/articles/pandas-sql-chunking/)\
+[Tăng tốc insert](https://github.com/yehoshuadimarsky/bcpandas)
 
 ***Lý thuyết cơ bản***
 
@@ -612,6 +614,8 @@ Cột: axis = 1
 ***read_sql***: bao gồm cả read_sql_table() và read_sql_query()
 
 - Thay thế rỗng thành NaN: ```df.replace(r'^\s*$', np.nan, regex=True)```
+
+- Sử dụng df.itertuples() để lặp qua df và lấy chỉ mục
 
 ## Dask
 

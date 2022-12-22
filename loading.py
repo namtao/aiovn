@@ -11,7 +11,9 @@ from time import sleep
 import pandas as pd
 
 done = False
-def clear(): 
+
+
+def clear():
     return os.system('cls')
 
 
@@ -21,7 +23,7 @@ def animate():
             break
         terminal.write('\rLoading ' + c + ' ')
         terminal.flush()
-        sleep(0.1)
+        sleep(0.05)
     # terminal.write('\rDone!    ')
     terminal.flush()
 
@@ -38,7 +40,10 @@ conn = f'mssql://{config["local"]["user"]}:{urllib.parse.quote_plus(config["loca
 
 start_time = time.time()
 
-pd.read_sql('select * from ht_khaisinh', conn)
+# Phân đoạn df
+for chunk_dataframe in pd.read_sql('select * from ht_khaisinh', conn, chunksize=1000):
+    pass
+
 # clear()
 print("\rPandas finished --- %s seconds ---" % (time.time() - start_time))
 

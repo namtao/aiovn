@@ -64,7 +64,8 @@ def thongkehotich():
     dicLoai = {'ks': 'HT_KHAISINH', 'kt': 'HT_KHAITU', 'kh': 'HT_KETHON',
                'cmc': 'HT_NHANCHAMECON', 'hn': 'HT_XACNHANHONNHAN'}
 
-    dic = {44444: ['PTP TP Gia Nghĩa', conn],
+    dic = {33333: ['Sở Tư Pháp', conn],
+           44444: ['PTP TP Gia Nghĩa', conn],
            55555: ['TP DAK SONG', conn],
            66666: ['DAK R\'LAP', conn],
            77777: ['UBND HUYỆN ĐẮK MIL', conn]}
