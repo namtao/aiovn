@@ -21,7 +21,8 @@ lctm.TenLoaiCuTru as 'meLoaiCuTru', chaHoTen, chaNgaySinh,
 dtc.TenDanToc as 'chaDanToc', qtc.TenQuocTich as 'chaQuocTich', lctc.TenLoaiCuTru as 'chaLoaiCuTru', 
 GhiChu, nksNoiSinh, meNoiCuTru, chaNoiCuTru, nycHoTen, nycQuanHe, nguoiKy, chucVuNguoiKy, 
 NguoiThucHien, lks.TenLoaiKhaiSinh, nsdvhc.ten, nksQueQuan, lgtnk.TenLoaiGiayTo, 
-nycSoGiayToTuyThan, nycNgayCapGiayToTuyThan, nycNoiCapGiayToTuyThan, nksNgaySinhBangChu 
+nycSoGiayToTuyThan, nycNgayCapGiayToTuyThan, nycNoiCapGiayToTuyThan, nksNgaySinhBangChu,
+meLoaiGiayToTuyThan, meSoGiayToTuyThan, chaLoaiGiayToTuyThan, chaSoGiayToTuyThan
 FROM HT_KHAISINH ks left join  HT_KS_LOAIDANGKY ldk on ks.loaiDangKy = ldk.MaLoaiDangKy 
 left join  DM_GIOITINH gt on  ks.nksGioiTinh = gt.MaGioiTinh left join  DM_DANTOC dt on ks.nksDanToc = dt.MaDanToc 
 left join  DM_DANTOC dtm on ks.meDanToc = dtm.MaDanToc left join  DM_DANTOC dtc on ks.chaDanToc = dtc.MaDanToc 

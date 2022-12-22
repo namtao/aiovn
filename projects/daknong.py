@@ -57,18 +57,22 @@ def thongkehotich():
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
-    conn = f'mssql+pyodbc://{config["local"]["user"]}:{urllib.parse.quote_plus(config["local"]["pass"])}@{config["local"]["host"]}/{config["local"]["db"]}?driver={config["local"]["driver"]}'
+    conndaknong = f'mssql+pyodbc://{config["daknong"]["user"]}:{urllib.parse.quote_plus(config["daknong"]["pass"])}@{config["daknong"]["host"]}/{config["daknong"]["db"]}?driver={config["daknong"]["driver"]}'
+    
+    connhcm = f'mssql+pyodbc://{config["hcm"]["user"]}:{urllib.parse.quote_plus(config["hcm"]["pass"])}@{config["hcm"]["host"]}/{config["hcm"]["db"]}?driver={config["hcm"]["driver"]}'
+    
+    connhn = f'mssql+pyodbc://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
 
     print("Thống kê hộ tịch")
 
     dicLoai = {'ks': 'HT_KHAISINH', 'kt': 'HT_KHAITU', 'kh': 'HT_KETHON',
                'cmc': 'HT_NHANCHAMECON', 'hn': 'HT_XACNHANHONNHAN'}
 
-    dic = {33333: ['Sở Tư Pháp', conn],
-           44444: ['PTP TP Gia Nghĩa', conn],
-           55555: ['TP DAK SONG', conn],
-           66666: ['DAK R\'LAP', conn],
-           77777: ['UBND HUYỆN ĐẮK MIL', conn]}
+    dic = {33333: ['Sở Tư Pháp', conndaknong],
+           44444: ['PTP TP Gia Nghĩa', conndaknong],
+           55555: ['TP DAK SONG', connhn],
+           66666: ['DAK R\'LAP', connhcm],
+           77777: ['UBND HUYỆN ĐẮK MIL', connhn]}
 
     d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [],
          'Số lượng biên mục': [], 'Tỷ lệ biên mục': [], 'Tổng số trường': []}
