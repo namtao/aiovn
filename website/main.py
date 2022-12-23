@@ -14,7 +14,4 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/items/{id}", response_class=HTMLResponse)
 async def read_item(request: Request, id: str):
-    return templates.TemplateResponse("item.html", {"request": request, "id": id})
-
-# if __name__ == '__main__':
-#     uvicorn.run(app)
+    return templates.TemplateResponse("details.html", {"request": request, "id": id})

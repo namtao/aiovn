@@ -5,7 +5,7 @@ import jwt
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException
 from pydantic import BaseModel
-from security import reusable_oauth2, validate_token
+from security import validate_token
 
 SECURITY_ALGORITHM = 'HS256'
 SECRET_KEY = '123456'
@@ -20,15 +20,15 @@ app = FastAPI(
 class LoginRequest(BaseModel):
     username: str
     password: str
-    
 
-def verify_password(username, password):
+
+async def verify_password(username, password):
     if username == 'nam' and password == 'nam':
         return True
     return False
 
 
-def generate_token(username: Union[str, Any]) -> str:
+async def generate_token(username: Union[str, Any]) -> str:
     expire = datetime.utcnow() + timedelta(
         seconds=60 * 60 * 24 * 3  # Expired after 3 days
     )
@@ -40,7 +40,7 @@ def generate_token(username: Union[str, Any]) -> str:
 
 
 @app.post('/login')
-def login(request_data: LoginRequest):
+async def login(request_data: LoginRequest):
     print(f'[x] request_data: {request_data.__dict__}')
     if verify_password(username=request_data.username, password=request_data.password):
         token = generate_token(request_data.username)
@@ -51,8 +51,8 @@ def login(request_data: LoginRequest):
         raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.get('/books', dependencies=[Depends(reusable_oauth2)])
-def list_books():
+@app.get('/books', dependencies=[Depends(validate_token)])
+async def list_books():
     return {'data': ['Sherlock Homes', 'Harry Potter', 'Rich Dad Poor Dad']}
 
 
