@@ -35,7 +35,7 @@ t.start()
 # Chay lenh tai day
 config = configparser.ConfigParser()
 config.read(r'config.ini')
-conn = f'mssql://{config["local"]["user"]}:{urllib.parse.quote_plus(config["local"]["pass"])}@{config["local"]["host"]}/{config["local"]["db"]}?driver={config["local"]["driver"]}'
+conn = f'mssql://{config["daknong"]["user"]}:{urllib.parse.quote_plus(config["daknong"]["pass"])}@{config["daknong"]["host"]}/{config["daknong"]["db"]}?driver={config["daknong"]["driver"]}'
 
 
 start_time = time.time()
