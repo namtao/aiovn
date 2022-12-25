@@ -1,36 +1,32 @@
 from datetime import datetime, timedelta
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 import jwt
 import uvicorn
-from fastapi import Depends, FastAPI, HTTPException
+from api.security import validate_token
+from fastapi import APIRouter, Depends, FastAPI, Header, HTTPException, status
+from jose import JWTError, jwt
 from pydantic import BaseModel
-from security import validate_token
 
 SECURITY_ALGORITHM = 'HS256'
 SECRET_KEY = '123456'
 
-
-app = FastAPI(
-    title='FastAPI JWT', openapi_url='/openapi.json', docs_url='/docs',
-    description='fastapi jwt'
-)
-
+router = APIRouter()
 
 class LoginRequest(BaseModel):
     username: str
     password: str
 
 
-async def verify_password(username, password):
+def verify_password(username, password):
     if username == 'nam' and password == 'nam':
         return True
     return False
 
 
-async def generate_token(username: Union[str, Any]) -> str:
-    expire = datetime.utcnow() + timedelta(
-        seconds=60 * 60 * 24 * 3  # Expired after 3 days
+def generate_token(username: Union[str, Any]) -> str:
+    expire = datetime.now() + timedelta(
+        seconds=60 * 15
     )
     to_encode = {
         "exp": expire, "username": username
@@ -39,8 +35,13 @@ async def generate_token(username: Union[str, Any]) -> str:
     return encoded_jwt
 
 
-@app.post('/login')
-async def login(request_data: LoginRequest):
+@router.get('/books', dependencies=[Depends(validate_token)])
+def list_books():
+    return {'data': ['Sherlock Homes', 'Harry Potter', 'Rich Dad Poor Dad']}
+
+
+@router.post('/login')
+def login(request_data: LoginRequest):
     print(f'[x] request_data: {request_data.__dict__}')
     if verify_password(username=request_data.username, password=request_data.password):
         token = generate_token(request_data.username)
@@ -51,10 +52,21 @@ async def login(request_data: LoginRequest):
         raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.get('/books', dependencies=[Depends(validate_token)])
-async def list_books():
-    return {'data': ['Sherlock Homes', 'Harry Potter', 'Rich Dad Poor Dad']}
-
-
-if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8000)
+@router.post("/tts")
+def text_to_speech(access_token: Optional[str] = Header(None)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        # detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        # access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzIyMDg3ODIsInVzZXJuYW1lIjoibmFtIn0.Gf4aKNMSZZ2SgiikMhBSyCdCKR8IsZA0lYxHPNwpCKg'
+        payload = jwt.decode(access_token, SECRET_KEY, algorithms=[SECURITY_ALGORITHM])
+        username: str = payload.get("username")
+        if username == 'nam':
+            # do something here
+            return {"status": 1, "result": {"data": 1}}
+        else:
+            raise credentials_exception
+    except JWTError:
+        raise credentials_exception

@@ -6,13 +6,29 @@
     "configurations": [
 
         {
-            "name": "Python: FastAPI",
+            "name": "FastAPI (main)",
             "type": "python",
             "cwd": "${workspaceFolder}/website",
             "request": "launch",
             "module": "uvicorn",
             "args": [
                 "main:app",
+                "--reload",
+                "--port",
+                "8000"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        },
+
+        {
+            "name": "FastAPI (auth)",
+            "type": "python",
+            "cwd": "${workspaceFolder}/website/api",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "auth:app",
                 "--reload",
                 "--port",
                 "8000"

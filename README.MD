@@ -645,6 +645,10 @@ Các định dạng không ghi đè lên nhau, phải lý thuyết riêng
 
 <https://fastapi.tiangolo.com/advanced/templates/>
 
+<https://restfulapi.net/resource-naming/>
+
+<https://realpython.com/api-integration-in-python/>
+
 ## JWT
 
 <https://viblo.asia/p/tich-hop-fastapi-voi-authentication-bang-jwt-XL6lA6rR5ek>
