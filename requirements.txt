@@ -32,10 +32,7 @@ contourpy==1.0.6
 cryptography==38.0.4
 cycler==0.11.0
 dask==2022.10.0
-<<<<<<< HEAD
 dask-sql==2022.10.1
-=======
->>>>>>> eb536bbe91772cebdb8940f066d9029a27309711
 debugpy==1.6.3
 decorator==5.1.1
 deepdiff==6.2.1
