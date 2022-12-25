@@ -34,11 +34,11 @@
 
 <div class="col-md-12 col-xl-7">
 
-  <embed src="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf"
-    frameBorder="0" scrolling="auto" height="100%" width="100%"/>
+  <embed src="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" frameBorder="0" scrolling="auto"
+    height="100%" width="100%" />
 
-    <button id="submit">Submit</button>
-    
+  <button id="submit">Submit</button>
+
 </div>
 
 <script type="text/javascript">
@@ -46,10 +46,11 @@
     $.ajax({
       url: 'http://127.0.0.1:8000/books',
       dataType: "json",
-      headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzIyMTAwMzEsInVzZXJuYW1lIjoibmFtIn0.0L8PKpJr5dw-8f4XscHE9TsAis4kdX89eA-8EIZEBTs" },
+      headers: { "Content-Type": "application/json", "Accept": "application/json"},
       type: 'GET',
       contentType: "application/json",
       //data: { "firstName": "FirstName", "lastName": "lastNAme", "email": "abc@xyz.com" },
+      // add to header
       beforeSend: function (xhr) {
         xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE5ODQ3OTksInVzZXJuYW1lIjoibmFtIn0.vObs5aTS5SwTu7eVJqEFEN4ALVDJt6AEiT6FPSyryJE");
       },
@@ -64,4 +65,3 @@
 </script>
 
 {% endblock %}
-
