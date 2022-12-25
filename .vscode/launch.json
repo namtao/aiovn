@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "FastAPI (main)",
+            "type": "python",
+            "cwd": "${workspaceFolder}/website",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--reload",
+                "--port",
+                "8000"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        },
+
+        {
+            "name": "FastAPI (auth)",
+            "type": "python",
+            "cwd": "${workspaceFolder}/website/api",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "auth:app",
+                "--reload",
+                "--port",
+                "8000"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        }
+    ]
+}

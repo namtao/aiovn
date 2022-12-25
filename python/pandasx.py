@@ -12,6 +12,6 @@ conn = f'mssql://{config["local"]["user"]}:{urllib.parse.quote_plus(config["loca
 
 start_time = time.time()
 
-pd.read_sql('select * from KS', conn)
+pd.read_sql('select count(*) from ht_khaisinh', conn)
 
 print("Pandas finished --- %s seconds ---" % (time.time() - start_time))

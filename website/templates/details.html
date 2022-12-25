@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}infY{% endblock %}
+{% block content %}
+<div class="col-md-12 col-xl-5">
+  <div class="card">
+    <div class="card-header">
+      <h5>Statestics</h5>
+      <div class="card-header-left"></div>
+      <div class="card-header-right">
+        <ul class="list-unstyled card-option">
+          <li>
+            <i class="icofont icofont-simple-left"></i>
+          </li>
+          <li>
+            <i class="icofont icofont-maximize full-card"></i>
+          </li>
+          <li>
+            <i class="icofont icofont-minus minimize-card"></i>
+          </li>
+          <li>
+            <i class="icofont icofont-refresh reload-card"></i>
+          </li>
+          <li>
+            <i class="icofont icofont-error close-card"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-block">
+      <div id="statestics-chart" style="height: 517px"></div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 col-xl-7">
+
+  <embed src="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" frameBorder="0" scrolling="auto"
+    height="100%" width="100%" />
+
+  <button id="submit">Submit</button>
+
+</div>
+
+<script type="text/javascript">
+  $("#submit").click(function () {
+    $.ajax({
+      url: 'http://127.0.0.1:8000/books',
+      dataType: "json",
+      headers: { "Content-Type": "application/json", "Accept": "application/json"},
+      type: 'GET',
+      contentType: "application/json",
+      //data: { "firstName": "FirstName", "lastName": "lastNAme", "email": "abc@xyz.com" },
+      // add to header
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE5ODQ3OTksInVzZXJuYW1lIjoibmFtIn0.vObs5aTS5SwTu7eVJqEFEN4ALVDJt6AEiT6FPSyryJE");
+      },
+      success: function (data) {
+        alert("OK");
+      },
+      error: function (data, errorThrown) {
+        alert(3);
+      }
+    });
+  });
+</script>
+
+{% endblock %}

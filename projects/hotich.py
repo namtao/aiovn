@@ -42,7 +42,7 @@ def read_excel():
 def tktruong(conn, sql):
     # đếm số trường
     df = pd.read_sql_query(sql, conn)
-    df = df.replace(r'^\s*$', np.nan, regex=True)
+    df.replace(r'^\s*$', np.nan, regex=True, inplace= True) # thay thế rỗng thành nan và gán lại vào df
     return np.sum(df.count())  # đếm số ô có thông tin (loại bỏ nan)
 
 

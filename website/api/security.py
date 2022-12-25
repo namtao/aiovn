@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 import jwt
 from fastapi import Depends, HTTPException
@@ -19,7 +19,7 @@ def validate_token(http_authorization_credentials=Depends(reusable_oauth2)) -> s
     """
     try:
         payload = jwt.decode(http_authorization_credentials.credentials, SECRET_KEY, algorithms=[SECURITY_ALGORITHM])
-        if payload.get('username') < datetime.now():
+        if payload.get('exp') < int(datetime.timestamp(datetime.now())):
             raise HTTPException(status_code=403, detail="Token expired")
         return payload.get('username')
     except (jwt.PyJWTError, ValidationError):
