@@ -38,7 +38,6 @@
     height="100%" width="100%" />
 
   <button id="submit">Submit</button>
-  <button id="submit2">Submit2</button>
 
 
 
@@ -54,35 +53,18 @@
       type: 'POST',
       contentType: "application/json",
       data: JSON.stringify({
-        "username": "nam2",
-        "password": "nam2"
+        "username": "admin",
+        "password": "admin"
       }),
       success: function (output, status, xhr, data) {
         //console.log(xhr.getAllResponseHeaders().toString());
-        console.log(document.cookie.toString())
+        //console.log(document.cookie.toString())
+        alert('ok')
       },
       error: function (data, errorThrown) {
         alert(3);
       }
     });
   });
-
-  $("#submit2").click(function () {
-      $.ajax({
-        url: '/tts',
-        dataType: "json",
-        //xhrFields: { withCredentials: true },
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        type: 'POST',
-        contentType: "application/json",
-        success: function (output, status, xhr, data) {
-          alert('ok')
-        },
-        error: function (data, errorThrown) {
-          alert(3);
-        }
-      });
-    });
 </script>
-
 {% endblock %}
