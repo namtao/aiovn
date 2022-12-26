@@ -1,8 +1,7 @@
 from datetime import datetime, timedelta
-from typing import Any
 
 import jwt
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Response
 from fastapi.security import APIKeyCookie
 from jose import JWTError, jwt
 from pydantic import BaseModel, ValidationError
