@@ -1,8 +1,7 @@
 from datetime import datetime, timedelta
-from typing import Any, Union
+from typing import Any
 
 import jwt
-from api.security import validate_token
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from fastapi.security import APIKeyCookie
 from jose import JWTError, jwt
@@ -26,11 +25,11 @@ def get_current_user(session: str = Depends(cookie_sec)):
     try:
         payload = jwt.decode(session, secret_key, algorithms=[security_algorithm])
         user = users[payload["username"]]
-        
+
         try:
             a = payload.get('exp')
             b = int(datetime.timestamp(datetime.utcnow()))
-            
+
             if payload.get('exp') < int(datetime.timestamp(datetime.utcnow())):
                 raise HTTPException(status_code=403, detail="Token expired")
         except (jwt.PyJWTError, ValidationError):
@@ -43,11 +42,6 @@ def get_current_user(session: str = Depends(cookie_sec)):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN, detail="Invalid authentication"
         )
-
-
-@router.post('/books', dependencies=[Depends(validate_token)])
-def list_books():
-    return {'data': ['Sherlock Homes', 'Harry Potter', 'Rich Dad Poor Dad']}
 
 
 @router.post('/login')
