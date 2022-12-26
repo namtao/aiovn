@@ -13,8 +13,8 @@ set BRANCH = "origin"
 %GIT_PATH% pull %BRANCH%
 
 :: Update library
-.venv\Scripts\python.exe -m pip install -r requirements.txt
-.venv\Scripts\python.exe -m pip freeze --all > requirements.txt
+::.venv\Scripts\python.exe -m pip install -r requirements.txt
+::.venv\Scripts\python.exe -m pip freeze --all > requirements.txt
 
 :: Tiến hành add toàn bộ file thay đổi
 %GIT_PATH% add -A
