@@ -40,7 +40,7 @@ def get_current_user(session: str = Depends(cookie_sec)):
         return user
     except Exception:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="Invalid authentication"
+            status_code=403, detail="Invalid authentication"
         )
 
 
@@ -48,12 +48,12 @@ def get_current_user(session: str = Depends(cookie_sec)):
 def login(response: Response, request_data: LoginRequest):
     if request_data.username not in users:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="Invalid user or password"
+            status_code=403, detail="Invalid user or password"
         )
     db_password = users[request_data.username]["password"]
     if not request_data.password == db_password:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="Invalid user or password"
+            status_code=403, detail="Invalid user or password"
         )
 
     expire = datetime.utcnow() + timedelta(
@@ -70,7 +70,7 @@ def login(response: Response, request_data: LoginRequest):
 @router.post("/tts")
 def text_to_speech(username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
+        status_code=401,
         # detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
