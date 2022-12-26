@@ -38,30 +38,51 @@
     height="100%" width="100%" />
 
   <button id="submit">Submit</button>
+  <button id="submit2">Submit2</button>
+
+
 
 </div>
 
 <script type="text/javascript">
   $("#submit").click(function () {
     $.ajax({
-      url: 'http://127.0.0.1:8000/books',
+      url: '/login',
       dataType: "json",
-      headers: { "Content-Type": "application/json", "Accept": "application/json"},
-      type: 'GET',
+      //xhrFields: { withCredentials: true },
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      type: 'POST',
       contentType: "application/json",
-      //data: { "firstName": "FirstName", "lastName": "lastNAme", "email": "abc@xyz.com" },
-      // add to header
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE5ODQ3OTksInVzZXJuYW1lIjoibmFtIn0.vObs5aTS5SwTu7eVJqEFEN4ALVDJt6AEiT6FPSyryJE");
-      },
-      success: function (data) {
-        alert("OK");
+      data: JSON.stringify({
+        "username": "nam2",
+        "password": "nam2"
+      }),
+      success: function (output, status, xhr, data) {
+        //console.log(xhr.getAllResponseHeaders().toString());
+        console.log(document.cookie.toString())
       },
       error: function (data, errorThrown) {
         alert(3);
       }
     });
   });
+
+  $("#submit2").click(function () {
+      $.ajax({
+        url: '/tts',
+        dataType: "json",
+        //xhrFields: { withCredentials: true },
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        type: 'POST',
+        contentType: "application/json",
+        success: function (output, status, xhr, data) {
+          alert('ok')
+        },
+        error: function (data, errorThrown) {
+          alert(3);
+        }
+      });
+    });
 </script>
 
 {% endblock %}

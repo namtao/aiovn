@@ -665,6 +665,14 @@ Các định dạng không ghi đè lên nhau, phải lý thuyết riêng
 
 <https://dev.to/anuradha9712/four-ways-to-make-an-api-calls-in-javascript-ilc>
 
+<https://indominusbyte.github.io/fastapi-jwt-auth/usage/jwt-in-cookies/>
+
+<https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/>
+
+<https://blog.ropnop.com/storing-tokens-in-browser/>
+
+<https://github.com/tiangolo/fastapi/issues/754>
+
 ## Mediapipe
 
 [Lý thuyết](https://viblo.asia/p/mediapipe-live-ml-solutions-va-ung-dung-ve-bang-hands-gestures-gAm5ymOV5db)
