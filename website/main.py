@@ -1,5 +1,5 @@
 
-from api import auth
+from api import auth, db
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -10,6 +10,7 @@ app = FastAPI()
 
 app.mount("/static", StaticFiles(directory=r"static"), name="static")
 app.include_router(auth.router)
+app.include_router(db.router)
 
 
 templates = Jinja2Templates(directory="templates")

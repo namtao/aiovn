@@ -1,6 +1,5 @@
 
 import configparser
-import logging
 import os
 import re
 from collections import Counter, OrderedDict

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <table>
+        <tr>
+            {% for c in columns %}<td>{{ c }}</td>{% endfor %}
+        </tr>
+        {% for d in data %}
+        <tr>
+            {% for v in d.values() %}
+            <td>{{ v }}</td>
+            {% endfor %}
+            <br>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

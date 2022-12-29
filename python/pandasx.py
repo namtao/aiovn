@@ -7,7 +7,7 @@ import pandas as pd
 
 config = configparser.ConfigParser()
 config.read(r'config.ini')
-conn = f'mssql://{config["local"]["user"]}:{urllib.parse.quote_plus(config["local"]["pass"])}@{config["local"]["host"]}/{config["local"]["db"]}?driver={config["local"]["driver"]}'
+conn = f'mssql://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
 
 
 start_time = time.time()
