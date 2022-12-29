@@ -20,6 +20,6 @@ class LoginRequest(BaseModel):
     password: str
 
 
-@app.get("/items/{id}", response_class=HTMLResponse)
-async def read_item(request: Request, id: str):
-    return templates.TemplateResponse("details.html", {"request": request, "id": id})
+@app.get("/details", response_class=HTMLResponse)
+async def details(request: Request):
+    return templates.TemplateResponse("details.html", {"request": request})

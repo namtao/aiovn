@@ -12,7 +12,7 @@ secret_key = '123456'
 router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
 
-users = {"admin": {"password": "admin"}, "tiangolo": {"password": "secret2"}}
+users = {"nam": {"password": "nam"}, "tiangolo": {"password": "secret2"}}
 
 
 class LoginRequest(BaseModel):
@@ -26,9 +26,6 @@ def get_current_user(session: str = Depends(cookie_sec)):
         user = users[payload["username"]]
 
         try:
-            a = payload.get('exp')
-            b = int(datetime.timestamp(datetime.utcnow()))
-
             if payload.get('exp') < int(datetime.timestamp(datetime.utcnow())):
                 raise HTTPException(status_code=403, detail="Token expired")
         except (jwt.PyJWTError, ValidationError):
@@ -74,7 +71,7 @@ def text_to_speech(username: str = Depends(get_current_user)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        pass
+        return 200
     except JWTError:
         raise credentials_exception
 
