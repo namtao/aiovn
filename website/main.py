@@ -5,22 +5,13 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
+from views import admin, user
 
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory=r"static"), name="static")
 app.include_router(auth.router)
 app.include_router(db.router)
+app.include_router(user.router)
 
 
-templates = Jinja2Templates(directory="templates")
-
-
-class LoginRequest(BaseModel):
-    username: str
-    password: str
-
-
-@app.get("/details", response_class=HTMLResponse)
-async def details(request: Request):
-    return templates.TemplateResponse("details.html", {"request": request})
