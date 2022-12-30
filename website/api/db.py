@@ -55,3 +55,10 @@ async def GetAll(db: Session = Depends(get_db)):
     # val = upd.values({"so": "value"})
     # cond = val.where(t_Diff.c.column_name == value)
     return patients
+
+
+@router.get("/get")
+async def GetAll(db: Session = Depends(get_db)):
+
+    patients = db.query(t_Diff).filter_by(id=164407).all()
+    return patients
