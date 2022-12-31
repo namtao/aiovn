@@ -440,7 +440,7 @@ virtualenv my_project_env
 python -m venv .venv
 env\Scripts\activate
 
-python -m pip freeze --all requirements.txt
+python -m pip freeze --all > requirements.txt
 python -m pip install -r requirements.txt
 ```
 
@@ -688,6 +688,16 @@ Giống như máy ảo nhưng nhanh hơn
 Chứa các container chạy ứng dụng khác nhau
 
 Images có thể tạo ra nhiều container
+
+Builf docker: ```docker build -t <imageName> .```
+
+Run docker: ```docker run <imageName>:<version>```
+
+Thông tin: ```docker info```
+
+Lưu config docker: ```docker save -o <path for generated tar file> <image name>```
+
+Load config docker: ```docker load -i <path to image tar file>```
 
 ## OCR
 
