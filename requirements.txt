@@ -171,7 +171,7 @@ pyodbc==4.0.34
 pyparsing==3.0.9
 PyPDF2==2.11.1
 pyperclip==1.8.2
-pypiwin32==223
+# pypiwin32==223
 PyRect==0.2.0
 pyrsistent==0.19.2
 PyScreeze==0.1.28
@@ -187,9 +187,9 @@ pytweening==1.0.4
 pytz==2022.6
 pytz-deprecation-shim==0.1.0.post0
 PyWavelets==1.4.1
-pywin32==305
-pywin32-ctypes==0.2.0
-pywinpty==2.0.9
+# pywin32
+# pywin32-ctypes
+# pywinpty==2.0.9
 PyYAML==6.0
 pyzmq==24.0.1
 qtconsole==5.4.0
