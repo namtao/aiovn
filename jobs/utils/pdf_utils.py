@@ -160,14 +160,14 @@ def setDpiImg2Pdf():
 # convert  "C:\Users\Nam\Downloads\New folder\result.jpg" -density 300 -units PixelsPerInch  "C:\Users\Nam\Downloads\New folder\result.jpg"
 
 
-image = cv2.imread(r'C:\Users\Nam\Downloads\New folder\result.jpg')
-RGBimage = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-PILimage = Image.fromarray(RGBimage)
-PILimage.save(r"C:\Users\Nam\Downloads\New folder\result2.jpg", dpi=(300, 300))
+# image = cv2.imread(r'C:\Users\Nam\Downloads\New folder\result.jpg')
+# RGBimage = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+# PILimage = Image.fromarray(RGBimage)
+# PILimage.save(r"C:\Users\Nam\Downloads\New folder\result2.jpg", dpi=(300, 300))
 
 
-image = Image.open(r"C:\Users\Nam\Downloads\New folder\result.pdf")
-print(f"Original size : {image.size}")  # 5464x3640
+# image = Image.open(r"C:\Users\Nam\Downloads\New folder\result.pdf")
+# print(f"Original size : {image.size}")  # 5464x3640
 
-sunset_resized = image.resize((7680, 4320))
-sunset_resized.save(r"C:\Users\Nam\Downloads\New folder\result_resize.pdf")
+# sunset_resized = image.resize((7680, 4320))
+# sunset_resized.save(r"C:\Users\Nam\Downloads\New folder\result_resize.pdf")
