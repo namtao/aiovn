@@ -1,7 +1,9 @@
 from datetime import datetime, timedelta
 
 import jwt
-from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi import (APIRouter, Depends, FastAPI, HTTPException, Response,
+                     status)
+from fastapi.responses import RedirectResponse
 from fastapi.security import APIKeyCookie
 from jose import JWTError, jwt
 from pydantic import BaseModel, ValidationError
@@ -12,7 +14,7 @@ secret_key = '123456'
 router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
 
-users = {"nam": {"password": "nam"}, "tiangolo": {"password": "secret2"}}
+users = {"admin": {"password": "admin"}}
 
 
 class LoginRequest(BaseModel):
@@ -40,8 +42,8 @@ def get_current_user(session: str = Depends(cookie_sec)):
         )
 
 
-@router.post('/login')
-def login(response: Response, request_data: LoginRequest):
+@router.post('/sign-in')
+async def login(response: Response, request_data: LoginRequest):
     if request_data.username not in users:
         raise HTTPException(
             status_code=403, detail="Invalid user or password"
@@ -60,23 +62,10 @@ def login(response: Response, request_data: LoginRequest):
     }
     token = jwt.encode(to_encode, secret_key, algorithm=security_algorithm)
     response.set_cookie("session", token)
-    return {"ok": True}
-
-
-@router.post("/tts")
-def text_to_speech(username: str = Depends(get_current_user)):
-    credentials_exception = HTTPException(
-        status_code=401,
-        # detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-    try:
-        return 200
-    except JWTError:
-        raise credentials_exception
+    return {"auth": True}
 
 
 @router.get("/logout")
-def logout(response: Response):
+async def logout(response: Response):
     response.delete_cookie("session")
     return {"ok": True}

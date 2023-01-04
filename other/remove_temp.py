@@ -21,7 +21,7 @@ def remove_temp(path):
         #     ('_' in file) or os.path.getsize(os.path.join(root, file)) == 0 or ('jpg' in file))]
 
         for dir in dirs:
-            if (len(dir) > 25 or ('Temp' in dir)):
+            if (('Temp' in dir)):
                 print(os.path.join(root, dir))
                 shutil.rmtree(os.path.join(root, dir))
 
@@ -160,7 +160,7 @@ def create_struct(pathRoot, pathTarget):
 
 
 # xóa temp
-# remove_temp(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách')
+remove_temp(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách')
 
 # xóa file đã nén
 remove_nen(r'E:\Tay Ninh\CHUA OCR', r'E:\Tay Ninh\DA OCR')
