@@ -86,11 +86,11 @@
                                 </div>
                                 <hr />
                                 <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="Your Email Address">
+                                    <input type="text" class="form-control" placeholder="Username" id="username">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input type="password" class="form-control" placeholder="Password" id="password">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="row m-t-25 text-left">
@@ -116,16 +116,16 @@
                                             in</button>
                                     </div>
                                 </div>
-                                <hr />
+                                <!-- <hr />
                                 <div class="row">
                                     <div class="col-md-10">
                                         <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>
                                         <p class="text-inverse text-left"><b>Your Authentication Team</b></p>
                                     </div>
                                     <div class="col-md-2">
-                                        <!-- <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png"> -->
+                                        <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                         </form>
@@ -155,6 +155,9 @@
 
     <script type="text/javascript">
         $("#signin").click(function () {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
             $.ajax({
                 url: '/sign-in',
                 dataType: "json",
@@ -163,16 +166,16 @@
                 type: 'POST',
                 contentType: "application/json",
                 data: JSON.stringify({
-                    "username": "admin",
-                    "password": "admin"
+                    "username": username,
+                    "password": password
                 }),
                 success: function (output, status, xhr, data) {
                     //console.log(xhr.getAllResponseHeaders().toString());
                     //console.log(document.cookie.toString())
-                    window.location.href = "/catalog"
+                    window.location.href = "/home"
                 },
                 error: function (data, errorThrown) {
-                    console.log(errorThrown);
+                    alert("Đăng nhập không thành công!");
                 }
             });
         });

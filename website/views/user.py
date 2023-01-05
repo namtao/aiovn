@@ -35,7 +35,18 @@ async def view(request: Request, tableName: str):
 async def details(request: Request):
     return templates.TemplateResponse("sign-in.html", {"request": request})
 
-
+@router.get("/home", response_class=HTMLResponse)
+async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
+    credentials_exception = HTTPException(
+        status_code=401,
+        # detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        return templates.TemplateResponse("home.html", {"request": request})
+    except JWTError:
+        raise credentials_exception
+    
 @router.get("/catalog", response_class=HTMLResponse)
 async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(

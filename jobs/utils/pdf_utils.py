@@ -2,6 +2,7 @@ import glob
 import os
 import pathlib
 import re
+import shutil
 import time
 
 import cv2
@@ -19,10 +20,10 @@ def get_files(path, extensionFile):
     return lst
 
 
-def split_pdf(pathPdfInput):
-    for root, dirs, files in os.walk(r'E:\OCR NEN\Chua nen\2006-2015 - Copy'):
+def split_pdf(pathPdfInput, pathPdfOutput):
+    for root, dirs, files in os.walk(pathPdfInput):
         for file in files:
-            pattern = re.compile(".*"+'pdf'+"$")
+            pattern = re.compile(".*pdf$")
 
             if pattern.match(file):
                 inputpdf = PdfFileReader(os.path.join(root, file), strict=False)
@@ -34,34 +35,28 @@ def split_pdf(pathPdfInput):
                 for i in range(inputpdf.numPages):
                     output = PdfFileWriter()
                     output.addPage(inputpdf.getPage(i))
-                    with open("%s-%s.pdf" % (os.path.join(r'E:\OCR NEN\Chua nen\2006-2015 - Copy', fileName), i), "wb") as outputStream:
+                    with open("%s#%s.pdf" % (os.path.join(pathPdfOutput, fileName), str(i).zfill(5)), "wb") as outputStream:
                         output.write(outputStream)
-                        pdfs.append("%s-%s.pdf" % (os.path.join(r'E:\OCR NEN\Chua nen\2006-2015 - Copy', fileName), i))
+                        pdfs.append("%s#%s.pdf" % (os.path.join(pathPdfOutput, fileName), i))
                         outputStream.close()
 
 
-def merge_pdf(pdfs):
-    pdfs = [r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.1.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.2.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.3.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.4.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.5.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.6.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.7.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.8.pdf',
-            r'C:\Users\Nam\Downloads\New folder\ghep\DJI_Avata_User_Manual-EN.9.pdf']
+def merge_pdf(lstFilesInput, fileNameOutput):
+    lstFilesInput = [r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#0.pdf',
+                     r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#1.pdf',
+                     r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#2.pdf',
+                     r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#3.pdf']
     merger = PdfFileMerger()
-    index = 0
-    for page in pdfs:
-        merger.append(page)
-    merger.write('merge.pdf')
-    
+    for file in lstFilesInput:
+        merger.append(file)
+    merger.write(fileNameOutput)
+
 # pdfs = []
 # merge_pdf(pdfs)
 
 
 def spit_and_merge_pdf(pathPdfInput, bytes=10485760):
-    if(os.path.getsize(pathPdfInput) >= 10485760):
+    if (os.path.getsize(pathPdfInput) >= 10485760):
         inputpdf = PdfFileReader(pathPdfInput, "rb")
         fileName = pathlib.Path(pathPdfInput).stem
         parentPath = pathlib.Path(pathPdfInput).parent.absolute()
@@ -83,11 +78,11 @@ def spit_and_merge_pdf(pathPdfInput, bytes=10485760):
             # get size file
             sum += os.path.getsize(page)
             # nếu dung lượng các trang chưa quá 10MB thì vẫn thêm vào sau
-            if(sum < bytes):
+            if (sum < bytes):
                 merger.append(page)
 
             else:
-                if(page == pdfs[-1]):
+                if (page == pdfs[-1]):
                     merger.append(page)
                 merger.write(r"%s\%s.%s.pdf" %
                              (parentPath, fileName, index + 1))
@@ -154,20 +149,17 @@ def setDpiImg2Pdf():
     # output
     print("Successfully made pdf file")
 
-# magick "C:\Users\Nam\Downloads\New folder\test.jpg" -strip -interlace Plane -gaussian-blur 0.05 -quality 85% "C:\Users\Nam\Downloads\New folder\result.jpg"
 
-# magick mogrify -set density 300 "C:\Users\Nam\Downloads\New folder\result.jpg"
-# convert  "C:\Users\Nam\Downloads\New folder\result.jpg" -density 300 -units PixelsPerInch  "C:\Users\Nam\Downloads\New folder\result.jpg"
+# split_pdf(r'C:\Users\Administrator\Downloads\test', r'C:\Users\Administrator\Downloads\out')
 
+# for root, dirs, files in os.walk(r'C:\Users\Administrator\Downloads\out'):
+#     dict = {}
+#     for file in files:
+#         i = os.path.join(root, file.split('#')[0] + '.pdf')
 
-# image = cv2.imread(r'C:\Users\Nam\Downloads\New folder\result.jpg')
-# RGBimage = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-# PILimage = Image.fromarray(RGBimage)
-# PILimage.save(r"C:\Users\Nam\Downloads\New folder\result2.jpg", dpi=(300, 300))
+#         if (i not in dict.keys()):
+#             dict[i] = []
 
+#         dict[i].append(file)
 
-# image = Image.open(r"C:\Users\Nam\Downloads\New folder\result.pdf")
-# print(f"Original size : {image.size}")  # 5464x3640
-
-# sunset_resized = image.resize((7680, 4320))
-# sunset_resized.save(r"C:\Users\Nam\Downloads\New folder\result_resize.pdf")
+#     print(dict)
