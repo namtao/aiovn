@@ -143,21 +143,32 @@ def setDpiImg2Pdf():
     print("Successfully made pdf file")
 
 
-# split_pdf(r'C:\Users\Administrator\Downloads\test', r'C:\Users\Administrator\Downloads\out')
 
 def split_merge_pdf_ocr(folderPath):
     # lấy danh sách tên file cần ghép
     for root, dirs, files in os.walk(folderPath):
         dict = {}
         for file in files:
-            i = os.path.join(root, file.split('#')[0] + '.pdf')
+            if ('#' in file):
 
-            if (i not in dict.keys()):
-                dict[i] = []
+                i = os.path.join(root, file.split('#')[0] + '.pdf')
 
-            dict[i].append(os.path.join(root, file))
+                if (i not in dict.keys()):
+                    dict[i] = []
+
+                dict[i].append(os.path.join(root, file))
 
 
     # thực hiện ghép
     for k, v in dict.items():
         merge_pdf(v, k)
+        
+    # for root, dirs, files in os.walk(folderPath):
+    #     for file in files:
+    #         if('#' in file):
+    #             os.remove(os.path.join(root, file))
+        
+
+split_pdf(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách', r'E:\Tay Ninh\CHUA OCR\Tách')
+
+# split_merge_pdf_ocr(r'C:\Users\Administrator\Downloads\out')
