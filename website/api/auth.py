@@ -1,11 +1,10 @@
 from datetime import datetime, timedelta
 
 import jwt
-from fastapi import (APIRouter, Depends, FastAPI, HTTPException, Response,
-                     status)
-from fastapi.responses import RedirectResponse
+from fastapi import APIRouter, Depends, HTTPException, Response
 from fastapi.security import APIKeyCookie
-from jose import JWTError, jwt
+from fastapi.templating import Jinja2Templates
+from jose import jwt
 from pydantic import BaseModel, ValidationError
 
 security_algorithm = 'HS256'
@@ -15,6 +14,7 @@ router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
 
 users = {"admin": {"password": "admin"}}
+templates = Jinja2Templates(directory='templates')
 
 
 class LoginRequest(BaseModel):
@@ -40,6 +40,7 @@ def get_current_user(session: str = Depends(cookie_sec)):
         raise HTTPException(
             status_code=403, detail="Invalid authentication"
         )
+        
 
 
 @router.post('/sign-in')
@@ -55,7 +56,7 @@ async def login(response: Response, request_data: LoginRequest):
         )
 
     expire = datetime.utcnow() + timedelta(
-        seconds=60 * 60
+        seconds=60*60
     )
     to_encode = {
         "exp": expire, "username": request_data.username

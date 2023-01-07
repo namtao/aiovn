@@ -1,6 +1,7 @@
 
 import configparser
 import json
+import subprocess
 import urllib.parse
 
 import pandas as pd
@@ -8,7 +9,7 @@ from api.auth import get_current_user
 from fastapi import (APIRouter, Depends, FastAPI, HTTPException, Request,
                      Response, status)
 from fastapi.encoders import jsonable_encoder
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.security import APIKeyCookie
 from fastapi.templating import Jinja2Templates
 from jose import JWTError, jwt
@@ -35,6 +36,7 @@ async def view(request: Request, tableName: str):
 async def details(request: Request):
     return templates.TemplateResponse("sign-in.html", {"request": request})
 
+
 @router.get("/home", response_class=HTMLResponse)
 async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
@@ -46,7 +48,8 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
         return templates.TemplateResponse("home.html", {"request": request})
     except JWTError:
         raise credentials_exception
-    
+
+
 @router.get("/catalog", response_class=HTMLResponse)
 async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
@@ -56,5 +59,18 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
     )
     try:
         return templates.TemplateResponse("catalog.html", {"request": request})
+    except JWTError:
+        raise credentials_exception
+    
+
+@router.get("/convert", response_class=HTMLResponse)
+async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
+    credentials_exception = HTTPException(
+        status_code=401,
+        # detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        return templates.TemplateResponse("convert.html", {"request": request})
     except JWTError:
         raise credentials_exception

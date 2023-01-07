@@ -2,10 +2,7 @@ import glob
 import os
 import pathlib
 import re
-import shutil
-import time
 
-import cv2
 import img2pdf
 from PIL import Image
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
@@ -42,10 +39,6 @@ def split_pdf(pathPdfInput, pathPdfOutput):
 
 
 def merge_pdf(lstFilesInput, fileNameOutput):
-    lstFilesInput = [r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#0.pdf',
-                     r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#1.pdf',
-                     r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#2.pdf',
-                     r'C:\Users\Administrator\Downloads\out\KH.1964.93024.01.A4.64.54 - Copy (2)#3.pdf']
     merger = PdfFileMerger()
     for file in lstFilesInput:
         merger.append(file)
@@ -152,14 +145,19 @@ def setDpiImg2Pdf():
 
 # split_pdf(r'C:\Users\Administrator\Downloads\test', r'C:\Users\Administrator\Downloads\out')
 
-# for root, dirs, files in os.walk(r'C:\Users\Administrator\Downloads\out'):
-#     dict = {}
-#     for file in files:
-#         i = os.path.join(root, file.split('#')[0] + '.pdf')
+def split_merge_pdf_ocr(folderPath):
+    # lấy danh sách tên file cần ghép
+    for root, dirs, files in os.walk(folderPath):
+        dict = {}
+        for file in files:
+            i = os.path.join(root, file.split('#')[0] + '.pdf')
 
-#         if (i not in dict.keys()):
-#             dict[i] = []
+            if (i not in dict.keys()):
+                dict[i] = []
 
-#         dict[i].append(file)
+            dict[i].append(os.path.join(root, file))
 
-#     print(dict)
+
+    # thực hiện ghép
+    for k, v in dict.items():
+        merge_pdf(v, k)

@@ -1,17 +1,12 @@
 
 import configparser
-import json
 import urllib.parse
 
-import pandas as pd
-import pyodbc
-from fastapi import APIRouter, Depends, FastAPI, Request, Response
-from fastapi.encoders import jsonable_encoder
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi import APIRouter, Depends
 from fastapi.security import APIKeyCookie
 from fastapi.templating import Jinja2Templates
 from models.hotich import *
-from sqlalchemy import MetaData, create_engine, update
+from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
 router = APIRouter()

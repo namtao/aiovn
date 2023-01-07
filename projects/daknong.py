@@ -288,4 +288,4 @@ def thongkehotich2():
     os.system('\"'+fileName+'\"')
 
 
-thongkehotich2()
+thongkehotich()

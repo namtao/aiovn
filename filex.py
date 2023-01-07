@@ -1,11 +1,9 @@
 # import pikepdf
 import datetime
-import difflib
 import os
 import re
 import shutil
 from collections import Counter
-from fileinput import filename
 from functools import wraps
 from pathlib import Path
 

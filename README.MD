@@ -297,6 +297,15 @@ Khi gọi phương thức có 1 tham số thì ta không cần gán tham số đ
 Được sử dụng trong getter setter trong class
 
 \
+***subprocess***
+
+subprocess.run() đã được thêm vào Python 3.5 để đơn giản hóa subprocess.Popenkhi bạn chỉ muốn thực thi một lệnh và đợi cho đến khi lệnh kết thúc, nhưng bạn không muốn làm bất cứ điều gì khác trong thời gian đó. Đối với các trường hợp khác, bạn vẫn cần sử dụng subprocess.Popen.
+
+Sự khác biệt chính là subprocess.run()thực thi một lệnh và đợi nó kết thúc, trong khi với subprocess.Popenbạn, bạn có thể tiếp tục thực hiện công việc của mình trong khi quá trình kết thúc và sau đó chỉ cần liên tục gọi Popen.communicate()cho chính mình để chuyển và nhận dữ liệu cho quy trình của bạn. Thứ hai, subprocess.run()trả về subprocess.CompletedProcess.
+
+subprocess.run()chỉ cần kết thúc Popenvà Popen.communicate()do đó bạn không cần tạo một vòng lặp để truyền/nhận dữ liệu hoặc đợi quá trình kết thúc.
+
+\
 ***Regex***
 
 [Lý thuyết](https://viblo.asia/p/python-regex-Qbq5QMeE5D8)
