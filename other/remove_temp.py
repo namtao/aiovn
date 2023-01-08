@@ -160,7 +160,7 @@ def create_struct(pathRoot, pathTarget):
 
 
 # xóa temp
-remove_temp(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách')
+remove_temp(r'E:\Tay Ninh\CHUA OCR\Tách')
 
 # xóa file đã nén
 remove_nen(r'E:\Tay Ninh\CHUA OCR', r'E:\Tay Ninh\DA OCR')
