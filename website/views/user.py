@@ -1,18 +1,14 @@
 
 import configparser
-import json
-import subprocess
 import urllib.parse
 
 import pandas as pd
 from api.auth import get_current_user
-from fastapi import (APIRouter, Depends, FastAPI, HTTPException, Request,
-                     Response, status)
-from fastapi.encoders import jsonable_encoder
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import HTMLResponse
 from fastapi.security import APIKeyCookie
 from fastapi.templating import Jinja2Templates
-from jose import JWTError, jwt
+from jose import JWTError
 
 router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")

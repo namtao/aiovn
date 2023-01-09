@@ -19,7 +19,7 @@ arr = np.array([])
 countModifier = 0
 pathTarget = ''
 
-
+# decor
 def get_files(function):
     @wraps(function)
     def wrapper(folderPath, fileFormat=''):
@@ -107,7 +107,7 @@ if __name__ == '__main__':
             print('1. Phân tích thư mục')
             print('2. Tìm kiếm tệp tin')
             print('3. Kiểm tra trùng tên')
-            print('4. Số lượng tệp tin thay đổi theo ngày tháng năm')
+            print('4. Thời gian tệp tin thay đổi')
             print('5. Tạo cấu trúc theo tên tệp tin')
 
             print()

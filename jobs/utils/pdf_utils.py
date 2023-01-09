@@ -162,13 +162,15 @@ def split_merge_pdf_ocr(folderPath):
     # thực hiện ghép
     for k, v in dict.items():
         merge_pdf(v, k)
-        
-    # for root, dirs, files in os.walk(folderPath):
-    #     for file in files:
-    #         if('#' in file):
-    #             os.remove(os.path.join(root, file))
+
+
+def remove_split(folderPath):
+    for root, dirs, files in os.walk(folderPath):
+        for file in files:
+            if('#' in file):
+                os.remove(os.path.join(root, file))
         
 
-split_pdf(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách', r'E:\Tay Ninh\CHUA OCR\Tách')
+# split_pdf(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách', r'E:\Tay Ninh\CHUA OCR\Tách')
 
-# split_merge_pdf_ocr(r'C:\Users\Administrator\Downloads\out')
+split_merge_pdf_ocr(r'E:\Tay Ninh\DA OCR\Tay Ninh\CHUA OCR\Tách')
