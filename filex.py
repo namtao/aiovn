@@ -3,18 +3,20 @@ import json
 import os
 import re
 import shutil
-import sys
 from collections import Counter
 from functools import wraps
 from pathlib import Path
-from pprint import pprint
 
+import img2pdf
 import inquirer
 import numpy as np
 import pikepdf
 import PyPDF2
-import yaml
+from getpass4 import getpass
 from inquirer.themes import Default
+from pdf2image import convert_from_path
+from PIL import Image
+from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
 dictEx = {}
 totalPdfPages = 0
@@ -25,9 +27,21 @@ arr = np.array([])
 countModifier = 0
 pathTarget = ''
 
+config_file = os.path.join(os.getenv('APPDATA'), 'filex.config')
+
+chucnang = {"Phân tích thư mục": "N",
+            "Tìm kiếm tệp tin": "N",
+            "Kiểm tra trùng tên": "N",
+            "Thời gian tệp tin thay đổi": "N",
+            "Tạo cấu trúc theo tên tệp tin": "N",
+            "Sửa đổi metadate pdf": "N",
+            "JPG => PDF": "N",
+            "PDF => JPG": "N",
+
+            "Cấu hình": "Y"}
+
+
 # decor
-
-
 def get_files(function):
     @wraps(function)
     def wrapper(folderPath, fileFormat=''):
@@ -119,43 +133,100 @@ def create_struct(root, file):
         pass
 
 
-def config_cmd():
+def config():
+    global chucnang
+
     questions = [
         inquirer.Checkbox(
-            "interests",
-            message="What are you interested in?",
-            choices=["Computers", "Books", "Science", "Nature", "Fantasy", "History"],
-            default=["Computers", "Books"],
+            "config",
+            message="Chọn các chức năng?",
+            choices={k: v for (k, v) in chucnang.items()}.keys(),
+            default={k: v for (k, v) in chucnang.items() if 'Y' in v}.keys(),
         ),
     ]
 
-    class WorkplaceFriendlyTheme(Default):
-        """Custom theme replacing X with Y and o with N"""
+    # class WorkplaceFriendlyTheme(Default):
+    #     """Custom theme replacing X with Y and o with N"""
 
-        def __init__(self):
-            super().__init__()
-            self.Checkbox.selected_icon = "Y"
-            self.Checkbox.unselected_icon = "N"
+    # def __init__(self):
+    #     super().__init__()
+    #     self.Checkbox.selected_icon = "Y"
+    #     self.Checkbox.unselected_icon = "N"
 
-    answers = inquirer.prompt(questions, theme=WorkplaceFriendlyTheme())
+    # answers = inquirer.prompt(questions, theme=WorkplaceFriendlyTheme())
+    answers = inquirer.prompt(questions)
 
-    pprint(answers)
-    print(yaml.dump(answers))
+    keychucnang = chucnang.keys()
+    for item in keychucnang:
+        if (item in answers['config']):
+            chucnang[item] = 'Y'
+        else:
+            chucnang[item] = 'N'
 
+    chucnang['Cấu hình'] = 'Y'
+
+    with open(config_file, mode='w', encoding="utf8") as f:
+        f.write(str(chucnang))
+
+
+def hidden_password():
+    password = getpass('Password: ')
+    print(password)
+
+
+def jpg2pdf(img_path, pdf_path):
+
+    # opening image
+    image = Image.open(img_path)
+
+    # converting into chunks using img2pdf
+    pdf_bytes = img2pdf.convert(image.filename)
+
+    # opening or creating pdf file
+    file = open(pdf_path, "wb")
+
+    # writing pdf files with chunks
+    file.write(pdf_bytes)
+
+    # closing image file
+    image.close()
+
+    # closing pdf file
+    file.close()
+
+
+def pdf2jpg(pdfPath, jpgPath):
+    # pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    Image.MAX_IMAGE_PIXELS = 1000000000000
+
+    for root, dirs, files in os.walk(pdfPath):
+        for file in files:
+
+            pages = convert_from_path(
+                os.path.join(root, file), 500, poppler_path=r'library\poppler-22.12.0\Library\bin')
+            image_counter = 1
+            for page in pages:
+                filename = os.path.splitext(file)[0] + '#' + str(image_counter).zfill(5)+".jpg"
+                page.save(os.path.join(jpgPath, filename), 'JPEG')
+                image_counter = image_counter + 1
+        
 
 if __name__ == '__main__':
 
-    dictchucnang = {"Phân tích thư mục": "Y", "Tìm kiếm tệp tin": "N", "Kiểm tra trùng tên": "Y",
-                    "Thời gian tệp tin thay đổi": "Y", "Tạo cấu trúc theo tên tệp tin": "Y", 
-                    "Sửa đổi metadate pdf": "Y"}
-    
-    if not (os.path.exists(os.path.join(os.getenv('APPDATA'), 'filex.config'))):
-        with open(os.path.join(os.getenv('APPDATA'), 'filex.config'), mode='a', encoding="utf8") as f:
-            f.write(str(dictchucnang))
+    if not (
+            os.path.exists(config_file)):
+        with open(config_file, mode='a', encoding="utf8") as f:
+            f.write(str(chucnang))
+
     else:
-        with open(os.path.join(os.getenv('APPDATA'), 'filex.config'), mode='r', encoding="utf8") as f:
-            dictchucnang = json.loads(f.readlines()[0].replace('\'', '\"'))
-            
+        if os.path.getsize(config_file) == 0:
+            os.remove(config_file)
+
+            with open(config_file, mode='w', encoding="utf8") as f:
+                f.write(str(chucnang))
+        else:
+            with open(config_file, mode='r', encoding="utf8") as f:
+                chucnang = json.loads(f.readlines()[0].replace('\'', '\"'))
 
     while True:
         print("-----Công cụ làm việc với Files-----")
@@ -167,7 +238,7 @@ if __name__ == '__main__':
                 inquirer.List(
                     "choise", message="Chức năng cần sử dụng?",
                     # lọc những chức năng cho phép
-                    choices={k: v for (k, v) in dictchucnang.items() if 'Y' in v}.keys())]
+                    choices={k: v for (k, v) in chucnang.items() if 'Y' in v}.keys())]
 
             answers = inquirer.prompt(questions)
 
@@ -202,6 +273,23 @@ if __name__ == '__main__':
                     create_struct(input('Nhập thư mục đầu vào: '))
                 case 'Sửa đổi metadate pdf':
                     edit_metadata_pdf(input('Nhập đường dẫn cần sửa dổi: '))
+                case 'JPG => PDF':
+                    dir_img = input('Nhập đường dẫn thư mục jpg: ')
+                    dir_pdf = input('Nhập đường dẫn thư mục pdf: ')
+
+                    for root, dirs, files in os.walk(dir_img):
+                        for file in files:
+                            try:
+                                jpg2pdf(os.path.join(root, file),
+                                        os.path.join(dir_pdf, os.path.splitext(file)[0] + '.pdf'))
+                            except Exception as e:
+                                pass
+                case 'PDF => JPG':
+                    pdfPath = input('Nhập đường dẫn thư mục pdf: ')
+                    jpgPath = input('Nhập đường dẫn thư mục jpg: ')
+                    pdf2jpg(pdfPath, jpgPath)
+                case 'Cấu hình':
+                    config()
                 case _:
                     pass
 
