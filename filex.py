@@ -1,14 +1,20 @@
-# import pikepdf
 import datetime
+import json
 import os
 import re
 import shutil
+import sys
 from collections import Counter
 from functools import wraps
 from pathlib import Path
+from pprint import pprint
 
+import inquirer
 import numpy as np
+import pikepdf
 import PyPDF2
+import yaml
+from inquirer.themes import Default
 
 dictEx = {}
 totalPdfPages = 0
@@ -20,6 +26,8 @@ countModifier = 0
 pathTarget = ''
 
 # decor
+
+
 def get_files(function):
     @wraps(function)
     def wrapper(folderPath, fileFormat=''):
@@ -36,6 +44,19 @@ def get_files(function):
             countDirs += len(dirs)
             countFiles += len(files)
     return wrapper
+
+# sửa đổi metadata file pdf
+
+
+@get_files
+def edit_metadata_pdf(root, file):
+    try:
+        pdf = pikepdf.open(os.path.join(root, file))
+        with pdf.open_metadata() as meta:
+            # meta['dc:title'] = ""
+            print(meta['dc:title'])
+    except Exception as e:
+        print(str(e))
 
 
 @get_files
@@ -98,50 +119,89 @@ def create_struct(root, file):
         pass
 
 
+def config_cmd():
+    questions = [
+        inquirer.Checkbox(
+            "interests",
+            message="What are you interested in?",
+            choices=["Computers", "Books", "Science", "Nature", "Fantasy", "History"],
+            default=["Computers", "Books"],
+        ),
+    ]
+
+    class WorkplaceFriendlyTheme(Default):
+        """Custom theme replacing X with Y and o with N"""
+
+        def __init__(self):
+            super().__init__()
+            self.Checkbox.selected_icon = "Y"
+            self.Checkbox.unselected_icon = "N"
+
+    answers = inquirer.prompt(questions, theme=WorkplaceFriendlyTheme())
+
+    pprint(answers)
+    print(yaml.dump(answers))
+
+
 if __name__ == '__main__':
-    print("-----Công cụ làm việc với Files-----")
+
+    dictchucnang = {"Phân tích thư mục": "Y", "Tìm kiếm tệp tin": "N", "Kiểm tra trùng tên": "Y",
+                    "Thời gian tệp tin thay đổi": "Y", "Tạo cấu trúc theo tên tệp tin": "Y", 
+                    "Sửa đổi metadate pdf": "Y"}
+    
+    if not (os.path.exists(os.path.join(os.getenv('APPDATA'), 'filex.config'))):
+        with open(os.path.join(os.getenv('APPDATA'), 'filex.config'), mode='a', encoding="utf8") as f:
+            f.write(str(dictchucnang))
+    else:
+        with open(os.path.join(os.getenv('APPDATA'), 'filex.config'), mode='r', encoding="utf8") as f:
+            dictchucnang = json.loads(f.readlines()[0].replace('\'', '\"'))
+            
+
     while True:
+        print("-----Công cụ làm việc với Files-----")
+        print()
         arr = np.array([])
 
         try:
-            print('1. Phân tích thư mục')
-            print('2. Tìm kiếm tệp tin')
-            print('3. Kiểm tra trùng tên')
-            print('4. Thời gian tệp tin thay đổi')
-            print('5. Tạo cấu trúc theo tên tệp tin')
+            questions = [
+                inquirer.List(
+                    "choise", message="Chức năng cần sử dụng?",
+                    # lọc những chức năng cho phép
+                    choices={k: v for (k, v) in dictchucnang.items() if 'Y' in v}.keys())]
 
-            print()
+            answers = inquirer.prompt(questions)
 
-            match int(input('Nhập chức năng cần sử dụng: ')):
-                case 1:
+            match answers['choise']:
+                case 'Phân tích thư mục':
                     # không cần gán tham số fileFomat vào wapper bởi đã có giá trị mặc định
-                    analysis_in_folder(input('Nhập đường dẫn cần phân tích: '))
+                    analysis_in_folder(input('\nNhập đường dẫn cần phân tích: '))
 
                     print(f"Tổng số thư mục: \t{countDirs: >9}\nTổng số file: \t\t{countFiles: >9} \n")
                     for key, value in dictEx.items():
                         print(f"Số file {key: <22} {value}")
 
                     print(f'\nSố trang pdf: {totalPdfPages:>19}')
-                case 2:
+                case 'Tìm kiếm tệp tin':
                     fileSearch = input('Nhập tên file: ')
                     get_fullname(input('Nhập đường dẫn cần tìm kiếm: '))
                     for file in arr:
                         if (fileSearch in file):
                             print(file)
-                case 3:
+                case 'Kiểm tra trùng tên':
                     for path in input('Nhập đường dẫn cần kiểm tra trùng: ').split(','):
                         get_basename(path)
 
                     dup = {item for item, count in Counter(arr).items() if count > 1}
                     print(len(dup))
                     print(dup)
-                case 4:
+                case 'Thời gian tệp tin thay đổi':
                     check_modifier_file(input('Nhập đường dẫn cần kiểm tra'))
                     print(countModifier)
-                case 5:
+                case 'Tạo cấu trúc theo tên tệp tin':
                     pathTarget = input('Nhập thư mục đầu ra: ')
                     create_struct(input('Nhập thư mục đầu vào: '))
-
+                case 'Sửa đổi metadate pdf':
+                    edit_metadata_pdf(input('Nhập đường dẫn cần sửa dổi: '))
                 case _:
                     pass
 
@@ -151,6 +211,7 @@ if __name__ == '__main__':
         finally:
             yn = str(input('\nBạn có muốn tiếp tục? (Y/N?): ')).upper()
             if (yn == 'Y'):
+                os.system('cls')
                 continue
             else:
                 print("Hẹn gặp lại!!!\n")

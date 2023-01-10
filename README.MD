@@ -796,6 +796,9 @@ Load config docker: ```docker load -i <path to image tar file>```
   - <https://github.com/iamaaditya/image-compression-cnn>
   - <https://github.com/Justin-Tan/high-fidelity-generative-compression>
 
+- Lỗi PyInstaller
+  - <https://chowdera.com/2022/179/202206282001331430.html>
+
 ## Tricks
 
 [Download FB video](https://snapsave.app/vn)\

@@ -171,6 +171,6 @@ def remove_split(folderPath):
 
 # split_pdf(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách', r'E:\Tay Ninh\CHUA OCR\Tách')
 
-# split_merge_pdf_ocr(r'E:\Tay Ninh\DA OCR\Tay Ninh\CHUA OCR\Tách')
+split_merge_pdf_ocr(r'E:\Tay Ninh\CHUA OCR')
 
-detect_size(r'C:\Users\Administrator\Downloads\test\page_1.jpg')
+# detect_size(r'C:\Users\Administrator\Downloads\test\page_1.jpg')
