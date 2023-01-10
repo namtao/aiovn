@@ -7,7 +7,7 @@ import img2pdf
 from PIL import Image
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
-A4_SIZE = (2480, 3508)
+A4_SIZE = 8699840
 
 
 def get_files(path, extensionFile):
@@ -106,8 +106,8 @@ def detect_size(img):
     im = Image.open(img)
     Image.MAX_IMAGE_PIXELS = pil_max_px
 
-    print('{} pixel'.format(im.size))
-    print(2480 , 3508)
+    print('{}'.format(im.size))
+    print((im.width*im.height)/A4_SIZE)
 
 
 # set dpi keep size
@@ -173,4 +173,4 @@ def remove_split(folderPath):
 
 # split_merge_pdf_ocr(r'E:\Tay Ninh\DA OCR\Tay Ninh\CHUA OCR\Tách')
 
-detect_size(r'C:\Users\Administrator\Downloads\test\KH.1964.93024.01.A4.64.54.jpg')
+detect_size(r'C:\Users\Administrator\Downloads\test\page_1.jpg')

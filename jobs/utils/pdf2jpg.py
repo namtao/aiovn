@@ -1,12 +1,15 @@
 # Import libraries
 import os
 
-import pytesseract
+# import pytesseract
 from pdf2image import convert_from_path
+from PIL import Image
+
+Image.MAX_IMAGE_PIXELS = 1000000000000
 
 
 def pdf2jpg(pdfPath, jpgPath):
-    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    # pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     pages = convert_from_path(
         pdfPath, 500, poppler_path=r'library\poppler-22.12.0\Library\bin')
     image_counter = 1
@@ -17,7 +20,7 @@ def pdf2jpg(pdfPath, jpgPath):
     
 
 if __name__ == "__main__":
-    pdfPath = r'C:\Users\Administrator\Downloads\test\KH.1964.93024.01.A4.64.54.pdf'
+    pdfPath = r'C:\Users\Administrator\Downloads\test\0004.40.36.103.1#00287.pdf'
     jpgPath = r'C:\Users\Administrator\Downloads\test'
     pdf2jpg(pdfPath, jpgPath)
     

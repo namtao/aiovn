@@ -14,7 +14,7 @@ from wand.version import QUANTUM_RANGE
 
 # magick a.jpg -quality 10% o.jpg
 # magick mogrify -quality 10 a.jpg
-# jpegoptim --size=200k a.jpg
+# jpegoptim --size=200k a.jpg (đúng nhưng chất lượng kém)
 # https://manpages.ubuntu.com/manpages/bionic/man1/jpegoptim.1.html
 
 

@@ -48,6 +48,26 @@
           "settings": {
             "foreground": "#99d381"
           }
+        },
+        {
+          "scope": "variable.other.constant",
+          "settings": {
+            "fontStyle": "italic underline",
+            "foreground": "#c581d3"
+          }
+        },
+        {
+          "scope": "variable.other.property",
+          "settings": {
+            "fontStyle": "italic underline",
+            "foreground": "#ff1865"
+          }
+        },
+        {
+          "scope": "meta.function-call.python",
+          "settings": {
+            "foreground": "#99d381"
+          }
         }
       ]
     }

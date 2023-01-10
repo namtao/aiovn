@@ -9,7 +9,7 @@ from PIL import Image
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
 
-def jpd2pdf(img_path, pdf_path):
+def jpg2pdf(img_path, pdf_path):
 
     # opening image
     image = Image.open(img_path)
@@ -30,7 +30,7 @@ def jpd2pdf(img_path, pdf_path):
     file.close()
 
 
-dir_img = input('Nhập đường dẫn thư mục jpg: ')
+# dir_img = input('Nhập đường dẫn thư mục jpg: ')
 # dir_pdf = input('Nhập đường dẫn thư mục pdf: ')
 
 # chuyển jpg sang pdf
@@ -40,7 +40,7 @@ dir_img = input('Nhập đường dẫn thư mục jpg: ')
 
 #     for file in files:
 #         try:
-#             jpd2pdf(os.path.join(root, file), os.path.join(root, os.path.splitext(file)[0] + '.pdf'))
+#             jpg2pdf(os.path.join(root, file), os.path.join(root, os.path.splitext(file)[0] + '.pdf'))
 #         except Exception as e:
 #             pass
 
@@ -57,17 +57,19 @@ dir_img = input('Nhập đường dẫn thư mục jpg: ')
 #             pattern = re.compile(".*pdf$")
 #             if pattern.match(file):
 #                 merger.append(os.path.join(root, file))
-                
+
 #         Path(dir_pdf, os.path.basename(os.path.join(root))).mkdir(parents=True, exist_ok=True)
 
 #         merger.write(os.path.join(dir_pdf, os.path.basename(os.path.join(root)), 'ghep.pdf'))
 
 # xóa file pdf đã chuyển từ jpg
-for root, dirs, files in os.walk(dir_img):
-    for file in files:
-        pattern = re.compile(".*pdf$")
-        if pattern.match(file) and 'ghep' not in file:
-            try:
-                os.remove(os.path.join(root, file))
-            except:
-                pass
+# for root, dirs, files in os.walk(dir_img):
+#     for file in files:
+#         pattern = re.compile(".*pdf$")
+#         if pattern.match(file) and 'ghep' not in file:
+#             try:
+#                 os.remove(os.path.join(root, file))
+#             except:
+#                 pass
+
+jpg2pdf(r'D:\xD\build\a.jpg', r'D:\xD\build\a.pdf')
