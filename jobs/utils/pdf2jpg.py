@@ -17,8 +17,8 @@ def pdf2jpg(pdfPath, jpgPath):
     
 
 if __name__ == "__main__":
-    pdfPath = r'D:\Nam\Projects\Python\MySite\out\01.pdf'
-    jpgPath = r'D:\Nam\Projects\Python\MySite\out'
+    pdfPath = r'C:\Users\Administrator\Downloads\test\KH.1964.93024.01.A4.64.54.pdf'
+    jpgPath = r'C:\Users\Administrator\Downloads\test\KH.1964.93024.01.A4.64.54.jpg'
     pdf2jpg(pdfPath, jpgPath)
     
     

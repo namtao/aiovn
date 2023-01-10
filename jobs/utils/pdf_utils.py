@@ -7,6 +7,8 @@ import img2pdf
 from PIL import Image
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
+A4_SIZE = (2480, 3508)
+
 
 def get_files(path, extensionFile):
     lst = []
@@ -96,18 +98,16 @@ def spit_and_merge_pdf(pathPdfInput, bytes=10485760):
             pass
 
 
-def detect_size():
+def detect_size(img):
 
     # Disable PIL DecompositionBomb threshold for reading large images.
     pil_max_px = Image.MAX_IMAGE_PIXELS
     Image.MAX_IMAGE_PIXELS = None
-    im = Image.open(
-        r'C:\Projects\Python\Tools\page_1.jpg')
+    im = Image.open(img)
     Image.MAX_IMAGE_PIXELS = pil_max_px
 
-    print(im.size)
-
-    print(round(2.665))
+    print('{} pixel'.format(im.size))
+    print(2480 , 3508)
 
 
 # set dpi keep size
@@ -143,7 +143,6 @@ def setDpiImg2Pdf():
     print("Successfully made pdf file")
 
 
-
 def split_merge_pdf_ocr(folderPath):
     # lấy danh sách tên file cần ghép
     for root, dirs, files in os.walk(folderPath):
@@ -158,7 +157,6 @@ def split_merge_pdf_ocr(folderPath):
 
                 dict[i].append(os.path.join(root, file))
 
-
     # thực hiện ghép
     for k, v in dict.items():
         merge_pdf(v, k)
@@ -167,10 +165,12 @@ def split_merge_pdf_ocr(folderPath):
 def remove_split(folderPath):
     for root, dirs, files in os.walk(folderPath):
         for file in files:
-            if('#' in file):
+            if ('#' in file):
                 os.remove(os.path.join(root, file))
-        
+
 
 # split_pdf(r'E:\Tay Ninh\CHUA OCR\Năm 2013 - ML40 đã tách', r'E:\Tay Ninh\CHUA OCR\Tách')
 
-split_merge_pdf_ocr(r'E:\Tay Ninh\DA OCR\Tay Ninh\CHUA OCR\Tách')
+# split_merge_pdf_ocr(r'E:\Tay Ninh\DA OCR\Tay Ninh\CHUA OCR\Tách')
+
+detect_size(r'C:\Users\Administrator\Downloads\test\KH.1964.93024.01.A4.64.54.jpg')
