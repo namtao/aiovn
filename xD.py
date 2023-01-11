@@ -485,7 +485,7 @@ def split_pdf(pathPdfInput, pathPdfOutput):
                         
 
 def merge_pdf(lstFilesInput, fileNameOutput):
-    merger = PdfFileMerger()
+    merger = PdfFileMerger(strict=False)
     for file in lstFilesInput:
         merger.append(file)
     merger.write(fileNameOutput)
@@ -918,4 +918,4 @@ if __name__ == '__main__':
 
 # split_pdf(r'E:\tay ninh\ubnd 2014 chua nen', r'E:\tay ninh\ubnd 2014 chua nen')
 
-# split_merge_pdf_ocr(r'E:\Tay Ninh\CHUA OCR')
+# split_merge_pdf_ocr(r'E:\tay ninh\da ocr\tay ninh\ubnd 2014 chua nen\tach')
