@@ -2,7 +2,9 @@
 import itertools
 import os
 import re
+import shutil
 from functools import wraps
+from pathlib import Path
 from sys import stdout as terminal
 from threading import Thread
 from time import sleep
@@ -69,12 +71,22 @@ def loading(function):
 @loading
 def get():
     sleep(5)
-
+    
     @get_files
-    def aa(folderPath, fileFormat=''):
-        print('abc')
-
-    aa(r'C:\Users\Administrator\Downloads\test', 'pdf')
-
+    def create_struct(root, file):
+        try:
+            head, tail = (os.path.split(
+                Path(os.path.join(root, file))))
+            if (len(tail.split('.')) >= 6):
+                newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
+                    1], tail.split('.')[2], tail.split('.')[3])
+                Path(newPath).mkdir(parents=True, exist_ok=True)
+                if not os.path.exists(os.path.join(newPath, tail.replace(' ', ''))):
+                    shutil.move(os.path.join(root, file), os.path.join(
+                        newPath, tail.replace(' ', '')))
+                else:
+                    pass
+        except:
+            pass
 
 get()
