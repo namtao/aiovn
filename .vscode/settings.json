@@ -68,6 +68,12 @@
           "settings": {
             "foreground": "#99d381"
           }
+        },
+        {
+          "scope": "meta.attribute.python",
+          "settings": {
+            "foreground": "#ca78ca"
+          }
         }
       ]
     }

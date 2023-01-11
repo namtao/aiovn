@@ -82,45 +82,33 @@ def get_files(function):
 
 
 #animation loading cmd
-def loading():
-    done = False
+def loading(function):
+    @wraps(function)
+    def wrapper():
+        done = False
+        def clear():
+            return os.system('cls')
 
-
-    def clear():
-        return os.system('cls')
-
-
-    def animate():
-        for c in itertools.cycle(['⠷', '⠯', '⠟', '⠻', '⠽', '⠾']):
-            if done:
-                break
-            terminal.write('\rLoading ' + c + ' ')
+        def animate():
+            for c in itertools.cycle(['⠷', '⠯', '⠟', '⠻', '⠽', '⠾']):
+                if done:
+                    break
+                terminal.write('\rLoading ' + c + ' ')
+                terminal.flush()
+                sleep(0.05)
+            terminal.write('\rDone!    ')
             terminal.flush()
-            sleep(0.05)
-        # terminal.write('\rDone!    ')
-        terminal.flush()
 
+        t = Thread(target=animate)
+        t.start()
 
-    t = Thread(target=animate)
-    t.start()
+        # Chay lenh tai day
+        function()
 
-
-    # Chay lenh tai day
-    config = configparser.ConfigParser()
-    config.read(r'config.ini')
-    conn = f'mssql://{config["daknong"]["user"]}:{urllib.parse.quote_plus(config["daknong"]["pass"])}@{config["daknong"]["host"]}/{config["daknong"]["db"]}?driver={config["daknong"]["driver"]}'
-
-
-    start_time = time.time()
-
-    # Phân đoạn df
-    for chunk_dataframe in pd.read_sql('select * from ht_khaisinh', conn, chunksize=1000):
-        pass
-
-    # clear()
-    print("\rPandas finished --- %s seconds ---" % (time.time() - start_time))
-
-    done = True
+        clear()
+        done = True
+        
+    return wrapper
 
 
 # sửa đổi metadata file pdf
@@ -931,5 +919,3 @@ if __name__ == '__main__':
 # split_pdf(r'E:\tay ninh\ubnd 2014 chua nen', r'E:\tay ninh\ubnd 2014 chua nen')
 
 # split_merge_pdf_ocr(r'E:\Tay Ninh\CHUA OCR')
-
-# detect_size(r'C:\Users\Administrator\Downloads\test\page_1.jpg')
