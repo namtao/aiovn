@@ -1,22 +1,40 @@
 import collections
+import configparser
 import datetime
+import glob
+import itertools
 import json
 import os
+import pathlib
+import random
 import re
 import shutil
 import string
+import time
+import urllib.parse
 from collections import Counter
 from functools import wraps
+from itertools import cycle
 from pathlib import Path
+from sys import stdout as terminal
+from threading import Thread
+from time import sleep
 
 import img2pdf
 import inquirer
 import numpy as np
+import openpyxl
+import pandas as pd
 import pikepdf
+import pyautogui
 import PyPDF2
+import pyperclip
+import xlsxwriter
 from getpass4 import getpass
+from openpyxl import Workbook
 from pdf2image import convert_from_path
 from PIL import Image
+from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 
 dictEx = {}
 totalPdfPages = 0
@@ -26,6 +44,8 @@ countFilesNotThumbs = 0
 arr = np.array([])
 countModifier = 0
 pathTarget = ''
+A4_SIZE = 8699840
+
 
 config_file = os.path.join(os.getenv('APPDATA'), 'filex.config')
 
@@ -59,6 +79,48 @@ def get_files(function):
             countDirs += len(dirs)
             countFiles += len(files)
     return wrapper
+
+
+#animation loading cmd
+def loading():
+    done = False
+
+
+    def clear():
+        return os.system('cls')
+
+
+    def animate():
+        for c in itertools.cycle(['⠷', '⠯', '⠟', '⠻', '⠽', '⠾']):
+            if done:
+                break
+            terminal.write('\rLoading ' + c + ' ')
+            terminal.flush()
+            sleep(0.05)
+        # terminal.write('\rDone!    ')
+        terminal.flush()
+
+
+    t = Thread(target=animate)
+    t.start()
+
+
+    # Chay lenh tai day
+    config = configparser.ConfigParser()
+    config.read(r'config.ini')
+    conn = f'mssql://{config["daknong"]["user"]}:{urllib.parse.quote_plus(config["daknong"]["pass"])}@{config["daknong"]["host"]}/{config["daknong"]["db"]}?driver={config["daknong"]["driver"]}'
+
+
+    start_time = time.time()
+
+    # Phân đoạn df
+    for chunk_dataframe in pd.read_sql('select * from ht_khaisinh', conn, chunksize=1000):
+        pass
+
+    # clear()
+    print("\rPandas finished --- %s seconds ---" % (time.time() - start_time))
+
+    done = True
 
 
 # sửa đổi metadata file pdf
@@ -413,6 +475,363 @@ def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
 
+def split_pdf(pathPdfInput, pathPdfOutput):
+    for root, dirs, files in os.walk(pathPdfInput):
+        for file in files:
+            pattern = re.compile(".*pdf$")
+
+            if pattern.match(file):
+                inputpdf = PdfFileReader(os.path.join(root, file), strict=False)
+                fileName = pathlib.Path(file).stem
+                parentPath = pathlib.Path(file).parent.absolute()
+
+                pdfs = []
+
+                for i in range(inputpdf.numPages):
+                    output = PdfFileWriter()
+                    output.addPage(inputpdf.getPage(i))
+                    with open("%s#%s.pdf" % (os.path.join(pathPdfOutput, fileName), str(i).zfill(5)), "wb") as outputStream:
+                        output.write(outputStream)
+                        pdfs.append("%s#%s.pdf" % (os.path.join(pathPdfOutput, fileName), i))
+                        outputStream.close()
+                        
+
+def merge_pdf(lstFilesInput, fileNameOutput):
+    merger = PdfFileMerger()
+    for file in lstFilesInput:
+        merger.append(file)
+    merger.write(fileNameOutput)
+
+
+def setDpiImg2Pdf():
+    # storing image path
+    img_path = r"C:\Users\Nam\Downloads\New folder\result.jpg"
+
+    # storing pdf path
+    pdf_path = r"C:\Users\Nam\Downloads\New folder\result.pdf"
+
+    dpix = dpiy = 300
+    layout_fun = img2pdf.get_fixed_dpi_layout_fun((dpix, dpiy))
+
+    # opening image
+    image = Image.open(img_path)
+
+    # converting into chunks using img2pdf
+    pdf_bytes = img2pdf.convert(image.filename, layout_fun=layout_fun)
+
+    # opening or creating pdf file
+    file = open(pdf_path, "wb")
+
+    # writing pdf files with chunks
+    file.write(pdf_bytes)
+
+    # closing image file
+    image.close()
+
+    # closing pdf file
+    file.close()
+
+    # output
+    print("Successfully made pdf file")
+
+
+def detect_size(img):
+    # Disable PIL DecompositionBomb threshold for reading large images.
+    pil_max_px = Image.MAX_IMAGE_PIXELS
+    Image.MAX_IMAGE_PIXELS = None
+    im = Image.open(img)
+    Image.MAX_IMAGE_PIXELS = pil_max_px
+
+    print('{}'.format(im.size))
+    print((im.width*im.height)/A4_SIZE)
+
+              
+def spit_and_merge_pdf(pathPdfInput, bytes=10485760):
+    if (os.path.getsize(pathPdfInput) >= 10485760):
+        inputpdf = PdfFileReader(pathPdfInput, "rb")
+        fileName = pathlib.Path(pathPdfInput).stem
+        parentPath = pathlib.Path(pathPdfInput).parent.absolute()
+
+        sum = 0
+        pdfs = []
+
+        for i in range(inputpdf.numPages):
+            output = PdfFileWriter()
+            output.addPage(inputpdf.getPage(i))
+            with open("%s.%s.pdf" % (fileName, i), "wb") as outputStream:
+                output.write(outputStream)
+                pdfs.append("%s.%s.pdf" % (fileName, i))
+                outputStream.close()
+
+        merger = PdfFileMerger()
+        index = 0
+        for page in pdfs:
+            # get size file
+            sum += os.path.getsize(page)
+            # nếu dung lượng các trang chưa quá 10MB thì vẫn thêm vào sau
+            if (sum < bytes):
+                merger.append(page)
+
+            else:
+                if (page == pdfs[-1]):
+                    merger.append(page)
+                merger.write(r"%s\%s.%s.pdf" %
+                             (parentPath, fileName, index + 1))
+                with open(r"split.txt", "a", encoding="utf-8") as fp:
+                    fp.write(r"%s\%s.%s.pdf" %
+                             (parentPath, fileName, index + 1) + '\n')
+                merger = PdfFileMerger()
+                merger.append(page)
+                index += 1
+                sum = os.path.getsize(page)
+
+        try:
+            listPdf = glob.glob("*pdf")
+            for page in listPdf:
+                os.remove(page)
+                # page.unlink()
+        except:
+            pass
+
+
+def split_merge_pdf_ocr(folderPath):
+    # lấy danh sách tên file cần ghép
+    for root, dirs, files in os.walk(folderPath):
+        dict = {}
+        for file in files:
+            if ('#' in file):
+
+                i = os.path.join(root, file.split('#')[0] + '.pdf')
+
+                if (i not in dict.keys()):
+                    dict[i] = []
+
+                dict[i].append(os.path.join(root, file))
+
+    # thực hiện ghép
+    for k, v in dict.items():
+        merge_pdf(v, k)
+
+
+def write_to_excel(arr, filename):
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = 'data'
+    for row in range(1, len(arr)+1):
+        for col in range(1, len(arr[0])+1):
+            sheet.cell(column=col, row=row,
+                       value="{0}".format(arr[row-1][col-1]))
+
+    workbook.save(filename=filename)
+    workbook.close()
+
+
+def read_from_excel(path):
+    # To open the workbook
+    # workbook object is created
+    wb_obj = openpyxl.load_workbook(path)
+
+    # Get workbook active sheet object
+    # from the active attribute
+    sheet_obj = wb_obj.active
+    max_col = sheet_obj.max_column
+    max_row = sheet_obj.max_row
+
+    # list all row excel
+    lst = []
+
+    # list title
+    lstTitle = []
+
+    # Loop will print all rows name
+    for i in range(1, max_row + 1):
+        # list noi dung
+        arr = []
+
+        # Loop will print all column name
+        for j in range(1, max_col + 1):
+            # doc thong tin trong o
+            cell_obj = sheet_obj.cell(row=i, column=j)
+
+            if (cell_obj.value is not None):
+                # compound unicode cell_obj
+                content = compound_unicode(str(cell_obj.value))
+
+                # nếu là dòng đầu tiên thì thêm vào list tiêu đề
+                if (i == 1):
+                    lstTitle.append(content)
+                else:
+                    arr.append(content)
+            else:
+                # nếu trống thông tin list noi dung se them ''
+                arr.append('')
+
+        # thêm vào danh sách nội dung dòng
+        lst.append(arr)
+
+    return lst
+
+
+def change_column():
+    # use glob to get all the csv files
+    # in the folder
+    path = r'C:\Users\ADMIN\Downloads\New folder (2)'
+    csv_files = glob.glob(os.path.join(path, "*.xlsx"))
+
+    # loop over the list of excel files
+    for f in csv_files:
+
+        # read the excel file
+        df = pd.read_excel(f)
+
+        df_new = pd.read_excel(f)
+
+        # set header
+        df_new.columns = ['Số tt', 'Sổ KHVB', 'Ngày tháng VB',
+                          'Trích yếu nội dung', 'Tác giả văn bản', 'Tờ số', 'ghi chú']
+
+        df_new['Số tt'] = df['Số tt']
+        df_new['Sổ KHVB'] = df['Sổ KHVB']
+        df_new['Ngày tháng VB'] = df['Ngày tháng VB']
+        df_new['Trích yếu nội dung'] = df['Trích yếu nội dung']
+        df_new['Tác giả văn bản'] = df['Tác giả văn bản']
+        df_new['Tờ số'] = df['Tờ số']
+        df_new['ghi chú'] = df['ghi chú']
+
+        os.remove(f)
+        writer = pd.ExcelWriter(f, engine='xlsxwriter')
+
+        # df_new.to_excel(f, index=False)
+
+        df_new.to_excel(writer, sheet_name='Sheet1', index=False)
+
+        workbook = writer.book
+        worksheet = writer.sheets['Sheet1']
+
+        border_fmt = workbook.add_format(
+            {'bottom': 2, 'top': 2, 'left': 2, 'right': 2})
+        worksheet.conditional_format(xlsxwriter.utility.xl_range(0, 0, len(df_new), len(
+            df_new.columns) - 1), {'type': 'no_errors', 'format': border_fmt})
+
+        format_header = workbook.add_format()
+        format_header.set_valign('vcenter')
+        format_header.set_align('center')
+        format_header.set_bold()
+        format_header.set_text_wrap()
+
+        format_data = workbook.add_format()
+        format_data.set_valign('vcenter')
+        format_data.set_align('center')
+        format_data.set_text_wrap()
+
+        worksheet.set_column('A:Z', 25, format_data)
+        worksheet.set_row(0, 30, format_header)
+
+        writer.save()
+
+
+def spam():
+    print("Tool Spam 1.0")
+    msg = input("Nhập nội dung cần spam: ").split(" || ")
+    n = int(input("Nhập số lần Spam: "))
+    m = float(input("Nhập thời gian delay: "))
+
+    print("Chuẩn bị")
+    # Đếm ngược 5 giây
+    for i in range(5, 0, -1):
+        print(i, end="...", flush='True')
+        time.sleep(1)
+    print("Bắt đầu")
+
+    # SPAM
+    for i in range(n):
+        pyperclip.copy(random.choice(msg))
+        pyautogui.hotkey("ctrl", "v")
+        pyautogui.press("enter")
+        time.sleep(m)  # Delay
+
+
+def auto_write():
+    # while True:
+    # sohieu = input('Số hiệu: ')
+    # name = input('Tên: ')
+    # date = input('Ngày: ')
+
+    # # 432,250
+    # # 83, 730
+
+    # # điền số hiệu
+    # pyperclip.copy(sohieu + ' /STP-LLTP')
+    # pyautogui.click(432,250)
+    # pyautogui.hotkey("ctrl", "v")
+
+    # # điền trích yếu
+    # pyperclip.copy('PHIẾU LÝ LỊCH TƯ PHÁP CỦA ' + name)
+    # pyautogui.press('tab')
+    # pyautogui.hotkey("ctrl", "v")
+
+    # # điền ngày tháng có hiệu lực
+    # pyperclip.copy(date)
+    # pyautogui.press('tab')
+    # pyautogui.hotkey("ctrl", "v")
+
+    # # điền ngày tháng ban hành
+    # pyperclip.copy(date)
+    # pyautogui.press('tab')
+    # pyautogui.press('tab')
+    # pyautogui.hotkey("ctrl", "v")
+
+    # # điền tên tổ chức
+    # pyperclip.copy(name)
+    # pyautogui.press('tab')
+    # pyautogui.press('tab')
+    # pyautogui.hotkey("ctrl", "v")
+
+    # pyautogui.click(83, 730)
+    # pyautogui.hotkey("alt", "tab")
+    # print('------------------------------')
+
+    # crawl data website => chuyển thành mp3
+
+    # pyautogui.moveTo(83, 730)
+
+
+    pyautogui.hotkey("alt", "tab")
+    for i in range(318):
+        pyautogui.press('F2')
+        pyautogui.press('right')
+        pyautogui.write('(1)')
+        pyautogui.press('tab')
+
+
+def auto_click():
+    # print ('di chuyển chuột đến vị trí cần click')
+    # time.sleep(5)
+
+    # x, y = pyautogui.position()
+
+    # i, j = pyautogui.position()
+
+    # for _ in range(10):
+    #     pyautogui.click(x, y)
+    #     time.sleep(1)
+
+    # pyautogui.press('a')
+
+
+    for _ in range(10000000):
+        # Point(x=1809, y=131): tải xuống
+        # Point(x=1594, y=635): save
+        # time.sleep(1)
+        pyautogui.click(1291, 595)
+        # time.sleep(1)
+        # pyautogui.click(1594, 635)
+        # pyautogui.hotkey('ctrl', 'w')
+
+        # pyautogui.hotkey('ctrl', 'c')
+        print(pyautogui.position())
+
+
 if __name__ == '__main__':
 
     if not (
@@ -508,3 +927,9 @@ if __name__ == '__main__':
             else:
                 print("Hẹn gặp lại!!!\n")
                 break
+
+# split_pdf(r'E:\tay ninh\ubnd 2014 chua nen', r'E:\tay ninh\ubnd 2014 chua nen')
+
+# split_merge_pdf_ocr(r'E:\Tay Ninh\CHUA OCR')
+
+# detect_size(r'C:\Users\Administrator\Downloads\test\page_1.jpg')
