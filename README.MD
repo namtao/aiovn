@@ -486,6 +486,7 @@ Khác
 pipreqs --force --encoding utf-8 "./"
 jupyter notebook
 isort .
+pyarmor obfuscate pythonfile.py
 ```
 
 ## PEP-8
