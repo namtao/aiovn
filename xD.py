@@ -43,7 +43,9 @@ countFiles = 0
 countFilesNotThumbs = 0
 arr = np.array([])
 countModifier = 0
-pathTarget = r'C:\Users\Administrator\Downloads\test'
+folderPath1 = ''
+folderPath2 = ''
+filePath = ''
 A4_SIZE = 8699840
 
 
@@ -124,21 +126,34 @@ def edit_metadata_pdf(root, file):
         print(str(e))
 
 
-@get_files
-def analysis_in_folder(root, file):
-    global dictEx
-    global totalPdfPages
+# phân tích thư mục
+@loading
+def analysis_in_folder():
 
-    # thống kê số file của từng loại file
-    if (os.path.splitext(file)[1] in dictEx.keys()):
-        dictEx[os.path.splitext(file)[1]] += 1
-    else:
-        dictEx[os.path.splitext(file)[1]] = 1
+    @get_files
+    def inner(root, file):
+        global dictEx
+        global totalPdfPages
 
-    # đếm trang pdf
-    if ('.pdf' in os.path.splitext(file)[1]):
-        readpdf = PyPDF2.PdfFileReader(open(os.path.join(root, file), 'rb'), strict=False)
-        totalPdfPages += readpdf.numPages
+        # thống kê số file của từng loại file
+        if (os.path.splitext(file)[1] in dictEx.keys()):
+            dictEx[os.path.splitext(file)[1]] += 1
+        else:
+            dictEx[os.path.splitext(file)[1]] = 1
+
+        # đếm trang pdf
+        if ('.pdf' in os.path.splitext(file)[1]):
+            readpdf = PyPDF2.PdfFileReader(open(os.path.join(root, file), 'rb'), strict=False)
+            totalPdfPages += readpdf.numPages
+
+    # không cần gán tham số fileFomat vào wapper bởi đã có giá trị mặc định
+    inner(folderPath1)
+
+    print(f"\rTổng số thư mục: \t{countDirs: >5,}\nTổng số file: \t\t{countFiles: >5,} \n")
+    for key, value in dictEx.items():
+        print(f"\rSố file {key: <22} {value}")
+
+    print(f'\n\rSố trang pdf: {totalPdfPages:>18}\n')
 
 
 # lấy tất cả file
@@ -777,21 +792,9 @@ if __name__ == '__main__':
 
             match answers['choise']:
                 case 'Phân tích thư mục':
-                    folderPath = input('Nhập đường dẫn cần phân tích: ')
-
-                    @loading
-                    def run():
-                        # không cần gán tham số fileFomat vào wapper bởi đã có giá trị mặc định
-                        analysis_in_folder(folderPath)
-
-                        print(f"\rTổng số thư mục: \t{countDirs: >9}\nTổng số file: \t\t{countFiles: >9} \n")
-                        for key, value in dictEx.items():
-                            print(f"Số file {key: <22} {value}")
-
-                        print(f'\nSố trang pdf: {totalPdfPages:>19}')
-
-                    run()
-
+                    folderPath1 = input('Nhập đường dẫn cần phân tích: ')
+                    analysis_in_folder()
+                    
                 case 'Phân tích file txt':
                     txtPath = input('Nhập đường đẫn file text: ')
 

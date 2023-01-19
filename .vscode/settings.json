@@ -4,6 +4,7 @@
   "editor.wrappingIndent": "same",
   "editor.wordWrapColumn": 120,
   "editor.formatOnSave": true,
+  "editor.stickyScroll.enabled": true,
 
   "python.formatting.provider": "autopep8",
   "editor.defaultFormatter": "esbenp.prettier-vscode",

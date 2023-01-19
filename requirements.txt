@@ -125,7 +125,7 @@ notebook_shim==0.2.2
 numpy==1.23.4
 omymodels==0.13.0
 opencv-contrib-python==4.6.0.66
-opencv-python==4.6.0.66
+opencv-python==4.5.5.64
 opencv-python-headless==4.5.4.60
 openpyxl==3.0.10
 ordered-set==4.1.0
@@ -169,7 +169,7 @@ PyGetWindow==0.0.9
 Pygments==2.13.0
 pyinstaller==5.6.2
 pyinstaller-hooks-contrib==2022.13
-PyJWT==2.6.0c
+PyJWT==1.7.1
 pylint==2.15.6
 pymongo==4.3.2
 PyMsgBox==1.0.9
