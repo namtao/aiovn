@@ -49,17 +49,17 @@ filePath = ''
 A4_SIZE = 8699840
 
 
-config_file = os.path.join(os.getenv('APPDATA'), 'filex.config')
+# config_file = os.path.join(os.getenv('APPDATA'), 'filex.config')
 
-chucnang = {"Phân tích thư mục": "N",
-            "Phân tích file txt": "N",
-            "Tìm kiếm tệp tin": "N",
-            "Kiểm tra trùng tên": "N",
-            "Thời gian tệp tin thay đổi": "N",
-            "Tạo cấu trúc theo tên tệp tin": "N",
-            "Sửa đổi metadate pdf": "N",
-            "JPG => PDF": "N",
-            "PDF => JPG": "N",
+chucnang = {"Phân tích thư mục": "Y",
+            "Phân tích file txt": "Y",
+            "Tìm kiếm tệp tin": "Y",
+            "Kiểm tra trùng tên": "Y",
+            "Thời gian tệp tin thay đổi": "Y",
+            "Tạo cấu trúc theo tên tệp tin": "Y",
+            "Sửa đổi metadate pdf": "Y",
+            "JPG => PDF": "Y",
+            "PDF => JPG": "Y",
 
             "Cấu hình": "Y"}
 
@@ -231,8 +231,8 @@ def config():
 
     chucnang['Cấu hình'] = 'Y'
 
-    with open(config_file, mode='w', encoding="utf8") as f:
-        f.write(str(chucnang))
+    # with open(config_file, mode='w', encoding="utf8") as f:
+    #     f.write(str(chucnang))
 
 
 def hidden_password():
@@ -761,20 +761,20 @@ def auto_click():
 
 if __name__ == '__main__':
 
-    if not (
-            os.path.exists(config_file)):
-        with open(config_file, mode='a', encoding="utf8") as f:
-            f.write(str(chucnang))
+    # if not (
+    #         os.path.exists(config_file)):
+    #     with open(config_file, mode='a', encoding="utf8") as f:
+    #         f.write(str(chucnang))
 
-    else:
-        if os.path.getsize(config_file) == 0:
-            os.remove(config_file)
+    # else:
+    #     if os.path.getsize(config_file) == 0:
+    #         os.remove(config_file)
 
-            with open(config_file, mode='w', encoding="utf8") as f:
-                f.write(str(chucnang))
-        else:
-            with open(config_file, mode='r', encoding="utf8") as f:
-                chucnang = json.loads(f.readlines()[0].replace('\'', '\"'))
+    #         with open(config_file, mode='w', encoding="utf8") as f:
+    #             f.write(str(chucnang))
+    #     else:
+    #         with open(config_file, mode='r', encoding="utf8") as f:
+    #             chucnang = json.loads(f.readlines()[0].replace('\'', '\"'))
 
     while True:
         print("-----Công cụ làm việc với Files-----")

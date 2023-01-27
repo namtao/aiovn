@@ -13,14 +13,16 @@ with open(r'other\lst2.txt', 'r') as fr:
 
         lst2 = fr.read().splitlines()
 
-# lstDuplicate = list(set(lstPdf1) & set(lstPdf2))
-lstNotDuplicate = list(set(lst2) - set(lst1))
+# lstDuplicate = list(set(lst1) & set(lst2))
+lstNotDuplicate = list(set(lst1) - set(lst2))
 
 with open(r'other\ketqua.txt', 'w+') as fw:
 
         try:
 
             for i in lstNotDuplicate:
+            # for i in lstDuplicate:
+
                 fw.write(i + '\n')
 
         except Exception as e:
