@@ -71,6 +71,10 @@ def get_files(function):
         global countDirs
         global countFiles
         global countFilesNotThumbs
+        
+        countDirs = 0
+        countFiles = 0
+        countFilesNotThumbs = 0
 
         for root, dirs, files in os.walk(folderPath):
             for file in files:
@@ -134,6 +138,9 @@ def analysis_in_folder():
     def inner(root, file):
         global dictEx
         global totalPdfPages
+        
+        dictEx = {}
+        totalPdfPages = 0
 
         # thống kê số file của từng loại file
         if (os.path.splitext(file)[1] in dictEx.keys()):
@@ -160,6 +167,7 @@ def analysis_in_folder():
 @get_files
 def get_fullname(root, file):
     global arr
+    arr = np.array([])
     arr = np.append(arr, os.path.join(root, file))
 
 
@@ -173,6 +181,7 @@ def get_basename(root, file):
 @get_files
 def check_modifier_file(root, file):
     global countModifier
+    countModifier = 0
     date_modifier = os.path.getmtime(os.path.join(root, file))
     date_create = os.path.getctime(os.path.join(root, file))
     getDate = datetime.datetime.now().strftime("%d/%m/%Y")
@@ -796,11 +805,11 @@ if __name__ == '__main__':
                     analysis_in_folder()
                     
                 case 'Phân tích file txt':
-                    txtPath = input('Nhập đường đẫn file text: ')
+                    filePath = input('Nhập đường đẫn file text: ')
 
                     @loading
                     def run():
-                        textfile_analysis(txtPath)
+                        textfile_analysis(filePath)
                     run()
 
                 case 'Tìm kiếm tệp tin':
