@@ -59,6 +59,8 @@ def thongkehotich():
     connViThanh = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
     connLongMy = f'mssql://@{config["longmy"]["host"]}/{config["longmy"]["db"]}?driver={config["longmy"]["driver"]}'
     connViThuy = f'mssql://@{config["vithuy"]["host"]}/{config["vithuy"]["db"]}?driver={config["vithuy"]["driver"]}'
+    connTXLongMy = f'mssql://@{config["txlongmy"]["host"]}/{config["txlongmy"]["db"]}?driver={config["txlongmy"]["driver"]}'
+    
 
     print("Thống kê hộ tịch")
 
@@ -69,7 +71,7 @@ def thongkehotich():
            931: ['Thị xã Ngã Bảy', connViThanh],
            935: ['Vị Thủy', connViThuy],
            936: ['Huyện Long Mỹ', connLongMy],
-           937: ['Thị xã Long Mỹ', connViThanh]}
+           937: ['Thị xã Long Mỹ', connTXLongMy]}
 
     d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [],
          'Số lượng biên mục': [], 'Tỷ lệ biên mục': [], 'Tổng số trường': []}
