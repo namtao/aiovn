@@ -288,9 +288,10 @@ def pdf2jpg(pdfPath, jpgPath):
                     image_counter = image_counter + 1
 
 
-def textfile_analysis(textfile):
+@loading
+def textfile_analysis():
     # script_name = sys.argv[0]
-    script_name = 'filex.py'
+    script_name = 'xD.py'
 
     res = {
         "total_lines": "",
@@ -302,7 +303,7 @@ def textfile_analysis(textfile):
 
     try:
         # textfile = sys.argv[1]
-        with open(textfile, "r", encoding="utf_8") as f:
+        with open(filePath, "r", encoding="utf_8") as f:
 
             data = f.read()
             res["total_lines"] = data.count(os.linesep)
@@ -319,7 +320,7 @@ def textfile_analysis(textfile):
     except IndexError:
         print(f'\rUsage: {script_name} TEXTFILE')
     except IOError:
-        print(f'\r{textfile} cannot be opened.')
+        print(f'\r{filePath} cannot be opened.')
 
     print(f'\r{res}')
 
@@ -806,11 +807,7 @@ if __name__ == '__main__':
                     
                 case 'Phân tích file txt':
                     filePath = input('Nhập đường đẫn file text: ')
-
-                    @loading
-                    def run():
-                        textfile_analysis(filePath)
-                    run()
+                    textfile_analysis()
 
                 case 'Tìm kiếm tệp tin':
                     fileSearch = input('Nhập tên file: ')
