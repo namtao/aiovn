@@ -52,12 +52,12 @@ A4_SIZE = 8699840
 # config_file = os.path.join(os.getenv('APPDATA'), 'filex.config')
 
 chucnang = {"Phân tích thư mục": "Y",
-            "Phân tích file txt": "Y",
-            "Tìm kiếm tệp tin": "Y",
-            "Kiểm tra trùng tên": "Y",
-            "Thời gian tệp tin thay đổi": "Y",
+            "Phân tích file txt": "N",
+            "Tìm kiếm tệp tin": "N",
+            "Kiểm tra trùng tên": "N",
+            "Thời gian tệp tin thay đổi": "N",
             "Tạo cấu trúc theo tên tệp tin": "Y",
-            "Sửa đổi metadate pdf": "Y",
+            "Sửa đổi metadate pdf": "N",
             "JPG => PDF": "Y",
             "PDF => JPG": "Y",
 
@@ -133,7 +133,7 @@ def edit_metadata_pdf(root, file):
 # phân tích thư mục
 @loading
 def analysis_in_folder():
-
+    
     @get_files
     def inner(root, file):
         global dictEx
@@ -803,6 +803,7 @@ if __name__ == '__main__':
             match answers['choise']:
                 case 'Phân tích thư mục':
                     folderPath1 = input('Nhập đường dẫn cần phân tích: ')
+
                     analysis_in_folder()
                     
                 case 'Phân tích file txt':

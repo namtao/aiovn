@@ -14,4 +14,5 @@ with open(r'projects\pdf.txt', 'r') as fr:
             index+=1
             print(f'{index} - {sum}')
     except:
+        index += 1
         pass
