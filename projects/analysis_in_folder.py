@@ -2,7 +2,8 @@
 import os
 
 import PyPDF2
-from decor import get_files, loading
+
+from projects.decor import get_files, loading
 
 dictEx = {}
 totalPdfPages = 0

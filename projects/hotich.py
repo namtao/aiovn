@@ -1,13 +1,15 @@
 
 import configparser
-import logging
 import os
 import re
-from collections import Counter, OrderedDict
+import shutil
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from decor import get_files
 
+pathTarget = ''
 
 def merge_dict(dict1, dict2):
     for i in dict2.keys():
@@ -18,7 +20,23 @@ def merge_dict(dict1, dict2):
     return dict1
 
 
-
+@get_files
+def create_struct(root, file):
+    try:
+        head, tail = (os.path.split(
+            Path(os.path.join(root, file))))
+        if (len(tail.split('.')) >= 6):
+            newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
+                1], tail.split('.')[2], tail.split('.')[3])
+            Path(newPath).mkdir(parents=True, exist_ok=True)
+            if not os.path.exists(os.path.join(newPath, tail.replace(' ', ''))):
+                shutil.move(os.path.join(root, file), os.path.join(
+                    newPath, tail.replace(' ', '')))
+            else:
+                pass
+    except:
+        pass
+    
 def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
