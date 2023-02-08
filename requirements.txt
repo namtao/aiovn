@@ -125,7 +125,7 @@ notebook_shim==0.2.2
 numpy==1.23.4
 omymodels==0.13.0
 opencv-contrib-python==4.6.0.66
-opencv-python==4.5.5.64
+opencv-python==4.6.0.66
 opencv-python-headless==4.5.4.60
 openpyxl==3.0.10
 ordered-set==4.1.0
@@ -157,6 +157,7 @@ pure-eval==0.2.2
 py==1.11.0
 py-models-parser==0.6.0
 py4j==0.10.9.5
+pyarmor==7.7.4
 pyarrow==10.0.1
 pyasn1==0.4.8
 PyAutoGUI==0.9.53

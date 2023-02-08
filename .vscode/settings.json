@@ -91,5 +91,6 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "python.analysis.extraPaths": ["./projects"]
+  "python.analysis.extraPaths": ["./projects"],
+  "git.ignoreLimitWarning": true
 }
