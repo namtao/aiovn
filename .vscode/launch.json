@@ -8,7 +8,7 @@
         {
             "name": "FastAPI",
             "type": "python",
-            "cwd": "${workspaceFolder}/website",
+            "cwd": "${workspaceFolder}/web",
             "request": "launch",
             "module": "uvicorn",
             "args": [
