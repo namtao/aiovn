@@ -33,7 +33,7 @@ cmake==3.24.2
 colorama==0.4.5
 comtypes==1.1.14
 contourpy==1.0.6
-cryptography==38.0.4
+cryptography==39.0.1
 cycler==0.11.0
 dask==2022.10.0
 dask-sql==2022.10.1
