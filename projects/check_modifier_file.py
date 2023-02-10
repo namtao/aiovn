@@ -1,7 +1,7 @@
 import datetime
 import os
 
-from projects.decor import get_files
+from decor import get_files
 
 countModifier = 0
 
@@ -12,9 +12,9 @@ def check_modifier_file(root, file):
     date_modifier = os.path.getmtime(os.path.join(root, file))
     date_create = os.path.getctime(os.path.join(root, file))
     getDate = datetime.datetime.now().strftime("%d/%m/%Y")
-    if (datetime.date.fromtimestamp(max(date_modifier, date_create)).strftime("%d/%m/%Y") in getDate):
-        countModifier += 1
+    if ('2023' in datetime.date.fromtimestamp(max(date_modifier, date_create)).strftime("%d/%m/%Y")):
+        print(os.path.join(root, file))
         
 
-# check_modifier_file(input('Nhập đường dẫn cần kiểm tra: '))
+check_modifier_file(input('Nhập đường dẫn cần kiểm tra: '))
 # print(countModifier)
