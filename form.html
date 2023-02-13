@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .required {
+            color: red;
+        }
+
+        .pl-20 {
+            padding-left: 20px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="block-dashboard__title">
+                        <h1>Edit Account Information</h1>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name">First Name <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="first-name" placeholder="Your First Name" required
+                            value="qwqw">
+                        <div class="invalid-feedback">
+                            This is a required field
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="first-name" placeholder="Your Last Name" required
+                            value="qwqwqw">
+                        <div class="invalid-feedback">
+                            This is a required field
+                        </div>
+                    </div>
+                    <div class="form-group pl-20">
+                        <input class="form-check-input" type="checkbox" id="change-email" value="change">
+                        <label class="form-check-label" for="change-email">Change Email</label>
+                    </div>
+                    <div class="form-group pl-20">
+                        <input class="form-check-input" type="checkbox" id="change-pass" value="change">
+                        <label class="form-check-label" for="change-pass">Change Password</label>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">SAVE</button>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="emailpassfields" style="display:none;">
+                        <div class="block-dashboard__title">
+                            <h1 id="dynamic-title"></h1>
+                        </div>
+                        <div id="dynamic-fields">
+
+                        </div>
+
+                        <script id="change-email-fields" type="text/x-custom-template">
+                            <div class="change-email-fields">
+                              <div class="form-group">
+                                <label for="input-email">Email <span class="required">*</span></label>
+                                <input type="email" class="form-control" id="input-email" placeholder="Your Email" value="qwqwq@tonercity.com.au" required >
+                                <div class="invalid-feedback">
+                                  This is a required field
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="current-password">Current Password <span class="required">*</span></label>
+                                <input type="password" class="form-control" id="current-password" required >
+                                <div class="invalid-feedback">
+                                  This is a required field
+                                </div>
+                              </div>
+                            </div>
+                          </script>
+
+                        <script id="change-password-fields" type="text/x-custom-template">
+                            <div class="change-password-fields">
+                              <div class="form-group">
+                                <label for="new-password">New Password <span class="required">*</span></label>
+                                <input type="password" class="form-control" id="new-password" required>
+                                <div class="invalid-feedback">
+                                  This is a required field
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="confirm-password">Confirm New Password <span class="required">*</span></label>
+                                <input type="password" class="form-control" id="confirm-password" required>
+                                <div class="invalid-feedback">
+                                  This is a required field
+                                </div>
+                              </div>
+                            </div>
+                          </script>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div style="text-align:center;margin-top:75px;margin-bottom:30px;">Demo by <a href="http://devtips.webdevpuneet.com"
+            target="_blank">devtips.webdevpuneet.com</a></div>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+
+            // Account Information Hide Show Email Password fields
+            var cef_t = "Change Email";
+            var cpf_t = "Change Password";
+            var cepf_t = "Change Email and Password";
+
+            var cef = $('#change-email-fields').html();
+            var cpf = $('#change-password-fields').html();
+
+            $('input#change-email[type="checkbox"]').click(function () {
+                if ($(this).prop("checked") == true) {
+                    $('#emailpassfields').show();
+                    $('#dynamic-fields').append(cef);
+                    if ($('input#change-pass[type="checkbox"]').prop("checked") == true) {
+                        $('#dynamic-title').html(cepf_t);
+                    } else {
+                        $('#dynamic-title').html(cef_t);
+                    }
+                }
+                else if ($(this).prop("checked") == false) {
+                    $('#dynamic-fields .change-email-fields').remove();
+                    if ($('input#change-pass[type="checkbox"]').prop("checked") == true) {
+                        $('#dynamic-title').html(cpf_t);
+                    } else {
+                        $('#dynamic-title').html('');
+                        $('#emailpassfields').hide();
+                    }
+                }
+            });
+
+            $('input#change-pass[type="checkbox"]').click(function () {
+                if ($(this).prop("checked") == true) {
+                    $('#emailpassfields').show();
+                    $('#dynamic-fields').append(cpf);
+                    if ($('input#change-email[type="checkbox"]').prop("checked") == true) {
+                        $('#dynamic-title').html(cepf_t);
+                    } else {
+                        $('#dynamic-title').html(cpf_t);
+                    }
+                }
+                else if ($(this).prop("checked") == false) {
+                    $('#dynamic-fields .change-password-fields').remove();
+                    if ($('input#change-email[type="checkbox"]').prop("checked") == true) {
+                        $('#dynamic-title').html(cef_t);
+                    } else {
+                        $('#dynamic-title').html('');
+                        $('#emailpassfields').hide();
+                    }
+                }
+            });
+        });
+
+        // Bootstrap Validations
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+</script>
