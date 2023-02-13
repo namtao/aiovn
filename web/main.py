@@ -10,8 +10,11 @@ from views import admin, user
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory=r"static"), name="static")
+app.mount("/resources", StaticFiles(directory=r"resources"), name="pdf")
 app.include_router(auth.router)
 app.include_router(db.router)
 app.include_router(user.router)
+app.include_router(admin.router)
+
 
 

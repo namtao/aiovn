@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Cấu hình biểu mẫu{% endblock %}
+{% block content %}
+<div class="col-md-12 col-xl-12">
+    <h2>Cấu hình biểu mẫu</h2>
+</div>
+
+<div class="col-md-12 col-xl-5">
+    <div class="card">
+        <form id="dynamic_inputs" method="post">
+            <p>
+                <label for="name">Tên trường: </label>
+                <input id="name" type="text" name="name">
+                <select name="input_type" id="input_type">
+                    <option value="">-- Loại dữ liệu --</option>
+                    <option value="1">Text</option>
+                    <option value="2">Textarea</option>
+                    <option value="3">File</option>
+                </select>
+                <span id="addField">Thêm trường</span>
+            </p>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#addField').on('click', function () {
+            var $name = $('#name').val()
+
+            $(".error").remove();
+            $(".values").remove();
+            if ($("#input_type").val() != "" && $name != "") {
+                var $type = $("#input_type").val();
+                if ($type == 1) {
+                    var $node = '<p><label for="' + $name + '">' + $name + ': </label><input type="text" name="' + $name + '" id="' + $name + '"/><span class="removeField">Xóa</span></p>';
+                } else if ($type == 2) {
+                    var $node = '<p><label for="' + $name + '">' + $name + ': </label><textarea name="' + $name + '" id="' + $name + '"></textarea><span class="removeField">Xóa</span></p>';
+                } else if ($type == 3) {
+                    var $node = '<p><label for="' + $name + '">' + $name + ': </label><input type="file" name="file' + $name + '" id="' + $name + '"/><span class="removeField">Xóa</span></p>';
+                }
+                $('p').last().after($node);
+            } else {
+                $error_msg = "<p style='color:red;' class='error'>Chọn tên trường và loại dữ liệu<p>";
+                $('form').prepend($error_msg);
+            }
+        });
+
+        $('form').on('click', '.removeField', function () {
+            $(this).parent().remove();
+        });
+    });
+</script>
+{% endblock %}

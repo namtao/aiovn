@@ -86,15 +86,15 @@ def copy_nen(dir1, dir2, pathTarget):
                 head, tail = (os.path.split(
                     Path(os.path.join(root, file))))
 
-                if (tail.split('.')[2] not in lstMaPhuong):
+                # if (tail.split('.')[2] not in lstMaPhuong):
 
-                    print(os.path.join(root, file))
-                    newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
-                        1], tail.split('.')[2], tail.split('.')[3])
+                print(os.path.join(root, file))
+                newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
+                    1], tail.split('.')[2], tail.split('.')[3])
 
-                    Path(newPath).mkdir(parents=True, exist_ok=True)
-                    shutil.copy(os.path.join(root, file),
-                                os.path.join(newPath, file))
+                Path(newPath).mkdir(parents=True, exist_ok=True)
+                shutil.copy(os.path.join(root, file),
+                            os.path.join(newPath, file))
 
 
 def remove_nen(dir1, dir2):
@@ -159,23 +159,23 @@ def create_struct(pathRoot, pathTarget):
     print(count)
 
 
-# xóa temp
-remove_temp(r'E:\tay ninh\ubnd 2014 chua nen\tach')
+# # xóa temp
+# remove_temp(r'E:\tay ninh\ubnd 2014 chua nen\tach')
 
-# xóa file đã nén
-remove_nen(r'E:\tay ninh\ubnd 2014 chua nen\tach', r'E:\tay ninh\da ocr\tay ninh\ubnd 2014 chua nen\tach')
+# # xóa file đã nén
+# remove_nen(r'E:\tay ninh\ubnd 2014 chua nen\tach', r'E:\tay ninh\da ocr\tay ninh\ubnd 2014 chua nen\tach')
 
-# # copy nén vị thanh
-# copy_nen(r'D:\HoTich\HOTICH_HG\source - haugiang\Files',
-#          r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen', r'E:\OCR NEN\CHUA NEN\a\VI THANH')
+# copy nén vị thanh
+# copy_nen(r'D:\HoTich\HOTICH_HG\source - haugiang\Files', r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen',
+#          r'C:\Users\Administrator\Downloads\New folder\chua nen vi thanh')
 
 # # copy nén vị thủy
 # copy_nen(r'D:\HoTich\HOTICH_HG\source - vithuy\Files',
 #          r'D:\HoTich\HOTICH_HG\source - vithuy\FilesNen', r'E:\OCR NEN\CHUA NEN\a\VI THUY')
 
 # # copy nén long mỹ
-# copy_nen(r'D:\HoTich\HOTICH_HG\soucre - hlongmy\Files',
-#          r'D:\HoTich\HOTICH_HG\soucre - hlongmy\FilesNen', r'E:\OCR NEN\CHUA NEN\a\LONG MY')
+copy_nen(r'D:\HoTich\HOTICH_HG\soucre - hlongmy\Files', r'D:\HoTich\HOTICH_HG\soucre - hlongmy\FilesNen',
+         r'C:\Users\Administrator\Downloads\New folder\chua nen long my')
 
 
 # # tạo cấu trúc thư mục

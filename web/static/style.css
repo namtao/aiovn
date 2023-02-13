@@ -28,32 +28,6 @@
     cursor: pointer;
 }
 
-label {
-    padding: 0 10px;
-    display: block;
-    float: left;
-    width: 150px;
-}
-
-input,
-textarea {
-    padding: 5px;
-    font-size: 14px;
-}
-
-input {
-    width: 250px;
-}
-
-textarea {
-    width: 290px;
-    height: 150px;
-}
-
-select {
-    padding: 5px;
-}
-
 .btn-submit {
     width: 100px;
     background-color: #428BCA;
