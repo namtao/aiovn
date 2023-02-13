@@ -72,7 +72,7 @@ def tksoluong(conn, sql):
 def thongkehotich():
     fileName = r'C:\Users\Administrator\Desktop\Thống kê hộ tịch.xlsx'
     config = configparser.ConfigParser()
-    config.read(r'config.ini')
+    config.read(r'web/config.ini')
 
     connViThanh = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
     connLongMy = f'mssql://@{config["longmy"]["host"]}/{config["longmy"]["db"]}?driver={config["longmy"]["driver"]}'

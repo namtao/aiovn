@@ -15,12 +15,15 @@ templates = Jinja2Templates(directory='templates')
 
 config = configparser.ConfigParser()
 
-config.read(r'D:\xD\config.ini')
+config.read(r'config.ini')
 conn = f'mssql://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
 
 
 engine = create_engine(
-    "mssql+pyodbc://sa:Addj%40123@WIN-QDNNB992THP\SQLEXPRESS/hotichdata?driver=ODBC+Driver+17+for+SQL+Server")
+    f'mssql+pyodbc://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/hotich?driver=ODBC+Driver+17+for+SQL+Server')
+
+# engine = create_engine(
+#     f'{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}')
 
 meta = MetaData()
 

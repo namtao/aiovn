@@ -1,8 +1,10 @@
 
 import configparser
+import json
 import urllib.parse
 
 import pandas as pd
+import pyodbc
 from api.auth import get_current_user
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import HTMLResponse
@@ -16,8 +18,32 @@ templates = Jinja2Templates(directory='templates')
 
 config = configparser.ConfigParser()
 
-config.read(r'D:\xD\config.ini')
+config.read(r'config.ini')
 conn = f'mssql://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
+
+
+def select(strSql):
+    config = configparser.ConfigParser()
+    config.read(r'config.ini')
+
+    conn = pyodbc.connect('Driver={SQL Server};'
+                          f'Server={config["hn"]["host"]};'
+                          f'Database={config["hn"]["db"]};'
+                          )
+    cursor = conn.cursor()
+
+    cursor.execute(strSql)
+
+    records = cursor.fetchall()
+    results = []
+    columnNames = [column[0] for column in cursor.description]
+
+    for record in records:
+        results.append(dict(zip(columnNames, record)))
+
+    json_results = json.dumps(results, ensure_ascii=False,
+                              default=str)
+    return json_results
 
 
 @router.get("/view", response_class=HTMLResponse)
@@ -54,10 +80,12 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        return templates.TemplateResponse("dataentry.html", {"request": request})
+
+        return templates.TemplateResponse(
+            "dataentry.html", {"request": request, "data": select('select TruongThongTin from Config')})
     except JWTError:
         raise credentials_exception
-    
+
 
 @router.get("/convert", response_class=HTMLResponse)
 async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
