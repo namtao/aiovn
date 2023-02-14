@@ -2,6 +2,7 @@
 import configparser
 import urllib.parse
 
+from config.config import db_connect
 from fastapi import APIRouter, Depends
 from fastapi.security import APIKeyCookie
 from fastapi.templating import Jinja2Templates
@@ -13,22 +14,7 @@ router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
 templates = Jinja2Templates(directory='templates')
 
-config = configparser.ConfigParser()
-
-config.read(r'config.ini')
-conn = f'mssql://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
-
-
-engine = create_engine(
-    f'mssql+pyodbc://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/hotich?driver=ODBC+Driver+17+for+SQL+Server')
-
-# engine = create_engine(
-#     f'{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}')
-
-meta = MetaData()
-
-conn = engine.connect()
-
+engine = db_connect('hn')
 
 def get_db():
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

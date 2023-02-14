@@ -6,6 +6,7 @@ import urllib.parse
 import pandas as pd
 import pyodbc
 from api.auth import get_current_user
+from config.config import pyodbc_connect, pyodbc_str
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.security import APIKeyCookie
@@ -16,20 +17,18 @@ router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
 templates = Jinja2Templates(directory='templates')
 
-config = configparser.ConfigParser()
+# config = configparser.ConfigParser()
 
-config.read(r'config.ini')
-conn = f'mssql://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
+# config.read(r'config.ini')
+# conn = f'mssql://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
 
 
 def select(strSql):
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
-    conn = pyodbc.connect('Driver={SQL Server};'
-                          f'Server={config["hn"]["host"]};'
-                          f'Database={config["hn"]["db"]};'
-                          )
+    conn = pyodbc_connect('hn')
+    
     cursor = conn.cursor()
 
     cursor.execute(strSql)
@@ -48,7 +47,7 @@ def select(strSql):
 
 @router.get("/view", response_class=HTMLResponse)
 async def view(request: Request, tableName: str):
-    df = pd.read_sql('select top(50) * from ' + tableName, conn)
+    df = pd.read_sql('select top(50) * from ' + tableName, pyodbc_str)
     # return Response(df.to_json(orient="records"), media_type="application/json")
     context = {'request': request, 'data': df.to_dict(orient='records'), 'columns': df.columns.values}
     return templates.TemplateResponse('view.html', context)
