@@ -5,9 +5,8 @@ import time
 
 import requests
 from bs4 import BeautifulSoup
-from text2speech import *
-
-from jobs.utils.string_utils import *
+from stringx import *
+from x2x import *
 
 
 def crawl_audio_book_fpt(urlbook):
@@ -51,8 +50,10 @@ def crawl_audio_book_fpt(urlbook):
 
             pathmp3 = os.path.join(r'C:\Audio', title)
 
-            save_mp3_fpt('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n" + element.text +
-                         "\n\n\n" + content, os.path.join(r'C:\Audio', format_str(title), format_str(element.text) + '.mp3'))
+            text2speech.save_mp3_fpt(
+                'Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n" + element.text + "\n\n\n" + content,
+                os.path.join(r'C:\Audio', format_str(title),
+                             format_str(element.text) + '.mp3'))
 
             # mp32mp4(pathmp3, format_str(element.text))
 
@@ -126,8 +127,11 @@ def crawl_audio_book_google_tts(urlbook):
             # save mp3 title
             index = 0
             time.sleep(10)
-            google_TTS('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n\n" + element.text + "\n\n\n",
-                      os.path.join(r'C:\Audio', format_str(title), format_str(element.text), str(index)))
+            text2speech.google_TTS('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n\n" + element.text +
+                                   "\n\n\n", os.path.join(
+                                       r'C:\Audio', format_str(title),
+                                       format_str(element.text),
+                                       str(index)))
             index += 1
 
             # remove empty element
@@ -140,7 +144,7 @@ def crawl_audio_book_google_tts(urlbook):
 
             for i in str_list:
                 time.sleep(10)
-                google_TTS(i + ' ', os.path.join(r'C:\Audio', format_str(
+                text2speech.google_TTS(i + ' ', os.path.join(r'C:\Audio', format_str(
                     title), format_str(element.text), str(index)))
                 index += 1
 
@@ -230,7 +234,7 @@ def crawl_audio_book_zalo_ai(urlbook):
                     format_str(element.text) + "\n\n\n"
                 path = os.path.join(r'C:\Audio', format_str(
                     title), format_str(element.text), str(index))
-                m3u8_to_mp3(get_link_m3u8(txt), path)
+                text2speech.m3u8_to_mp3(text2speech.get_link_m3u8(txt), path)
             index += 1
 
             # create txt file save m3u8
@@ -242,8 +246,8 @@ def crawl_audio_book_zalo_ai(urlbook):
             try:
                 if not os.path.exists(os.path.join(r'C:\Audio', format_str(title), format_str(element.text), str(index) + '.mp3')):
                     if(len(content) < 2000):
-                        filem3u8.write(get_link_m3u8(content + ' ') + '\n')
-                        m3u8_to_mp3(get_link_m3u8(content + ' '), os.path.join(r'C:\Audio',
+                        filem3u8.write(text2speech.get_link_m3u8(content + ' ') + '\n')
+                        text2speech.m3u8_to_mp3(text2speech.get_link_m3u8(content + ' '), os.path.join(r'C:\Audio',
                                  format_str(title), format_str(element.text), str(index)))
                     else:
                         # create and remove empty element
@@ -267,8 +271,8 @@ def crawl_audio_book_zalo_ai(urlbook):
                                 txtDuoi2000 = ''
 
                         for j in listTxtDuoi2000:
-                            filem3u8.write(get_link_m3u8(j + ' ') + '\n')
-                            m3u8_to_mp3(get_link_m3u8(j + ' '), os.path.join(r'C:\Audio',
+                            filem3u8.write(text2speech.get_link_m3u8(j + ' ') + '\n')
+                            text2speech.m3u8_to_mp3(text2speech.get_link_m3u8(j + ' '), os.path.join(r'C:\Audio',
                                      format_str(title), format_str(element.text), str(index)))
                             index += 1
             except:
@@ -337,8 +341,10 @@ def crawl_audio_book(urlbook):
 
             pathmp3 = os.path.join(r'C:\Audio', title)
 
-            save_mp3('Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n" + element.text + "\n\n\n" + content, os.path.join(r'C:\Audio',
-                                                                                                                                            format_str(title), format_str(element.text) + '.mp3'))
+            text2speech.save_mp3(
+                'Xin chào các bạn!!! Chúng ta cùng đi vào cuốn sách: ' + title + "\n" + element.text + "\n\n\n" + content,
+                os.path.join(r'C:\Audio', format_str(title),
+                             format_str(element.text) + '.mp3'))
 
             # mp32mp4(pathmp3, format_str(element.text))
 

@@ -1,51 +1,31 @@
 {% extends "base.html" %}
 {% block title %}infY{% endblock %}
 {% block content %}
-<div class="col-md-12 col-xl-5">
+<div class="col-md-5 col-xl-5">
   <div class="card">
-    <div class="card-header">
-      <h5>Statestics</h5>
-      <div class="card-header-left"></div>
-      <div class="card-header-right">
-        <ul class="list-unstyled card-option">
-          <li>
-            <i class="icofont icofont-simple-left"></i>
-          </li>
-          <li>
-            <i class="icofont icofont-maximize full-card"></i>
-          </li>
-          <li>
-            <i class="icofont icofont-minus minimize-card"></i>
-          </li>
-          <li>
-            <i class="icofont icofont-refresh reload-card"></i>
-          </li>
-          <li>
-            <i class="icofont icofont-error close-card"></i>
-          </li>
-        </ul>
-      </div>
-    </div>
     <div class="card-block">
-      <div id="statestics-chart" style="height: 517px"></div>
+      <!-- <div id="statestics-chart" style="height: 90vh"></div> -->
+      <!-- {{data}} -->
+      {% for item in data %}
+        <label for="">{{item}}</label>
+        <br />
+      {% endfor %}
+
     </div>
+
   </div>
 </div>
 
-<div class="col-md-12 col-xl-7">
+<div class="col-md-7 col-xl-7">
 
   <!-- <embed src="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" frameBorder="0" scrolling="auto"
     height="100%" width="100%" /> -->
   <embed src="{{ url_for('resources', path='a.pdf') }}" type="application/pdf" frameBorder="0" scrolling="auto"
-    height="100%" width="100%" />
-
-  {{ data }}
-
+    height="100%" width="100%" style="height: 90vh;" />
 
 </div>
 
 <script type="text/javascript">
-  
   $("#submit").click(function () {
     $.ajax({
       url: '/login',

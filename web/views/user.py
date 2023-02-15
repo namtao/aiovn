@@ -17,18 +17,13 @@ router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
 templates = Jinja2Templates(directory='templates')
 
-# config = configparser.ConfigParser()
-
-# config.read(r'config.ini')
-# conn = f'mssql://{config["hn"]["user"]}:{urllib.parse.quote_plus(config["hn"]["pass"])}@{config["hn"]["host"]}/{config["hn"]["db"]}?driver={config["hn"]["driver"]}'
-
 
 def select(strSql):
     config = configparser.ConfigParser()
     config.read(r'config.ini')
 
     conn = pyodbc_connect('hn')
-    
+
     cursor = conn.cursor()
 
     cursor.execute(strSql)
@@ -71,7 +66,7 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
         raise credentials_exception
 
 
-@router.get("/dataentry", response_class=HTMLResponse)
+@router.get("/data-entry", response_class=HTMLResponse)
 async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
         status_code=401,
@@ -79,9 +74,10 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-
+        data = json.loads(select('select top(1) TruongThongTin from Config'))
         return templates.TemplateResponse(
-            "dataentry.html", {"request": request, "data": select('select TruongThongTin from Config')})
+            "data-entry.html",
+            {"request": request, "data": data[0]['TruongThongTin'].split(',')})
     except JWTError:
         raise credentials_exception
 
