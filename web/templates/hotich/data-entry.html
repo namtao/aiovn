@@ -1,0 +1,705 @@
+{% extends "base-user.html" %}
+{% block title %}infY{% endblock %}
+{% block content %}
+<div class="col-md-5 col-xl-5">
+  <div class="card">
+    <div class="card-block">
+      <!-- <div id="statestics-chart" style="height: 90vh"></div> -->
+      <!-- {{data}} -->
+      <!-- <div class="row">
+        {%for item in data %}
+        <div class="col-sm-6">
+          <h4 class="sub-title">Input Sizes</h4>
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">{{item['mota']}}</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="{{item['ten']}}" id="{{item['ten']}}"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        {%endfor %}
+
+      </div> -->
+      <h4 class="sub-title">Thông tin cơ bản</h4>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Số hiệu</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="so"
+                  id="so"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Quyển số</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="quyenSo"
+                  id="quyenSo"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Trang số</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="trangSo"
+                  id="trangSo"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Ngày đăng ký</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="ngayDangKy"
+                  id="ngayDangKy"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Loại đăng ký</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="loaiDangKy"
+                  id="loaiDangKy"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Nơi đăng ký</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="noiDangKy"
+                  id="noiDangKy"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <h4 class="sub-title">Thông tin người khai sinh</h4>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Họ và tên</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksHoTen"
+                  id="nksHoTen"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Giới tính</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksGioiTinh"
+                  id="nksGioiTinh"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Ngày sinh</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksNgaySinh"
+                  id="nksNgaySinh"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Dân tộc</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksDanToc"
+                  id="nksDanToc"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Quốc tịch</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksQuocTich"
+                  id="nksQuocTich"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Nơi sinh</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksNoiSinh"
+                  id="nksNoiSinh"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Ngày sinh bằng chữ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nksNgaySinhBangChu" id="nksNgaySinhBangChu"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Loại khai sinh</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nksLoaiKhaiSinh" id="nksLoaiKhaiSinh"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Nơi sinh đvhc</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nksNoiSinhDVHC" id="nksNoiSinhDVHC"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Quê quán</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksQueQuan"
+                  id="nksQueQuan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <h4 class="sub-title">Thông tin người cha</h4>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Họ tên</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="chaHoTen"
+                  id="chaHoTen"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Ngày sinh</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="chaNgaySinh"
+                  id="chaNgaySinh"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Dân tộc</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="chaDanToc"
+                  id="chaDanToc"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Quốc tịch</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="chaQuocTich"
+                  id="chaQuocTich"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Loại cư trú</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="chaLoaiCuTru"
+                  id="chaLoaiCuTru"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Nơi cư trú</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="chaNoiCuTru"
+                  id="chaNoiCuTru"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Loại giấy tờ cha</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="chaLoaiGiayToTuyThan" id="chaLoaiGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Số giấy tờ cha</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="chaSoGiayToTuyThan" id="chaSoGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+      <h4 class="sub-title">Thông tin người mẹ</h4>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Họ tên</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="meHoTen"
+                  id="meHoTen"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Ngày sinh</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="meNgaySinh"
+                  id="meNgaySinh"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Dân tộc</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="meDanToc"
+                  id="meDanToc"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Quốc tịch</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="meQuocTich"
+                  id="meQuocTich"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Loại cư trú</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="meLoaiCuTru"
+                  id="meLoaiCuTru"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Nơi cư trú</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="meNoiCuTru"
+                  id="meNoiCuTru"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Loại giấy tờ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="meLoaiGiayToTuyThan" id="meLoaiGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Số giấy tờ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="meSoGiayToTuyThan" id="meSoGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <h4 class="sub-title">Thông tin người đi khai</h4>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Họ tên</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nycHoTen"
+                  id="nycHoTen"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Quan hệ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nycQuanHe"
+                  id="nycQuanHe"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Loại giấy tờ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nycLoaiGiayToTuyThan" id="nycLoaiGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Số giấy tờ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nycSoGiayToTuyThan" id="nycSoGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Ngày cấp giấy tờ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nycNgayCapGiayToTuyThan" id="nycNgayCapGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Nơi cấp giấy tờ</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nycNoiCapGiayToTuyThan" id="nycNoiCapGiayToTuyThan"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <h4 class="sub-title">Thông tin cán bộ</h4>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Người ký</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nguoiKy"
+                  id="nguoiKy"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Chức vụ người ký</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="chucVuNguoiKy" id="chucVuNguoiKy"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Người thực hiện</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;"
+                  name="nguoiThucHien" id="nguoiThucHien"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+      <h4 class="sub-title">Thông tin khác</h4>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">Ghi chú</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; float: right;" name="ghichu"
+                  id="ghichu"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="col-md-7 col-xl-7">
+
+  <!-- <embed src="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" frameBorder="0" scrolling="auto"
+    height="100%" width="100%" /> -->
+  <embed src="{{ url_for('resources', path='a.pdf') }}" type="application/pdf" frameBorder="0" scrolling="auto"
+    height="100%" width="100%" style="height: 90vh;" />
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var span = $('<span>').css('display', 'inline-block')
+      .css('word-break', 'break-all').appendTo('body').css('visibility', 'hidden');
+    function initSpan(textarea) {
+      span.text(textarea.text())
+        .width(textarea.width())
+        .css('font', textarea.css('font'));
+    }
+    $('textarea').on({
+      input: function () {
+        initSpan($(this));
+        var text = $(this).val();
+        span.text(text);
+        $(this).height(text ? span.height() : '2em');
+      },
+      focus: function () {
+        initSpan($(this));
+        var text = $(this).val();
+        span.text(text);
+        $(this).height(text ? span.height() : '2em');
+      },
+      keypress: function (e) {
+        if (e.which == 13) e.preventDefault();
+      }
+    });
+  })
+
+  $("#submit").click(function () {
+    $.ajax({
+      url: '/login',
+      dataType: "json",
+      //xhrFields: { withCredentials: true },
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      type: 'POST',
+      contentType: "application/json",
+      data: JSON.stringify({
+        "username": "nam",
+        "password": "nam"
+      }),
+      success: function (output, status, xhr, data) {
+        //console.log(xhr.getAllResponseHeaders().toString());
+        //console.log(document.cookie.toString())
+        alert('ok')
+      },
+      error: function (data, errorThrown) {
+        alert(3);
+      }
+    });
+  });
+</script>
+
+{% endblock %}
