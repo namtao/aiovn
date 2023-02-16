@@ -35,6 +35,11 @@
   	"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
     integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+  <style>
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
 
   <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
   <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
@@ -87,20 +92,20 @@
       <div class="pcoded-main-container">
         <div class="pcoded-wrapper">
           <!-- <div class="pcoded-content"> -->
-            <div class="pcoded-inner-content">
-              <div class="main-body">
-                <div class="page-wrapper">
-                  <div class="page-body">
-                    <div class="row" style="height: 89vh;">
-                      {% block content %}{% endblock %}
+          <div class="pcoded-inner-content">
+            <div class="main-body">
+              <div class="page-wrapper">
+                <div class="page-body">
+                  <div class="row" style="height: 89vh;">
+                    {% block content %}{% endblock %}
 
-                    </div>
                   </div>
-
-                  <div id="styleSelector"></div>
                 </div>
+
+                <div id="styleSelector"></div>
               </div>
             </div>
+          </div>
           <!-- </div> -->
         </div>
       </div>
