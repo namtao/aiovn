@@ -56,7 +56,7 @@ async def login(response: Response, request_data: LoginRequest):
         )
 
     expire = datetime.utcnow() + timedelta(
-        seconds=60*60
+        seconds=60*6000
     )
     to_encode = {
         "exp": expire, "username": request_data.username

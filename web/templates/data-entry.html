@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base-user.html" %}
 {% block title %}infY{% endblock %}
 {% block content %}
 <div class="col-md-5 col-xl-5">
@@ -6,10 +6,25 @@
     <div class="card-block">
       <!-- <div id="statestics-chart" style="height: 90vh"></div> -->
       <!-- {{data}} -->
-      {% for item in data %}
-        <label for="">{{item}}</label>
-        <br />
-      {% endfor %}
+      <div class="row">
+        {%for item in data %}
+        <div class="col-sm-6">
+          <!-- <h4 class="sub-title">Input Sizes</h4> -->
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label class="col-form-label" for="">{{item['mota']}}</label>
+                <textarea style="resize:none; overflow:hidden; height:2em !important; padding:2px;"
+                  name="{{item['ten']}}" id="{{item['ten']}}"></textarea>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        {%endfor %}
+
+      </div>
+
 
     </div>
 
@@ -26,6 +41,33 @@
 </div>
 
 <script type="text/javascript">
+  $(document).ready(function () {
+    var span = $('<span>').css('display', 'inline-block')
+      .css('word-break', 'break-all').appendTo('body').css('visibility', 'hidden');
+    function initSpan(textarea) {
+      span.text(textarea.text())
+        .width(textarea.width())
+        .css('font', textarea.css('font'));
+    }
+    $('textarea').on({
+      input: function () {
+        initSpan($(this));
+        var text = $(this).val();
+        span.text(text);
+        $(this).height(text ? span.height() : '2em');
+      },
+      focus: function () {
+        initSpan($(this));
+        var text = $(this).val();
+        span.text(text);
+        $(this).height(text ? span.height() : '2em');
+      },
+      keypress: function (e) {
+        if (e.which == 13) e.preventDefault();
+      }
+    });
+  })
+
   $("#submit").click(function () {
     $.ajax({
       url: '/login',
@@ -49,4 +91,5 @@
     });
   });
 </script>
+
 {% endblock %}
