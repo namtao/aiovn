@@ -71,26 +71,36 @@
 }
 
 
-
-/* <datalist> and <option> styling */
-datalist {
-    position: absolute;
-    max-height: 20em;
-    border: 0 none;
-    overflow-x: hidden;
-    overflow-y: auto;
+.textarea {
+    /* border: 1px solid #ccc; */
+    font-family: inherit;
+    font-size: inherit;
+    padding: 2px 5px;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    min-height: 30px;
+    line-height: 20px;
+    cursor: auto;
 }
 
-datalist option {
-    font-size: 0.8em;
-    padding: 0.3em 1em;
-    background-color: #ccc;
-    cursor: pointer;
+span:focus {
+  border: 1px solid #5d97ee !important;
 }
 
-datalist option:hover,
-datalist option:focus {
-    color: #fff;
-    background-color: #036;
-    outline: 0 none;
+span{
+    border-radius: 5px;
+}
+
+select{
+    resize:none; 
+    overflow:hidden; 
+    height:2em !important; 
+    float: right; width: 100%;
+    cursor: auto;
+}
+
+select:focus {
+  border: 1px solid #5d97ee !important;
 }
