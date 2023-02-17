@@ -142,7 +142,7 @@
             <div class="form-group row">
               <div class="col-sm-12 d-flex align-items-center">
                 <label class="col-form-label col-4" for="">Dân tộc</label>
-                <select class="ui search dropdown selection border border-secondary">
+                <select class="ui search dropdown selection border border-secondary" id="nksDanToc">
                   <option value="63001">Kinh</option>
                   <option value="1518">Khơ Me</option>
                   <option value="1495">Ba Na</option>
@@ -901,7 +901,13 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
+    var span_Text = document.getElementById("so").innerText;
 
+    console.log(span_Text)
+
+     var e = document.getElementById("nksDanToc");
+
+    console.log(e.options[e.selectedIndex].text)
   })
 
   $("#submit").click(function () {
