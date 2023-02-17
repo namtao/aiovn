@@ -23,6 +23,9 @@
         {%endfor %}
 
       </div> -->
+
+      {{data['duongdan']}}
+
       <form id="dataentry">
         <h4 class="sub-title">Thông tin cơ bản</h4>
 
@@ -115,7 +118,7 @@
                 <label class="col-form-label col-4" for="">Giới tính</label>
                 <!-- <textarea class="col-8" style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksGioiTinh"
                   id="nksGioiTinh" contenteditable></span> -->
-                <select class="ui search dropdown selection border border-secondary">
+                <select class="ui search dropdown selection border border-secondary" id="nksGioiTinh">
                   <option value="0">Nam</option>
                   <option value="1">Nữ</option>
                   <option value="2">Khác</option>
@@ -879,10 +882,10 @@
                 <span class="textarea col-8 border border-secondary" role="textbox" id="ghichu" contenteditable></span>
               </div>
             </div>
-
-
           </div>
         </div>
+        <button class="btn btn-primary" id="next">Chuyển tiếp</button>
+
       </form>
 
     </div>
@@ -894,62 +897,46 @@
 
   <!-- <embed src="http://infolab.stanford.edu/pub/papers/google.pdf" type="application/pdf" frameBorder="0" scrolling="auto"
     height="100%" width="100%" /> -->
-  <embed src="{{ url_for('resources', path='a.pdf') }}" type="application/pdf" frameBorder="0" scrolling="auto"
-    height="100%" width="100%" style="height: 90vh;" />
+  <!-- <embed src="/resources/test.pdf" type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"
+    style="height: 90vh;" /> -->
+
+  <embed src="{{ url_for('resources', path='' + data['duongdan']) }}" type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"
+    style="height: 90vh;" />
 
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function () {
 
-    function getAllValues() {
-      var inputValues = $('#dataentry :input').map(function () {
-        var type = $(this).prop("type");
+  function getAllValues() {
+    var data = {};
 
-        // checked radios/checkboxes
-        if ((type == "checkbox" || type == "radio") && this.checked) {
-          return $(this).val();
-        }
-        // all other fields, except buttons
-        else if (type != "button" && type != "submit") {
-          return $(this).val();
-        }
-      })
-      return inputValues;
-    }
+    $('#dataentry :input').map(function () {
+      var type = $(this).prop("type");
 
-    var span_Text = document.getElementById("so").innerText;
+      // checked radios/checkboxes
+      if ((type == "checkbox" || type == "radio") && this.checked) {
+        data[$(this).attr('id')] = $(this).val()
 
-    console.log(span_Text)
-
-    var e = document.getElementById("nksDanToc");
-
-    console.log(e.options[e.selectedIndex].text)
-    console.log(getAllValues())
-  })
-
-  $("#submit").click(function () {
-    $.ajax({
-      url: '/login',
-      dataType: "json",
-      //xhrFields: { withCredentials: true },
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      type: 'POST',
-      contentType: "application/json",
-      data: JSON.stringify({
-        "username": "nam",
-        "password": "nam"
-      }),
-      success: function (output, status, xhr, data) {
-        //console.log(xhr.getAllResponseHeaders().toString());
-        //console.log(document.cookie.toString())
-        alert('ok')
-      },
-      error: function (data, errorThrown) {
-        alert(3);
       }
-    });
+      // all other fields, except buttons
+      else if (type != "button" && type != "submit") {
+        data[$(this).attr('id')] = $(this).val()
+      }
+    })
+
+    $('span').map(function () {
+      data[$(this).attr('id')] = $(this).text()
+    })
+
+    return JSON.stringify(data)
+  }
+
+  $("#next").on("click", function (e) {
+    e.preventDefault();
+    console.log(getAllValues());
   });
+
+
 </script>
 
 {% endblock %}
