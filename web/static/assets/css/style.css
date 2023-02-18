@@ -42,20 +42,20 @@ ul {
   outline: none; }
 
 a {
-  font-size: 14px;
+  font-size: 16px;
   color: #303548; }
   a:focus, a:hover {
     text-decoration: none;
     color: #4680ff; }
 
 h6 {
-  font-size: 14px; }
+  font-size: 16px; }
 
 p {
   font-size: 13px; }
   @media only screen and (min-width: 1400px) {
     p {
-      font-size: 14px; } }
+      font-size: 16px; } }
 
 .media-left {
   padding-right: 20px; }
@@ -117,8 +117,8 @@ p {
   margin-bottom: 10px; }
   .author-details img ~ .dot1,
   .author-details img ~ .dot2 {
-    height: 14px;
-    width: 14px;
+    height: 16px;
+    width: 16px;
     border-radius: 100%;
     top: 60%;
     position: absolute;
@@ -193,7 +193,7 @@ p {
       .card .card-header .card-header-right i {
         margin: 0 8px;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 16px;
         color: #505458;
         line-height: 20px; }
         .card .card-header .card-header-right i.icofont.icofont-spinner-alt-5 {
@@ -216,7 +216,7 @@ p {
     .card .card-header h5 {
       margin-bottom: 0;
       color: #505458;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
       display: inline-block;
       margin-right: 10px;
@@ -224,7 +224,7 @@ p {
   .card .card-block table tr {
     padding-bottom: 20px; }
   .card .card-block .sub-title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px; }
   .card .card-block code {
@@ -237,7 +237,7 @@ p {
     line-height: 25px; }
   .card .card-block a.dropdown-item {
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 16px;
     transition: 0.25s; }
     .card .card-block a.dropdown-item:active,
     .card .card-block a.dropdown-item .active {
@@ -346,7 +346,7 @@ p {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 .breadcrumb-title a {
-  font-size: 14px;
+  font-size: 16px;
   color: #4a6076; }
 .breadcrumb-title li:last-child a {
   color: #7e7e7e; }
@@ -356,7 +356,7 @@ p {
   padding-bottom: 10px;
   margin-bottom: 20px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: #2c3e50; }
 
@@ -495,7 +495,7 @@ a.mytooltip {
 .accordion-msg {
   display: block;
   color: #222222;
-  padding: 14px 20px;
+  padding: 16px 20px;
   border-top: 1px solid #ddd;
   font-weight: 600;
   cursor: pointer; }
@@ -513,7 +513,7 @@ a.mytooltip {
   padding: 0 20px 20px; }
 
 #color-accordion .accordion-desc {
-  margin-top: 14px; }
+  margin-top: 16px; }
 
 .ui-accordion-header-icon {
   float: right;
@@ -2652,7 +2652,7 @@ a.bg-danger:hover {
   font-size: 12px; }
 
 .f-14 {
-  font-size: 14px; }
+  font-size: 16px; }
 
 .f-16 {
   font-size: 16px; }
@@ -4018,7 +4018,7 @@ table tbody .border-bottom-info td {
       .main-menu .main-menu-header .user-details span {
         color: #000;
         display: block;
-        font-size: 14px;
+        font-size: 16px;
         text-transform: capitalize; }
         .main-menu .main-menu-header .user-details span i {
           font-size: 10px;
@@ -4153,7 +4153,7 @@ table tbody .border-bottom-info td {
           padding: 10px 20px; }
           .header-navbar .navbar-wrapper .navbar-container .header-notification .show-notification li:first-child h6, .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .show-notification li:first-child h6, .header-navbar .navbar-wrapper .navbar-container .header-notification .profile-notification li:first-child h6, .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .profile-notification li:first-child h6 {
             display: inline-block;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 0; }
           .header-navbar .navbar-wrapper .navbar-container .header-notification .show-notification li:first-child label, .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .show-notification li:first-child label, .header-navbar .navbar-wrapper .navbar-container .header-notification .profile-notification li:first-child label, .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .profile-notification li:first-child label {
@@ -4217,7 +4217,7 @@ table tbody .border-bottom-info td {
         .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .show-notification li h6, .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .profile-notification li h6 {
           border-bottom: 1px solid #ddd;
           display: block;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 600;
           margin-bottom: 20px;
           padding-bottom: 10px;
@@ -4246,7 +4246,7 @@ table tbody .border-bottom-info td {
       padding: 10px 0; }
     .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .mega-menu-contact .form-control,
     .header-navbar .navbar-wrapper .navbar-container .mega-menu-top .mega-menu-contact label {
-      font-size: 14px; }
+      font-size: 16px; }
 
 /*======= Main-header css end ======*/
 .pcoded .pcoded-container {
@@ -4289,7 +4289,7 @@ table tbody .border-bottom-info td {
     position: relative; }
     .pcoded .pcoded-navbar .pcoded-item > li > a {
       display: block;
-      font-size: 14px;
+      font-size: 16px;
       padding: 0 15px;
       text-decoration: none;
       position: relative;
@@ -4311,7 +4311,7 @@ table tbody .border-bottom-info td {
       position: relative; }
       .pcoded .pcoded-navbar .pcoded-item .pcoded-hasmenu .pcoded-submenu li > a {
         display: block;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 100;
         padding: 0 15px;
         text-decoration: none;
@@ -4491,7 +4491,7 @@ table tbody .border-bottom-info td {
   position: relative; }
 .pcoded[theme-layout="vertical"] .pcoded-header .pcoded-right-header .pcoded-rl-header ul > li > a,
 .pcoded[theme-layout="vertical"] .pcoded-header .pcoded-right-header .pcoded-rr-header ul > li > a {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none; }
 .pcoded[theme-layout="vertical"] .pcoded-header .pcoded-right-header .pcoded-rl-header li.icons > a > i,
@@ -4551,7 +4551,7 @@ table tbody .border-bottom-info td {
   display: block;
   margin: 0;
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
   -webkit-appearance: none;
   appearance: none;
   -webkit-box-shadow: none;
@@ -5558,7 +5558,7 @@ table tbody .border-bottom-info td {
 .pcoded.nocollapsed[theme-layout="vertical"][pcoded-device-type="phone"] #styleSelector {
   top: 100px; }
 .pcoded .pcoded-navbar .pcoded-navigatio-lavel {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: 1px;
   opacity: 1;
@@ -6148,7 +6148,7 @@ body[themebg-pattern="pattern9"] {
   background: #23282D;
   color: #fff;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
-  padding: 14px 4px; }
+  padding: 16px 4px; }
 .pcoded[theme-layout="horizontal"] .selector-toggle > a, .pcoded[vertical-placement="left"] .selector-toggle > a {
   left: -80px;
   border-right: 0;
@@ -6229,7 +6229,7 @@ body[themebg-pattern="pattern9"] {
     #styleSelector ul li p.selector-title,
     #styleSelector ul li span.selector-title {
       color: #444;
-      font-size: 14px;
+      font-size: 16px;
       margin: 0 0 20px;
       padding: 10px 0;
       text-align: left; }
@@ -6480,7 +6480,7 @@ body[themebg-pattern="pattern9"] {
   margin: 0; }
 
 .small-text {
-  font-size: 14px; }
+  font-size: 16px; }
 
 .breadcrumb {
   background-color: transparent;
@@ -6763,7 +6763,7 @@ body.menu-bottom #collapse-menu {
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 14px; }
+  font-size: 16px; }
 
 .popover-title {
   text-align: center; }
@@ -7103,7 +7103,7 @@ body.menu-bottom #collapse-menu {
 /**====== matrialized css end ======**/
 /**====== Button-Size css start ======**/
 .btn-xlg {
-  padding: 14px 20px;
+  padding: 16px 20px;
   font-size: 21px;
   line-height: 40px; }
 
@@ -7118,13 +7118,13 @@ body.menu-bottom #collapse-menu {
   line-height: 23px; }
 
 .btn-sm {
-  padding: 8px 14px;
+  padding: 8px 16px;
   line-height: 16px;
   font-size: 11px; }
 
 .btn-mini {
   padding: 5px 10px;
-  line-height: 14px;
+  line-height: 16px;
   font-size: 10px; }
 
 /**====== Button-Size css end ======**/
@@ -7261,7 +7261,7 @@ body.menu-bottom #collapse-menu {
       Basic form elements css start
 ==========================  **/
 .col-form-label {
-  font-size: 14px; }
+  font-size: 16px; }
 
 .select2-container {
   width: 100% !important; }
@@ -7276,7 +7276,7 @@ body.menu-bottom #collapse-menu {
     outline: none; }
 
 .form-control {
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 2px;
   border: 1px solid #cccccc; }
   .form-control:focus {
@@ -8327,15 +8327,15 @@ body.menu-bottom #collapse-menu {
   padding: 8px 21px; }
 
 .label.label-md {
-  padding: 6px 14px; }
+  padding: 6px 16px; }
 
 .badge-lg {
   padding: 5px 9px;
-  font-size: 14px; }
+  font-size: 16px; }
 
 .badge-md {
   padding: 4px 8px;
-  font-size: 14px; }
+  font-size: 16px; }
 
 span.badge {
   display: inline-block !important; }
@@ -8599,7 +8599,7 @@ a.dt-button.active:not(.disabled) {
   border-radius: 2px;
   color: #fff;
   background-image: none;
-  font-size: 14px; }
+  font-size: 16px; }
 
 button.dt-button.btn-warning,
 div.dt-button.btn-warning,
@@ -9073,7 +9073,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
         margin-bottom: 0;
         line-height: 1;
         font-weight: 600;
-        font-size: 14px; }
+        font-size: 16px; }
       .prod-order-card ul li .legend-cont span {
         color: #919aa3; }
 
@@ -9208,7 +9208,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 
 .profile-view p {
   font-weight: 600;
-  font-size: 14px; }
+  font-size: 16px; }
 .profile-view span {
   font-size: 26px; }
 
@@ -9325,7 +9325,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   .card-notification small {
     font-size: 12px; }
   .card-notification p {
-    font-size: 14px; }
+    font-size: 16px; }
   .card-notification .card-noti-conatin {
     margin-left: 30px; }
 
@@ -9706,7 +9706,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 .recent-candidate-card tbody tr td {
   vertical-align: middle; }
   .recent-candidate-card tbody tr td h6 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
     margin: 0; }
@@ -9873,7 +9873,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   padding: 10px;
   border-radius: 50%; }
 .card-feed .feed-card-info p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400; }
 @media only screen and (max-width: 480px) {
   .card-feed .feed-card-info span {
@@ -10132,7 +10132,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   box-shadow: 0 0 0 5px rgba(148, 181, 253, 0.49);
   font-size: 40px;
   color: #fff;
-  padding: 14px; }
+  padding: 16px; }
 
 .email-sent-card {
   position: relative; }
@@ -13625,7 +13625,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
       display: none; } }
 @media only screen and (max-width: 1199px) {
   .nav-tabs.md-tabs.tab-timeline li a {
-    font-size: 14px; }
+    font-size: 16px; }
 
   #design-wizard .steps li a {
     padding: 1em 0.5em; }
@@ -13880,13 +13880,13 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     margin-top: 10px; }
 
   .nav-tabs.md-tabs.tab-timeline li a {
-    font-size: 14px; }
+    font-size: 16px; }
 
   .user-content h4 {
     font-size: 1rem; }
   .user-content h5 {
     margin-right: 0;
-    font-size: 14px; }
+    font-size: 16px; }
 
   .top-cap-text p {
     padding: 0; }

@@ -74,10 +74,10 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        # data = json.loads(select('select loaihoso, truong from Config'))
+        data = json.loads(select('select duongdan from Config'))
         return templates.TemplateResponse(
             "hotich/data-entry.html",
-            {"request": request})
+            {"request": request, "data" : data[0]})
     except JWTError:
         raise credentials_exception
 
