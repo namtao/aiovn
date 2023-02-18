@@ -54,7 +54,7 @@ async def details(request: Request):
 
 
 @router.get("/home", response_class=HTMLResponse)
-async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
+async def home(request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
         status_code=401,
         # detail="Could not validate credentials",
@@ -67,7 +67,7 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
 
 
 @router.get("/data-entry", response_class=HTMLResponse)
-async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
+async def data_entry(request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
         status_code=401,
         # detail="Could not validate credentials",
@@ -83,7 +83,7 @@ async def text_to_speech(request: Request, username: str = Depends(get_current_u
 
 
 @router.get("/convert", response_class=HTMLResponse)
-async def text_to_speech(request: Request, username: str = Depends(get_current_user)):
+async def convert(request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
         status_code=401,
         # detail="Could not validate credentials",

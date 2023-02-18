@@ -86,21 +86,34 @@
 }
 
 span:focus {
-  border: 1px solid #5d97ee !important;
+    border: 1px solid #5d97ee !important;
 }
 
-span{
+span {
     border-radius: 5px;
 }
 
-select{
-    resize:none; 
-    overflow:hidden; 
-    height:2em !important; 
-    float: right; width: 100%;
+span:hover {
+    border: 2px solid #1463da !important;
+}
+
+select:hover {
+    border: 2px solid #1463da !important;
+}
+
+select {
+    resize: none;
+    overflow: hidden;
+    height: 2em !important;
+    float: right;
+    width: 100%;
     cursor: auto;
 }
 
 select:focus {
-  border: 1px solid #5d97ee !important;
+    border: 1px solid #5d97ee !important;
+}
+
+button{
+    font-size: 15px !important;
 }

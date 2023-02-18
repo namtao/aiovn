@@ -24,7 +24,7 @@
 
       </div> -->
 
-      {{data['duongdan']}}
+      <!-- {{data['duongdan']}} -->
 
       <form id="dataentry">
         <h4 class="sub-title">Thông tin cơ bản</h4>
@@ -883,8 +883,15 @@
               </div>
             </div>
           </div>
+          <div class="col-3">
+            <button class="btn btn-sm btn-outline-primary" id="next">Làm mới biểu mẫu</button>
+
+          </div>
+          <div class="col-3">
+            <button class="btn btn-sm btn-outline-danger">Chuyển file</button>
+
+          </div>
         </div>
-        <button class="btn btn-primary" id="next">Chuyển tiếp</button>
 
       </form>
 
@@ -900,8 +907,8 @@
   <!-- <embed src="/resources/test.pdf" type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"
     style="height: 90vh;" /> -->
 
-  <embed src="{{ url_for('resources', path='' + data['duongdan']) }}" type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%"
-    style="height: 90vh;" />
+  <embed src="{{ url_for('resources', path='' + data['duongdan']) }}" type="application/pdf" frameBorder="0"
+    scrolling="auto" height="100%" width="100%" style="height: 90vh;" />
 
 </div>
 
@@ -935,7 +942,6 @@
     e.preventDefault();
     console.log(getAllValues());
   });
-
 
 </script>
 
