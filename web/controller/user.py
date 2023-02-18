@@ -12,6 +12,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.security import APIKeyCookie
 from fastapi.templating import Jinja2Templates
 from jose import JWTError
+from database.crud import update_bienmuc
 
 router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
@@ -91,5 +92,19 @@ async def convert(request: Request, username: str = Depends(get_current_user)):
     )
     try:
         return views.TemplateResponse("users/convert.html", {"request": request})
+    except JWTError:
+        raise credentials_exception
+    
+    
+@router.post("/update-bienmuc")
+async def convert(request: Request, username: str = Depends(get_current_user)):
+    credentials_exception = HTTPException(
+        status_code=401,
+        # detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        update_bienmuc()
+        # return 200
     except JWTError:
         raise credentials_exception

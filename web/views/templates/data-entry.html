@@ -938,7 +938,25 @@
 
   $("#next").on("click", function (e) {
     e.preventDefault();
-    console.log(getAllValues());
+    // console.log(getAllValues());
+    $.ajax({
+      url: '/update-bienmuc',
+      dataType: "json",
+      //xhrFields: { withCredentials: true },
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      type: 'POST',
+      contentType: "application/json",
+      data: getAllValues(),
+      success: function (output, status, xhr, data) {
+        //console.log(xhr.getAllResponseHeaders().toString());
+        //console.log(document.cookie.toString())
+        //window.location.href = "/data-entry"
+        console.log(status)
+      },
+      error: function (data, errorThrown) {
+        alert("Cập nhật không thành công");
+      }
+    });
   });
 
 </script>
