@@ -14,7 +14,7 @@ router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
 
 users = {"admin": {"password": "admin"}}
-templates = Jinja2Templates(directory='templates')
+views = Jinja2Templates(directory='views')
 
 
 class LoginRequest(BaseModel):

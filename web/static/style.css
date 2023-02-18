@@ -86,7 +86,7 @@
 }
 
 span:focus {
-    border: 1px solid #5d97ee !important;
+    border: 2px solid #5d97ee !important;
 }
 
 span {
@@ -94,11 +94,11 @@ span {
 }
 
 span:hover {
-    border: 2px solid #1463da !important;
+    border: 2px solid #5d97ee !important;
 }
 
 select:hover {
-    border: 2px solid #1463da !important;
+    border: 2px solid #5d97ee !important;
 }
 
 select {
@@ -111,9 +111,10 @@ select {
 }
 
 select:focus {
-    border: 1px solid #5d97ee !important;
+    border: 2px solid #5d97ee !important;
 }
 
 button{
     font-size: 15px !important;
+    width: 100%;
 }

@@ -1,4 +1,4 @@
-{% extends "base-user.html" %}
+{% extends "base/base-user.html" %}
 {% block title %}infY{% endblock %}
 {% block content %}
 <div class="col-md-5 col-xl-5" style="overflow-y: auto; max-height: 100vh;">
@@ -883,13 +883,11 @@
               </div>
             </div>
           </div>
-          <div class="col-3">
-            <button class="btn btn-sm btn-outline-primary" id="next">Làm mới biểu mẫu</button>
-
+          <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-primary" id="reload"><i class="ti-reload"></i></button>
           </div>
-          <div class="col-3">
-            <button class="btn btn-sm btn-outline-danger">Chuyển file</button>
-
+          <div class="col-sm-3">
+            <button class="btn btn-sm btn-outline-danger" id="next"><i class="ti-angle-double-right"></i></i></button>
           </div>
         </div>
 

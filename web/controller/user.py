@@ -15,7 +15,7 @@ from jose import JWTError
 
 router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
-templates = Jinja2Templates(directory='templates')
+views = Jinja2Templates(directory='views')
 
 
 def select(strSql):
@@ -45,12 +45,12 @@ async def view(request: Request, tableName: str):
     df = pd.read_sql('select top(50) * from ' + tableName, pyodbc_str)
     # return Response(df.to_json(orient="records"), media_type="application/json")
     context = {'request': request, 'data': df.to_dict(orient='records'), 'columns': df.columns.values}
-    return templates.TemplateResponse('view.html', context)
+    return views.TemplateResponse('view.html', context)
 
 
 @router.get("/sign-in", response_class=HTMLResponse)
 async def details(request: Request):
-    return templates.TemplateResponse("sign-in.html", {"request": request})
+    return views.TemplateResponse("base/sign-in.html", {"request": request})
 
 
 @router.get("/home", response_class=HTMLResponse)
@@ -61,7 +61,7 @@ async def home(request: Request, username: str = Depends(get_current_user)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        return templates.TemplateResponse("home.html", {"request": request})
+        return views.TemplateResponse("base/home.html", {"request": request})
     except JWTError:
         raise credentials_exception
 
@@ -75,8 +75,8 @@ async def data_entry(request: Request, username: str = Depends(get_current_user)
     )
     try:
         data = json.loads(select('select duongdan from Config'))
-        return templates.TemplateResponse(
-            "hotich/data-entry.html",
+        return views.TemplateResponse(
+            "templates/data-entry.html",
             {"request": request, "data" : data[0]})
     except JWTError:
         raise credentials_exception
@@ -90,6 +90,6 @@ async def convert(request: Request, username: str = Depends(get_current_user)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        return templates.TemplateResponse("convert.html", {"request": request})
+        return views.TemplateResponse("users/convert.html", {"request": request})
     except JWTError:
         raise credentials_exception

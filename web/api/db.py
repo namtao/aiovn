@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
-templates = Jinja2Templates(directory='templates')
+views = Jinja2Templates(directory='views')
 
 engine = db_connect('hn')
 
