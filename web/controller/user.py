@@ -2,17 +2,19 @@
 import configparser
 import json
 import urllib.parse
+from typing import List, Union
 
 import pandas as pd
 import pyodbc
 from api.auth import get_current_user
 from config.config import pyodbc_connect, pyodbc_str
-from fastapi import APIRouter, Depends, HTTPException, Request
+from database.crud import update_bienmuc
+from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse
 from fastapi.security import APIKeyCookie
 from fastapi.templating import Jinja2Templates
 from jose import JWTError
-from database.crud import update_bienmuc
+from pydantic import BaseModel
 
 router = APIRouter()
 cookie_sec = APIKeyCookie(name="session")
@@ -95,16 +97,19 @@ async def convert(request: Request, username: str = Depends(get_current_user)):
     except JWTError:
         raise credentials_exception
     
+class LoginRequest(BaseModel):
+    data: List = []
     
 @router.post("/update-bienmuc")
-async def convert(request: Request, username: str = Depends(get_current_user)):
+async def convert(response: Response, request_data: LoginRequest, request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
         status_code=401,
         # detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        update_bienmuc()
+        # update_bienmuc()
+        print(request_data)
         # return 200
     except JWTError:
         raise credentials_exception
