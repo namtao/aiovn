@@ -98,7 +98,7 @@ async def convert(request: Request, username: str = Depends(get_current_user)):
         raise credentials_exception
     
 class LoginRequest(BaseModel):
-    data: List = []
+    data: object
     
 @router.post("/update-bienmuc")
 async def convert(response: Response, request_data: LoginRequest, request: Request, username: str = Depends(get_current_user)):
