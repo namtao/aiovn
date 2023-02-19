@@ -101,7 +101,7 @@ class LoginRequest(BaseModel):
     data: object
     
 @router.post("/update-bienmuc")
-async def convert(response: Response, request_data: LoginRequest, request: Request, username: str = Depends(get_current_user)):
+async def update_biemuc(response: Response, request_data: LoginRequest, request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
         status_code=401,
         # detail="Could not validate credentials",

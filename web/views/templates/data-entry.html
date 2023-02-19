@@ -947,8 +947,8 @@
       type: 'POST',
       contentType: "application/json",
       data: getAllValues(),
-      success: function (output, status, xhr, data) {
-        console.log(getAllValues())
+      success: function (output, status, xhr, data, response) {
+        console.log(output, status, xhr, data, response)
       },
       error: function (data, errorThrown) {
         alert("Cập nhật không thành công");
