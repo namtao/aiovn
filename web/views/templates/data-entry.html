@@ -911,51 +911,51 @@
 </div>
 
 <script type="text/javascript">
+  $(document).ready(function () {
+    function getAllValues() {
+      var data = {};
 
-  function getAllValues() {
-    var data = {};
+      $('#dataentry :input').map(function () {
+        var type = $(this).prop("type");
 
-    $('#dataentry :input').map(function () {
-      var type = $(this).prop("type");
+        // checked radios/checkboxes
+        if ((type == "checkbox" || type == "radio") && this.checked) {
+          data[$(this).attr('id')] = $(this).val()
 
-      // checked radios/checkboxes
-      if ((type == "checkbox" || type == "radio") && this.checked) {
-        data[$(this).attr('id')] = $(this).val()
+        }
+        // all other fields, except buttons
+        else if (type != "button" && type != "submit") {
+          data[$(this).attr('id')] = $(this).val()
+        }
+      })
 
-      }
-      // all other fields, except buttons
-      else if (type != "button" && type != "submit") {
-        data[$(this).attr('id')] = $(this).val()
-      }
-    })
+      $('span').map(function () {
+        data[$(this).attr('id')] = $(this).text()
+      })
 
-    $('span').map(function () {
-      data[$(this).attr('id')] = $(this).text()
-    })
+      return JSON.stringify(data)
+    }
 
-    return JSON.stringify(data)
-  }
+    $("#next").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: '/update-bienmuc',
+        dataType: "json",
+        xhrFields: { withCredentials: true },
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        type: 'POST',
+        contentType: "application/json",
+        data: JSON.stringify({ "dataForm": getAllValues() }),
+        success: function (output, status, xhr, data) {
+          console.log({ "dataForm": getAllValues() })
+        },
+        error: function (data, errorThrown) {
+          alert("Cập nhật không thành công");
+        }
+      });
 
-  $("#next").on("click", function (e) {
-    e.preventDefault();
-    // console.log(getAllValues());
-    $.ajax({
-      url: '/update-bienmuc',
-      dataType: "json",
-      //xhrFields: { withCredentials: true },
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      type: 'POST',
-      contentType: "application/json",
-      data: getAllValues(),
-      success: function (output, status, xhr, data, response) {
-        console.log(typeof(getAllValues()))
-      },
-      error: function (data, errorThrown) {
-        alert("Cập nhật không thành công");
-      }
     });
   });
-
 </script>
 
 {% endblock %}

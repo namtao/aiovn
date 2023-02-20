@@ -93,15 +93,15 @@ async def convert(request: Request, username: str = Depends(get_current_user)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        return views.TemplateResponse("users/convert.html", {"request": request})
+        return views.TemplateResponse("client/convert.html", {"request": request})
     except JWTError:
         raise credentials_exception
     
-class LoginRequest(BaseModel):
-    data: object
+class FormRequest(BaseModel):
+    dataForm: object
     
 @router.post("/update-bienmuc")
-async def update_biemuc(response: Response, request_data: LoginRequest, request: Request, username: str = Depends(get_current_user)):
+async def update_biemuc(response: Response, request_data: FormRequest, request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
         status_code=401,
         # detail="Could not validate credentials",
@@ -109,7 +109,8 @@ async def update_biemuc(response: Response, request_data: LoginRequest, request:
     )
     try:
         # update_bienmuc()
-        print(request_data)
+        print(request_data.dataForm)
         # return 200
+        ...
     except JWTError:
         raise credentials_exception
