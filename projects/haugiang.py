@@ -128,11 +128,11 @@ def thongkehotich():
             #     d['Tỷ lệ biên mục'].append(1)
 
             if (v1 == 'HT_KHAISINH'):
-                d['Tổng số trường'].append(tongsoluong*47)
+                d['Tổng số trường'].append(tongsoluong*42)
             elif (v1 == 'HT_KHAITU'):
-                d['Tổng số trường'].append(tongsoluong*33)
+                d['Tổng số trường'].append(tongsoluong*30)
             elif (v1 == 'HT_KETHON'):
-                d['Tổng số trường'].append(tongsoluong*35)
+                d['Tổng số trường'].append(tongsoluong*30)
             elif (v1 == 'HT_NHANCHAMECON'):
                 d['Tổng số trường'].append(tongsoluong*22)
             elif (v1 == 'HT_XACNHANHONNHAN'):

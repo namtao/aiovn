@@ -80,7 +80,7 @@ async def data_entry(request: Request, username: str = Depends(get_current_user)
         data = json.loads(select('select duongdan from Config'))
         return views.TemplateResponse(
             "templates/data-entry.html",
-            {"request": request, "data" : data[0]})
+            {"request": request, "data": data[0]})
     except JWTError:
         raise credentials_exception
 
@@ -96,10 +96,12 @@ async def convert(request: Request, username: str = Depends(get_current_user)):
         return views.TemplateResponse("client/convert.html", {"request": request})
     except JWTError:
         raise credentials_exception
-    
+
+
 class FormRequest(BaseModel):
     dataForm: object
-    
+
+
 @router.post("/update-bienmuc")
 async def update_biemuc(response: Response, request_data: FormRequest, request: Request, username: str = Depends(get_current_user)):
     credentials_exception = HTTPException(
