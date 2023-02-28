@@ -40,7 +40,6 @@ def get_current_user(session: str = Depends(cookie_sec)):
         raise HTTPException(
             status_code=403, detail="Invalid authentication"
         )
-        
 
 
 @router.post('/sign-in')

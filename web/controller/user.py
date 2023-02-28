@@ -14,6 +14,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.security import APIKeyCookie
 from fastapi.templating import Jinja2Templates
 from jose import JWTError
+from models.bienmuc import Config
 from pydantic import BaseModel
 
 router = APIRouter()
@@ -110,9 +111,9 @@ async def update_biemuc(response: Response, request_data: FormRequest, request: 
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        # update_bienmuc()
-        print(request_data.dataForm)
-        # return 200
-        ...
+        update_bienmuc('hn', Config, 85, request_data.dataForm)
+        
+        # print(request_data.dataForm)
+        return 200
     except JWTError:
         raise credentials_exception
