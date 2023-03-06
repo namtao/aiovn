@@ -43,20 +43,23 @@ def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
 
-def read_excel():
+def read_excel(path):
     # C:\Users\Nam\Downloads\ADDJ\Hậu Giang\EXCEL ĐÃ BIÊN MỤC\Vị Thủy\KS\Vị Thắng\vị thắng-KS.2006.01.xlsx
     count = 0
-    for root, dirs, files in os.walk(r'C:\Users\Nam\Downloads\ADDJ\Hậu Giang\EXCEL ĐÃ BIÊN MỤC\Vị Thanh'):
+    for root, dirs, files in os.walk(path):
         for file in files:
-            pattern = re.compile(".*"+'xls')
-
+            pattern = re.compile(".*xls*")
+            
             if pattern.match(file):
-                df = pd.read_excel(os.path.join(root, file))
-                for col in df.columns:
-                    series = df[col].dropna()
-                    count += int(series.shape[0]) - 1
-                    print(('\rTổng số bản ghi: {:<20,}'.format(count)), end='')
-                    break
+                try:
+                    df = pd.read_excel(os.path.join(root, file))
+                    for col in df.columns:
+                        series = df[col].dropna()
+                        count += int(series.shape[0]) - 1
+                        print(('\rTổng số bản ghi: {:<20,}'.format(count)), end='')
+                        break
+                except Exception as e:
+                    print(e)
 
 
 def tktruong(conn, sql):
@@ -193,4 +196,6 @@ def thongkehotich():
     os.system('\"'+fileName+'\"')
 
 
-thongkehotich()
+# thongkehotich()
+
+read_excel(r'E:\EXCEL ĐÃ BIÊN MỤC\Vị Thủy')

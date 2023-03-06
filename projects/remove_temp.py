@@ -174,8 +174,8 @@ def create_struct(pathRoot, pathTarget):
 #          r'D:\HoTich\HOTICH_HG\source - vithuy\FilesNen', r'E:\OCR NEN\CHUA NEN\a\VI THUY')
 
 # # copy nén long mỹ
-copy_nen(r'D:\HoTich\HOTICH_HG\soucre - hlongmy\Files', r'D:\HoTich\HOTICH_HG\soucre - hlongmy\FilesNen',
-         r'C:\Users\Administrator\Downloads\New folder\chua nen long my')
+copy_nen(r'D:\HoTich\HOTICH_HG\source - txlongmy\Files', r'D:\HoTich\HOTICH_HG\source - txlongmy\FilesNen',
+         r'D:\HoTich\HOTICH_HG\source - txlongmy\FilesNen\New folder')
 
 
 # # tạo cấu trúc thư mục
