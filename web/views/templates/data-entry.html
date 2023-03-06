@@ -1,7 +1,7 @@
 {% extends "base/base-user.html" %}
 {% block title %}infY{% endblock %}
 {% block content %}
-<div class="col-md-5 col-xl-5" style="overflow-y: auto; max-height: 100vh;">
+<div class="col-md-5 col-xl-5" style="overflow-y: auto; max-height: 100vh;" id="entryview">
   <div class="card">
     <div class="card-block">
       <!-- <div id="statestics-chart" style="height: 90vh"></div> -->
@@ -118,7 +118,8 @@
                 <label class="col-form-label col-4" for="">Giới tính</label>
                 <!-- <textarea class="col-8" style="resize:none; overflow:hidden; height:2em !important; float: right;" name="nksGioiTinh"
                   id="nksGioiTinh" contenteditable></span> -->
-                <select class="ui search dropdown selection border border-secondary" id="nksGioiTinh">
+                <select class="ui search dropdown selection border border-secondary" id="nksGioiTinh"
+                  name="nksGioiTinh">
                   <option value="0">Nam</option>
                   <option value="1">Nữ</option>
                   <option value="2">Khác</option>
@@ -936,6 +937,34 @@
       return JSON.stringify(data)
     }
 
+
+    function clearValues() {
+      var data = {};
+
+      $('#dataentry :input').map(function () {
+        var type = $(this).prop("type");
+
+        // checked radios/checkboxes
+        if ((type == "checkbox" || type == "radio") && this.checked) {
+          // $("#nksGioiTinh").val('0');
+        }
+        // all other fields, except buttons
+        else if (type != "button" && type != "submit") {
+          $(this).val("")
+
+          // set select option
+          $(this).val('0');
+        }
+      })
+
+      $('span').map(function () {
+        $(this).text("");
+      })
+
+      return JSON.stringify(data)
+    }
+
+
     $("#next").click(function (e) {
       e.preventDefault();
       $.ajax({
@@ -947,7 +976,11 @@
         contentType: "application/json",
         data: JSON.stringify({ "dataForm": getAllValues() }),
         success: function (output, status, xhr, data) {
-          console.log({ "dataForm": getAllValues() })
+          // console.log({ "dataForm": getAllValues() })
+          clearValues()
+
+          // scroll on top
+          $("#entryview").animate({ scrollTop: 0 }, "fast");
         },
         error: function (data, errorThrown) {
           alert("Cập nhật không thành công");
