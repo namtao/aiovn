@@ -150,6 +150,7 @@ pipreqs==0.4.11
 platformdirs==2.5.2
 pluggy==1.0.0
 ply==3.11
+polars==0.16.12
 prometheus-client==0.15.0
 prompt-toolkit==3.0.32
 psutil==5.9.3
