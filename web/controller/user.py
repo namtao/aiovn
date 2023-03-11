@@ -8,7 +8,7 @@ import pandas as pd
 import pyodbc
 from api.auth import get_current_user
 from config.config import pyodbc_connect, pyodbc_str
-from database.crud import update_bienmuc
+from database.crud import update_bienmuc, get_data_by_id
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse
 from fastapi.security import APIKeyCookie
@@ -115,5 +115,20 @@ async def update_biemuc(response: Response, request_data: FormRequest, request: 
         
         # print(request_data.dataForm)
         return 200
+    except JWTError:
+        raise credentials_exception
+    
+
+@router.get("/getdata")
+async def update_biemuc(response: Response, request: Request, username: str = Depends(get_current_user)):
+    credentials_exception = HTTPException(
+        status_code=401,
+        # detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        dataX = get_data_by_id('hn', Config, '85')
+        
+        return {"dataX": dataX}
     except JWTError:
         raise credentials_exception

@@ -965,7 +965,7 @@
     }
 
 
-    $("#next").click(function (e) {
+    $("#reload").click(function (e) {
       e.preventDefault();
       $.ajax({
         url: '/update-bienmuc',
@@ -988,6 +988,29 @@
       });
 
     });
+
+
+    $("#next").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: '/getdata',
+        dataType: "json",
+        xhrFields: { withCredentials: true },
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        type: 'GET',
+        contentType: "application/json",
+        success: function(data){
+          // data: nhận dữ liệu được trả về trong controller
+          console.log(data['dataX']['id']);
+        },
+        error: function (data, errorThrown) {
+          alert("Cập nhật không thành công");
+        }
+      });
+
+    });
+
+
   });
 </script>
 
