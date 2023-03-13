@@ -1,7 +1,7 @@
 {% extends "base/base-admin.html" %}
 {% block title %}infY{% endblock %}
 {% block content %}
-<div class="col-sm-6 mobile-inputs">
+<div class="col-sm-3 mobile-inputs">
     <h4 class="sub-title">Thông tin</h4>
     <form>
         <div class="form-group row">
@@ -10,8 +10,36 @@
                 <select class="ui search dropdown selection border border-secondary" id="tbl">
                 </select>
             </div>
+        </div>
+    </form>
+</div>
 
-
+<div class="col-sm-3 mobile-inputs">
+    <h4 class="sub-title">Chi tiết</h4>
+    <form>
+        <div class="form-group row">
+            <div class="col-sm-12 d-flex align-items-center">
+                <div class="checkbox-fade fade-in-primary d-block">
+                    <label class="check-task d-block">
+                        <input type="checkbox" value="">
+                        <span class="cr">
+                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                        </span>
+                        <span>
+                            <h6>Schedule Meeting with Compnes</h6>
+                        </span>
+                    </label>
+                    <label class="check-task d-block">
+                        <input type="checkbox" value="">
+                        <span class="cr">
+                            <i class="cr-icon icofont icofont-ui-check txt-default"></i>
+                        </span>
+                        <span>
+                            <h6>Schedule Meeting with Compnes</h6>
+                        </span>
+                    </label>
+                </div>
+            </div>
         </div>
     </form>
 </div>
