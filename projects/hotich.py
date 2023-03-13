@@ -1,4 +1,5 @@
 
+from collections import Counter, OrderedDict
 import configparser
 import os
 import re
@@ -10,6 +11,7 @@ import pandas as pd
 from decor import get_files
 
 pathTarget = ''
+
 
 def merge_dict(dict1, dict2):
     for i in dict2.keys():
@@ -36,17 +38,17 @@ def create_struct(root, file):
                 pass
     except:
         pass
-    
+
+
 def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
 
-def read_excel():
-    # C:\Users\Nam\Downloads\ADDJ\Hậu Giang\EXCEL ĐÃ BIÊN MỤC\Vị Thủy\KS\Vị Thắng\vị thắng-KS.2006.01.xlsx
+def count_row_excel():
     count = 0
-    for root, dirs, files in os.walk(r'C:\Users\Nam\Downloads\ADDJ\Hậu Giang\EXCEL ĐÃ BIÊN MỤC\Vị Thanh'):
+    for root, dirs, files in os.walk(r'C:\Users\vanna\Downloads\EXCEL ĐÃ BIÊN MỤC\Tx Long Mỹ\KT\31474'):
         for file in files:
-            pattern = re.compile(".*"+'xls')
+            pattern = re.compile(".*xls*")
 
             if pattern.match(file):
                 df = pd.read_excel(os.path.join(root, file))
@@ -60,7 +62,7 @@ def read_excel():
 def tktruong(conn, sql):
     # đếm số trường
     df = pd.read_sql_query(sql, conn)
-    df.replace(r'^\s*$', np.nan, regex=True, inplace= True) # thay thế rỗng thành nan và gán lại vào df
+    df.replace(r'^\s*$', np.nan, regex=True, inplace=True)  # thay thế rỗng thành nan và gán lại vào df
     return np.sum(df.count())  # đếm số ô có thông tin (loại bỏ nan)
 
 
@@ -70,26 +72,22 @@ def tksoluong(conn, sql):
 
 
 def thongkehotich():
-    fileName = r'C:\Users\Administrator\Desktop\Thống kê hộ tịch.xlsx'
+    fileName = r'C:\Users\vanna\Downloads\EXCEL ĐÃ BIÊN MỤC\Thống kê hộ tịch.xlsx'
     config = configparser.ConfigParser()
     config.read(r'web/config/config.ini')
 
-    connViThanh = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
-    connLongMy = f'mssql://@{config["longmy"]["host"]}/{config["longmy"]["db"]}?driver={config["longmy"]["driver"]}'
-    connViThuy = f'mssql://@{config["vithuy"]["host"]}/{config["vithuy"]["db"]}?driver={config["vithuy"]["driver"]}'
-    connTXLongMy = f'mssql://@{config["txlongmy"]["host"]}/{config["txlongmy"]["db"]}?driver={config["txlongmy"]["driver"]}'
-    
+    conn = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
 
     print("Thống kê hộ tịch")
 
     dicLoai = {'ks': 'HT_KHAISINH', 'kt': 'HT_KHAITU', 'kh': 'HT_KETHON',
                'cmc': 'HT_NHANCHAMECON', 'hn': 'HT_XACNHANHONNHAN'}
 
-    dic = {930: ['Vị Thanh', connViThanh],
-           931: ['Thị xã Ngã Bảy', connViThanh],
-           935: ['Vị Thủy', connViThuy],
-           936: ['Huyện Long Mỹ', connLongMy],
-           937: ['Thị xã Long Mỹ', connTXLongMy]}
+    dic = {930: ['Vị Thanh', conn],
+           931: ['Thị xã Ngã Bảy', conn],
+           935: ['Vị Thủy', conn],
+           936: ['Huyện Long Mỹ', conn],
+           937: ['Thị xã Long Mỹ', conn]}
 
     d = {'Nơi đăng ký': [], 'Loại sổ': [], 'Tổng số lượng': [],
          'Số lượng biên mục': [], 'Tỷ lệ biên mục': [], 'Tổng số trường': []}
@@ -184,4 +182,48 @@ def thongkehotich():
     os.system('\"'+fileName+'\"')
 
 
-thongkehotich()
+def tktruongtheosokytu():
+    # tính tổng value
+    # đếm số ký tự trong từng trường
+    config = configparser.ConfigParser()
+    config.read(r'web/config/config.ini')
+
+    conn = f'mssql://@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
+
+    sql = 'SELECT id from ht_khaisinh'
+
+    df = pd.read_sql_query(sql, conn)
+    # df= reduce_mem_usage(df)
+    count = 0
+    dic = {}
+
+    for col in df.columns:
+        series = df[col]
+        # series = df.squeeze()
+        # series = df.nksHoTen
+        # series = pd.Series(df.nksHoTen)
+        # lst = df['nksHoTen'].to_list()
+
+        # tính độ dài chuỗi giá trị của series
+        lenValue = series.map(lambda calc: len(
+            removeEscape(calc)))
+
+        # for i in list(series):
+        #     a = removeEscape(i)
+        #     if (len(removeEscape(i)) > 900):
+        #         pass
+
+        # sắp xếp theo key dictionary
+        d = OrderedDict(sorted(dict(Counter(list(lenValue))).items()))
+
+        # lọc theo key dictionary
+        filtered_dict = {k: v for k, v in d.items() if k > 500}
+
+        dic = merge_dict(dic, d)
+
+        # tính tổng value của dict
+
+        print("\rTổng trường: {:<20,}".format(sum(dic.values())), end='')
+
+
+tktruongtheosokytu()

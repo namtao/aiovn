@@ -24,4 +24,4 @@ def create_struct(root, file):
         pass
     
 
-create_struct(r'D:\HoTich\HOTICH_HG\soucre - hlongmy\FilesNen\New folder')
+# create_struct(r'D:\HoTich\HOTICH_HG\soucre - hlongmy\FilesNen\New folder')
