@@ -1,6 +1,5 @@
 
-from api import auth, db
-from controller import admin, user
+from controller import admin, auth, db, user
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
