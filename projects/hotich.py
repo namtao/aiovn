@@ -44,9 +44,9 @@ def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
 
-def count_row_excel():
+def count_row_excel(path):
     count = 0
-    for root, dirs, files in os.walk(r'C:\Users\vanna\Downloads\EXCEL ĐÃ BIÊN MỤC\Tx Long Mỹ\KT\31474'):
+    for root, dirs, files in os.walk(path):
         for file in files:
             pattern = re.compile(".*xls*")
 
@@ -56,6 +56,7 @@ def count_row_excel():
                     series = df[col].dropna()
                     count += int(series.shape[0]) - 1
                     print(('\rTổng số bản ghi: {:<20,}'.format(count)), end='')
+                    # print(f'{file} {int(series.shape[0]) - 1}')
                     break
 
 
@@ -226,4 +227,4 @@ def tktruongtheosokytu():
         print("\rTổng trường: {:<20,}".format(sum(dic.values())), end='')
 
 
-tktruongtheosokytu()
+count_row_excel(r'C:\Users\vanna\Downloads\EXCEL ĐÃ BIÊN MỤC\Đã sắp xếp')
