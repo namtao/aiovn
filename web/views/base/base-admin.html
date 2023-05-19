@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="CodedThemes" />
+  <meta name="keywords"
+    content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app" />
+  <meta name="author" content="CodedThemes" />
+  <!-- Favicon icon -->
+  <link rel="icon" href="{{ url_for('static', path='/assets/images/favicon.ico') }}" type="image/x-icon" />
+  <!-- Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet" />
+  <!-- Required Fremwork -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', path='/assets/css/bootstrap/css/bootstrap.min.css') }}" />
+  <!-- themify-icons line icon -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', path='/assets/icon/themify-icons/themify-icons.css') }}" />
+  <!-- ico font -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='assets/icon/icofont/css/icofont.css') }}" />
+  <!-- Style.css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/assets/css/style.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/style.css') }}" />
+
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', path='/assets/css/jquery.mCustomScrollbar.css')}}" />
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous
+  	"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+    integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+
+  <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
+</head>
+
+<body>
+  <!-- Pre-loader start -->
+  <div class="theme-loader">
+    <div class="ball-scale">
+      <div class="contain">
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Pre-loader end -->
+
+  <div id="pcoded" class="pcoded">
+    <div class="pcoded-container navbar-wrapper">
+
+      <!-- header -->
+      <nav class="navbar header-navbar pcoded-header">
+        <div class="navbar-wrapper">
+
+          <div class="navbar-logo">
+            <a class="mobile-menu" id="mobile-collapse" href="#!">
+              <i class="ti-menu"></i>
+            </a>
+            <a class="mobile-search morphsearch-search" href="#">
+              <i class="ti-search"></i>
+            </a>
+            <a href="index.html">
+              <img class="img-fluid" src="{{ url_for('static', path='/assets/images/logo.png')}}" alt="Theme-Logo" />
+            </a>
+            <a class="mobile-options">
+              <i class="ti-more"></i>
+            </a>
+          </div>
+
+          <div class="navbar-container container-fluid">
+            <ul class="nav-left">
+              <li>
+                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+              </li>
+
+              <li>
+                <a href="#!" onclick="javascript:toggleFullScreen()">
+                  <i class="ti-fullscreen"></i>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav-right">
+              <li class="header-notification">
+                <a href="#!">
+                  <i class="ti-bell"></i>
+                  <span class="badge bg-c-pink"></span>
+                </a>
+                <ul class="show-notification">
+                  <li>
+                    <h6>Notifications</h6>
+                    <label class="label label-danger">New</label>
+                  </li>
+                  <li>
+                    <div class="media">
+                      <!-- <img class="d-flex align-self-center img-radius" src="assets/images/avatar-4.png"
+                        alt="Generic placeholder image"> -->
+                      <div class="media-body">
+                        <h5 class="notification-user">John Doe</h5>
+                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                        <span class="notification-time">30 minutes ago</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media">
+                      <!-- <img class="d-flex align-self-center img-radius" src="assets/images/avatar-3.png"
+                        alt="Generic placeholder image"> -->
+                      <div class="media-body">
+                        <h5 class="notification-user">Joseph William</h5>
+                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                        <span class="notification-time">30 minutes ago</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media">
+                      <!-- <img class="d-flex align-self-center img-radius" src="assets/images/avatar-4.png"
+                        alt="Generic placeholder image"> -->
+                      <div class="media-body">
+                        <h5 class="notification-user">Sara Soudein</h5>
+                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                        <span class="notification-time">30 minutes ago</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li class="user-profile header-notification">
+                <a href="#!">
+                  <img src="{{ url_for('static', path='/assets/images/avatar-4.png')}}" class="img-radius"
+                    alt="User-Profile-Image">
+                  <span>infY</span>
+                  <i class="ti-angle-down"></i>
+                </a>
+                <ul class="show-notification profile-notification">
+                  <li>
+                    <a href="#!">
+                      <i class="ti-settings"></i> Cài đặt
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="ti-user"></i> Thông tin
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="ti-email"></i> Tin nhắn
+                    </a>
+                  </li>
+                  <li>
+                    <a href="auth-normal-sign-in.html">
+                      <i class="ti-layout-sidebar-left"></i> Đăng xuất
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- content -->
+      <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+          <nav class="pcoded-navbar">
+            <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+            <!-- navbar -->
+            <div class="pcoded-inner-navbar main-menu">
+              <div class="">
+                <div class="main-menu-header">
+                  <img class="img-40 img-radius" src="{{ url_for('static', path='/assets/images/avatar-4.png')}}"
+                    alt="User-Profile-Image">
+                  <div class="user-details">
+                    <span>infY</span>
+                    <!-- <span id="more-details">UX Designer<i class="ti-angle-down"></i></span> -->
+                  </div>
+                </div>
+
+                <div class="main-menu-content">
+                  <!-- <ul>
+                    <li class="more-details">
+                      <a href="#"><i class="ti-user"></i>Thông tin tài khoản</a>
+                      <a href="#!"><i class="ti-settings"></i>Settings</a>
+                      <a href="auth-normal-sign-in.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                    </li>
+                  </ul> -->
+                </div>
+              </div>
+              <div class="pcoded-search">
+                <span class="searchbar-toggle"> </span>
+                <div class="pcoded-search-box ">
+                  <input type="text" placeholder="Tìm kiếm">
+                  <span class="search-icon"><i class="ti-search" aria-hidden="true"></i></span>
+                </div>
+              </div>
+              <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Quản trị</div>
+              <ul class="pcoded-item pcoded-left-item">
+                <li class="active">
+                  <a href="home">
+                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Trang chủ</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                </li>
+                <li class="pcoded-hasmenu">
+                  <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-user"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Người dùng</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                  <ul class="pcoded-submenu">
+                    <li class=" ">
+                      <a href="#">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Danh sách</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+                    <li class=" ">
+                      <a href="#">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Thêm người dùng</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+              </ul>
+              <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Công cụ</div>
+              <ul class="pcoded-item pcoded-left-item">
+                <li class="pcoded-hasmenu">
+                  <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-book"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Tệp và thư mục</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                  <ul class="pcoded-submenu">
+                    <li class=" ">
+                      <a href="#">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">1</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+                    <li class=" ">
+                      <a href="#">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">2</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+                <li id="convert">
+                  <a href="convert">
+                    <span class="pcoded-micon"><i class="ti-exchange-vertical"></i><b>FC</b></span>
+                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Chuyển đổi tệp</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                </li>
+
+              </ul>
+
+              <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Cơ sở dữ liệu</div>
+              <ul class="pcoded-item pcoded-left-item">
+                <li id="convert">
+                  <a href="convert">
+                    <span class="pcoded-micon"><i class="ti-plug"></i><b>FC</b></span>
+                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Kết nối</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                </li>
+                <li class="pcoded-hasmenu" id="select">
+                  <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-server"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Thao tác</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                  <ul class="pcoded-submenu">
+                    <li class=" ">
+                      <a href="select">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Xem</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+                    <li class=" ">
+                      <a href="#">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Thêm</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+                    <li class=" ">
+                      <a href="#">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Sửa</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+                    <li class=" ">
+                      <a href="#">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Xóa</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+
+              <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Khác</div>
+              <ul class="pcoded-item pcoded-left-item">
+                <li class="pcoded-hasmenu ">
+                  <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
+                    <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Menu Levels</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                  <ul class="pcoded-submenu">
+                    <li class="">
+                      <a href="javascript:void(0)">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-21">Menu Level 2.1</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+                    <li class="pcoded-hasmenu ">
+                      <a href="javascript:void(0)">
+                        <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-22.main">Menu Level 2.2</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                      <ul class="pcoded-submenu">
+                        <li class="">
+                          <a href="javascript:void(0)">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-22.menu-level-31">Menu
+                              Level 3.1</span>
+                            <span class="pcoded-mcaret"></span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="">
+                      <a href="javascript:void(0)">
+                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-23">Menu Level 2.3</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+              <div class="main-body">
+                <div class="page-wrapper">
+                  <div class="page-body">
+                    <div class="row">
+                      {% block content %}{% endblock %}
+
+                    </div>
+                  </div>
+
+                  <div id="styleSelector"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Required Jquery -->
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/jquery/jquery.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/popper.js/popper.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/bootstrap/js/bootstrap.min.js')}}"></script>
+  <!-- jquery slimscroll js -->
+  <script type="text/javascript"
+    src="{{ url_for('static', path='/assets/js/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
+  <!-- modernizr js -->
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/modernizr/modernizr.js')}}"></script>
+  <!-- am chart -->
+  <script src="{{ url_for('static', path='/assets/pages/widget/amchart/amcharts.min.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/pages/widget/amchart/serial.min.js')}}"></script>
+  <!-- Todo js -->
+  <script type="text/javascript " src="{{ url_for('static', path='/assets/pages/todo/todo.js')}}"></script>
+  <!-- Custom js -->
+  <script type="text/javascript"
+    src="{{ url_for('static', path='/assets/pages/dashboard/custom-dashboard.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/script.js')}}"></script>
+  <script type="text/javascript " src="{{ url_for('static', path='/assets/js/SmoothScroll.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/js/pcoded.min.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/js/demo-12.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+
+  <script>
+    var $window = $(window);
+    var nav = $(".fixed-button");
+    $window.scroll(function () {
+      if ($window.scrollTop() >= 200) {
+        nav.addClass("active");
+      } else {
+        nav.removeClass("active");
+      }
+    });
+  </script>
+</body>
+
+</html>

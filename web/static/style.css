@@ -1,0 +1,120 @@
+#container {
+    width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #eee;
+}
+
+#addField {
+    padding: 5px;
+    display: inline-block;
+    background-color: #3A9668;
+    color: #f1f1f1;
+    border: 1px solid #005;
+}
+
+.removeField {
+    margin: auto;
+    margin-left: 5px;
+    padding: 5px;
+    display: inline-block;
+    background-color: #B02109;
+    color: #f1f1f1;
+    border: 1px solid #005;
+}
+
+#addField:hover,
+.removeField:hover {
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 100px;
+    background-color: #428BCA;
+    border-color: #357EBD;
+}
+
+.container {
+    display: flex;
+
+    /* Misc */
+    /* border: 1px solid #cbd5e0;
+    height: 16rem;
+    width: 100%; */
+}
+
+.container__left {
+    /* Initially, the left takes 3/4 width */
+    width: 25%;
+
+    /* Misc */
+    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+}
+
+.resizer {
+    background-color: #cbd5e0;
+    cursor: ew-resize;
+    height: 100%;
+    width: 5px;
+}
+
+.container__right {
+    /* Take the remaining width */
+    flex: 1;
+
+    /* Misc */
+    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+}
+
+
+.textarea {
+    /* border: 1px solid #ccc; */
+    font-family: inherit;
+    font-size: inherit;
+    padding: 2px 5px;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    min-height: 30px;
+    line-height: 20px;
+    cursor: auto;
+}
+
+span:focus {
+    border: 2px solid #5d97ee !important;
+}
+
+span {
+    border-radius: 5px;
+}
+
+span:hover {
+    border: 2px solid #5d97ee !important;
+}
+
+select:hover {
+    border: 2px solid #5d97ee !important;
+}
+
+select {
+    resize: none;
+    overflow: hidden;
+    height: 2em !important;
+    float: right;
+    width: 100%;
+    cursor: auto;
+}
+
+select:focus {
+    border: 2px solid #5d97ee !important;
+}
+
+button{
+    font-size: 15px !important;
+    width: 100%;
+}

@@ -1,0 +1,1 @@
+sqlcmd -S . -i sql.sql

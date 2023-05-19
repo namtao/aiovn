@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="CodedThemes" />
+  <meta name="keywords"
+    content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app" />
+  <meta name="author" content="CodedThemes" />
+  <!-- Favicon icon -->
+  <link rel="icon" href="{{ url_for('static', path='/assets/images/favicon.ico') }}" type="image/x-icon" />
+  <!-- Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet" />
+  <!-- Required Fremwork -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', path='/assets/css/bootstrap/css/bootstrap.min.css') }}" />
+  <!-- themify-icons line icon -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', path='/assets/icon/themify-icons/themify-icons.css') }}" />
+  <!-- ico font -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='assets/icon/icofont/css/icofont.css') }}" />
+  <!-- Style.css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/assets/css/style.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/style.css') }}" />
+
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', path='/assets/css/jquery.mCustomScrollbar.css')}}" />
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous
+  	"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+    integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+
+  <!-- semantic -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/semantic/dist/semantic.min.css')}}">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', path='/semantic/dist/semantic.min.js')}}"></script>
+  <style>
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+
+  <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
+</head>
+
+<body style="font-size: 16px !important;">
+  <!-- Pre-loader start -->
+  <div class="theme-loader">
+    <div class="ball-scale">
+      <div class="contain">
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+        <div class="ring">
+          <div class="frame"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Pre-loader end -->
+
+  <div id="pcoded" class="pcoded">
+    <div class="pcoded-container navbar-wrapper">
+
+      <!-- content -->
+      <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+          <!-- <div class="pcoded-content"> -->
+          <div class="pcoded-inner-content">
+            <div class="main-body">
+              <div class="page-wrapper">
+                <div class="page-body">
+                  <div class="row" style="height: 92vh;">
+                    {% block content %}{% endblock %}
+
+                  </div>
+                </div>
+
+                <div id="styleSelector"></div>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Required Jquery -->
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/jquery/jquery.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/popper.js/popper.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/bootstrap/js/bootstrap.min.js')}}"></script>
+  <!-- jquery slimscroll js -->
+  <script type="text/javascript"
+    src="{{ url_for('static', path='/assets/js/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
+  <!-- modernizr js -->
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/modernizr/modernizr.js')}}"></script>
+  <!-- am chart -->
+  <script src="{{ url_for('static', path='/assets/pages/widget/amchart/amcharts.min.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/pages/widget/amchart/serial.min.js')}}"></script>
+  <!-- Todo js -->
+  <script type="text/javascript " src="{{ url_for('static', path='/assets/pages/todo/todo.js')}}"></script>
+  <!-- Custom js -->
+  <script type="text/javascript"
+    src="{{ url_for('static', path='/assets/pages/dashboard/custom-dashboard.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', path='/assets/js/script.js')}}"></script>
+  <script type="text/javascript " src="{{ url_for('static', path='/assets/js/SmoothScroll.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/js/pcoded.min.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/js/demo-12.js')}}"></script>
+  <script src="{{ url_for('static', path='/assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+
+  <script>
+    var $window = $(window);
+    var nav = $(".fixed-button");
+    $window.scroll(function () {
+      if ($window.scrollTop() >= 200) {
+        nav.addClass("active");
+      } else {
+        nav.removeClass("active");
+      }
+    });
+  </script>
+</body>
+
+</html>
