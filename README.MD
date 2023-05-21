@@ -447,8 +447,8 @@ env\Scripts\activate
 
 conda install pip
 
-python -m pip freeze --all > requirements.txt
-python -m pip install -r requirements.txt
+python -m pip freeze --all > reqs.txt
+python -m pip install -r reqs.txt
 ```
 
 Django
