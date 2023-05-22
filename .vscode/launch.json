@@ -15,7 +15,7 @@
       "type": "node-terminal",
       "name": "NodeJS",
       "request": "launch",
-      "command": "npm run start",
+      "command": "npm start",
       "cwd": "${workspaceFolder}\\frontend"
     }
   ]

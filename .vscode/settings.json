@@ -94,6 +94,6 @@
   "python.analysis.extraPaths": ["./projects"],
   "git.ignoreLimitWarning": true,
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   }
 }
