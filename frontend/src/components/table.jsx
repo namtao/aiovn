@@ -5,7 +5,7 @@
 import React, { useEffect, useState } from "react";
 
 export const Table = () => {
-  const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
 
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage, setitemsPerPage] = useState(10);
@@ -13,7 +13,7 @@ export const Table = () => {
   const [pageNumberLimit, setpageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
-  // const [filterResult, setFilterResult] = useState([]);
+  const [filterResult, setFilterResult] = useState([]);
   const [searchResult, setSearchResult] = useState("");
 
   const API = `https://jsonplaceholder.typicode.com/photos`;
@@ -67,20 +67,21 @@ export const Table = () => {
                   <tr key={index}>
                     <td>{item.albumId}</td>
                     <td>{item.id}</td>
-                    <td>{splitResult(item.title + item.url)}</td>
-                    <td>{item.url}</td>
-                    <td>{item.thumbnailUrl}</td>
+                    <td>{splitResult(item.title)}</td>
+                    <td>{splitResult(item.url)}</td>
+                    <td>{splitResult(item.thumbnailUrl)}</td>
                   </tr>
                 ))
               : data.map((item, index) => (
                   <tr key={index}>
                     <td>{item.albumId}</td>
                     <td>{item.id}</td>
-                    <td>{item.title}</td>
-                    <td>{item.url}</td>
-                    <td>{item.thumbnailUrl}</td>
+                    <td>{splitResult(item.title)}</td>
+                    <td>{splitResult(item.url)}</td>
+                    <td>{splitResult(item.thumbnailUrl)}</td>
                   </tr>
                 ))} */}
+
             {data.map((item, index) => (
               <tr key={index}>
                 <td>{item.albumId}</td>
@@ -129,13 +130,18 @@ export const Table = () => {
       );
     });
 
-  const handleSearch = (event) => {
-    // console.log(data)
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  const handleSearch = async (event) => {
     const search = event.target.value;
     setSearchResult(search);
+    fetchDatas(API);
+    await sleep(2000);
+
     if (search !== "") {
-      const filterData = data.filter((item) => {
-        // console.log(Object.values(item).join("").toLowerCase());
+      const filterData = allData.filter((item) => {
         return Object.values(item)
           .join("")
           .toLowerCase()
@@ -143,24 +149,20 @@ export const Table = () => {
       });
 
       // setFilterResult(filterData);
-      setData(filterData);
+      setAllData(filterData);
     } else {
-      // console.log("data" + data)
-      fetchDatas(API)
-      setData(data);
+      fetchDatas(API);
     }
   };
 
   const fetchDatas = async (url) => {
     try {
-      // console.log(pagination);
       const res = await fetch(url);
       const responseJSON = await res.json();
 
       if (responseJSON.length > 0) {
-        setData(responseJSON);
+        setAllData(responseJSON);
       }
-      // console.log(responseJSON);
     } catch (e) {
       console.error(e);
     }
@@ -171,13 +173,14 @@ export const Table = () => {
   }, []);
 
   const pages = [];
-  for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+
+  for (let i = 1; i <= Math.ceil(allData.length / itemsPerPage); i++) {
     pages.push(i);
   }
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = allData.slice(indexOfFirstItem, indexOfLastItem);
 
   const renderPageNumbers = pages.map((number) => {
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
