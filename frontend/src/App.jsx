@@ -1,5 +1,5 @@
-// import { Header } from "./components/header";
-// import { Slider } from "./components/slider";
+import { Header } from "./components/header";
+import { Slider } from "./components/slider";
 import { Footer } from "./components/footer";
 import { About } from "./components/about";
 import { FeaturedServices } from "./components/featured-services";
@@ -15,7 +15,7 @@ import { Portfolio } from "./components/portfolio";
 import { Team } from "./components/team";
 import { Blog } from "./components/blog";
 import { Contact } from "./components/contact";
-import { Table } from "./components/table";
+// import { Table } from "./components/table";
 
 // import { Gallery } from "./components/gallery";
 // import { Testimonials } from "./components/testimonials";
@@ -38,10 +38,10 @@ const App = () => {
 
   return (
     <div>
-      {/* <Header /> */}
-      {/* <Slider /> */}
+      <Header />
+      <Slider />
       <main id="main">
-        <Table />
+        {/* <Table /> */}
         <FeaturedServices />
         <About />
         <Clients />

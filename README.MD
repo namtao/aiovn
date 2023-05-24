@@ -447,8 +447,17 @@ env\Scripts\activate
 
 conda install pip
 
+conda list -e > requirements.txt
+conda create --name <env> --file requirements.txt
+
 python -m pip freeze --all > reqs.txt
 python -m pip install -r reqs.txt
+
+pip list --format=freeze > requirements.txt
+
+
+conda env export > env.yml
+conda env update -n base --file env.yml --prune
 ```
 
 Django
