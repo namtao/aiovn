@@ -496,6 +496,13 @@ isort .
 pyarmor obfuscate pythonfile.py
 ```
 
+Add Path windows
+
+```:
+setx -m PATH "%PATH%;F:\DATA\Setup"
+setx PATH "%PATH%;F:\DATA\Setup"
+```
+
 ## PEP-8
 
 1. Đặt tên cho các module/package: viết thường tất cả các ký tự, nếu có nhiều từ trong tên, dùng ký tự _ để nối giữa các từ

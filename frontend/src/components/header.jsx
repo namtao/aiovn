@@ -1,6 +1,6 @@
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
-export const Header  = (props) => {
+export const Header = (props) => {
   return (
     <header id="header" className="header fixed-top" data-scrollto-offset={0}>
       <div className="container-fluid d-flex align-items-center justify-content-between">
@@ -15,32 +15,13 @@ export const Header  = (props) => {
           </h1>
         </a>
         <nav id="navbar" className="navbar">
-          <NavLink to = "/home">
-            Trang chủ
-          </NavLink>
+          {/* <NavLink to="/">Home</NavLink> */}
           <ul>
-            {/* <li className="dropdown"> */}
-              {/* <a href="!#"> */}
-                {/* <span>Trang chủ</span>{" "} */}
-                {/* <i className="bi bi-chevron-down dropdown-indicator" /> */}
-              {/* </a> */}
-              {/* <ul>
-                <li>
-                  <a href="index.html">Home 1 - index.html</a>
-                </li>
-                <li>
-                  <a href="index-2.html" className="active">
-                    Home 2 - index-2.html
-                  </a>
-                </li>
-                <li>
-                  <a href="index-3.html">Home 3 - index-3.html</a>
-                </li>
-                <li>
-                  <a href="index-4.html">Home 4 - index-4.html</a>
-                </li>
-              </ul> */}
-            {/* </li> */}
+            <li>
+              <a className="nav-link scrollto" href="!#">
+                Trang chủ
+              </a>
+            </li>
             <li>
               <a className="nav-link scrollto" href="index.html#about">
                 Giới thiệu
