@@ -1,4 +1,3 @@
-import { Header } from "./header";
 import { Slider } from "./slider";
 import { Footer } from "./footer";
 import { About } from "./about";
@@ -31,7 +30,6 @@ export const Home = () => {
 
   return (
     <div>
-      <Header />
       <Slider />
       <main id="main">
         {/* <Table /> */}
