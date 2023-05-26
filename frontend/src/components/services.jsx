@@ -5,15 +5,15 @@ export const Services = (props) => {
     <section id="services" className="services">
       <div className="container" data-aos="fade-up">
         <div className="section-header">
-          <h2>Our Services</h2>
+          <h2>Dịch vụ khác</h2>
           <p>
-            Ea vitae aspernatur deserunt voluptatem impedit deserunt magnam
-            occaecati dssumenda quas ut ad dolores adipisci aliquam.
+            {/* Ea vitae aspernatur deserunt voluptatem impedit deserunt magnam
+            occaecati dssumenda quas ut ad dolores adipisci aliquam. */}
           </p>
         </div>
         <div className="row gy-5">
           <div
-            className="col-xl-4 col-md-6"
+            className="col-xl-6 col-md-6"
             data-aos="zoom-in"
             data-aos-delay={200}
           >
@@ -26,7 +26,7 @@ export const Services = (props) => {
                   <i className="bi bi-activity" />
                 </div>
                 <a href="!#" className="stretched-link">
-                  <h3>Nesciunt Mete</h3>
+                  <h3>Hộp lưu trữ hồ sơ</h3>
                 </a>
                 <p>
                   Provident nihil minus qui consequatur non omnis maiores. Eos
@@ -37,7 +37,7 @@ export const Services = (props) => {
           </div>
           {/* End Service Item */}
           <div
-            className="col-xl-4 col-md-6"
+            className="col-xl-6 col-md-6"
             data-aos="zoom-in"
             data-aos-delay={300}
           >
@@ -50,7 +50,7 @@ export const Services = (props) => {
                   <i className="bi bi-broadcast" />
                 </div>
                 <a href="!#" className="stretched-link">
-                  <h3>Eosle Commodi</h3>
+                  <h3>Thép tấm, cuộn</h3>
                 </a>
                 <p>
                   Ut autem aut autem non a. Sint sint sit facilis nam iusto
@@ -60,7 +60,7 @@ export const Services = (props) => {
             </div>
           </div>
           {/* End Service Item */}
-          <div
+          {/* <div
             className="col-xl-4 col-md-6"
             data-aos="zoom-in"
             data-aos-delay={400}
@@ -82,9 +82,9 @@ export const Services = (props) => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* End Service Item */}
-          <div
+          {/* <div
             className="col-xl-4 col-md-6"
             data-aos="zoom-in"
             data-aos-delay={500}
@@ -107,9 +107,9 @@ export const Services = (props) => {
                 <a href="!#" className="stretched-link" />
               </div>
             </div>
-          </div>
+          </div> */}
           {/* End Service Item */}
-          <div
+          {/* <div
             className="col-xl-4 col-md-6"
             data-aos="zoom-in"
             data-aos-delay={600}
@@ -132,9 +132,9 @@ export const Services = (props) => {
                 <a href="!#" className="stretched-link" />
               </div>
             </div>
-          </div>
+          </div> */}
           {/* End Service Item */}
-          <div
+          {/* <div
             className="col-xl-4 col-md-6"
             data-aos="zoom-in"
             data-aos-delay={700}
@@ -157,7 +157,7 @@ export const Services = (props) => {
                 <a href="!#" className="stretched-link" />
               </div>
             </div>
-          </div>
+          </div> */}
           {/* End Service Item */}
         </div>
       </div>

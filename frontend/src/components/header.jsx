@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-
 export const Header = (props) => {
   return (
     <header id="header" className="header fixed-top" data-scrollto-offset={0}>
@@ -9,44 +7,57 @@ export const Header = (props) => {
           className="logo d-flex align-items-center scrollto me-auto me-lg-0"
         >
           {/* Uncomment the line below if you also wish to use an image logo */}
-          {/* <img src="img/logo.png" alt=""> */}
-          <h1>
+          <img src="img/logo.png" className="img-fluid" alt=""></img>
+          {/* <h1>
             infY<span>.</span>
-          </h1>
+          </h1> */}
+          <h1 style={{ color: "#f9652c" }}>ADDJ</h1>
+          {/* <h4>Chuyên nghiệp - Khoa học - Bảo mật</h4> */}
         </a>
         <nav id="navbar" className="navbar">
-          {/* <NavLink to="/">Home</NavLink> */}
           <ul>
             <li>
-              <a className="nav-link scrollto" href="!#">
+              <a className="nav-link scrollto" href="#home">
                 Trang chủ
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="index.html#about">
+              <a className="nav-link scrollto" href="#about">
                 Giới thiệu
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="index.html#services">
+              <a className="nav-link scrollto" href="#digitizing">
                 Số hóa
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="index.html#portfolio">
+              <a className="nav-link scrollto" href="#readjust">
                 Chỉnh lý
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="index.html#team">
+              <a className="nav-link scrollto" href="#equipment">
                 Trang thiết bị
               </a>
             </li>
             <li>
-              <a href="blog.html">Thành tích</a>
+              <a className="nav-link scrollto" href="#blog">
+                Thành tích
+              </a>
             </li>
-            <li className="dropdown megamenu">
-              <a href="!#">
+            <li>
+              <a className="nav-link scrollto" href="#blog">
+                Tin tức
+              </a>
+            </li>
+            {/* <li>
+              <a className="nav-link scrollto" href="#blog">
+                Tin tức
+              </a>
+            </li> */}
+            {/* <li className="dropdown megamenu">
+              <a className="nav-link scrollto" href="#recent-blog-posts">
                 <span>Tin tức</span>{" "}
                 <i className="bi bi-chevron-down dropdown-indicator" />
               </a>
@@ -72,7 +83,7 @@ export const Header = (props) => {
                   <a href="!#">Column 4 link 3</a>
                 </li>
               </ul>
-            </li>
+            </li> */}
             {/* <li className="dropdown">
               <a href="!#">
                 <span>Drop Down</span>{" "}

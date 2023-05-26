@@ -1,12 +1,26 @@
-export const About = (props) => {
+export const Equipment = (props) => {
   return (
-    <section id="about" className="about">
+    <section id="equipment" className="about">
       <div className="container" data-aos="fade-up">
         <div className="section-header">
-          {/* <h2>VỀ CHÚNG TÔI</h2> */}
+          {/* <h2>DỊCH VỤ SỐ HÓA</h2> */}
           <p>
-            <img src="img/addj/about-1.jpg" className="img-fluid" alt="" />
-            <img src="img/addj/about-2.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi1.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi2.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi3.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi4.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi5.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi6.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi7.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi8.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi9.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi10.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi11.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi12.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi13.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi14.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi15.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/thietbi16.jpg" className="img-fluid" alt="" />
           </p>
         </div>
         {/* <div className="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay={200}>

@@ -1,12 +1,12 @@
-export const About = (props) => {
+export const Readjust = (props) => {
   return (
-    <section id="about" className="about">
+    <section id="readjust" className="about">
       <div className="container" data-aos="fade-up">
         <div className="section-header">
-          {/* <h2>VỀ CHÚNG TÔI</h2> */}
+          {/* <h2>DỊCH VỤ CHỈNH LÝ TÀI LIỆU</h2> */}
           <p>
-            <img src="img/addj/about-1.jpg" className="img-fluid" alt="" />
-            <img src="img/addj/about-2.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/chinhly1.jpg" className="img-fluid" alt="" />
+            <img src="img/addj/chinhly2.jpg" className="img-fluid" alt="" />
           </p>
         </div>
         {/* <div className="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay={200}>

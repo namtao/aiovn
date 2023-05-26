@@ -1,10 +1,10 @@
 export const Blog = (props) => {
   return (
-    <section id="recent-blog-posts" className="recent-blog-posts">
+    <section id="blog" className="about">
       <div className="container" data-aos="fade-up">
         <div className="section-header">
-          <h2>Blog</h2>
-          <p>Recent posts form our Blog</p>
+          <h2>Câu chuyện</h2>
+          {/* <p>Recent posts form our Blog</p> */}
         </div>
         <div className="row">
           <div className="col-lg-4" data-aos="fade-up" data-aos-delay={200}>
