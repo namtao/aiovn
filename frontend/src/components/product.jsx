@@ -1,6 +1,6 @@
-export const Portfolio = (props) => {
+export const Product = (props) => {
   return (
-    <section id="portfolio" className="portfolio" data-aos="fade-up">
+    <section id="product" className="portfolio" data-aos="fade-up">
       <div className="container">
         <div className="section-header">
           <h2>Portfolio</h2>

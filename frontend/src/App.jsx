@@ -65,15 +65,20 @@ const App = () => {
                   </a>
                 </li>
                 <li>
-                  <a className="nav-link scrollto" href="#blog">
-                    Thành tích
+                  <a className="nav-link scrollto" href="#product">
+                    Sản phẩm
                   </a>
                 </li>
                 <li>
-                  <a className="nav-link scrollto" href="#blog">
+                  <a className="nav-link scrollto" href="#news">
                     Tin tức
                   </a>
                 </li>
+                {/* <li>
+                  <a className="nav-link scrollto" href="#!">
+                    Tin tức
+                  </a>
+                </li> */}
                 {/* <li>
               <a className="nav-link scrollto" href="#blog">
                 Tin tức

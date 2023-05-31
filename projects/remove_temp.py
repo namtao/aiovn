@@ -48,9 +48,9 @@ def remove_temp(path):
         files = os.listdir(path)
         if len(files) == 0 and removeRoot:
             print("Removing empty folder:", path)
-            os.rmdir(path)
+            # os.rmdir(path)
 
-    removeEmptyFolders(path)
+    # removeEmptyFolders(path)
 
 
 # kiểm tra file chưa nén và file nén xem đã đầy đủ chưa
@@ -76,7 +76,7 @@ def copy_nen(dir1, dir2, pathTarget):
     # lstDuplicate = list(set(lstPdf1) & set(lstPdf2))
     lstNotDuplicate = list(set(lstPdf1) - set(lstPdf2))
 
-    # print(len(lstDuplicate))
+    print(len(lstNotDuplicate))
 
     # count = 0
     for root, dirs, files in os.walk(dir1):
@@ -92,9 +92,9 @@ def copy_nen(dir1, dir2, pathTarget):
                 newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
                     1], tail.split('.')[2], tail.split('.')[3])
 
-                Path(newPath).mkdir(parents=True, exist_ok=True)
-                shutil.copy(os.path.join(root, file),
-                            os.path.join(newPath, file))
+                # Path(newPath).mkdir(parents=True, exist_ok=True)
+                # shutil.copy(os.path.join(root, file),
+                #             os.path.join(newPath, file))
 
 
 def remove_nen(dir1, dir2):
@@ -160,25 +160,16 @@ def create_struct(pathRoot, pathTarget):
 
 
 # # xóa temp
-# remove_temp(r'E:\tay ninh\ubnd 2014 chua nen\tach')
+# remove_temp(r'Y:\SO HOA\DAK LAK 2023\2.ANH DA TACH BO')
 
 # # xóa file đã nén
 # remove_nen(r'E:\tay ninh\ubnd 2014 chua nen\tach', r'E:\tay ninh\da ocr\tay ninh\ubnd 2014 chua nen\tach')
 
-# copy nén vị thanh
-# copy_nen(r'D:\HoTich\HOTICH_HG\source - haugiang\Files', r'D:\HoTich\HOTICH_HG\source - haugiang\FilesNen',
-#          r'C:\Users\Administrator\Downloads\New folder\chua nen vi thanh')
-
-# # copy nén vị thủy
-# copy_nen(r'D:\HoTich\HOTICH_HG\source - vithuy\Files',
-#          r'D:\HoTich\HOTICH_HG\source - vithuy\FilesNen', r'E:\OCR NEN\CHUA NEN\a\VI THUY')
-
-# # copy nén long mỹ
-copy_nen(r'D:\HoTich\HOTICH_HG\source - txlongmy\Files', r'D:\HoTich\HOTICH_HG\source - txlongmy\FilesNen',
-         r'D:\HoTich\HOTICH_HG\source - txlongmy\FilesNen\New folder')
+# copy nén
+copy_nen(r'Y:\SO HOA\DAK LAK 2023\2.ANH DA TACH BO\000.00.00.K15', 
+         r'Y:\SO HOA\DAK LAK 2023\ANH DA OCR\SO HOA\DAK LAK 2023\2.ANH DA TACH BO\000.00.00.K15',
+         r'C:\Users\Administrator\Downloads\New folder\chua nen vi thanh')
 
 
 # # tạo cấu trúc thư mục
 # create_struct(r'E:\OCR NEN\CHUA NEN\VI THANH', r'E:\OCR NEN\CHUA NEN\VI THANH')
-# create_struct(r'E:\OCR NEN\CHUA NEN\VI THUY', r'E:\OCR NEN\CHUA NEN\VI THUY')
-# create_struct(r'E:\OCR NEN\CHUA NEN\LONG MY', r'E:\OCR NEN\CHUA NEN\LONG MY')

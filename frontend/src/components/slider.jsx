@@ -1,7 +1,7 @@
 export const Slider = (props) => {
   return (
     <section
-      id="home"
+      id="infY"
       className="infY carousel  carousel-fade"
       data-bs-ride="carousel"
       data-bs-interval={5000}

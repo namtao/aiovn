@@ -8,7 +8,7 @@ export const Footer = (props) => {
             <div className="row">
               <div className="col-lg-3 col-md-6">
                 <div className="footer-info">
-                  <h3>ADDJ</h3>
+                  <h3>infY<span>.</span></h3>
                   <p>
                     CTCP Phát triển Công nghệ Hành chính ADDJ
                     <br />

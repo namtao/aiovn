@@ -4,11 +4,11 @@ export const Contact = (props) => {
     <section id="contact" className="contact">
       <div className="container">
         <div className="section-header">
-          <h2>Contact Us</h2>
-          <p>
+          <h2>Liên hệ với chúng tôi</h2>
+          {/* <p>
             Ea vitae aspernatur deserunt voluptatem impedit deserunt magnam
             occaecati dssumenda quas ut ad dolores adipisci aliquam.
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="map">
@@ -31,24 +31,27 @@ export const Contact = (props) => {
               <div className="info-item d-flex">
                 <i className="bi bi-geo-alt flex-shrink-0" />
                 <div>
-                  <h4>Location:</h4>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <h4>Địa chỉ:</h4>
+                  <p>
+                    Số 3A, Ngách 3, Ngõ 514 Thụy Khuê, Phường Bưởi, Quận Tây Hồ,
+                    TP. Hà Nội
+                  </p>
                 </div>
               </div>
               {/* End Info Item */}
-              <div className="info-item d-flex">
+              {/* <div className="info-item d-flex">
                 <i className="bi bi-envelope flex-shrink-0" />
                 <div>
                   <h4>Email:</h4>
                   <p>info@example.com</p>
                 </div>
-              </div>
+              </div> */}
               {/* End Info Item */}
               <div className="info-item d-flex">
                 <i className="bi bi-phone flex-shrink-0" />
                 <div>
-                  <h4>Call:</h4>
-                  <p>+1 5589 55488 55</p>
+                  <h4>Điện thoại:</h4>
+                  <p>+84 913 014 506</p>
                 </div>
               </div>
               {/* End Info Item */}
@@ -68,7 +71,7 @@ export const Contact = (props) => {
                     name="name"
                     className="form-control"
                     id="name"
-                    placeholder="Your Name"
+                    placeholder="Họ và tên"
                     required
                   />
                 </div>
@@ -78,7 +81,7 @@ export const Contact = (props) => {
                     className="form-control"
                     name="email"
                     id="email"
-                    placeholder="Your Email"
+                    placeholder="Email"
                     required
                   />
                 </div>
@@ -89,7 +92,7 @@ export const Contact = (props) => {
                   className="form-control"
                   name="subject"
                   id="subject"
-                  placeholder="Subject"
+                  placeholder="Tiêu đề"
                   required
                 />
               </div>
@@ -97,7 +100,7 @@ export const Contact = (props) => {
                 <textarea
                   className="form-control"
                   name="message"
-                  placeholder="Message"
+                  placeholder="Nội dung"
                   required
                   defaultValue={""}
                 />
@@ -105,12 +108,10 @@ export const Contact = (props) => {
               <div className="my-3">
                 <div className="loading">Loading</div>
                 <div className="error-message" />
-                <div className="sent-message">
-                  Your message has been sent. Thank you!
-                </div>
+                <div className="sent-message">Thư đã được gửi, xin cảm ơn!</div>
               </div>
               <div className="text-center">
-                <button type="submit">Send Message</button>
+                <button type="submit">Gửi thư</button>
               </div>
             </form>
           </div>

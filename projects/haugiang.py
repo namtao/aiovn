@@ -78,7 +78,7 @@ def tksoluong(conn, sql):
 def thongkehotich():
     fileName = r'Thống kê hộ tịch.xlsx'
     config = configparser.ConfigParser()
-    config.read(r'web/config/config.ini')
+    config.read(r'backend/config/config.ini')
 
     # connViThanh = f'mssql+pyodbc://{config["vithanh"]["user"]}:{config["vithanh"]["pass"]}@{config["vithanh"]["host"]}/{config["vithanh"]["db"]}?driver={config["vithanh"]["driver"]}'
     # connLongMy = f'mssql+pyodbc://{config["vithanh"]["user"]}:{config["vithanh"]["pass"]}@{config["longmy"]["host"]}/{config["longmy"]["db"]}?driver={config["longmy"]["driver"]}'

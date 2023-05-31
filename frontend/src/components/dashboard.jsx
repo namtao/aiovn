@@ -1,20 +1,20 @@
-import { Slider } from "./slider";
-import { Footer } from "./footer";
-import { About } from "./about";
-import { FeaturedServices } from "./featured-services";
-import { Clients } from "./clients";
-import { Focus } from "./focus";
+// import { Slider } from "./slider";
+import { Footer } from "./footer-persional";
+// import { About } from "./about";
+// import { FeaturedServices } from "./featured-services";
+// import { Clients } from "./clients";
+// import { Focus } from "./focus";
 // import { Services } from "./services";
 // import { Faq } from "./faq";
-import { Product } from "./product";
+// import { Product } from "./product";
 // import { Team } from "./team";
-import { News } from "./news";
-import { Contact } from "./contact";
+// import { News } from "./news";
+// import { Contact } from "./contact";
 import SmoothScroll from "smooth-scroll";
-import "../App.scss";
-import { Digitizing } from "./digitizing";
-import { Readjust } from "./readjust";
-import { Equipment } from "./equipment";
+// import "../App.scss";
+// import { Digitizing } from "./digitizing";
+// import { Readjust } from "./readjust";
+// import { Equipment } from "./equipment";
 import React from "react";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -22,7 +22,7 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
   speedAsDuration: true,
 });
 
-export const Home = () => {
+export const Dashboard = () => {
   // const [landingPageData, setLandingPageData] = useState({});
   // useEffect(() => {
   //   setLandingPageData(JsonData);
@@ -30,26 +30,26 @@ export const Home = () => {
 
   return (
     <div>
-      <Slider />
+      {/* <Slider /> */}
       <main id="main">
         {/* <Table /> */}
-        <FeaturedServices />
-        <About />
-        <Clients />
-        <Digitizing />
-        <Readjust />
-        <Equipment />
+        {/* <FeaturedServices /> */}
+        {/* <About /> */}
+        {/* <Clients /> */}
+        {/* <Digitizing /> */}
+        {/* <Readjust /> */}
+        {/* <Equipment /> */}
         {/* <Cta /> */}
-        <Focus />
+        {/* <Focus /> */}
         {/* <Features /> */}
         {/* <Services /> */}
         {/* <Testimonials /> */}
         {/* <Pricing /> */}
         {/* <Faq /> */}
-        <Product />
+        {/* <Product /> */}
         {/* <Team /> */}
-        <News />
-        <Contact />
+        {/* <News /> */}
+        {/* <Contact /> */}
 
         <a
           href="!#"

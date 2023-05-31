@@ -1,6 +1,6 @@
-export const Blog = (props) => {
+export const News = (props) => {
   return (
-    <section id="blog" className="about">
+    <section id="news" className="about">
       <div className="container" data-aos="fade-up">
         <div className="section-header">
           <h2>Câu chuyện</h2>
