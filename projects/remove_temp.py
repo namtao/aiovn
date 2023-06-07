@@ -166,9 +166,9 @@ def create_struct(pathRoot, pathTarget):
 # remove_nen(r'E:\tay ninh\ubnd 2014 chua nen\tach', r'E:\tay ninh\da ocr\tay ninh\ubnd 2014 chua nen\tach')
 
 # copy nén
-copy_nen(r'Y:\SO HOA\DAK LAK 2023\2.ANH DA TACH BO\000.00.00.K15', 
-         r'Y:\SO HOA\DAK LAK 2023\ANH DA OCR\SO HOA\DAK LAK 2023\2.ANH DA TACH BO\000.00.00.K15',
-         r'C:\Users\Administrator\Downloads\New folder\chua nen vi thanh')
+copy_nen(r'Y:\SO HOA\DAK LAK 2023\2.ANH DA TACH BO', 
+         r'Y:\SO HOA\DAK LAK 2023\ANH DA OCR',
+         r'C:\Users\ADDJ\Downloads\test')
 
 
 # # tạo cấu trúc thư mục

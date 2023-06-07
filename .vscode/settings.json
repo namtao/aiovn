@@ -5,6 +5,7 @@
   "editor.wordWrapColumn": 120,
   "editor.formatOnSave": true,
   "editor.stickyScroll.enabled": true,
+  "css.validate": false,
 
   "python.formatting.provider": "none",
   "editor.defaultFormatter": "esbenp.prettier-vscode",

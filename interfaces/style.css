@@ -1,0 +1,53 @@
+Button {
+    background: lightsalmon;
+    border: ascii red;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+    /* width: 1fr; */
+    text-style: bold;
+    content-align: center middle;
+}
+
+#btnExecute {
+    height: 3;
+    column-span: 2
+}
+
+#btnExecute:hover {
+    background: rgb(255, 0, 0);
+    /* border: solid red; */
+    color: #ffffff;
+}
+
+
+Input {
+    /* margin-bottom: 1; */
+    color: white;
+    border: none;
+    text-style: bold;
+    content-align: center middle;
+    height: 3;
+}
+
+#txtPath {
+    column-span: 10;
+}
+
+Screen {
+    layout: grid;
+    grid-size: 12;
+    /* grid-rows: 5% 5% 90% */
+}
+
+.box {
+    /* height: 100%; */
+    width: 1fr;
+    /* border: solid green; */
+}
+
+Label {
+    column-span: 12;
+    height: 1;
+    margin: 0;
+}

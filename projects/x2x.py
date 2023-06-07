@@ -113,7 +113,7 @@ def pdf2jpg(pdfPath, jpgPath):
             pattern = re.compile(".*pdf$")
             if pattern.match(file):
                 pages = convert_from_path(
-                    os.path.join(root, file), 500, poppler_path=r'library\poppler-22.12.0\Library\bin')
+                    os.path.join(root, file), 300, poppler_path=r'library\poppler-22.12.0\Library\bin')
                 image_counter = 1
                 for page in pages:
                     filename = os.path.splitext(file)[0] + '#' + str(image_counter).zfill(5)+".jpg"
@@ -140,3 +140,7 @@ def jpg2pdf(img_path, pdf_path):
 
     # closing pdf file
     file.close()
+
+
+pdf2jpg(r'C:\Users\ADDJ\Downloads\test\A4\2002.hss528',
+        r'C:\Users\ADDJ\Downloads\test\A4\2002.hss528')
