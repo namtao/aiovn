@@ -79,7 +79,7 @@ def loading(function):
                 terminal.write('\rĐợi chờ là hạnh phúc ' + c + ' ')
                 terminal.flush()
                 sleep(0.1)
-            # terminal.write('\rDone!    ')
+            terminal.write('Đã hoàn thành!                        ')
             terminal.flush()
 
         t = Thread(target=animate)
@@ -294,14 +294,22 @@ def jpg_to_pdf(jpg_folder_path, pdf_folder_path):
                 if re.compile(".*jpg$").match(file):
                     lstJpg.append(os.path.join(root, file))
             # parent = root.split('\\')[-1]
-            folderPath = os.path.join(pdf_folder_path, root.split('\\')[-2], root.split('\\')[-1])
+            # folderPath = os.path.join(pdf_folder_path)
+            folderPath = os.path.join(pdf_folder_path, root.split('/')[-2], root.split('/')[-1])
             if(not os.path.exists(folderPath)):
                 Path(folderPath).mkdir(parents=True, exist_ok=True)    
-            pdfPath = os.path.join(pdf_folder_path, root.split('\\')[-2], root.split('\\')[-1],  'ghep.pdf')
+            pdfPath = os.path.join(pdf_folder_path, folderPath,  'ghep.pdf')
                 
             if (len(lstJpg)>0):
                 merge_jpg_to_pdf(lstJpg, pdfPath)
-                
+
+@loading        
+def check_file_0KB(folder_path):
+    global output
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if (os.path.getsize(os.path.join(root, file)) == 0):
+                output += f'{os.path.join(root, file)}\n'
                 
 class MainApp(App[str]):
     CSS_PATH = 'styles.css'
@@ -406,11 +414,14 @@ class MainApp(App[str]):
                     
                 case 2:
                     # PDF => JPG
-                    pdf_to_jpg(brower_folder('Input'), brower_folder('Output'))
+                    pdf_to_jpg(self.query_one('#path_1').value, self.query_one('#path_3').value)
                     
                 case 3:
                     # JPG => PDF (trong cùng 1 folder sẽ ghép thành 1 tệp pdf và giữ nguyên cấp độ thư mục)
-                    jpg_to_pdf(brower_folder('Input'), brower_folder('Output'))
+                    jpg_to_pdf(self.query_one('#path_1').value, self.query_one('#path_3').value)
+                    
+                case 4:
+                    check_file_0KB(self.query_one('#path_1').value)
 
                 case _:
                     pass         
