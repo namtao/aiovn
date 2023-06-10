@@ -184,7 +184,7 @@ def count_pdf(folderPath: str):
                 output += file
 
     for key, value in dict.items():
-        output += (f'\n{key:<35} : {value[0]:>5} file, {value[1]:>5} trang')
+        output += (f'\n{key:<35} :\t{value[0]:>5} file \t{value[1]:>5} trang')
 
 
 @loading
@@ -472,5 +472,5 @@ if __name__ == '__main__':
     finally:
         if(os.path.exists('export.xlsx')):
             os.remove('export.xlsx')
-        if(os.path.exists('export.xlsx')):
+        if(os.path.exists('export.txt')):
             os.remove('export.txt')
