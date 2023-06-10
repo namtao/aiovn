@@ -6,11 +6,8 @@ from pathlib import Path
 
 from PIL import Image
 
-print('*** Công cụ ghép JPG thành PDF trong 1 thư mục ***')
-print('')
 folderJpgPath = input("Nhập đường dẫn thư mục cần ghép: ")
 folderPdfPath = input("Nhập đường dẫn thư mục kết quả: ")
-print('')
 
 def merge_jpg_to_pdf(lstImage, pdfPath):
     images = [
@@ -41,5 +38,3 @@ for root, dirs, files in os.walk(folderJpgPath):
         if (len(lstJpg)>0):
             print(pdfPath)            
             merge_jpg_to_pdf(lstJpg, pdfPath)
-
-input("\nHoàn thành!!!\n")

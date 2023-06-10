@@ -142,5 +142,5 @@ def jpg2pdf(img_path, pdf_path):
     file.close()
 
 
-pdf2jpg(r'C:\Users\ADDJ\Downloads\test\A4\2002.hss528',
-        r'C:\Users\ADDJ\Downloads\test\A4\2002.hss528')
+jpg2pdf(r'C:\Users\ADDJ\Downloads\test\A2\a\KS.2002.31465.01.A2.01#00001.jpg',
+        r'C:\Users\ADDJ\Downloads\test\A2\a\KS.2002.31465.01.A2.01#00001.pdf')
