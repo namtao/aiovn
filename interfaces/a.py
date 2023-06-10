@@ -1,3 +1,3 @@
-from tools import jpg_to_pdf
+from tools import pdf_to_jpg
 
-jpg_to_pdf(r'C:\Users\ADDJ\Downloads\test\A2\a', r'C:\Users\ADDJ\Downloads\test\A2\a')
+pdf_to_jpg(r'C:\Users\ADDJ\Downloads\test\A2', r'C:\Users\ADDJ\Downloads\test\A2')

@@ -72,10 +72,6 @@
   {
    "optionDest": "datas",
    "value": "F:/DATA/Code/xD/interfaces/styles.css;."
-  },
-  {
-   "optionDest": "datas",
-   "value": "F:/DATA/Code/xD/interfaces/utils.py;."
   }
  ],
  "nonPyinstallerOptions": {

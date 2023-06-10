@@ -10,7 +10,6 @@ from threading import Thread
 from time import sleep
 from tkinter import filedialog
 
-import img2pdf
 import openpyxl
 import PyPDF2
 from pdf2image import convert_from_path
@@ -34,6 +33,19 @@ options = {
             3:'JPG => PDF (300 DPI)',
             4:'Kiểm tra file 0KB'
           }
+
+
+def init():
+    global index
+    global dictEx
+    global totalPdfPages
+    global output
+    
+    # index = 0
+    dictEx = {}
+    output = ''
+    totalPdfPages = 0
+    
 
 def brower_folder(name_windows = 'Chọn đường dẫn'):
     global historyPath
@@ -105,18 +117,6 @@ def get_files(function):
                 if pattern.match(file):
                     function(root, file, *args, **kwargs)
     return wrapper
-
-
-def init():
-    global index
-    global dictEx
-    global totalPdfPages
-    global output
-    
-    # index = 0
-    dictEx = {}
-    output = ''
-    totalPdfPages = 0
 
 
 @loading
@@ -238,7 +238,7 @@ def pdf_to_jpg(pdf_folder_path, jpg_folder_path):
             pattern = re.compile(".*pdf$")
             if pattern.match(file):
                 pages = convert_from_path(
-                    os.path.join(root, file), 300, poppler_path=r'poppler\Library\bin')
+                    os.path.join(root, file), 300)
                 image_counter = 1
                 for page in pages:
                     filename = os.path.splitext(file)[0] + '#' + str(image_counter).zfill(5)+".jpg"
