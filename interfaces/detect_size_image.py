@@ -7,10 +7,25 @@ from textual import events
 from textual.app import App, ComposeResult
 from textual.containers import Container
 from textual.widgets import Button, Footer, Header, Input, TextLog
-from utils import brower_folder
 
 A4_SIZE_PX = 8699840 # 2480 x 3508 pixels
 A4_SIZE_MM = 62370 # 210mm x 297mm
+
+dict_size = {'A0':0, 'A2':0, 'A3':0, 'A4':0}
+
+
+def convert_size_name(size):
+    global dict_size
+    size = abs(size)
+    if(size < 1.2):
+        dict_size['A4'] += 1
+    elif (1.2 <= size < 2.2):
+        dict_size['A3'] += 1
+    elif (2.2 <= size < 3.2):
+        dict_size['A2'] += 1
+    else:
+        dict_size['A0'] += 1
+    
 
 
 def detect_size_jpg(img):
@@ -21,23 +36,23 @@ def detect_size_jpg(img):
     Image.MAX_IMAGE_PIXELS = pil_max_px
 
     # print('{}'.format(im.size))
-    print(img, (im.width*im.height)/A4_SIZE_PX)
+    return convert_size_name((im.width*im.height)/A4_SIZE_PX)
     
     
 def detect_size_pdf(img):
-    pdf = PyPDF2.PdfFileReader(img,"rb")
-    p = pdf.getPage(0)
+    pdf = PyPDF2.PdfReader(img, strict= False)
+    
+    for index, p in enumerate(pdf.pages):
+        w_in_user_space_units = p.mediaBox.getWidth()
+        h_in_user_space_units = p.mediaBox.getHeight()
 
-    w_in_user_space_units = p.mediaBox.getWidth()
-    h_in_user_space_units = p.mediaBox.getHeight()
+        # 1 user space unit is 1/72 inch
+        # 1/72 inch ~ 0.352 millimeters
 
-    # 1 user space unit is 1/72 inch
-    # 1/72 inch ~ 0.352 millimeters
+        w = float(w_in_user_space_units) * 0.352
+        h = float(h_in_user_space_units) * 0.352
 
-    w = float(w_in_user_space_units) * 0.352
-    h = float(h_in_user_space_units) * 0.352
-
-    print(img , (w * h) / A4_SIZE_MM)
+        return convert_size_name((w * h) / A4_SIZE_MM)
     
 
 def detect(path):
@@ -47,39 +62,7 @@ def detect(path):
                 detect_size_pdf(os.path.join(root, file))
             elif re.compile(".*jpg$").match(file):
                 detect_size_jpg(os.path.join(root, file))
-    
-class MainApp(App[str]):
-    CSS_PATH = "styles.css"
-    
-    
-    def compose(self) -> ComposeResult:
-        yield Header()
-        with Container(id="app-grid"):
-            yield Input(placeholder="Nhập hoặc nhấn 'ENTER' để chọn đường dẫn", id='txtPath', disabled=False, classes="box") 
-            # yield Button("Thực hiện", id="btnExecute", classes="box")
-            
-            yield TextLog()
-        
-        
-        self.title = 'anc'
-        yield Footer()
-    
-    def on_ready(self) -> None:
-        self.query_one(TextLog)
-        
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        pass
-    
-    def on_key(self, event: events.Key) -> None:
-        if(event.name == 'enter'):
-            self.query_one(Input).value = brower_folder()
-            
-        if(event.name == 'f5'):
-            self.action_execute()
-        
 
 
-if __name__ == "__main__":
-    app = MainApp()
-    reply = app.run()
-
+detect(r'C:\Users\ADDJ\Downloads\test')
+print(dict_size)

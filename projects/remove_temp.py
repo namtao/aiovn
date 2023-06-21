@@ -92,9 +92,10 @@ def copy_nen(dir1, dir2, pathTarget):
                 newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
                     1], tail.split('.')[2], tail.split('.')[3])
 
-                Path(newPath).mkdir(parents=True, exist_ok=True)
-                shutil.copy(os.path.join(root, file),
-                            os.path.join(newPath, file))
+                # Path(newPath).mkdir(parents=True, exist_ok=True)
+                # shutil.copy(os.path.join(root, file),
+                #             os.path.join(newPath, file))
+                
 
 
 def remove_nen(dir1, dir2):
@@ -166,8 +167,9 @@ def create_struct(pathRoot, pathTarget):
 # remove_nen(r'E:\tay ninh\ubnd 2014 chua nen\tach', r'E:\tay ninh\da ocr\tay ninh\ubnd 2014 chua nen\tach')
 
 # copy nén
-copy_nen(r'Y:\SO HOA\DAK LAK 2023\2.ANH DA TACH BO', 
-         r'Y:\SO HOA\DAK LAK 2023\ANH DA OCR',
+copy_nen(
+         r'E:\BACKUP NAS\RaiDrive-ADDJ\WebDAV\SO HOA\DAK LAK 2023\ANH DA OCR\SO HOA\DAK LAK 2023\2.ANH DA TACH BO',
+         r'Y:\SO HOA\DAK LAK 2023\ANH DA OCR\SO HOA\DAK LAK 2023\2.ANH DA TACH BO', 
          r'C:\Users\ADDJ\Downloads\OCR')
 
 

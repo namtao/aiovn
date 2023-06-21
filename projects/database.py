@@ -6,11 +6,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import pyodbc
 import sqlalchemy as sa
 from decor import get_files
 from sqlalchemy import create_engine, select
-import pyodbc 
-
 
 config = configparser.ConfigParser()
 config.read(r'./backend/config/config.ini')

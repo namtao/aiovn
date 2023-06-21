@@ -119,7 +119,7 @@ for index, value in enumerate(names):
 
 ***zip***
 
-Kết hợp 2 danh sách và in các giá trị theo thứ tự của n, vòng lặp kết thúc khi 1 vòng lặp lặp qua 1 danh sách
+Kết hợp 2 danh sách và in các giá trị theo thứ tự của n, vòng lặp kết thúc khi 1 vòng lặp lặp qua 1 danh sách, các phần tử thừa sẽ bị bỏ qua
 
 ***Packing and Unpacking Arguments***
 
@@ -465,7 +465,8 @@ Django
 ```:
 python manage.py inspectdb \models.py
 django-admin startproject mysite
-python manage.py startapp <Tên APPpython manage.py runserver
+python manage.py startapp <Tên APP>
+python manage.py runserver
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
