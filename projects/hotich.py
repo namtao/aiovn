@@ -1,14 +1,14 @@
 
-from collections import Counter, OrderedDict
 import configparser
 import os
 import re
 import shutil
+from collections import Counter, OrderedDict
+from functools import wraps
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from decor import get_files
 
 pathTarget = ''
 
@@ -21,6 +21,17 @@ def merge_dict(dict1, dict2):
             dict1[i] = dict2[i]
     return dict1
 
+
+def get_files(function):
+    @wraps(function)
+    def wrapper(folderPath, fileFormat='', *args, **kwargs):
+        for root, dirs, files in os.walk(folderPath):
+            for file in files:
+                # $ regex kết thúc là ký tự trc $
+                pattern = re.compile(".*"+fileFormat+"$")
+                if pattern.match(file):
+                    function(root, file, *args, **kwargs)
+    return wrapper
 
 @get_files
 def create_struct(root, file):

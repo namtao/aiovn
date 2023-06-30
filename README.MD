@@ -455,9 +455,13 @@ python -m pip install -r reqs.txt
 
 pip list --format=freeze > requirements.txt
 
-
+<!-- create env -->
 conda env export > env.yml
+
+<!-- install update env -->
 conda env update -n base --file env.yml --prune
+
+pip list | findstr opencv
 ```
 
 Django
