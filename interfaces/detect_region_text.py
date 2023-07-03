@@ -24,8 +24,29 @@
 #             mser(cv2.imread(r'C:\Users\ADDJ\Downloads\New folder\a.jpg', 0)))
 
 
+import os
+import re
+from argparse import ArgumentParser
+
 import cv2
 import numpy as np
+from pdf2image import convert_from_path
+from PIL import Image
+
+
+def pdf_to_jpg(pdf_file_path, jpg_file_path):
+    # pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    Image.MAX_IMAGE_PIXELS = 1000000000000
+
+
+    pattern = re.compile(".*pdf$")
+    if pattern.match(pdf_file_path):
+        pages = convert_from_path(pdf_file_path, 300)
+        image_counter = 1
+        for page in pages:
+            output_path = jpg_file_path
+            if(not os.path.exists(output_path)):
+                page.save(output_path, 'JPEG')
 
 
 def detect_region(jpgRoot, jpgDetect):
@@ -71,7 +92,7 @@ def detect_region(jpgRoot, jpgDetect):
     edges = blue_edges | green_edges | red_edges
 
     # I'm using OpenCV 3.4. This returns (contours, hierarchy) in OpenCV 2 and 4
-    contours,hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL ,cv2.CHAIN_APPROX_SIMPLE)
+    contours,hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # go through the contours and save the box edges
     boxes = []; # each element is [[top-left], [bottom-right]];
@@ -212,6 +233,18 @@ def detect_region(jpgRoot, jpgDetect):
     
 
 if __name__ == '__main__':
-    jpgRoot = input('Nhập JPG đầu vào: ')
-    detect_region(jpgRoot, 'output.jpg')
+    ap = ArgumentParser()
+    ap.add_argument("-i", "--input", required=True, help="Path file")
+    args = vars(ap.parse_args())
+    # display a friendly message to the user
+    # print("Hi there {}, it's nice to meet you!".format(args["input"]))
+
+
+    pattern = re.compile(".*pdf$")
+    if pattern.match(args["input"]):
+        pdf_to_jpg(args["input"], 'input.jpg')
+        detect_region('input.jpg', 'output.jpg')
+    else:
+        detect_region(args["input"], 'output.jpg')
+        
 
