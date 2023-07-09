@@ -1,34 +1,10 @@
-
-# import cv2
-# import numpy as np
-
-# """
-#     This is a simple example on how to use OpenCV for MSER
-# """
-
-# def mser(cv_image):
-#     vis = cv_image.copy()
-#     mser = cv2.MSER_create()
-#     regions, _ = mser.detectRegions(cv_image)
-#     for p in regions:
-#         xmax, ymax = np.amax(p, axis=0)
-#         xmin, ymin = np.amin(p, axis=0)
-        
-#         # overlapRatio = bboxOverlapRatio(expandedBBoxes, expandedBBoxes);
-        
-#         cv2.rectangle(vis, (xmin,ymax), (xmax,ymin), (0, 255, 0), 1)
-#     return vis
-
-# mser(cv2.imread(r'C:\Users\ADDJ\Downloads\New folder\a.jpg', 0))
-# cv2.imwrite(r'C:\Users\ADDJ\Downloads\New folder\b.jpg', 
-#             mser(cv2.imread(r'C:\Users\ADDJ\Downloads\New folder\a.jpg', 0)))
-
-
 import os
 import re
 from argparse import ArgumentParser
+from pathlib import Path
 
 import cv2
+import matplotlib.pyplot as plt
 import numpy as np
 from pdf2image import convert_from_path
 from PIL import Image
@@ -49,7 +25,9 @@ def pdf_to_jpg(pdf_file_path, jpg_file_path):
                 page.save(output_path, 'JPEG')
 
 
-def detect_region(jpgRoot, jpgDetect):
+def detect_region(jpgRoot, jpgDetect, merge_margin: int = 18):
+    # jpgRoot = cv2.imdecode(np.fromfile(jpgRoot, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
+
     # tuplify
     def tup(point):
         return (point[0], point[1]);
@@ -76,7 +54,8 @@ def detect_region(jpgRoot, jpgDetect):
                     overlaps.append(a);
         return overlaps;
 
-    img = cv2.imread(jpgRoot)
+    # img = cv2.imread(jpgRoot)
+    img = plt.imread(jpgRoot)
     orig = np.copy(img);
     blue, green, red = cv2.split(img)
 
@@ -116,7 +95,7 @@ def detect_region(jpgRoot, jpgDetect):
     boxes = filtered;
 
     # go through the boxes and start merging
-    merge_margin = 15;
+    # merge_margin = 18;
 
     # this is gonna take a long time
     finished = False;
@@ -220,31 +199,56 @@ def detect_region(jpgRoot, jpgDetect):
 
     # show final
     copy = np.copy(orig);
-    for box in boxes:
-        with open('toado.txt', 'a+', encoding='utf-8') as f:
+    with open(os.path.join(args['output'],'toado.txt'), 'w+', encoding='utf-8') as f:    
+        for box in boxes:
+            # f.truncate(0)
             f.write(f'{tup(box[0])}, {tup(box[1])}\n')
-        # print(f'{tup(box[0])}, {tup(box[1])}')
-        cv2.rectangle(copy, tup(box[0]), tup(box[1]), (0,0,200), 1);
+            # print(f'{tup(box[0])}, {tup(box[1])}')
+            cv2.rectangle(copy, tup(box[0]), tup(box[1]), (0,0,200), 2);
         
     # cv2.imshow("Final", cv2.resize(copy, (610, 780)));
     cv2.imwrite(jpgDetect, copy)
+    # plt.savefig()
     # cv2.imshow("Final", copy);
     cv2.waitKey(0);
     
 
+
+
 if __name__ == '__main__':
     ap = ArgumentParser()
-    ap.add_argument("-i", "--input", required=True, help="Path file")
+    ap.add_argument("-i", "--input", required=True, help="Path file input")
+    ap.add_argument("-o", "--output", required=True, help="Path file output")
+    ap.add_argument("-m", "--margin", required=True, help="Margin")
     args = vars(ap.parse_args())
     # display a friendly message to the user
     # print("Hi there {}, it's nice to meet you!".format(args["input"]))
 
+    # args['input'] = args['input'].encode('utf8')
+    # # args['output'] = args['output'].encode('utf8')
+    
+    # # args['input'] = args['input'].encode('utf8')
+    # # args['output'] = args['output'].encode('utf8')
+    
+    # print(args['input'])
 
     pattern = re.compile(".*pdf$")
+    if(os.path.exists(os.path.join(args['output'],'output.jpg'))):
+        # os.chmod(os.path.join(args['output'],'output.jpg'), 0o777)
+        os.remove(os.path.join(args['output'],'output.jpg'))
+        # Path(os.path.join(args['output'],'output.jpg')).unlink()
+            
     if pattern.match(args["input"]):
+        if(os.path.exists('input.jpg')):
+            os.remove('input.jpg')
+            
         pdf_to_jpg(args["input"], 'input.jpg')
-        detect_region('input.jpg', 'output.jpg')
+        detect_region('input.jpg', os.path.join(args['output'],'output.jpg'), int(args['margin']))
     else:
-        detect_region(args["input"], 'output.jpg')
+        detect_region(args['input'], os.path.join(args['output'],'output.jpg'), int(args['margin']))
+    
+    
+    # detect_region(r"C:\Users\vanna\Downloads\ảnh ắ.jpg", 'output.jpg')
+    
         
 
