@@ -20,7 +20,7 @@ Button:hover {
     color: #ffffff;
 }
 
-Header{
+Header {
     /* margin-bottom: 1;
     margin-top: 1; */
 }
@@ -116,11 +116,16 @@ Label {
     background: $boost; */
 }
 
-RadioSet{
+RadioSet {
     width: 100%;
     margin-bottom: 1;
 }
 
-TextLog{
+TextLog {
     padding-left: 1;
+}
+
+Select {
+    margin: 0;
+    padding: 0;
 }

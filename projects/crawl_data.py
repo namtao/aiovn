@@ -5,7 +5,7 @@ import time
 
 import requests
 from bs4 import BeautifulSoup
-from stringx import *
+from utils import *
 from x2x import *
 
 

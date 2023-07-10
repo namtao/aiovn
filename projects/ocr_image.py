@@ -8,7 +8,7 @@ PDF_file = r"C:\Users\Nam\Downloads\New folder\KS.1885.93646.01.A4.1885.01-daocr
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 pages = convert_from_path(
-    PDF_file, 500, poppler_path=r'C:\Projects\Python\Library\poppler\bin')
+    PDF_file, 300, poppler_path=r'C:\Projects\Python\Library\poppler\bin')
 
 # ocr pdf
 pdf_writer = PyPDF2.PdfFileWriter()

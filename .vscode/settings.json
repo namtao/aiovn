@@ -10,7 +10,7 @@
   "python.formatting.provider": "none",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   //custom config for python
   "python.formatting.autopep8Args": [
@@ -96,5 +96,8 @@
   "git.ignoreLimitWarning": true,
   "[jsonc]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[ini]": {
+    "editor.defaultFormatter": "lkrms.inifmt"
   }
 }

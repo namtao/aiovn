@@ -1,4 +1,3 @@
-
 import glob
 
 import cv2
@@ -20,9 +19,8 @@ from wand.version import QUANTUM_RANGE
 
 # giảm chất lượng của ảnh bằng PIL
 def compressMe(file, verbose=False):
-
     # Get the path of the file
-    filepath = r'images\KS.1996.93017.01.A3.01.jpg'
+    filepath = r"images\KS.1996.93017.01.A3.01.jpg"
 
     # open the image
     picture = Image.open(filepath)
@@ -33,11 +31,8 @@ def compressMe(file, verbose=False):
     # your desired level, The more
     # the value of quality variable
     # and lesser the compression
-    picture = picture.convert('RGB')
-    picture.save("Compressed_"+file,
-                 "JPEG",
-                 optimize=True,
-                 quality=10)
+    picture = picture.convert("RGB")
+    picture.save("Compressed_" + file, "JPEG", optimize=True, quality=10)
 
     return
 
@@ -70,12 +65,12 @@ def jpg2pdf(img_path, pdf_path):
 # điều chỉnh tự động độ sáng và độ tương phản
 def automatic_contrast_brightness():
     # https://stackoverflow.com/questions/56905592/automatic-contrast-and-brightness-adjustment-of-a-color-photo-of-a-sheet-of-pape
-    img = imread('goc.jpg')
+    img = imread("goc.jpg")
 
     yen_threshold = threshold_yen(img)
     bright = rescale_intensity(img, (0, yen_threshold), (0, 255))
 
-    imsave('out.jpg', bright)
+    imsave("out.jpg", bright)
 
 
 # GUI điều chỉnh độ sáng và độ tương phản
@@ -83,39 +78,30 @@ def gui_contrast_brightness():
     # https://www.geeksforgeeks.org/changing-the-contrast-and-brightness-of-an-image-using-python-opencv/
     # https://stackoverflow.com/questions/67120450/error-2unspecified-error-the-function-is-not-implemented-rebuild-the-libra
     def BrightnessContrast(brightness=0):
-
         # getTrackbarPos returns the current
         # position of the specified trackbar.
-        brightness = cv2.getTrackbarPos('Brightness',
-                                        'GEEK')
+        brightness = cv2.getTrackbarPos("Brightness", "GEEK")
 
-        contrast = cv2.getTrackbarPos('Contrast',
-                                      'GEEK')
+        contrast = cv2.getTrackbarPos("Contrast", "GEEK")
 
-        effect = controller(img, brightness,
-                            contrast)
+        effect = controller(img, brightness, contrast)
 
         # The function imshow displays an image
         # in the specified window
-        cv2.imshow('Effect', effect)
+        cv2.imshow("Effect", effect)
 
-    def controller(img, brightness=255,
-                   contrast=127):
-
+    def controller(img, brightness=255, contrast=127):
         brightness = int((brightness - 0) * (255 - (-255)) / (510 - 0) + (-255))
 
         contrast = int((contrast - 0) * (127 - (-127)) / (254 - 0) + (-127))
 
         if brightness != 0:
-
             if brightness > 0:
-
                 shadow = brightness
 
                 max = 255
 
             else:
-
                 shadow = 0
                 max = 255 + brightness
 
@@ -124,8 +110,7 @@ def gui_contrast_brightness():
 
             # The function addWeighted calculates
             # the weighted sum of two arrays
-            cal = cv2.addWeighted(img, al_pha,
-                                  img, 0, ga_mma)
+            cal = cv2.addWeighted(img, al_pha, img, 0, ga_mma)
 
         else:
             cal = img
@@ -136,17 +121,22 @@ def gui_contrast_brightness():
 
             # The function addWeighted calculates
             # the weighted sum of two arrays
-            cal = cv2.addWeighted(cal, Alpha,
-                                  cal, 0, Gamma)
+            cal = cv2.addWeighted(cal, Alpha, cal, 0, Gamma)
 
         # putText renders the specified text string in the image.
-        cv2.putText(cal, 'B:{},C:{}'.format(brightness,
-                                            contrast), (10, 30),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        cv2.putText(
+            cal,
+            "B:{},C:{}".format(brightness, contrast),
+            (10, 30),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            1,
+            (0, 0, 255),
+            2,
+        )
 
         return cal
 
-    if __name__ == '__main__':
+    if __name__ == "__main__":
         # The function imread loads an image
         # from the specified file and returns it.
         original = cv2.imread("a.jpg")
@@ -157,23 +147,19 @@ def gui_contrast_brightness():
         # The function namedWindow creates a
         # window that can be used as a placeholder
         # for images.
-        cv2.namedWindow('GEEK')
+        cv2.namedWindow("GEEK")
 
         # The function imshow displays an
         # image in the specified window.
-        cv2.imshow('GEEK', original)
+        cv2.imshow("GEEK", original)
 
         # createTrackbar(trackbarName,
         # windowName, value, count, onChange)
         # Brightness range -255 to 255
-        cv2.createTrackbar('Brightness',
-                           'GEEK', 255, 2 * 255,
-                           BrightnessContrast)
+        cv2.createTrackbar("Brightness", "GEEK", 255, 2 * 255, BrightnessContrast)
 
         # Contrast range -127 to 127
-        cv2.createTrackbar('Contrast', 'GEEK',
-                           127, 2 * 127,
-                           BrightnessContrast)
+        cv2.createTrackbar("Contrast", "GEEK", 127, 2 * 127, BrightnessContrast)
 
         BrightnessContrast(0)
 
@@ -192,30 +178,32 @@ def python_wand():
     # magick image.jpg -colorspace gray -negate -lat 20x20+10% -negate tmp3.png
     # magick tmp3.png ( image.jpg tmp2.png -alpha off -compose copy_opacity -composite ) -compose over -composite result.png
 
-    with wand.image(filename='goc2.jpg') as img:
+    with wand.image(filename="goc2.jpg") as img:
         with img.clone() as copied:
             with img.clone() as hcl:
-                hcl.transform_colorspace('hcl')
-                with hcl.channel_images['green'] as mask:
-                    mask.auto_threshold(method='otsu')
-                    copied.composite(mask, left=0, top=0, operator='copy_alpha')
+                hcl.transform_colorspace("hcl")
+                with hcl.channel_images["green"] as mask:
+                    mask.auto_threshold(method="otsu")
+                    copied.composite(mask, left=0, top=0, operator="copy_alpha")
                     # img.transform_colorspace('gray')
                     img.negate()
-                    img.adaptive_threshold(width=20, height=20, offset=0.1*QUANTUM_RANGE)
+                    img.adaptive_threshold(
+                        width=20, height=20, offset=0.1 * QUANTUM_RANGE
+                    )
                     img.negate()
-                    img.composite(copied, left=0, top=0, operator='over')
-                    img.save(filename='goc_process.jpg')
+                    img.composite(copied, left=0, top=0, operator="over")
+                    img.save(filename="goc_process.jpg")
 
 
 # làm mờ ảnh
 def blur_image():
-    img = cv2.imread('a.jpg')
+    img = cv2.imread("a.jpg")
 
     blur = cv2.blur(img, (5, 5))
 
-    plt.subplot(121), plt.imshow(img), plt.title('Original')
+    plt.subplot(121), plt.imshow(img), plt.title("Original")
     plt.xticks([]), plt.yticks([])
-    plt.subplot(122), plt.imshow(blur), plt.title('Blurred')
+    plt.subplot(122), plt.imshow(blur), plt.title("Blurred")
     plt.xticks([]), plt.yticks([])
     plt.show()
 
@@ -228,16 +216,20 @@ def detect_uneven_image():
         img = cv2.imread(img_path)
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(gray, (25, 25), 0)
-        no_text = gray * ((gray/blurred) > 0.99)                     # select background only
-        no_text[no_text < 10] = no_text[no_text > 20].mean()           # convert black pixels to mean value
+        no_text = gray * ((gray / blurred) > 0.99)  # select background only
+        no_text[no_text < 10] = no_text[
+            no_text > 20
+        ].mean()  # convert black pixels to mean value
         no_bright = no_text.copy()
-        no_bright[no_bright > 220] = no_bright[no_bright < 220].mean()  # disregard bright pixels
+        no_bright[no_bright > 220] = no_bright[
+            no_bright < 220
+        ].mean()  # disregard bright pixels
 
         print(lbl)
         std = no_bright.std()
-        print('STD:', std)
+        print("STD:", std)
         bright = (no_text > 220).sum()
-        print('Brigth pixels:', bright)
+        print("Brigth pixels:", bright)
         plt.figure()
         plt.hist(no_text.reshape(-1, 1), 25)
         plt.title(lbl)
@@ -247,13 +239,13 @@ def detect_uneven_image():
         if no_text.mean() < 200 and bright > 8000:
             print("!!! Detected glare")
 
-    get_image_stats('a.jpg', 'a')
+    get_image_stats("a.jpg", "a")
 
 
 def detect_color():
     # load images
-    bright = cv2.imread('OpenCV/cube01.png')
-    dark = cv2.imread('OpenCV/cube02.png')
+    bright = cv2.imread("OpenCV/cube01.png")
+    dark = cv2.imread("OpenCV/cube02.png")
 
     # Không gian màu LAB
     brightLAB = cv2.cvtColor(bright, cv2.COLOR_BGR2LAB)
@@ -331,51 +323,81 @@ def gui_color_detect():
             placeholder = np.zeros((img.shape[0], 400, 3), dtype=np.uint8)
 
             # fill the placeholder with the values of color spaces
-            cv2.putText(placeholder, "BGR {}".format(bgr), (20, 70),
-                        cv2.FONT_HERSHEY_COMPLEX, .9, (255, 255, 255), 1, cv2.LINE_AA)
-            cv2.putText(placeholder, "HSV {}".format(hsv), (20, 140),
-                        cv2.FONT_HERSHEY_COMPLEX, .9, (255, 255, 255), 1, cv2.LINE_AA)
-            cv2.putText(placeholder, "YCrCb {}".format(ycb), (20, 210),
-                        cv2.FONT_HERSHEY_COMPLEX, .9, (255, 255, 255), 1, cv2.LINE_AA)
-            cv2.putText(placeholder, "LAB {}".format(lab), (20, 280),
-                        cv2.FONT_HERSHEY_COMPLEX, .9, (255, 255, 255), 1, cv2.LINE_AA)
+            cv2.putText(
+                placeholder,
+                "BGR {}".format(bgr),
+                (20, 70),
+                cv2.FONT_HERSHEY_COMPLEX,
+                0.9,
+                (255, 255, 255),
+                1,
+                cv2.LINE_AA,
+            )
+            cv2.putText(
+                placeholder,
+                "HSV {}".format(hsv),
+                (20, 140),
+                cv2.FONT_HERSHEY_COMPLEX,
+                0.9,
+                (255, 255, 255),
+                1,
+                cv2.LINE_AA,
+            )
+            cv2.putText(
+                placeholder,
+                "YCrCb {}".format(ycb),
+                (20, 210),
+                cv2.FONT_HERSHEY_COMPLEX,
+                0.9,
+                (255, 255, 255),
+                1,
+                cv2.LINE_AA,
+            )
+            cv2.putText(
+                placeholder,
+                "LAB {}".format(lab),
+                (20, 280),
+                cv2.FONT_HERSHEY_COMPLEX,
+                0.9,
+                (255, 255, 255),
+                1,
+                cv2.LINE_AA,
+            )
 
             # Combine the two results to show side by side in a single image
             combinedResult = np.hstack([img, placeholder])
 
-            cv2.imshow('PRESS P for Previous, N for Next Image', combinedResult)
+            cv2.imshow("PRESS P for Previous, N for Next Image", combinedResult)
 
-    if __name__ == '__main__':
-
+    if __name__ == "__main__":
         # load the image and setup the mouse callback function
         global img
-        files = glob.glob('OpenCV/image*.jpg')
+        files = glob.glob("OpenCV/image*.jpg")
         files.sort()
         img = cv2.imread(files[0])
         img = cv2.resize(img, (400, 400))
-        cv2.imshow('PRESS P for Previous, N for Next Image', img)
+        cv2.imshow("PRESS P for Previous, N for Next Image", img)
 
         # Create an empty window
-        cv2.namedWindow('PRESS P for Previous, N for Next Image')
+        cv2.namedWindow("PRESS P for Previous, N for Next Image")
         # Create a callback function for any event on the mouse
-        cv2.setMouseCallback(
-            'PRESS P for Previous, N for Next Image', show_pixel_value)
+        cv2.setMouseCallback("PRESS P for Previous, N for Next Image", show_pixel_value)
         i = 0
-        while (1):
+        while 1:
             k = cv2.waitKey(1) & 0xFF
             # check next image in the folder
-            if k == ord('n'):
+            if k == ord("n"):
                 i += 1
                 img = cv2.imread(files[i % len(files)])
                 img = cv2.resize(img, (400, 400))
-                cv2.imshow('PRESS P for Previous, N for Next Image', img)
+                cv2.imshow("PRESS P for Previous, N for Next Image", img)
 
             # check previous image in folder
-            elif k == ord('p'):
+            elif k == ord("p"):
                 i -= 1
                 img = cv2.imread(files[i % len(files)])
                 img = cv2.resize(img, (400, 400))
-                cv2.imshow('PRESS P for Previous, N for Next Image', img)
+                cv2.imshow("PRESS P for Previous, N for Next Image", img)
 
             elif k == 27:
                 cv2.destroyAllWindows()
@@ -391,10 +413,9 @@ def gui_color_segment():
         show = True
         pass
 
-    if __name__ == '__main__':
-
+    if __name__ == "__main__":
         # Get the filename from the command line
-        files = glob.glob('OpenCV/*.png')
+        files = glob.glob("OpenCV/*.png")
         files.sort()
         # load the image
         original = cv2.imread(files[0])
@@ -407,71 +428,70 @@ def gui_color_segment():
         initialY = 50
 
         # creating windows to display images
-        cv2.namedWindow('P-> Previous, N-> Next', cv2.WINDOW_AUTOSIZE)
-        cv2.namedWindow('SelectBGR', cv2.WINDOW_AUTOSIZE)
-        cv2.namedWindow('SelectHSV', cv2.WINDOW_AUTOSIZE)
-        cv2.namedWindow('SelectYCB', cv2.WINDOW_AUTOSIZE)
-        cv2.namedWindow('SelectLAB', cv2.WINDOW_AUTOSIZE)
+        cv2.namedWindow("P-> Previous, N-> Next", cv2.WINDOW_AUTOSIZE)
+        cv2.namedWindow("SelectBGR", cv2.WINDOW_AUTOSIZE)
+        cv2.namedWindow("SelectHSV", cv2.WINDOW_AUTOSIZE)
+        cv2.namedWindow("SelectYCB", cv2.WINDOW_AUTOSIZE)
+        cv2.namedWindow("SelectLAB", cv2.WINDOW_AUTOSIZE)
 
         # moving the windows to stack them horizontally
-        cv2.moveWindow('P-> Previous, N-> Next', initialX, initialY)
-        cv2.moveWindow('SelectBGR', initialX + (rsize + 5), initialY)
-        cv2.moveWindow('SelectHSV', initialX + 2*(rsize + 5), initialY)
-        cv2.moveWindow('SelectYCB', initialX + 3*(rsize + 5), initialY)
-        cv2.moveWindow('SelectLAB', initialX + 4*(rsize + 5), initialY)
+        cv2.moveWindow("P-> Previous, N-> Next", initialX, initialY)
+        cv2.moveWindow("SelectBGR", initialX + (rsize + 5), initialY)
+        cv2.moveWindow("SelectHSV", initialX + 2 * (rsize + 5), initialY)
+        cv2.moveWindow("SelectYCB", initialX + 3 * (rsize + 5), initialY)
+        cv2.moveWindow("SelectLAB", initialX + 4 * (rsize + 5), initialY)
 
         # creating trackbars to get values for YCrCb
-        cv2.createTrackbar('CrMin', 'SelectYCB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('CrMax', 'SelectYCB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('CbMin', 'SelectYCB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('CbMax', 'SelectYCB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('YMin', 'SelectYCB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('YMax', 'SelectYCB', 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("CrMin", "SelectYCB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("CrMax", "SelectYCB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("CbMin", "SelectYCB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("CbMax", "SelectYCB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("YMin", "SelectYCB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("YMax", "SelectYCB", 0, 255, on_trackbar_activity)
 
         # creating trackbars to get values for HSV
-        cv2.createTrackbar('HMin', 'SelectHSV', 0, 180, on_trackbar_activity)
-        cv2.createTrackbar('HMax', 'SelectHSV', 0, 180, on_trackbar_activity)
-        cv2.createTrackbar('SMin', 'SelectHSV', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('SMax', 'SelectHSV', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('VMin', 'SelectHSV', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('VMax', 'SelectHSV', 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("HMin", "SelectHSV", 0, 180, on_trackbar_activity)
+        cv2.createTrackbar("HMax", "SelectHSV", 0, 180, on_trackbar_activity)
+        cv2.createTrackbar("SMin", "SelectHSV", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("SMax", "SelectHSV", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("VMin", "SelectHSV", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("VMax", "SelectHSV", 0, 255, on_trackbar_activity)
 
         # creating trackbars to get values for BGR
-        cv2.createTrackbar('BGRBMin', 'SelectBGR', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('BGRBMax', 'SelectBGR', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('BGRGMin', 'SelectBGR', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('BGRGMax', 'SelectBGR', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('BGRRMin', 'SelectBGR', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('BGRRMax', 'SelectBGR', 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("BGRBMin", "SelectBGR", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("BGRBMax", "SelectBGR", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("BGRGMin", "SelectBGR", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("BGRGMax", "SelectBGR", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("BGRRMin", "SelectBGR", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("BGRRMax", "SelectBGR", 0, 255, on_trackbar_activity)
 
         # creating trackbars to get values for LAB
-        cv2.createTrackbar('LABLMin', 'SelectLAB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('LABLMax', 'SelectLAB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('LABAMin', 'SelectLAB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('LABAMax', 'SelectLAB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('LABBMin', 'SelectLAB', 0, 255, on_trackbar_activity)
-        cv2.createTrackbar('LABBMax', 'SelectLAB', 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("LABLMin", "SelectLAB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("LABLMax", "SelectLAB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("LABAMin", "SelectLAB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("LABAMax", "SelectLAB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("LABBMin", "SelectLAB", 0, 255, on_trackbar_activity)
+        cv2.createTrackbar("LABBMax", "SelectLAB", 0, 255, on_trackbar_activity)
 
         # show all images initially
-        cv2.imshow('SelectHSV', original)
-        cv2.imshow('SelectYCB', original)
-        cv2.imshow('SelectLAB', original)
-        cv2.imshow('SelectBGR', original)
+        cv2.imshow("SelectHSV", original)
+        cv2.imshow("SelectYCB", original)
+        cv2.imshow("SelectLAB", original)
+        cv2.imshow("SelectBGR", original)
         i = 0
-        while (1):
-
-            cv2.imshow('P-> Previous, N-> Next', original)
+        while 1:
+            cv2.imshow("P-> Previous, N-> Next", original)
             k = cv2.waitKey(1) & 0xFF
 
             # check next image in folder
-            if k == ord('n'):
+            if k == ord("n"):
                 i += 1
                 original = cv2.imread(files[i % len(files)])
                 original = cv2.resize(original, (rsize, rsize))
                 show = True
 
             # check previous image in folder
-            elif k == ord('p'):
+            elif k == ord("p"):
                 i -= 1
                 original = cv2.imread(files[i % len(files)])
                 original = cv2.resize(original, (rsize, rsize))
@@ -484,42 +504,42 @@ def gui_color_segment():
                 show = False
 
                 # Get values from the BGR trackbar
-                BMin = cv2.getTrackbarPos('BGRBMin', 'SelectBGR')
-                GMin = cv2.getTrackbarPos('BGRGMin', 'SelectBGR')
-                RMin = cv2.getTrackbarPos('BGRRMin', 'SelectBGR')
-                BMax = cv2.getTrackbarPos('BGRBMax', 'SelectBGR')
-                GMax = cv2.getTrackbarPos('BGRGMax', 'SelectBGR')
-                RMax = cv2.getTrackbarPos('BGRRMax', 'SelectBGR')
+                BMin = cv2.getTrackbarPos("BGRBMin", "SelectBGR")
+                GMin = cv2.getTrackbarPos("BGRGMin", "SelectBGR")
+                RMin = cv2.getTrackbarPos("BGRRMin", "SelectBGR")
+                BMax = cv2.getTrackbarPos("BGRBMax", "SelectBGR")
+                GMax = cv2.getTrackbarPos("BGRGMax", "SelectBGR")
+                RMax = cv2.getTrackbarPos("BGRRMax", "SelectBGR")
                 minBGR = np.array([BMin, GMin, RMin])
                 maxBGR = np.array([BMax, GMax, RMax])
 
                 # Get values from the HSV trackbar
-                HMin = cv2.getTrackbarPos('HMin', 'SelectHSV')
-                SMin = cv2.getTrackbarPos('SMin', 'SelectHSV')
-                VMin = cv2.getTrackbarPos('VMin', 'SelectHSV')
-                HMax = cv2.getTrackbarPos('HMax', 'SelectHSV')
-                SMax = cv2.getTrackbarPos('SMax', 'SelectHSV')
-                VMax = cv2.getTrackbarPos('VMax', 'SelectHSV')
+                HMin = cv2.getTrackbarPos("HMin", "SelectHSV")
+                SMin = cv2.getTrackbarPos("SMin", "SelectHSV")
+                VMin = cv2.getTrackbarPos("VMin", "SelectHSV")
+                HMax = cv2.getTrackbarPos("HMax", "SelectHSV")
+                SMax = cv2.getTrackbarPos("SMax", "SelectHSV")
+                VMax = cv2.getTrackbarPos("VMax", "SelectHSV")
                 minHSV = np.array([HMin, SMin, VMin])
                 maxHSV = np.array([HMax, SMax, VMax])
 
                 # Get values from the LAB trackbar
-                LMin = cv2.getTrackbarPos('LABLMin', 'SelectLAB')
-                AMin = cv2.getTrackbarPos('LABAMin', 'SelectLAB')
-                BMin = cv2.getTrackbarPos('LABBMin', 'SelectLAB')
-                LMax = cv2.getTrackbarPos('LABLMax', 'SelectLAB')
-                AMax = cv2.getTrackbarPos('LABAMax', 'SelectLAB')
-                BMax = cv2.getTrackbarPos('LABBMax', 'SelectLAB')
+                LMin = cv2.getTrackbarPos("LABLMin", "SelectLAB")
+                AMin = cv2.getTrackbarPos("LABAMin", "SelectLAB")
+                BMin = cv2.getTrackbarPos("LABBMin", "SelectLAB")
+                LMax = cv2.getTrackbarPos("LABLMax", "SelectLAB")
+                AMax = cv2.getTrackbarPos("LABAMax", "SelectLAB")
+                BMax = cv2.getTrackbarPos("LABBMax", "SelectLAB")
                 minLAB = np.array([LMin, AMin, BMin])
                 maxLAB = np.array([LMax, AMax, BMax])
 
                 # Get values from the YCrCb trackbar
-                YMin = cv2.getTrackbarPos('YMin', 'SelectYCB')
-                CrMin = cv2.getTrackbarPos('CrMin', 'SelectYCB')
-                CbMin = cv2.getTrackbarPos('CbMin', 'SelectYCB')
-                YMax = cv2.getTrackbarPos('YMax', 'SelectYCB')
-                CrMax = cv2.getTrackbarPos('CrMax', 'SelectYCB')
-                CbMax = cv2.getTrackbarPos('CbMax', 'SelectYCB')
+                YMin = cv2.getTrackbarPos("YMin", "SelectYCB")
+                CrMin = cv2.getTrackbarPos("CrMin", "SelectYCB")
+                CbMin = cv2.getTrackbarPos("CbMin", "SelectYCB")
+                YMax = cv2.getTrackbarPos("YMax", "SelectYCB")
+                CrMax = cv2.getTrackbarPos("CrMax", "SelectYCB")
+                CbMax = cv2.getTrackbarPos("CbMax", "SelectYCB")
                 minYCB = np.array([YMin, CrMin, CbMin])
                 maxYCB = np.array([YMax, CrMax, CbMax])
 
@@ -543,10 +563,10 @@ def gui_color_segment():
                 resultLAB = cv2.bitwise_and(original, original, mask=maskLAB)
 
                 # Show the results
-                cv2.imshow('SelectBGR', resultBGR)
-                cv2.imshow('SelectYCB', resultYCB)
-                cv2.imshow('SelectLAB', resultLAB)
-                cv2.imshow('SelectHSV', resultHSV)
+                cv2.imshow("SelectBGR", resultBGR)
+                cv2.imshow("SelectYCB", resultYCB)
+                cv2.imshow("SelectLAB", resultLAB)
+                cv2.imshow("SelectHSV", resultHSV)
 
         cv2.destroyAllWindows()
 

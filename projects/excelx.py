@@ -6,7 +6,7 @@ import openpyxl
 import pandas as pd
 import xlsxwriter
 from openpyxl import Workbook
-from stringx import compound_unicode
+from utils import compound_unicode
 
 
 def write_to_excel(arr, filename):

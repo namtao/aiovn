@@ -14,7 +14,7 @@ def spam():
     print("Chuẩn bị")
     # Đếm ngược 5 giây
     for i in range(5, 0, -1):
-        print(i, end="...", flush='True')
+        print(i, end="...", flush="True")
         time.sleep(1)
     print("Bắt đầu")
 
@@ -72,10 +72,10 @@ def auto_write():
 
     pyautogui.hotkey("alt", "tab")
     for i in range(318):
-        pyautogui.press('F2')
-        pyautogui.press('right')
-        pyautogui.write('(1)')
-        pyautogui.press('tab')
+        pyautogui.press("F2")
+        pyautogui.press("right")
+        pyautogui.write("(1)")
+        pyautogui.press("tab")
 
 
 def auto_click():
