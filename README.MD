@@ -455,6 +455,9 @@ python -m pip install -r reqs.txt
 
 pip list --format=freeze > requirements.txt
 
+<!-- update pip -->
+python -m pip install --upgrade --force-reinstall pip
+
 <!-- create env -->
 conda env export > env.yml
 

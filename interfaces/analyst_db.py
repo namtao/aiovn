@@ -6,10 +6,25 @@ from collections import Counter, OrderedDict
 
 import numpy as np
 import pandas as pd
+import sqlalchemy as sa
+
+config = configparser.ConfigParser()
+config.read(r'config.ini')
+
+conn = str(sa.engine.url.URL.create(
+    "mssql+pyodbc",
+    username=config["hcm"]["user"],
+    password=config["hcm"]["pass"],
+    host=config["hcm"]["host"],
+    database=config["hcm"]["db"],
+    query={
+        "driver": "ODBC Driver 17 for SQL Server",
+        "ApplicationIntent": "ReadOnly",
+    },
+))
+    
 
 # tối ưu hóa hiệu suất dataframe
-
-
 def reduce_mem_usage(df):
     """ iterate through all the columns of a dataframe and modify the data type
         to reduce memory usage.        
@@ -62,21 +77,38 @@ def removeEscape(value):
     return ' '.join(str(value).splitlines()).strip()
 
 
+def tktruong(conn, sql):
+    # đếm số trường
+    df = pd.read_sql_query(sql, conn)
+    df.replace(r'^\s*$', np.nan, regex=True, inplace=True)  # thay thế rỗng thành nan và gán lại vào df
+    return np.sum(df.count())  # đếm số ô có thông tin (loại bỏ nan)
+
+
+def tksoluong(conn, sql):
+    df = pd.read_sql_query(sql, conn)
+    return int(removeEscape(df.to_string(index=False)))
+
+
 # tính tổng value
 # đếm số ký tự
 def sql_analysis():
-    config = configparser.ConfigParser()
-    config.read(r'config.ini')
+    sql = 'SELECT id, nksHoTen from HT_KHAISINH'
+    
+    df = pd.read_sql_query(sql, conn)
+    print(f'Các cột: {list(df.columns.values)}') 
+    
+    print(f'Kích thước: {df.shape})')
 
-    conn = f'mssql://@{config["local"]["host"]}/{config["local"]["db"]}?driver={config["local"]["driver"]}'
-
-    sql = 'SELECT id from HT_KHAISINH'
     lst = []
 
     # tạo dataframe từ câu lênh sql
-    df = pd.read_sql_query(sql, conn)
+    df = pd.read_sql_query(sql, conn) 
+    
+    # print(df, type(df))
     # df= reduce_mem_usage(df)
     count = 0
+    
+    # dictionaty chứa số lượng về độ dài chuỗi trong df
     dic = {}
 
     # duyệt từng cột
@@ -106,9 +138,13 @@ def sql_analysis():
 
         dic = merge_dict(dic, filtered_dict)
 
-        # tính tổng độ dài value trong dict
-        print(f"\rTổng số ký tự chuỗi: {sum(dic.values()):<20,}", end='')
-    print(sum(dic.values()))
+    # tính tổng độ dài value trong dict
+    # print('Tổng số trường: ' + str(tktruong(conn, sql)))
+    print(f"\rTổng số ký tự chuỗi: {sum(dic.values()):<20,}", end='')
+    
+    # In ra dictionary chứa 
+    print(f'\nThống kê số lượng ký tự theo từng độ dài: {filtered_dict}')
+    
 
 
 def read_excel():
@@ -125,6 +161,5 @@ def read_excel():
                     count += int(series.shape[0]) - 1
                     print(('\rTổng số bản ghi: {:<20,}'.format(count)), end='')
                     break
-
-
+                
 sql_analysis()

@@ -39,6 +39,12 @@ def create_struct(root, file):
         head, tail = (os.path.split(
             Path(os.path.join(root, file))))
         if (len(tail.split('.')) >= 6):
+            # ndk => nam
+            # newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
+            #     2], tail.split('.')[1], tail.split('.')[3])
+            # Path(newPath).mkdir(parents=True, exist_ok=True)
+            
+            # nam => ndk
             newPath = os.path.join(pathTarget, tail.split('.')[0], tail.split('.')[
                 1], tail.split('.')[2], tail.split('.')[3])
             Path(newPath).mkdir(parents=True, exist_ok=True)
