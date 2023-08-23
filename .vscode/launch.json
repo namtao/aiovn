@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FastAPI",
+      "type": "python",
+      "cwd": "${workspaceFolder}/backend",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["main:app", "--reload", "--port", "8000"],
+      "jinja": true,
+      "justMyCode": true
+    },
+    {
+      "type": "node-terminal",
+      "name": "NodeJS",
+      "request": "launch",
+      "command": "npm start",
+      "cwd": "${workspaceFolder}\\frontend"
+    }
+  ]
+}
