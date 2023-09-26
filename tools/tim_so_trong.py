@@ -1,11 +1,11 @@
-kyhieu = "NE"
-so = 700
+kyhieu = "NELCH"
+so = 2000
 hautoT = "T"
 hautoS = "S"
 
 
-with open(r"other\timso.txt", "r") as fr:
-    with open(r"other\ketqua.txt", "w+") as fw:
+with open(r"./sources/timso.txt", "r") as fr:
+    with open(r"./sources/ketqua.txt", "w+") as fw:
         lst = fr.read().splitlines()
 
         for s in range(1, int(so) + 1):
@@ -14,14 +14,14 @@ with open(r"other\timso.txt", "r") as fr:
                 T = kyhieu + f"{s:05}" + hautoT
                 S = kyhieu + f"{s:05}" + hautoS
 
-                # if(NotT not in lst):
-                #     fw.write(NotT + '\n')
+                if(NotT not in lst):
+                    fw.write(NotT + '\n')
 
-                if S not in lst:
-                    fw.write(S + "\n")
+                # if S not in lst:
+                #     fw.write(S + "\n")
 
-                if T not in lst:
-                    fw.write(T + "\n")
+                # if T not in lst:
+                #     fw.write(T + "\n")
 
             except Exception as e:
                 print(e)

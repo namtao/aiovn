@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-pathTarget = ""
+pathTarget = "D:/"
 
 
 def merge_dict(dict1, dict2):
@@ -54,7 +54,7 @@ def create_struct(root, file):
             )
             Path(newPath).mkdir(parents=True, exist_ok=True)
             if not os.path.exists(os.path.join(newPath, tail.replace(" ", ""))):
-                shutil.move(
+                shutil.copy(
                     os.path.join(root, file),
                     os.path.join(newPath, tail.replace(" ", "")),
                 )
@@ -296,4 +296,25 @@ def tktruongtheosokytu():
         print("\rTổng trường: {:<20,}".format(sum(dic.values())), end="")
 
 
-count_row_excel(r"C:\Users\vanna\Downloads\EXCEL ĐÃ BIÊN MỤC\Đã sắp xếp")
+@get_files
+def copy_anh_da_dat_ten(root, file):
+    try:
+        head, tail = os.path.split(Path(os.path.join(root, file)))
+        if len(tail.split(".")) >= 6:
+            newPath = os.path.join(r"/home/vannam/Downloads/2000/copy/", root[1:])
+
+            Path(newPath).mkdir(parents=True, exist_ok=True)
+            shutil.copy(
+                os.path.join(root, file),
+                os.path.join(
+                    newPath,
+                    file,
+                ),
+            )
+    except Exception as ex:
+        print(ex)
+
+
+# count_row_excel(r"C:\Users\vanna\Downloads\EXCEL ĐÃ BIÊN MỤC\Đã sắp xếp")
+
+copy_anh_da_dat_ten(r"/home/vannam/Downloads/2000/ghep anh", "pdf")

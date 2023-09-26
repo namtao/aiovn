@@ -15,7 +15,7 @@ from PyPDF2 import PdfMerger, PdfReader, PdfWriter
 from textual import on
 from textual.app import App, ComposeResult
 from textual.containers import VerticalScroll
-from textual.widgets import Footer, Header, Input, Select, RichLog
+from textual.widgets import Footer, Header, Input, RichLog, Select
 
 from modules.convert import jpg_to_pdf, pdf_to_jpg
 from modules.decor import get_files

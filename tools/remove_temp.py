@@ -159,19 +159,28 @@ def create_struct(pathRoot, pathTarget):
                 pass
     print(count)
 
+def check_duplicate(dir1, dir2):
+    def get_files(folderPath, fileFormat):
+        lst = []
+        for root, dirs, files in os.walk(folderPath):
+            for file in files:
+                pattern = re.compile(".*"+fileFormat+"$")
 
-# # xóa temp
-# remove_temp(r'Y:\SO HOA\DAK LAK 2023\2.ANH DA TACH BO')
+                if pattern.match(file):
+                    # lst.append(os.path.join(root, file))
+                    lst.append(os.path.join(file))
+                    # lst.append(os.path.splitext(file)[0])
+        return lst
 
-# # xóa file đã nén
-# remove_nen(r'E:\tay ninh\ubnd 2014 chua nen\tach', r'E:\tay ninh\da ocr\tay ninh\ubnd 2014 chua nen\tach')
+    lstPdf1 = get_files(dir1, 'pdf')
+    lstPdf2 = get_files(dir2, 'pdf')
 
-# copy nén
-copy_nen(
-         r'E:\BACKUP NAS\RaiDrive-ADDJ\WebDAV\SO HOA\DAK LAK 2023\ANH DA OCR\SO HOA\DAK LAK 2023\2.ANH DA TACH BO',
-         r'Y:\SO HOA\DAK LAK 2023\ANH DA OCR\SO HOA\DAK LAK 2023\2.ANH DA TACH BO', 
-         r'C:\Users\ADDJ\Downloads\OCR')
+    # lstDaCopy = get_files(r'E:\OCR NEN', 'pdf')
+    # lstPdf3 = get_files(dir3, 'pdf')
 
+    # lstDuplicate = list(set(lstPdf1) & set(lstPdf2))
+    lstNotDuplicate = list(set(lstPdf1) - set(lstPdf2))
 
-# # tạo cấu trúc thư mục
-# create_struct(r'E:\OCR NEN\CHUA NEN\VI THANH', r'E:\OCR NEN\CHUA NEN\VI THANH')
+    print(len(lstNotDuplicate))
+    
+check_duplicate(r'')
