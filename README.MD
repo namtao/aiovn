@@ -1,6 +1,6 @@
-# Commands
+# Documents
 
-- [Commands](#commands)
+- [Documents](#documents)
   - [Git](#git)
   - [Python](#python)
   - [Docker](#docker)
