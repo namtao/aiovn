@@ -4,6 +4,22 @@ import PyPDF2
 import pytesseract
 from pdf2image import convert_from_path
 
+from paddleocr import PaddleOCR
+
+
+def padocr():
+    # Also switch the language by modifying the lang parameter
+    ocr = PaddleOCR(lang="vi") # The model file will be downloaded automatically when executed for the first time
+    img_path ='test.jpg'
+    result = ocr.ocr(img_path)
+    # Recognition and detection can be performed separately through parameter control
+    # result = ocr.ocr(img_path, det=False)  Only perform recognition
+    # result = ocr.ocr(img_path, rec=False)  Only perform detection
+    # Print detection frame and recognition result
+    for line in result:
+        print(line)
+    
+
 PDF_file = r"C:\Users\Nam\Downloads\New folder\KS.1885.93646.01.A4.1885.01-daocr.pdf"
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
