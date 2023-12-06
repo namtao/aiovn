@@ -20,3 +20,19 @@ def get_files(function):
                     function(root, file, *args, **kwargs)
 
     return wrapper
+
+
+# def get_files(directory: str) -> list:
+#     tree = []
+#     for i in os.scandir(directory):
+#         if i.is_dir():
+#             tree.extend(get_files(i.path))
+#         else:
+#             pattern = re.compile(".*pdf$")
+#             if (
+#                 pattern.match(i.name)
+#                 and len(i.name.split(".")) >= 6
+#                 and "TEMP" not in str(i.path)
+#             ):
+#                 tree.append(i.path)
+#     return tree
