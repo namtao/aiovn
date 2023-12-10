@@ -317,4 +317,4 @@ def copy_anh_da_dat_ten(root, file):
 
 # count_row_excel(r"C:\Users\vanna\Downloads\EXCEL ĐÃ BIÊN MỤC\Đã sắp xếp")
 
-copy_anh_da_dat_ten(r"/home/vannam/Downloads/2000/ghep anh", "pdf")
+# copy_anh_da_dat_ten(r"/home/vannam/Downloads/2000/ghep anh", "pdf")

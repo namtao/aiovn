@@ -2,6 +2,7 @@ import json
 import os
 import re
 from pathlib import Path
+import shutil
 
 import pyttsx3
 import requests
@@ -40,6 +41,41 @@ def jpg_to_pdf(jpg_folder_path, pdf_folder_path):
 
             if len(lstJpg) > 0:
                 merge_jpg_to_pdf(lstJpg, pdfPath)
+                
+            # jpf tp pdf one file
+            # for file in files:
+            #     # $ regex kết thúc là ký tự trc $
+            #     if re.compile(".*jpg$").match(file) and len(file.split(".")) >= 6 and 'TEMP' not in str(root):                    
+            #         newPath = os.path.join(pdf_folder_path, root[3:])
+            #         Path(newPath).mkdir(parents=True, exist_ok=True)
+            #         head, tail = os.path.splitext(file)
+
+            #         images = Image.open(os.path.join(root, file))
+            #         file_name_pdf = os.path.join(newPath, head + ".pdf")
+            #         if(not os.path.exists(file_name_pdf)):
+            #             images.save(
+            #                 file_name_pdf, "PDF", resolution=300.0, save_all=True
+            #             )
+            #             count += 1
+            #             print(count)
+            #     elif re.compile(".*pdf$").match(file) and len(file.split(".")) >= 6 and 'TEMP' not in str(root):
+
+            #         newPath = os.path.join(pdf_folder_path, root[3:])
+
+            #         Path(newPath).mkdir(parents=True, exist_ok=True)
+            #         head, tail = os.path.splitext(file)
+
+            #         if(not os.path.exists(os.path.join(newPath, file))):
+            #             shutil.copy(
+            #                 os.path.join(root, file),
+            #                 os.path.join(
+            #                     newPath,
+            #                     file,
+            #                 ),
+            #             )
+
+            #             count += 1
+            #             print(count)
 
 
 @Halo()
@@ -168,3 +204,7 @@ def text2speech():
         # tts = gTTS(text='안녕하세요', lang='ko')
 
         tts.save(path + ".mp3")
+
+
+# jpg_to_pdf(r'/home/vannam/Downloads/a', r'/home/vannam/Downloads/a')
+pdf_to_jpg(r'/home/vannam/Downloads/a', r'/home/vannam/Downloads/a')
