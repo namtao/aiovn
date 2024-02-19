@@ -22,7 +22,7 @@ from modules.decor import get_files
 from modules.explorer import analysis_in_folder
 
 output = ""
-historyPath = "/"
+historyPath = "C:/"
 
 
 options = {
@@ -424,7 +424,7 @@ class MainApp(App[str]):
 
 if __name__ == "__main__":
     try:
-        if datetime.datetime.now().year == 2023:
+        if datetime.datetime.now().year == 2024:
             MainApp().run()
         else:
             input("Bye!!!\n")

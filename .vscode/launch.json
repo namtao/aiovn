@@ -2,8 +2,15 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Python Debugger: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
       "name": "FastAPI",
-      "type": "python",
+      "type": "debugpy",
       "cwd": "${workspaceFolder}/backend",
       "request": "launch",
       "module": "uvicorn",
