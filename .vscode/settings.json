@@ -99,8 +99,18 @@
   "[ini]": {
     "editor.defaultFormatter": "lkrms.inifmt"
   },
-  "DockerRun.DisableDockerrc": true
+  "DockerRun.DisableDockerrc": true,
   // "markdownlint.config": {
   //   "no-inline-html": false
   // }
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.gitignore": true,
+    "**/.gitattributes": true,
+  },
 }
