@@ -12,7 +12,7 @@ def counts(directory: str) -> list:
         else:
             pattern = re.compile(".*pdf$")
             if pattern.match(i.name) and len(i.name.split(".")) >= 6 and 'TEMP' not in str(i.path):
-                tree.append(i.path)
+                tree.append(i.name)
     return tree
 
 
@@ -24,7 +24,7 @@ def counts(directory: str) -> list:
 # print("Đắk Glong - " + str(len(counts(r'X:\Phan mem trien khai\2023_ONLINE\2023_HOTICH_OL\DAKNONG_DAKGLONG_2023\Filesnen\Phan mem trien khai'))))
 # print("Tuy Đức - " + str(len(counts(r'X:\Phan mem trien khai\2023_ONLINE\2023_HOTICH_OL\DAKNONG_TUYDUC_2023\Filesnen\Phan mem trien khai'))))
 print("Quảng Ninh - " + str(len(counts(r'X:\Phan mem trien khai\2023_HOTICH\QBN_QUANGBINH\Filesnen\Phan mem trien khai'))))
-# print("Ba Đồn - " + str(len(counts(r'X:\Phan mem trien khai\2023_HOTICH\QBN_BADON\FilesNen\Phan mem trien khai'))))
-# print("Lệ Thủy - " + str(len(counts(r'X:\Phan mem trien khai\2023_HOTICH\QBN_LETHUY\FilesNen\Phan mem trien khai'))))
+print("Ba Đồn - " + str(len(counts(r'X:\Phan mem trien khai\2023_HOTICH\QBN_BADON\FilesNen\Phan mem trien khai'))))
+print("Lệ Thủy - " + str(len(counts(r'X:\Phan mem trien khai\2023_HOTICH\QBN_LETHUY\FilesNen\Phan mem trien khai'))))
 
 print(datetime.datetime.now())

@@ -14,7 +14,7 @@ import xlsxwriter
 from openpyxl.styles import Border, Side
 
 config = configparser.ConfigParser()
-config.read(r"config.ini", encoding="utf-8")
+config.read(r"projects\config.ini", encoding="utf-8")
 sections = config.sections()
 lst_huyen = sections[1:]
 tk_path = config["global"]["tk"]

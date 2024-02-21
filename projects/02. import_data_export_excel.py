@@ -11,6 +11,7 @@ from urllib.parse import quote_plus
 from sqlalchemy.engine import create_engine
 import subprocess
 
+
 def get_files(directory: str) -> list:
     tree = []
     for i in os.scandir(directory):
@@ -18,9 +19,7 @@ def get_files(directory: str) -> list:
             tree.extend(get_files(i.path))
         else:
             if (
-                (
-                    re.compile(".*pdf$").match(i.name)
-                )
+                (re.compile(".*pdf$").match(i.name))
                 and len(i.name.split(".")) >= 6
                 and "TEMP" not in str(i.path)
             ):
@@ -28,25 +27,69 @@ def get_files(directory: str) -> list:
                 tree.append(i.name)
     return tree
 
+
 # import pm
-tpkontum = {r"E:\PUSH\PULL\Kontum\TP Kontum": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileTPKontum\TranFile.exe"}
-sathay = {r'E:\PUSH\PULL\Kontum\Sa Thay': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileSaThay\TranFile.exe'}
-dakto = {r'E:\PUSH\PULL\Kontum\Dak To': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileDakTo\TranFile.exe'}
-ngochoi = {r'E:\PUSH\PULL\Kontum\Ngoc Hoi': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileNgocHoi\TranFile.exe'}
-dakglong = {r'E:\PUSH\PULL\Dak Nong\Dak Glong': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileDakGlong\TranFile.exe'}
-krongno = {r'E:\PUSH\PULL\Dak Nong\Krong No': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileKrongNo\TranFile.exe'}
-tuyduc = {r'E:\PUSH\PULL\Dak Nong\Tuy Duc': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileTuyDuc\TranFile.exe'}
-quangninh = {r'E:\PUSH\PULL\Quang Binh\Quang Ninh': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileQuangNinh\TranFile.exe'}
-badon = {r'E:\PUSH\PULL\Quang Binh\Ba Don': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileBaDon\TranFile.exe'}
-lethuy = {r'E:\PUSH\PULL\Quang Binh\Le Thuy': r'E:\SFTP\Xuat du lieu\02. PM import\TranFileLeThuy\TranFile.exe'}
+# tpkontum = {
+#     r"E:\PUSH\PULL\Kontum\TP Kontum": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileTPKontum\TranFile.exe"
+# }
+# sathay = {
+#     r"E:\PUSH\PULL\Kontum\Sa Thay": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileSaThay\TranFile.exe"
+# }
+# dakto = {
+#     r"E:\PUSH\PULL\Kontum\Dak To": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileDakTo\TranFile.exe"
+# }
+# ngochoi = {
+#     r"E:\PUSH\PULL\Kontum\Ngoc Hoi": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileNgocHoi\TranFile.exe"
+# }
+# konray = {
+#     r"E:\PUSH\PULL\Kontum\Kon Ray": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileKonRay\TranFile.exe"
+# }
+# dakglong = {
+#     r"E:\PUSH\PULL\Dak Nong\Dak Glong": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileDakGlong\TranFile.exe"
+# }
+# krongno = {
+#     r"E:\PUSH\PULL\Dak Nong\Krong No": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileKrongNo\TranFile.exe"
+# }
+# tuyduc = {
+#     r"E:\PUSH\PULL\Dak Nong\Tuy Duc": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileTuyDuc\TranFile.exe"
+# }
+# quangninh = {
+#     r"E:\PUSH\PULL\Quang Binh\Quang Ninh": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileQuangNinh\TranFile.exe"
+# }
+# badon = {
+#     r"E:\PUSH\PULL\Quang Binh\Ba Don": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileBaDon\TranFile.exe"
+# }
+# lethuy = {
+#     r"E:\PUSH\PULL\Quang Binh\Le Thuy": r"E:\SFTP\Xuat du lieu\02. PM import\TranFileLeThuy\TranFile.exe"
+# }
 
-lstHuyen = [tpkontum, sathay, dakto, ngochoi, dakglong, krongno, tuyduc, quangninh, badon, lethuy]
 
-for huyen in lstHuyen:
+# lst_huyen = [
+#     tpkontum,
+#     sathay,
+#     dakto,
+#     ngochoi,
+#     konray,
+#     dakglong,
+#     krongno,
+#     tuyduc,
+#     quangninh,
+#     badon,
+#     lethuy,
+# ]
+
+config = configparser.ConfigParser()
+config.read(r"config.ini")
+sections = config.sections()
+lst_huyen = sections[1:]
+
+
+for huyen in lst_huyen:
     for files_tmp, files_exe in huyen.items():
-        if(os.path.exists(files_tmp) and len(get_files(files_tmp)) > 0):
+        if os.path.exists(files_tmp) and len(get_files(files_tmp)) > 0:
             print(f"{files_tmp},\t{files_exe}:\t{len(get_files(files_tmp))}")
             subprocess.call(files_exe)
+
 
 # export excel
 config = configparser.ConfigParser()
@@ -63,6 +106,9 @@ connDakTo = create_engine(
 )
 connNgocHoi = create_engine(
     f"mssql://{config['global']['user']}:{quote_plus(config['global']['pass'])}@{config['global']['host']}/{config['ngochoi']['db']}?driver={config['global']['driver']}"
+)
+connKonRay = create_engine(
+    f"mssql://{config['global']['user']}:{quote_plus(config['global']['pass'])}@{config['global']['host']}/{config['konray']['db']}?driver={config['global']['driver']}"
 )
 connDakGlong = create_engine(
     f"mssql://{config['global']['user']}:{quote_plus(config['global']['pass'])}@{config['global']['host']}/{config['dakglong']['db']}?driver={config['global']['driver']}"
@@ -88,6 +134,7 @@ dicConn = {
     "Sa Thay": connSaThay,
     "Dak To": connDakTo,
     "Ngoc Hoi": connNgocHoi,
+    "Kon Ray": connKonRay,
     "Dak Glong": connDakGlong,
     "Krong No": connKrongNo,
     "Tuy Duc": connTuyDuc,
