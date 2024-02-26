@@ -111,6 +111,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/.gitignore": true,
-    "**/.gitattributes": true,
+    "**/.gitattributes": true
   },
+  "explorer.compactFolders": false
 }
