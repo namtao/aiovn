@@ -132,9 +132,9 @@ def check_dup_import():
         exit()
 
 
-def check_convert_import(dup_import = True, dup_files = True, convert = True, is_import = True):
+def check_convert_import(dup_import=True, dup_files=True, convert=True, is_import=True):
     # kiem tra trung trong thu muc import hoac co dau cach hoac khong thuoc cac loai hoac khong co kho giay
-    if(dup_import):
+    if dup_import:
         print("Kiểm tra trùng trong thư mục import")
         lst1 = []
         for root, dirs, files in os.walk(import_path):
@@ -143,7 +143,8 @@ def check_convert_import(dup_import = True, dup_files = True, convert = True, is
                 if (
                     len(file.split(".")) >= 6
                     and "TEMP" not in str(root)
-                    and file.split(".")[0] in ["KS", "KT", "KH", "CMC", "HN", "TD", "GH"]
+                    and file.split(".")[0]
+                    in ["KS", "KT", "KH", "CMC", "HN", "TD", "GH"]
                     and ".A" not in file
                 ):
                     if " " in file:
@@ -177,9 +178,8 @@ def check_convert_import(dup_import = True, dup_files = True, convert = True, is
                 duong_dan_import, "jpg"
             )
 
-
             # kiểm tra trùng trong thư mục Files và trùng trong DB
-            if(dup_files):
+            if dup_files:
                 for file in lst_dau_vao:
                     file_name = os.path.join(
                         str(file).split(".")[0],
@@ -224,7 +224,7 @@ def check_convert_import(dup_import = True, dup_files = True, convert = True, is
                     exit()
 
             # jpg => pdf
-            if(convert):
+            if convert:
                 if len(lst_dau_vao) > 0:
                     # thuc hien chuyen jpg sang pdf
                     # Path(tmp_path).mkdir(parents=True, exist_ok=True)
@@ -237,7 +237,7 @@ def check_convert_import(dup_import = True, dup_files = True, convert = True, is
                     # Path(import_path).mkdir(parents=True, exist_ok=True)
 
                     # import pm
-                    if(is_import):
+                    if is_import:
                         if (
                             os.path.exists(duong_dan_tmp)
                             and len(get_files(duong_dan_tmp, "pdf")) > 0
@@ -287,5 +287,42 @@ def check_convert_import(dup_import = True, dup_files = True, convert = True, is
                                             + "\n"
                                         )
 
-check_convert_import(dup_import = True, dup_files = True, convert = True, is_import=True)
+
+# đếm số lượng file trong theo ngày
+def count_file_in_day(dir_path):
+    count = 0
+    for root, dirs, files in os.walk(dir_path):
+        for file in files:
+            date_modifier = os.path.getmtime(os.path.join(root, file))
+            date_create = os.path.getctime(os.path.join(root, file))
+
+            current_date = datetime.datetime.now().strftime("%d/%m/%Y")
+            file_date = datetime.datetime.fromtimestamp(
+                min(date_modifier, date_create)
+            ).strftime("%d/%m/%Y")
+
+            if file_date == current_date:
+                count += 1
+
+    return count
+
+
+# kiểm tra file chưa đặt tên trong hộ tịch
+def check_file_no_name(directory: str) -> list:
+    tree = []
+    for i in os.scandir(directory):
+        if i.is_dir():
+            tree.extend(check_file_no_name(i.path))
+        else:
+            pattern = re.compile(".*jpg$")
+            if (
+                pattern.match(i.name)
+                and len(i.name.split(".")) < 5
+                and "TEMP" not in str(i.path)
+            ):
+                tree.append(i.path)
+    return tree
+
+
+check_convert_import(dup_import=True, dup_files=True, convert=True, is_import=True)
 print(datetime.datetime.now())

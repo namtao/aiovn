@@ -14,7 +14,7 @@ import xlsxwriter
 from openpyxl.styles import Border, Side
 
 config = configparser.ConfigParser()
-config.read(r"projects\config.ini", encoding="utf-8")
+config.read(r"config.ini", encoding="utf-8")
 sections = config.sections()
 lst_huyen = sections[1:]
 tk_path = config["global"]["tk"]
@@ -35,14 +35,6 @@ hnfmt = config["global"]["hnfmt"]
 sql_details_by_status = config["global"]["sql_details_by_status"]
 sql_details_by_book = config["global"]["sql_details_by_book"]
 sql_details_by_year = config["global"]["sql_details_by_year"]
-
-dic_loai = {
-    ks: "HT_KHAISINH",
-    kt: "HT_KHAITU",
-    kh: "HT_KETHON",
-    cmc: "HT_NHANCHAMECON",
-    hn: "HT_XACNHANHONNHAN",
-}
 
 
 def get_database_connection(config, section: str):
@@ -139,6 +131,331 @@ def liet_ke_ndk(conn, sql):
 def ten_noi_dang_ky(conn, sql):
     df = pd.read_sql_query(sql, conn)
     return df.to_dict()
+
+
+# conndakglong = get_database_connection(config, "dakglong")
+# connkrongno = get_database_connection(config, "krongno")
+# conntuyduc = get_database_connection(config, "tuyduc")
+# connquangninh = get_database_connection(config, "quangninh")
+# connbadon = get_database_connection(config, "badon")
+# connlethuy = get_database_connection(config, "lethuy")
+# conntpkontum = get_database_connection(config, "tpkontum")
+# connsathay = get_database_connection(config, "sathay")
+# conndakto = get_database_connection(config, "dakto")
+# connngochoi = get_database_connection(config, "ngochoi")
+# connkonray = get_database_connection(config, "konray")
+# connkonplong = get_database_connection(config, "konplong")
+
+
+dic_loai = {
+    ks: "HT_KHAISINH",
+    kt: "HT_KHAITU",
+    kh: "HT_KETHON",
+    cmc: "HT_NHANCHAMECON",
+    hn: "HT_XACNHANHONNHAN",
+}
+
+# dic = {
+#     61: ["Đắk Glong", conndakglong],
+#     66: ["Krông Nô", connkrongno],
+#     67: ["Tuy Đức", conntuyduc],
+#     45: ["Quảng Ninh", connquangninh],
+#     458: ["Ba Đồn", connbadon],
+#     457: ["Lệ Thủy", connlethuy],
+#     608: ["TP Kontum", conntpkontum],
+#     616: ["Sa Thầy", connsathay],
+#     82: ["Đắk Tô", conndakto],
+#     611: ["Ngọc Hồi", connngochoi],
+#     614: ["Kon Rẫy", connkonray],
+#     613: ["Kon Plong", connkonplong],
+# }
+
+
+# def tk_xa():
+#     for k, v in dic.items():
+#         print(v[0])
+#         dicNoiDangKy = liet_ke_ndk(
+#             v[1], "select MaNoiDangKy from HT_NOIDANGKY where MaCapCha = " + str(k)
+#         )
+#         dictNDK = list(dicNoiDangKy.values())[0]
+#         for value_ndk in dictNDK.values():
+#             d = {
+#                 "Nơi đăng ký": [],
+#                 "Loại sổ": [],
+#                 "Tổng số lượng": [],
+#                 "Số lượng biên mục": [],
+#                 "Tỷ lệ biên mục": [],
+#                 # "Tổng số trường": [],
+#             }
+
+#             for k1, v1 in dic_loai.items():
+#                 ndk = "noiCap" if (v1 == "HT_XACNHANHONNHAN") else "noiDangKy"
+
+#                 # for value_ndk in v_ndk.values():
+#                 # value_ndk: ma noi dang ky
+
+#                 ten_ndk = ten_noi_dang_ky(
+#                     v[1],
+#                     "select TenNoiDangKy from HT_NOIDANGKY where MaNoiDangKy = "
+#                     + value_ndk,
+#                 )
+
+#                 fileName = os.path.join(
+#                     r"C:\Users\Administrator.WIN-F87SQODGG1E\Desktop\TKHT",
+#                     str(ten_ndk["TenNoiDangKy"][0]) + ".xlsx",
+#                 )
+
+#                 print("\t" + str(ten_ndk["TenNoiDangKy"][0]))
+
+#                 d["Nơi đăng ký"].extend([ten_ndk["TenNoiDangKy"][0]])
+
+#                 tongsoluong = tk_so_luong(
+#                     v[1],
+#                     "select count(*) from "
+#                     + v1
+#                     + " ks join HT_NOIDANGKY ndk on ks."
+#                     + ndk
+#                     + " = ndk.MaNoiDangKy where ndk.MaNoiDangKy = "
+#                     + str(value_ndk),
+#                 )
+
+#                 soluongbienmuc = tk_so_luong(
+#                     v[1],
+#                     "select count(*) from "
+#                     + v1
+#                     + " ks join HT_NOIDANGKY ndk on ks."
+#                     + ndk
+#                     + " = ndk.MaNoiDangKy where ndk.MaNoiDangKy = "
+#                     + str(value_ndk)
+#                     + "and TinhTrangID in (5, 6, 7)",
+#                 )
+
+#                 # tongtruong = tktruong(v[1], k1)
+
+#                 # print("\t{:<20}: {:10,}{:10,}{:15,}".format(
+#                 #     v1, tongsoluong, soluongbienmuc, tongtruong))
+#                 # print()
+
+#                 # d['Nơi đăng ký'].append(v[0])
+#                 d["Loại sổ"].append(v1)
+#                 d["Tổng số lượng"].append(tongsoluong)
+#                 d["Số lượng biên mục"].append(soluongbienmuc)
+#                 try:
+#                     d["Tỷ lệ biên mục"].append((soluongbienmuc / tongsoluong))
+#                 except ZeroDivisionError:
+#                     d["Tỷ lệ biên mục"].append(1)
+
+#                 # d["Tổng số trường"].append(tongtruong)
+
+#             print("----------------------------------------------------------------")
+
+#             sl = sum(d["Tổng số lượng"])
+#             bm = sum(d["Số lượng biên mục"])
+
+#             d["Nơi đăng ký"].append("Tổng")
+#             d["Loại sổ"].append("Hộ tịch")
+#             d["Tổng số lượng"].append(sl)
+#             d["Số lượng biên mục"].append(bm)
+#             # d["Tỷ lệ biên mục"].append(bm / sl)
+#             try:
+#                 d["Tỷ lệ biên mục"].append((bm / sl))
+#             except ZeroDivisionError:
+#                 d["Tỷ lệ biên mục"].append(1)
+#             # d["Tổng số trường"].append(sum(d["Tổng số trường"]))
+
+#             writer = pd.ExcelWriter(fileName, engine="xlsxwriter")
+#             df_new = pd.DataFrame(d).to_excel(
+#                 writer, sheet_name="Thống kê hộ tịch", index=False
+#             )
+
+#             workbook = writer.book
+#             worksheet = writer.sheets["Thống kê hộ tịch"]
+
+#             format_number = workbook.add_format({"num_format": "#,##0"})
+
+#             format_percentage = workbook.add_format({"num_format": "00.00%"})
+
+#             # Set the column width and format.
+
+#             format_data = workbook.add_format()
+#             format_data.set_valign("vcenter")
+#             # format_data.set_align('center')
+#             format_data.set_text_wrap()
+
+#             worksheet.set_column("A:Z", 25, format_data)
+#             worksheet.set_column(2, 2, 20, format_number)
+#             worksheet.set_column(3, 3, 20, format_number)
+#             worksheet.set_column(4, 4, 20, format_percentage)
+#             worksheet.set_column(5, 5, 20, format_number)
+
+#             # thêm định dạng của 1 ô hoặc dải ô
+#             worksheet.conditional_format(
+#                 "A27:D27",
+#                 {
+#                     "type": "no_errors",
+#                     "format": workbook.add_format(
+#                         {"bold": True, "font_color": "red", "num_format": "#,##0"}
+#                     ),
+#                 },
+#             )
+
+#             worksheet.conditional_format(
+#                 "E27",
+#                 {
+#                     "type": "no_errors",
+#                     "format": workbook.add_format(
+#                         {"bold": True, "font_color": "red", "num_format": "00.00%"}
+#                     ),
+#                 },
+#             )
+
+#             worksheet.conditional_format(
+#                 "F27",
+#                 {
+#                     "type": "no_errors",
+#                     "format": workbook.add_format(
+#                         {"bold": True, "font_color": "red", "num_format": "#,##0"}
+#                     ),
+#                 },
+#             )
+
+#             # writer.save()
+#             writer.close()
+
+#             # os.system('"' + fileName + '"')
+
+
+# def thong_ke_ho_tich_tong_hop_cac_du_an():
+#     fileName = r"E:\SFTP\Thống kê\Thống kê hộ tịch.xlsx"
+
+#     d = {
+#         "Nơi đăng ký": [],
+#         "Loại sổ": [],
+#         "Tổng số lượng": [],
+#         "Số lượng biên mục": [],
+#         "Tỷ lệ biên mục": [],
+#         "Tổng số trường": [],
+#     }
+
+#     for k, v in dic.items():
+#         print(v[0])
+#         d["Nơi đăng ký"].extend([v[0], "", "", "", ""])
+
+#         for k1, v1 in dic_loai.items():
+#             print("\t" + v1)
+
+#             ndk = "noiCap" if (v1 == "HT_XACNHANHONNHAN") else "noiDangKy"
+
+#             tongsoluong = tk_so_luong(
+#                 v[1],
+#                 "select count(*) from "
+#                 + v1
+#                 + " ks join HT_NOIDANGKY ndk on ks."
+#                 + ndk
+#                 + " = ndk.MaNoiDangKy where MaCapCha = "
+#                 + str(k),
+#             )
+
+#             soluongbienmuc = tk_so_luong(
+#                 v[1],
+#                 "select count(*) from "
+#                 + v1
+#                 + " ks join HT_NOIDANGKY ndk on ks."
+#                 + ndk
+#                 + " = ndk.MaNoiDangKy where MaCapCha = "
+#                 + str(k)
+#                 + "and TinhTrangID in (5, 6, 7)",
+#             )
+
+#             tongtruong = tktruong(v[1], k1)
+
+#             # print("\t{:<20}: {:10,}{:10,}{:15,}".format(
+#             #     v1, tongsoluong, soluongbienmuc, tongtruong))
+#             # print()
+
+#             # d['Nơi đăng ký'].append(v[0])
+#             d["Loại sổ"].append(v1)
+#             d["Tổng số lượng"].append(tongsoluong)
+#             d["Số lượng biên mục"].append(soluongbienmuc)
+#             try:
+#                 d["Tỷ lệ biên mục"].append((soluongbienmuc / tongsoluong))
+#             except ZeroDivisionError:
+#                 d["Tỷ lệ biên mục"].append(1)
+
+#             d["Tổng số trường"].append(tongtruong)
+
+#         print("------------------------------")
+
+#     sl = sum(d["Tổng số lượng"])
+#     bm = sum(d["Số lượng biên mục"])
+
+#     d["Nơi đăng ký"].append("Tổng")
+#     d["Loại sổ"].append("Hộ tịch")
+#     d["Tổng số lượng"].append(sl)
+#     d["Số lượng biên mục"].append(bm)
+#     d["Tỷ lệ biên mục"].append(bm / sl)
+#     d["Tổng số trường"].append(sum(d["Tổng số trường"]))
+
+#     writer = pd.ExcelWriter(fileName, engine="xlsxwriter")
+#     df_new = pd.DataFrame(d).to_excel(
+#         writer, sheet_name="Thống kê hộ tịch", index=False
+#     )
+
+#     workbook = writer.book
+#     worksheet = writer.sheets["Thống kê hộ tịch"]
+
+#     format_number = workbook.add_format({"num_format": "#,##0"})
+
+#     format_percentage = workbook.add_format({"num_format": "00.00%"})
+
+#     # Set the column width and format.
+
+#     format_data = workbook.add_format()
+#     format_data.set_valign("vcenter")
+#     # format_data.set_align('center')
+#     format_data.set_text_wrap()
+
+#     worksheet.set_column("A:Z", 25, format_data)
+#     worksheet.set_column(2, 2, 20, format_number)
+#     worksheet.set_column(3, 3, 20, format_number)
+#     worksheet.set_column(4, 4, 20, format_percentage)
+#     worksheet.set_column(5, 5, 20, format_number)
+
+#     # thêm định dạng của 1 ô hoặc dải ô
+#     worksheet.conditional_format(
+#         "A27:D27",
+#         {
+#             "type": "no_errors",
+#             "format": workbook.add_format(
+#                 {"bold": True, "font_color": "red", "num_format": "#,##0"}
+#             ),
+#         },
+#     )
+
+#     worksheet.conditional_format(
+#         "E27",
+#         {
+#             "type": "no_errors",
+#             "format": workbook.add_format(
+#                 {"bold": True, "font_color": "red", "num_format": "00.00%"}
+#             ),
+#         },
+#     )
+
+#     worksheet.conditional_format(
+#         "F27",
+#         {
+#             "type": "no_errors",
+#             "format": workbook.add_format(
+#                 {"bold": True, "font_color": "red", "num_format": "#,##0"}
+#             ),
+#         },
+#     )
+
+#     # writer.save()
+#     writer.close()
+
+#     os.system('"' + fileName + '"')
 
 
 def tk_so_truong_by_df(df, so_ky_tu_duoi: int, so_ky_tu_tren: int):
@@ -591,11 +908,12 @@ def pretty_excel(xlsx):
 
 
 tk_chi_tiet_theo_nam_xa(
-    fmt=True,
-    status=True,
-    book=True,
-    year=True,
-    period=False,
-    detail=True,
-    general=True,
-)
+            fmt=True,
+            status=True,
+            book=True,
+            year=True,
+            period=False,
+            detail=True,
+            general=True,
+        )
+

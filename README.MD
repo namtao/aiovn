@@ -29,6 +29,7 @@ auto-py-to-exe
 ```:
 <!-- update pip -->
 python -m pip install --upgrade --force-reinstall pip
+pip install textual --upgrade
 
 <!-- export env.yml file -->
 conda env export > env.yml
