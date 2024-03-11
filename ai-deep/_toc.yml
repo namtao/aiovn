@@ -1,0 +1,15 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Giải thuật
+    chapters:
+    - file: algorithm/knn
+    - file: algorithm/decision_tree
+    - file: algorithm/random_forest
+    - file: algorithm/xgboost
+    - file: markdown
+    - file: notebooks
+    - file: markdown-notebooks

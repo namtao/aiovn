@@ -6,6 +6,8 @@
   - [Docker](#docker)
   - [Network](#network)
   - [Linux](#linux)
+  - [Streamlit](#streamlit)
+  - [Textual](#textual)
 
 ## Git
 
@@ -22,6 +24,8 @@ pip install --upgrade pip setuptools wheel
 py -m ensurepip --upgrade
 pip install --upgrade pip
 auto-py-to-exe
+jupyter-book create ai-deep/
+jupyter-book build ai-deep/
 ```
 
 ***Virtual environment***
@@ -61,6 +65,6 @@ pip list | findstr opencv
 
 ## Linux
 
-| Command | Description |
-| ------- | ----------- |
-|         |             |
+## Streamlit
+
+## Textual
