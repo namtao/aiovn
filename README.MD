@@ -26,6 +26,7 @@ pip install --upgrade pip
 auto-py-to-exe
 jupyter-book create ai-deep/
 jupyter-book build ai-deep/
+jupytext --to ipynb <your_file.md>
 ```
 
 ***Virtual environment***

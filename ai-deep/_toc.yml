@@ -6,10 +6,11 @@ root: intro
 parts:
   - caption: Giải thuật
     chapters:
+    - file: algorithm/introduce
     - file: algorithm/knn
     - file: algorithm/decision_tree
     - file: algorithm/random_forest
     - file: algorithm/xgboost
-    - file: markdown
+    - file: english
     - file: notebooks
     - file: markdown-notebooks
