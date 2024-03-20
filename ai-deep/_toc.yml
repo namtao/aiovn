@@ -10,7 +10,9 @@ parts:
     - file: algorithm/knn
     - file: algorithm/decision_tree
     - file: algorithm/random_forest
-    - file: algorithm/xgboost
+    - file: algorithm/ada_boost
+    - file: algorithm/gradient_boost
+    - file: algorithm/xg_boost
     - file: english
     - file: notebooks
     - file: markdown-notebooks
