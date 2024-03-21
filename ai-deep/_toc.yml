@@ -6,13 +6,18 @@ root: intro
 parts:
   - caption: Giải thuật
     chapters:
-    - file: algorithm/introduce
+    - file: algorithm/theory
     - file: algorithm/knn
     - file: algorithm/decision_tree
     - file: algorithm/random_forest
     - file: algorithm/ada_boost
     - file: algorithm/gradient_boost
     - file: algorithm/xg_boost
+  - caption: Luyện tập
+    chapters:
     - file: english
-    - file: notebooks
-    - file: markdown-notebooks
+    - file: better_code/electric_bill
+    - file: better_code/numpy_pandas
+    # sections:
+    #   - file: 
+    #   - file: 
