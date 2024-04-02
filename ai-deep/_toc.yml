@@ -17,4 +17,4 @@ parts:
     chapters:
     - file: better-code/for_while
     # - file: better-code/electric_bill
-    # - file: better-code/numpy_pandas
+    - file: better-code/numpy_pandas
