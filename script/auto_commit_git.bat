@@ -1,6 +1,6 @@
 ECHO OFF
 :: Di chuyển đến thư mục chứa code của chúng ta
-cd "C:\Projects\xD"
+cd "C:\Projects\artificial-brain"
 
 :: cập nhật thư viện
 :: cd ..
