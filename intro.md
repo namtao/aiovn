@@ -1,4 +1,4 @@
-# AI DEEP
+# Artificial Brains
 
 ```{tableofcontents}
 ```

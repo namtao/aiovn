@@ -24,8 +24,8 @@ pip install --upgrade pip setuptools wheel
 py -m ensurepip --upgrade
 pip install --upgrade pip
 auto-py-to-exe
-jupyter-book create ai-deep/
-jupyter-book build ai-deep/
+jupyter-book create artificial-brains/
+jupyter-book build .
 jupytext --to ipynb <your_file.md>
 jupyter nbconvert --execute <my_notebook.ipynb>
 ```
