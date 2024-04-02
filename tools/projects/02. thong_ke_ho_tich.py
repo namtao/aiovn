@@ -908,12 +908,11 @@ def pretty_excel(xlsx):
 
 
 tk_chi_tiet_theo_nam_xa(
-            fmt=True,
-            status=True,
-            book=True,
-            year=True,
-            period=False,
-            detail=True,
-            general=True,
-        )
-
+    fmt=True,
+    status=True,
+    book=True,
+    year=True,
+    period=False,
+    detail=True,
+    general=True,
+)

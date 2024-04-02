@@ -50,6 +50,7 @@ def merge_dict(dict1, dict2):
     #         dict1[i] = dict2[i]
     return {k: dict1.get(k, 0) + dict2.get(k, 0) for k in set(dict1) | set(dict2)}
 
+
 def count_files_hanh_chinh(path_folder, type_file):
     # [Mã định danh].[Phông số].[Mục lục số].[Hộp số].[Hồ sơ số].[STT]
     dic_hoso = {}
@@ -80,7 +81,7 @@ def count_files_hanh_chinh(path_folder, type_file):
     return dic_hoso
 
 
-dic_hs = count_files_hanh_chinh(r"E:\PM\Hau Giang\SNV Hậu Giang\VP UBND TINH", "pdf")
+dic_hs = count_files_hanh_chinh(r"E:\PM\Hau Giang\SNV Hậu Giang", "pdf")
 
 with open("thong_ke.txt", "w+", encoding="utf-8") as f:
     f.write(f"Mã định danh\t Phông\t Mục lục\t Hộp số\t Hồ sơ số\t Số lượng văn bản\n")
@@ -89,4 +90,6 @@ with open("thong_ke.txt", "w+", encoding="utf-8") as f:
             f"""{str(hoso).split('.')[0]}\t{str(hoso).split('.')[1]}\t{str(hoso).split('.')[2]}\t{str(hoso).split('.')[3]}\t{str(hoso).split('.')[4]}\t {sl} \n"""
         )
 
-pd.read_csv('thong_ke.txt', delimiter='\t').to_excel('thong_ke.xlsx')
+pd.read_csv("thong_ke.txt", delimiter="\t").to_excel(
+    r"E:\SFTP\Hau Giang - So Noi Vu\thong_ke.xlsx"
+)
