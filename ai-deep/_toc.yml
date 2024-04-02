@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Giải thuật
+  - caption: Algorithms
     chapters:
     - file: algorithm/theory
     - file: algorithm/knn
@@ -13,11 +13,8 @@ parts:
     - file: algorithm/ada_boost
     - file: algorithm/gradient_boost
     - file: algorithm/xg_boost
-  - caption: Luyện tập
+  - caption: Better Code
     chapters:
-    - file: english
-    - file: better_code/electric_bill
-    - file: better_code/numpy_pandas
-    # sections:
-    #   - file: 
-    #   - file: 
+    - file: better-code/for_while
+    # - file: better-code/electric_bill
+    # - file: better-code/numpy_pandas
