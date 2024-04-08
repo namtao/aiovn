@@ -16,12 +16,7 @@ parts:
   - caption: Better Code
     chapters:
       - file: better-code/for_while
+      - file: better-code/list_set_dict
         # sections:
-        # - file: start/overview
-        # - file: start/create
-        # - file: start/build
-        # - file: start/new-file
-        # - file: start/publish
-        # - file: start/example-book
-      # - file: better-code/electric_bill
+        # - file: better-code/electric_bill
       - file: better-code/numpy_pandas
