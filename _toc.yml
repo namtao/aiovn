@@ -13,10 +13,21 @@ parts:
       - file: algorithm/ada_boost
       - file: algorithm/gradient_boost
       - file: algorithm/xg_boost
-  - caption: Better Code
+  - caption: Python basic
     chapters:
-      - file: better-code/for_while
-      - file: better-code/list_set_dict
+      - file: data-science/python-basic/for_while
+      - file: data-science/python-basic/list_set_dict
+      - file: data-science/python-basic/regex
+      - file: data-science/python-basic/file_handle
+      - file: data-science/python-basic/module
         # sections:
         # - file: better-code/electric_bill
-      - file: better-code/numpy_pandas
+  - caption: Numpy & Pandas
+    chapters:
+      - file: data-science/numpy-pandas/numpy_math
+      - file: data-science/numpy-pandas/numpy_statics
+      - file: data-science/numpy-pandas/numpy_1D
+      - file: data-science/numpy-pandas/numpy_2D
+      - file: data-science/numpy-pandas/numpy_lab
+      - file: data-science/numpy-pandas/numpy_summary
+      - file: data-science/numpy-pandas/numpy_pandas
