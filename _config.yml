@@ -32,3 +32,6 @@ html:
   use_repository_button: false
   
 only_build_toc_files: true
+sphinx:
+  config:
+    html_show_copyright: false
