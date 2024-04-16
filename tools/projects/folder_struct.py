@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import subprocess
 import pandas as pd
 
 
@@ -81,15 +82,47 @@ def count_files_hanh_chinh(path_folder, type_file):
     return dic_hoso
 
 
+# Thay đường dẫn thư mục tại dây
 dic_hs = count_files_hanh_chinh(r"E:\PM\Hau Giang\SNV Hậu Giang", "pdf")
+
 
 with open("thong_ke.txt", "w+", encoding="utf-8") as f:
     f.write(f"Mã định danh\t Phông\t Mục lục\t Hộp số\t Hồ sơ số\t Số lượng văn bản\n")
+    lst_madinhdanh = []
+    lst_phong = []
+    lst_mucluc = []
+    lst_hopso = []
+    lst_hoso = []
+    count_vanban = 0
     for hoso, sl in dic_hs.items():
         f.write(
             f"""{str(hoso).split('.')[0]}\t{str(hoso).split('.')[1]}\t{str(hoso).split('.')[2]}\t{str(hoso).split('.')[3]}\t{str(hoso).split('.')[4]}\t {sl} \n"""
         )
 
+        lst_madinhdanh.append(str(hoso).split(".")[0])
+        lst_phong.append(f"{str(hoso).split('.')[0]}.{str(hoso).split('.')[1]}")
+        lst_mucluc.append(
+            f"{str(hoso).split('.')[0]}.{str(hoso).split('.')[1]}.{str(hoso).split('.')[2]}"
+        )
+        lst_hopso.append(
+            f"{str(hoso).split('.')[0]}.{str(hoso).split('.')[1]}.{str(hoso).split('.')[2]}.{str(hoso).split('.')[3]}"
+        )
+        lst_hoso.append(
+            f"{str(hoso).split('.')[0]}.{str(hoso).split('.')[1]}.{str(hoso).split('.')[2]}.{str(hoso).split('.')[3]}.{str(hoso).split('.')[4]}"
+        )
+        count_vanban += sl
+
+pd.read_csv("thong_ke.txt", delimiter="\t").to_excel(r"thong_ke.xlsx")
 pd.read_csv("thong_ke.txt", delimiter="\t").to_excel(
     r"E:\SFTP\Hau Giang - So Noi Vu\thong_ke.xlsx"
 )
+
+print(f"Số lượng mã định danh: {len(set(lst_madinhdanh))}")
+print(f"Số lượng phông: {len(set(lst_phong))}")
+print(f"Số lượng mục lục: {len(set(lst_mucluc))}")
+print(f"Số lượng hộp: {len(set(lst_hopso))}")
+print(f"Số lượng hồ sơ: {len(set(lst_hoso))}")
+print(f"Số lượng văn bản: {count_vanban}")
+
+
+# os.system(r"thong_ke.xlsx")

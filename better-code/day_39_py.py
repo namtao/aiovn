@@ -16,3 +16,4 @@ def is_prime(n: int):
 
 print(is_prime(5))
 print(is_prime('x'))
+
