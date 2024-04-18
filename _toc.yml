@@ -6,6 +6,7 @@ root: intro
 parts:
   - caption: Python basic
     chapters:
+      - file: data-science/python-basic/tricks_in_python
       - file: data-science/python-basic/for_while
       - file: data-science/python-basic/list_set_dict
       - file: data-science/python-basic/regex
