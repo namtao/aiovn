@@ -23,14 +23,14 @@ parts:
       - file: data-science/numpy-pandas/numpy_summary
       - file: data-science/numpy-pandas/lab_numpy_pandas
 
-  - caption: Database
+  - caption: MongoDB
     chapters:
       - file: data-science/database/mongo.ipynb
-        sections:
-          - file: better-code/day_01      
-      - file: data-science/database/tsql.ipynb
-        sections:
-          - file: better-code/day_11
+      #   sections:
+      #     - file: better-code/day_01      
+      # - file: data-science/database/tsql.ipynb
+      #   sections:
+      #     - file: better-code/day_11
 
   - caption: Algorithms
     chapters:

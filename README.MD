@@ -58,6 +58,7 @@ pip list | findstr opencv
 | `docker load -i <path to image tar file>`                   | Load config |
 | `docker cp . 4584b29c4197:/`                                | Copy file   |
 | `docker exec --user root lucid_hermann rm -rf bienmuc.bak`  | Delete file |
+| `docker exec -it 3467a0fc187f /bin/bash`                    | Start Mongo |
 
 ## Network
 
