@@ -12,13 +12,13 @@
             node2 [margin="0" shape=none label=<<table border="0">
                     
                     <tr>
-                            <td><img src="C:\Users\vanna\AppData\Local\Temp\node2_7640.svg"/></td>
+                            <td><img src="C:\Users\vanna\AppData\Local\Temp\node2_17896.svg"/></td>
                     </tr>
                     </table>>]
 	node0 [margin="0" shape=none label=<<table border="0">
                     
                     <tr>
-                            <td><img src="C:\Users\vanna\AppData\Local\Temp\node0_7640.svg"/></td>
+                            <td><img src="C:\Users\vanna\AppData\Local\Temp\node0_17896.svg"/></td>
                     </tr>
                     </table>>]
             node2 -> leaf3 [penwidth=0.3 fontname="Arial" color="#444443" label=<> fontcolor="#444443"]
@@ -40,19 +40,19 @@
             leaf1 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0">
                 
                 <tr>
-                        <td><img src="C:\Users\vanna\AppData\Local\Temp\leaf1_7640.svg"/></td>
+                        <td><img src="C:\Users\vanna\AppData\Local\Temp\leaf1_17896.svg"/></td>
                 </tr>
                 </table>>]
 	leaf3 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0">
                 
                 <tr>
-                        <td><img src="C:\Users\vanna\AppData\Local\Temp\leaf3_7640.svg"/></td>
+                        <td><img src="C:\Users\vanna\AppData\Local\Temp\leaf3_17896.svg"/></td>
                 </tr>
                 </table>>]
 	leaf4 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0">
                 
                 <tr>
-                        <td><img src="C:\Users\vanna\AppData\Local\Temp\leaf4_7640.svg"/></td>
+                        <td><img src="C:\Users\vanna\AppData\Local\Temp\leaf4_17896.svg"/></td>
                 </tr>
                 </table>>]
 
