@@ -23,7 +23,7 @@ parts:
       - file: data-science/numpy-pandas/numpy_summary
       - file: data-science/numpy-pandas/lab_numpy_pandas
 
-  - caption: MongoDB
+  - caption: Database
     chapters:
       - file: data-science/database/mongo.ipynb
       #   sections:
