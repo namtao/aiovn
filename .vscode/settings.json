@@ -119,7 +119,7 @@
   "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
   "workbench.startupEditor": "none",
   "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "vscode-great-icons",
   "dateTime.displayPrefix": "",
   "dateTime.locale": "vi",
   "dateTime.showSeconds": true,
