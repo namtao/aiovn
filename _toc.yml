@@ -12,6 +12,7 @@ parts:
       - file: data-science/python-basic/regex
       - file: data-science/python-basic/file_handle
       - file: data-science/python-basic/module
+      - file: data-science/python-basic/decorator_python
 
   - caption: Numpy & Pandas
     chapters:
