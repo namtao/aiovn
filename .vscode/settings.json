@@ -20,65 +20,6 @@
   "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "*_test.py"],
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
-  "editor.tokenColorCustomizations": {
-    "[Monokai]": {
-      "textMateRules": [
-        {
-          "scope": "entity.name.namespace",
-          "settings": {
-            "fontStyle": "italic underline",
-            "foreground": "#82b8dd"
-          }
-        },
-        {
-          "scope": "variable.other.readwrite",
-          "settings": {
-            "fontStyle": "italic",
-            "foreground": "#d3bebe"
-          }
-        },
-        {
-          "scope": "keyword.control.import",
-          "settings": {
-            "fontStyle": "italic underline",
-            "foreground": "#F92672"
-          }
-        },
-        {
-          "scope": "entity.name.function",
-          "settings": {
-            "foreground": "#99d381"
-          }
-        },
-        {
-          "scope": "variable.other.constant",
-          "settings": {
-            "fontStyle": "italic underline",
-            "foreground": "#c581d3"
-          }
-        },
-        {
-          "scope": "variable.other.property",
-          "settings": {
-            "fontStyle": "italic underline",
-            "foreground": "#ff1865"
-          }
-        },
-        {
-          "scope": "meta.function-call.python",
-          "settings": {
-            "foreground": "#99d381"
-          }
-        },
-        {
-          "scope": "meta.attribute.python",
-          "settings": {
-            "foreground": "#ca78ca"
-          }
-        }
-      ]
-    }
-  },
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
@@ -116,20 +57,20 @@
   "explorer.compactFolders": false,
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontLigatures": true,
-  "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
+  // "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
   "workbench.startupEditor": "none",
   "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "vscode-great-icons",
+  "workbench.iconTheme": "a-file-icon-vscode",
   "dateTime.displayPrefix": "",
   "dateTime.locale": "vi",
   "dateTime.showSeconds": true,
-  "security.workspace.trust.untrustedFiles": "open",
+  // "security.workspace.trust.untrustedFiles": "open",
   "files.autoSave": "afterDelay",
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "git.enableSmartCommit": true,
   "explorer.confirmDelete": false,
   "editor.accessibilitySupport": "off",
-  "cmake.showOptionsMovedNotification": false,
+  // "cmake.showOptionsMovedNotification": false,
   "explorer.confirmDragAndDrop": false,
   "mssql.objectExplorer.groupBySchema": false,
   "mssql.connections": [],

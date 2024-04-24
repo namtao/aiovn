@@ -3,7 +3,7 @@
 
 title: Artificial Brains
 author: Van Nam Nguyen
-logo: statics/logo.png
+logo: static/logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -37,4 +37,4 @@ sphinx:
     html_show_copyright: false
     html_theme_options: 
       use_download_button: false
-    html_favicon: statics/favicon(1).ico 
+    html_favicon: static/favicon(1).ico 
