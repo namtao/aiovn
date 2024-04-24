@@ -13,6 +13,7 @@ parts:
       - file: data-science/python-basic/file_handle
       - file: data-science/python-basic/module
       - file: data-science/python-basic/decorator_python
+      - file: data-science/python-basic/pep_8
 
   - caption: Numpy & Pandas
     chapters:

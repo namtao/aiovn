@@ -2,7 +2,7 @@
   "python.analysis.typeCheckingMode": "off",
   "editor.wordWrap": "wordWrapColumn",
   "editor.wrappingIndent": "same",
-  "editor.wordWrapColumn": 120,
+  "editor.wordWrapColumn": 79,
   "editor.formatOnSave": true,
   "editor.stickyScroll.enabled": true,
   "css.validate": false,
