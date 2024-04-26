@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import glob
 import io
 import os
@@ -17,9 +17,9 @@ from textual.app import App, ComposeResult
 from textual.containers import VerticalScroll
 from textual.widgets import Footer, Header, Input, RichLog, Select
 
-# from modules.convert import jpg_to_pdf, pdf_to_jpg
-# from modules.decor import get_files
-# from modules.explorer import analysis_in_folder
+from modules.convert import jpg_to_pdf, pdf_to_jpg
+from modules.decor import get_files
+from modules.explorer import analysis_in_folder
 
 output = ""
 historyPath = "C:/"
@@ -41,21 +41,21 @@ def init():
 
 
 # check file modified
-# @get_files
-# def check_file_modified(root, file):
-#     # global countModifier
-#     # countModifier = 0
-#     date_modifier = os.path.getmtime(os.path.join(root, file))
-#     date_create = os.path.getctime(os.path.join(root, file))
-#     getDate = datetime.datetime.now().strftime("%d/%m/%Y")
-#     # if ('2023' in datetime.date.fromtimestamp(max(date_modifier, date_create)).strftime("%d/%m/%Y")):
-#     # print(os.path.join(root, file))
+@get_files
+def check_file_modified(root, file):
+    # global countModifier
+    # countModifier = 0
+    date_modifier = os.path.getmtime(os.path.join(root, file))
+    date_create = os.path.getctime(os.path.join(root, file))
+    getDate = datetime.now().strftime("%d/%m/%Y")
+    # if ('2023' in datetime.date.fromtimestamp(max(date_modifier, date_create)).strftime("%d/%m/%Y")):
+    # print(os.path.join(root, file))
 
-#     print(
-#         os.path.join(root, file)
-#         + " "
-#         + datetime.datetime.fromtimestamp(date_modifier).strftime("%d/%m/%Y %H:%M:%S")
-#     )
+    print(
+        os.path.join(root, file)
+        + " "
+        + datetime.fromtimestamp(date_modifier).strftime("%d/%m/%Y %H:%M:%S")
+    )
 
 
 def brower_folder(name_windows="Chọn đường dẫn"):
@@ -356,9 +356,9 @@ class MainApp(App[str]):
             match index:
                 case 0:
                     # Phân tích thư mục
-                    # output = analysis_in_folder(self.query_one("#path_1").value)
+                    output = analysis_in_folder(self.query_one("#path_1").value)
 
-                    pass
+                    # pass
 
                 case 1:
                     # Đếm trang PDF theo hồ sơ
@@ -366,18 +366,18 @@ class MainApp(App[str]):
 
                 case 2:
                     # PDF => JPG
-                    # pdf_to_jpg(
-                    #     self.query_one("#path_1").value, self.query_one("#path_3").value
-                    # )
+                    pdf_to_jpg(
+                        self.query_one("#path_1").value, self.query_one("#path_3").value
+                    )
 
-                    pass
+                    # pass
 
                 case 3:
                     # JPG => PDF (trong cùng 1 folder sẽ ghép thành 1 tệp pdf và giữ nguyên cấp độ thư mục)
-                    # jpg_to_pdf(
-                    #     self.query_one("#path_1").value, self.query_one("#path_3").value
-                    # )
-                    pass
+                    jpg_to_pdf(
+                        self.query_one("#path_1").value, self.query_one("#path_3").value
+                    )
+                    # pass
 
                 case 4:
                     output = check_file_error(self.query_one("#path_1").value)
@@ -429,7 +429,7 @@ class MainApp(App[str]):
 
 if __name__ == "__main__":
     try:
-        if datetime.datetime.now().year == 2024:
+        if datetime.now().year == 2024:
             MainApp().run()
         else:
             input("Bye!!!\n")
