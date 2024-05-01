@@ -6,13 +6,16 @@ root: intro
 parts:
   - caption: Python basic
     chapters:
-      - file: docs/python/tricks_in_python
+      - file: docs/python/note
+      - file: docs/python/string_method
+      - file: docs/python/walrus_operator
+      - file: docs/python/set_operations
       - file: docs/python/for_while
       - file: docs/python/list_set_dict
       - file: docs/python/regex
       - file: docs/python/file_handle
       - file: docs/python/module
-      - file: docs/python/decorator_python
+      - file: docs/python/decorator
       - file: docs/python/pep_8
 
   - caption: Numpy & Pandas

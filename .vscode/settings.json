@@ -40,7 +40,7 @@
   "[ini]": {
     "editor.defaultFormatter": "lkrms.inifmt"
   },
-  "DockerRun.DisableDockerrc": true,
+  // "DockerRun.DisableDockerrc": true,
   // "markdownlint.config": {
   //   "no-inline-html": false
   // }
@@ -72,10 +72,12 @@
   "editor.accessibilitySupport": "off",
   // "cmake.showOptionsMovedNotification": false,
   "explorer.confirmDragAndDrop": false,
-  "mssql.objectExplorer.groupBySchema": false,
-  "mssql.connections": [],
+  // "mssql.objectExplorer.groupBySchema": false,
+  // "mssql.connections": [],
   "notebook.lineNumbers": "on",
   "workbench.colorCustomizations": {},
+  "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+  "a-file-icon-vscode.folderColor": "#9c4471",
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
   "notebook.output.wordWrap": true,
