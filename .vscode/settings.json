@@ -77,7 +77,6 @@
   "notebook.lineNumbers": "on",
   "workbench.colorCustomizations": {},
   "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
-  "a-file-icon-vscode.folderColor": "#9c4471",
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
   "notebook.output.wordWrap": true,
