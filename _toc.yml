@@ -6,28 +6,28 @@ root: intro
 parts:
   - caption: Python basic
     chapters:
-      - file: data-science/python-basic/tricks_in_python
-      - file: data-science/python-basic/for_while
-      - file: data-science/python-basic/list_set_dict
-      - file: data-science/python-basic/regex
-      - file: data-science/python-basic/file_handle
-      - file: data-science/python-basic/module
-      - file: data-science/python-basic/decorator_python
-      - file: data-science/python-basic/pep_8
+      - file: docs/python/tricks_in_python
+      - file: docs/python/for_while
+      - file: docs/python/list_set_dict
+      - file: docs/python/regex
+      - file: docs/python/file_handle
+      - file: docs/python/module
+      - file: docs/python/decorator_python
+      - file: docs/python/pep_8
 
   - caption: Numpy & Pandas
     chapters:
-      - file: data-science/numpy-pandas/numpy_math
-      - file: data-science/numpy-pandas/numpy_statics
-      - file: data-science/numpy-pandas/numpy_1D
-      - file: data-science/numpy-pandas/numpy_2D
-      - file: data-science/numpy-pandas/numpy_lab
-      - file: data-science/numpy-pandas/numpy_summary
-      - file: data-science/numpy-pandas/lab_numpy_pandas
+      - file: docs/data-science/numpy-pandas/numpy_math
+      - file: docs/data-science/numpy-pandas/numpy_statics
+      - file: docs/data-science/numpy-pandas/numpy_1D
+      - file: docs/data-science/numpy-pandas/numpy_2D
+      - file: docs/data-science/numpy-pandas/numpy_lab
+      - file: docs/data-science/numpy-pandas/numpy_summary
+      - file: docs/data-science/numpy-pandas/lab_numpy_pandas
 
   - caption: Database
     chapters:
-      - file: data-science/database/mongo.ipynb
+      - file: docs/data-science/database/mongo.ipynb
       #   sections:
       #     - file: better-code/day_01      
       # - file: data-science/database/tsql.ipynb
@@ -36,10 +36,10 @@ parts:
 
   - caption: Algorithms
     chapters:
-      - file: algorithm/theory
-      - file: algorithm/knn
-      - file: algorithm/decision_tree
-      - file: algorithm/random_forest
-      - file: algorithm/ada_boost
-      - file: algorithm/gradient_boost
-      - file: algorithm/xg_boost
+      - file: docs/algorithm/theory
+      - file: docs/algorithm/knn
+      - file: docs/algorithm/decision_tree
+      - file: docs/algorithm/random_forest
+      - file: docs/algorithm/ada_boost
+      - file: docs/algorithm/gradient_boost
+      - file: docs/algorithm/xg_boost
