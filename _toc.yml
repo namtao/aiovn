@@ -31,6 +31,7 @@ parts:
 
   - caption: Database
     chapters:
+      - file: docs/data-science/database/sql.ipynb
       - file: docs/data-science/database/mongo.ipynb
       #   sections:
       #     - file: better-code/day_01      
