@@ -61,6 +61,7 @@
   "workbench.startupEditor": "none",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "a-file-icon-vscode",
+  "a-file-icon-vscode.folderColor": "#9c4471",
   "dateTime.displayPrefix": "",
   "dateTime.locale": "vi",
   "dateTime.showSeconds": true,
@@ -75,12 +76,11 @@
   // "mssql.objectExplorer.groupBySchema": false,
   // "mssql.connections": [],
   "notebook.lineNumbers": "on",
-  "workbench.colorCustomizations": {},
   "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
   "notebook.output.wordWrap": true,
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
-  }
+  },
 }

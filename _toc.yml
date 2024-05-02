@@ -12,6 +12,7 @@ parts:
       - file: docs/python/set_operations
       - file: docs/python/for_while
       - file: docs/python/list_set_dict
+      - file: docs/python/lambda_map_filter_reduce
       - file: docs/python/regex
       - file: docs/python/file_handle
       - file: docs/python/module
