@@ -48,3 +48,7 @@ parts:
       - file: docs/algorithm/ada_boost
       - file: docs/algorithm/gradient_boost
       - file: docs/algorithm/xg_boost
+
+  - caption: Books
+    chapters:
+      - file: books
