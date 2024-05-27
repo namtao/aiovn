@@ -2,7 +2,7 @@
   "python.analysis.typeCheckingMode": "off",
   "editor.wordWrap": "wordWrapColumn",
   "editor.wrappingIndent": "same",
-  "editor.wordWrapColumn": 79,
+  "editor.wordWrapColumn": 72,
   "editor.formatOnSave": true,
   "editor.stickyScroll.enabled": true,
   "css.validate": false,
@@ -81,6 +81,6 @@
   "liveServer.settings.donotVerifyTags": true,
   "notebook.output.wordWrap": true,
   "[sql]": {
-    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
-  },
+    // "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  }
 }
