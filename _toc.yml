@@ -27,6 +27,8 @@ parts:
       - file: docs/data-science/numpy-pandas/numpy_2D
       - file: docs/data-science/numpy-pandas/numpy_lab
       - file: docs/data-science/numpy-pandas/numpy_summary
+      - file: docs/data-science/numpy-pandas/pandas_overview
+      - file: docs/data-science/numpy-pandas/pandas_working
       - file: docs/data-science/numpy-pandas/lab_numpy_pandas
 
   - caption: Database
