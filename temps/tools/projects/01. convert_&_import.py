@@ -15,7 +15,6 @@ import pandas as pd
 from sqlalchemy.engine import create_engine
 
 
-# ngaythang = f"{datetime.datetime.now().day}.{datetime.datetime.now().month}"
 print(datetime.datetime.now())
 
 
@@ -56,7 +55,7 @@ def jpg_to_pdf(jpg_folder_path, pdf_folder_path):
                 ):
                     newPath = os.path.join(pdf_folder_path, root[3:])
                     Path(newPath).mkdir(parents=True, exist_ok=True)
-                    head, tail = os.path.splitext(file)
+                    head, _ = os.path.splitext(file)
 
                     images = Image.open(os.path.join(root, file))
                     file_name_pdf = os.path.join(newPath, head + ".pdf")
@@ -74,7 +73,7 @@ def jpg_to_pdf(jpg_folder_path, pdf_folder_path):
                     newPath = os.path.join(pdf_folder_path, root[3:])
 
                     Path(newPath).mkdir(parents=True, exist_ok=True)
-                    head, tail = os.path.splitext(file)
+                    head, _ = os.path.splitext(file)
 
                     if not os.path.exists(os.path.join(newPath, file)):
                         shutil.copy(
@@ -112,7 +111,7 @@ def check_dup_import():
     lst1 = []
     for root, dirs, files in os.walk(import_path):
         for file in files:
-            head, tail = os.path.splitext(file)
+            head, _ = os.path.splitext(file)
             if (
                 len(file.split(".")) >= 6
                 and "TEMP" not in str(root)
@@ -139,7 +138,7 @@ def check_convert_import(dup_import=True, dup_files=True, convert=True, is_impor
         lst1 = []
         for root, dirs, files in os.walk(import_path):
             for file in files:
-                head, tail = os.path.splitext(file)
+                head, _ = os.path.splitext(file)
                 if (
                     len(file.split(".")) >= 6
                     and "TEMP" not in str(root)

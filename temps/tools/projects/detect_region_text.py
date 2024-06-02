@@ -1,7 +1,6 @@
 import os
 import re
 from argparse import ArgumentParser
-from pathlib import Path
 
 import cv2
 import matplotlib.pyplot as plt
@@ -10,22 +9,36 @@ from pdf2image import convert_from_path
 from PIL import Image
 
 
-def pdf_to_jpg(pdf_file_path, jpg_file_path):
-    # pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+def pdf_to_jpg(pdf_file_path, jpg_file_path) -> None:
+    """_summary_
+
+    Args:
+        pdf_file_path (_type_): _description_
+        jpg_file_path (_type_): _description_
+    """
     Image.MAX_IMAGE_PIXELS = 1000000000000
 
     pattern = re.compile(".*pdf$")
     if pattern.match(pdf_file_path):
         pages = convert_from_path(pdf_file_path, 300)
-        image_counter = 1
         for page in pages:
             output_path = jpg_file_path
             if not os.path.exists(output_path):
                 page.save(output_path, "JPEG")
 
 
-def detect_region(jpgRoot, jpgDetect, merge_margin: int = 18, show: int = 1):
-    # jpgRoot = cv2.imdecode(np.fromfile(jpgRoot, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
+def detect_region(jpgRoot, jpgDetect, merge_margin: int = 18, show: int = 1) -> None:
+    """_summary_
+
+    Args:
+        jpgRoot (_type_): _description_
+        jpgDetect (_type_): _description_
+        merge_margin (int, optional): _description_. Defaults to 18.
+        show (int, optional): _description_. Defaults to 1.
+
+    Returns:
+        _type_: _description_
+    """
 
     # tuplify
     def tup(point):
@@ -53,7 +66,6 @@ def detect_region(jpgRoot, jpgDetect, merge_margin: int = 18, show: int = 1):
                     overlaps.append(a)
         return overlaps
 
-    # img = cv2.imread(jpgRoot)
     img = plt.imread(jpgRoot)
     orig = np.copy(img)
     blue, green, red = cv2.split(img)
@@ -223,16 +235,6 @@ if __name__ == "__main__":
     ap.add_argument("-m", "--margin", required=True, help="Margin cells")
     ap.add_argument("-s", "--show", required=True, help="Show process")
     args = vars(ap.parse_args())
-    # display a friendly message to the user
-    # print("Hi there {}, it's nice to meet you!".format(args["input"]))
-
-    # args['input'] = args['input'].encode('utf8')
-    # # args['output'] = args['output'].encode('utf8')
-
-    # # args['input'] = args['input'].encode('utf8')
-    # # args['output'] = args['output'].encode('utf8')
-
-    # print(args['show'], type(bool(args['show'])))
 
     pattern = re.compile(".*pdf$")
     if os.path.exists(os.path.join(args["output"], "output.jpg")):

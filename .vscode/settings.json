@@ -61,7 +61,7 @@
   "workbench.startupEditor": "none",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "a-file-icon-vscode",
-  "a-file-icon-vscode.folderColor": "#9c4471",
+  // "a-file-icon-vscode.folderColor": "#9c4471",
   "dateTime.displayPrefix": "",
   "dateTime.locale": "vi",
   "dateTime.showSeconds": true,
