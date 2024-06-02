@@ -1,0 +1,9 @@
+# *env/
+# *bin/
+# *Debug/
+*.py[co]
+*.vs/
+*_build/
+# *obj/
+# *.vscode/
+# *output/
