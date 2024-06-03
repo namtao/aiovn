@@ -1,0 +1,52 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Python basic
+    chapters:
+      - file: docs/python/note
+      - file: docs/python/string_method
+      - file: docs/python/walrus_operator
+      - file: docs/python/set_operations
+      - file: docs/python/for_while
+      - file: docs/python/list_set_dict
+      - file: docs/python/lambda_map_filter_reduce
+      - file: docs/python/regex
+      - file: docs/python/file_handle
+      - file: docs/python/module
+      - file: docs/python/decorator
+      - file: docs/python/pep_8
+
+  - caption: Numpy & Pandas
+    chapters:
+      - file: docs/data-science/numpy-pandas/numpy_math
+      - file: docs/data-science/numpy-pandas/numpy_statics
+      - file: docs/data-science/numpy-pandas/numpy_1D
+      - file: docs/data-science/numpy-pandas/numpy_2D
+      - file: docs/data-science/numpy-pandas/numpy_lab
+      - file: docs/data-science/numpy-pandas/numpy_summary
+      - file: docs/data-science/numpy-pandas/pandas_overview
+      - file: docs/data-science/numpy-pandas/pandas_working
+      - file: docs/data-science/numpy-pandas/lab_numpy_pandas
+
+  - caption: Database
+    chapters:
+      - file: docs/data-science/database/sql.ipynb
+      - file: docs/data-science/database/mongo.ipynb
+      #   sections:
+      #     - file: better-code/day_01      
+      # - file: data-science/database/tsql.ipynb
+      #   sections:
+      #     - file: better-code/day_11
+
+  - caption: Algorithms
+    chapters:
+      - file: docs/algorithm/theory
+      - file: docs/algorithm/knn
+      - file: docs/algorithm/decision_tree
+      - file: docs/algorithm/random_forest
+      - file: docs/algorithm/ada_boost
+      - file: docs/algorithm/gradient_boost
+      - file: docs/algorithm/xg_boost
