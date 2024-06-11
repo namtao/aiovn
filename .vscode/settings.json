@@ -1,0 +1,90 @@
+{
+  "python.analysis.typeCheckingMode": "off",
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wrappingIndent": "same",
+  "editor.wordWrapColumn": 72,
+  "editor.formatOnSave": true,
+  "editor.stickyScroll.enabled": true,
+  "css.validate": false,
+  // "python.formatting.provider": "none",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  //custom config for python
+  // "python.formatting.autopep8Args": [
+  //   "--max-line-length",
+  //   "120",
+  //   "--experimental"
+  // ],
+  "python.testing.unittestArgs": ["-v", "-s", ".", "-p", "*_test.py"],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "python.analysis.extraPaths": ["./projects"],
+  "git.ignoreLimitWarning": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ini]": {
+    "editor.defaultFormatter": "lkrms.inifmt"
+  },
+  // "DockerRun.DisableDockerrc": true,
+  // "markdownlint.config": {
+  //   "no-inline-html": false
+  // }
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.gitignore": true,
+    "**/.gitattributes": true
+  },
+  "explorer.compactFolders": false,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+  // "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "a-file-icon-vscode",
+  // "a-file-icon-vscode.folderColor": "#9c4471",
+  "dateTime.displayPrefix": "",
+  "dateTime.locale": "vi",
+  "dateTime.showSeconds": true,
+  // "security.workspace.trust.untrustedFiles": "open",
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "git.enableSmartCommit": true,
+  "explorer.confirmDelete": false,
+  "editor.accessibilitySupport": "off",
+  // "cmake.showOptionsMovedNotification": false,
+  "explorer.confirmDragAndDrop": false,
+  // "mssql.objectExplorer.groupBySchema": false,
+  // "mssql.connections": [],
+  "notebook.lineNumbers": "on",
+  "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "notebook.output.wordWrap": true,
+  "[sql]": {
+    // "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+  "sonarlint.connectedMode.project": {
+    "connectionId": "namtao",
+    "projectKey": "namtao_artificial-brains"
+  }
+}
