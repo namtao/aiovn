@@ -7,6 +7,7 @@ parts:
   - caption: Python basic
     chapters:
       - file: docs/python/note
+      - file: docs/flow/exercise/240601_basic_python
       - file: docs/python/string_method
       - file: docs/python/walrus_operator
       - file: docs/python/set_operations
