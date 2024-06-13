@@ -82,5 +82,9 @@
   "notebook.output.wordWrap": true,
   "[sql]": {
     // "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+  "sonarlint.connectedMode.project": {
+    "connectionId": "namtao",
+    "projectKey": "namtao_artificial-brains"
   }
 }
