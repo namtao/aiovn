@@ -4,6 +4,7 @@
 
 ```:
 find . -name "*.pyc" -exec rm -f {} \;
+regex: ^\d+\s*
 ```
 
 ## Python
