@@ -21,7 +21,7 @@
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
   "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
