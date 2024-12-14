@@ -82,5 +82,6 @@
   "notebook.output.wordWrap": true,
   "[sql]": {
     // "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
-  }
+  },
+  "jupyter.allowUnauthorizedRemoteConnection": true
 }
